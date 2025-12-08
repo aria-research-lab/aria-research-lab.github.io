@@ -1,81 +1,78 @@
 ---
 layout: page
-title: project 1
-description: with background image
-img: assets/img/12.jpg
-importance: 1
-category: work
-related_publications: true
+title: Advanced MPE Inference Schemes for Dependency Networks
+description: 
+img: assets/img/projects/ddn/dn_main_figure.png
+importance: 2
+category: research
+# related_publications: true
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+Deep Dependency Networks (DDNs) combine dependency networks with deep neural architectures to tackle **multi-label classification** on images and videos.
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+They keep the **easy training** of dependency networks while adding **strong inference** via local search and integer linear programming (ILP), going beyond standard Gibbs sampling.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+[Read the paper](https://proceedings.mlr.press/v238/arya24a/arya24a.pdf){:target="_blank"}
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+## Model & Inference
 
-You can also put regular text between your rows of images, even citations {% cite einstein1950meaning %}.
-Say you wanted to write a bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+We build a dependency network on top of deep encoders (CNNs / video backbones). For each label \(X_i\), the network learns a conditional distribution \(p(X_i \mid \text{parents}(X_i), e_i)\) using a sigmoid output layer fed by learned features \(e_i\).
+
+- **Training**: straightforward maximum-likelihood-style training using the DDN loss (one conditional per label).
+- **Inference**: we focus on computing the **most probable explanation (MPE)** configuration of labels given the image/video.
+- **Schemes supported**:
+  - Gibbs sampling
+  - Local search–based methods
+  - Multi-linear integer programming (MILP)
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
+  <div class="col-sm-10 mt-3 mt-md-0">
+    {% include figure.liquid loading="eager" path="assets/img/projects/ddn/dn.png" title="DDN inference overview" class="img-fluid rounded z-depth-1" %}
+  </div>
 </div>
 <div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
+  Illustration of improvements made by our proposed inference scheme for DDNs. The DDN learns label relationships and the inference scheme leverages them to accurately identify concealed objects, such as the <strong>sports ball</strong>.
 </div>
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-{% raw %}
-
-```html
 <div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+  <div class="col-sm-10 mt-3 mt-md-0">
+    {% include figure.liquid loading="eager" path="assets/img/projects/ddn/dn_main_figure.png" title="Dependency Network for action classification" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
-```
+<div class="caption">
+  Dependency Network for action classification with three labels. A video backbone produces features \(e_1,e_2,e_3\) for the dependency layer (red nodes). Sigmoid outputs \(\sigma_1,\ldots,\sigma_n\) model local conditionals given parents (orange/green arrows) in the graph.
+</div>
 
-{% endraw %}
+## Annotation Comparison
+
+<div class="row justify-content-sm-center">
+  <div class="col-sm-10 mt-3 mt-md-0">
+    {% include figure.liquid loading="lazy" path="assets/img/projects/ddn/annotations.png" title="Annotation comparison on MS-COCO" class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+<div class="caption">
+  Comparison of labels predicted by Q2L and our DDN-ILP scheme on MS-COCO. Labels in bold denote differences when thresholding at 0.5. The first three examples show DDN improving over Q2L; the last (outlined in red in the paper) is a case where DDN is worse.
+</div>
+
+## Datasets & Results
+
+We evaluate on:
+- **Video**: Charades, TACoS, Wetlab
+- **Image**: MS-COCO, PASCAL VOC, NUS-WIDE
+
+Across these benchmarks, our advanced DDN inference schemes outperform:
+- **(a)** strong neural baselines without structured inference, and
+- **(b)** neural + Markov network models equipped with advanced inference/learning.
+
+## Getting the Code
+
+The official implementation includes:
+- Joint training of DDNs across all datasets above.
+- Implementations of Gibbs sampling, local search, and MILP-based inference.
+- Environment files for each dataset and for the advanced inference schemes.
+
+See the project README and `MODEL_ZOO.md` files in the code repository for:
+- Exact environment setup (per dataset and for advanced inference),
+- Pretrained models and baseline implementations,
+- Scripts for training and running the different inference strategies.
+

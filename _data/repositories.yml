@@ -1,14 +1,12 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - Shivvrat
 
 repo_description_lines_max: 2
 
 github_repos:
-  - alshedivat/al-folio
-  - jekyll/jekyll
-  - twbs/bootstrap
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - mathjax/MathJax
-  - jpswalsh/academicons
+  - Shivvrat/NeuPI
+  - CaptainCook4D/CaptainCook4D
+  - Shivvrat/Advanced-Inference-Schemes-for-DDNs
+  - Shivvrat/SINE-Advanced-Embedding-And-Discretization-For-MPE-in-PGMs
+  - Shivvrat/SS-CMPE
+

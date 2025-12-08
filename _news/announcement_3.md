@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2016-01-15 07:59:00-0400
+date: 2025-12-02
 inline: true
 related_posts: false
 ---
 
-A simple inline announcement with Markdown emoji! :sparkles: :smile:
+Our paper, "Learning to Condition: A Neural Heuristic for Scalable MPE Inference," has been accepted for publication in The Thirty-Ninth Annual Conference on Neural Information Processing Systems (NeurIPS 2025) as a Poster Presentation.

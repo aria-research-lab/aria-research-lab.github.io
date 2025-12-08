@@ -4,33 +4,91 @@ layout: page
 <div class="post">
   <article>
     {% if page.profiles %}
-      {% for profile in page.profiles %}
-        <hr>
-        <div class="profile float-{% if profile.align == 'left' %}left{% else %}right{% endif %}">
-          {% if profile.image %}
-            {% assign profile_image_path = profile.image | prepend: 'assets/img/' %}
-            {% if profile.image_circular %}
-              {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-            {% else %}
-              {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
-            {% endif %}
-            {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
-            {% include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=profile.image %}
-          {% endif %}
-          {% if profile.more_info %}
-            <div class="more-info">{{ profile.more_info }}</div>
-          {% endif %}
-        </div>
-
-        <div class="clearfix">
-          {% if profile.content %}
-            {% capture profile_content %}{% include_relative {{ profile.content }} %}{% endcapture %}
-            {{ profile_content | markdownify }}
-          {% else %}
-            {{ content }}
-          {% endif %}
-        </div>
+      {% assign grouped_profiles = page.profiles | group_by: "group" %}
+      {% assign has_groups = false %}
+      {% for group in grouped_profiles %}
+        {% if group.name %}
+          {% assign has_groups = true %}
+        {% endif %}
       {% endfor %}
+
+      {% if has_groups %}
+        {% for group in grouped_profiles %}
+          {% if group.items and group.items.size > 0 %}
+            <h2 class="profile-group-title mt-4 mb-3">
+              {% if group.name != "" %}
+                {{ group.name }}
+              {% else %}
+                Others
+              {% endif %}
+            </h2>
+
+            <div class="row">
+              {% for profile in group.items %}
+                <div class="col-md-4 col-sm-6 mb-4">
+                  <div class="card h-100 profile-card">
+                    {% if profile.image %}
+                      {% assign profile_image_path = profile.image | prepend: 'assets/img/' %}
+                      {% if profile.image_circular %}
+                        {% assign profile_image_class = 'card-img-top img-fluid z-depth-1 rounded-circle' %}
+                      {% else %}
+                        {% assign profile_image_class = 'card-img-top img-fluid z-depth-1 rounded' %}
+                      {% endif %}
+                      {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
+                      {% include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=profile.image %}
+                    {% endif %}
+
+                    <div class="card-body">
+                      {% if profile.more_info %}
+                        <div class="more-info mb-2">{{ profile.more_info }}</div>
+                      {% endif %}
+
+                      {% if profile.content %}
+                        {% capture profile_content %}{% include_relative {{ profile.content }} %}{% endcapture %}
+                        {{ profile_content | markdownify }}
+                      {% else %}
+                        {{ content }}
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <div class="row">
+          {% for profile in page.profiles %}
+            <div class="col-md-4 col-sm-6 mb-4">
+              <div class="card h-100 profile-card">
+                {% if profile.image %}
+                  {% assign profile_image_path = profile.image | prepend: 'assets/img/' %}
+                  {% if profile.image_circular %}
+                    {% assign profile_image_class = 'card-img-top img-fluid z-depth-1 rounded-circle' %}
+                  {% else %}
+                    {% assign profile_image_class = 'card-img-top img-fluid z-depth-1 rounded' %}
+                  {% endif %}
+                  {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
+                  {% include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=profile.image %}
+                {% endif %}
+
+                <div class="card-body">
+                  {% if profile.more_info %}
+                    <div class="more-info mb-2">{{ profile.more_info }}</div>
+                  {% endif %}
+
+                  {% if profile.content %}
+                    {% capture profile_content %}{% include_relative {{ profile.content }} %}{% endcapture %}
+                    {{ profile_content | markdownify }}
+                  {% else %}
+                    {{ content }}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
     {% endif %}
   </article>
 </div>
