@@ -44,12 +44,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/people/";
           },
-        },{id: "books-the-godfather",
-          title: 'The Godfather',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/the_godfather/";
-            },},{id: "news-dr-arya-has-joined-njit-as-an-assistant-professor-in-the-department-of-computer-science-and-engineering-at-the-ying-wu-college-of-computing",
+        },{id: "news-dr-arya-has-joined-njit-as-an-assistant-professor-in-the-department-of-computer-science-and-engineering-at-the-ying-wu-college-of-computing",
           title: 'Dr. Arya has joined NJIT as an Assistant Professor in the Department of...',
           description: "",
           section: "News",},{id: "news-our-paper-relink-edge-activation-for-closed-network-influence-maximization-via-deep-reinforcement-learning-has-been-accepted-for-publication-in-the-proceedings-of-the-34th-acm-international-conference-on-information-and-knowledge-management-cikm-2025",
@@ -63,14 +58,14 @@ ninja.data = [{
           description: "",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
-            },},{id: "projects-",
-          title: '',
-          description: "",
+            },},{id: "projects-neupi-neural-probabilistic-inference",
+          title: 'NeuPI: Neural Probabilistic Inference',
+          description: "PyTorch library for neural probabilistic inference",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_project/";
-            },},{id: "projects-project-3-with-very-long-name",
-          title: 'project 3 with very long name',
-          description: "a project that redirects to another website",
+            },},{id: "projects-captaincook4d-a-dataset-for-understanding-errors-in-procedural-activities",
+          title: 'CaptainCook4D: A Dataset for Understanding Errors in Procedural Activities',
+          description: "Egocentric 4D dataset of procedural cooking activities and errors",
           section: "Projects",handler: () => {
               window.location.href = "/projects/3_project/";
             },},{id: "projects-project-4",
@@ -104,13 +99,6 @@ ninja.data = [{
           section: "Projects",handler: () => {
               window.location.href = "/projects/9_project/";
             },},{
-        id: 'social-email',
-        title: 'email',
-        section: 'Socials',
-        handler: () => {
-          window.open("mailto:%73%68%69%76%76%72%61%74.%61%72%79%61@%6E%6A%69%74.%65%64%75", "_blank");
-        },
-      },{
       id: 'light-theme',
       title: 'Change theme to light',
       description: 'Change the theme of the site to Light',
