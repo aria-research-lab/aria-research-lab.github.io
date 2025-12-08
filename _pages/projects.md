@@ -5,7 +5,7 @@ permalink: /projects/
 description: Research projects of the ARIA Lab
 nav: true
 nav_order: 3
-display_categories: [research]
+display_categories: [library, research, dataset]
 horizontal: false
 ---
 

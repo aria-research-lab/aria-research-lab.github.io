@@ -3,7 +3,7 @@ layout: page
 title: Advanced MPE Inference Schemes for Dependency Networks
 description: 
 img: assets/img/projects/ddn/dn_main_figure.png
-importance: 2
+importance: 1
 category: research
 # related_publications: true
 ---

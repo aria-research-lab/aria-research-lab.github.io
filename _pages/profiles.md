@@ -15,7 +15,7 @@ profiles:
     # content: about_shivvrat.md
     image_circular: false # crops the image to make it circular
     more_info: >
-      <p>Dr. Shivvrat Arya</p>
+      <p><a href="https://shivvrat.github.io/" target="_blank">Dr. Shivvrat Arya</a></p>
       <p>Assistant Professor</p>
   # - align: left
   #   image: prof_pic.jpg
