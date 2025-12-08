@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://aria-research-lab.github.io./sitemap.xml
+Sitemap: https://aria-research-lab.github.io/sitemap.xml
