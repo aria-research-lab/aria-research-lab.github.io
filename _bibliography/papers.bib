@@ -4,8 +4,9 @@ title={Learning to Condition: A Neural Heuristic for Scalable {MPE} Inference},
 author={Brij Malhotra and Shivvrat Arya and Tahrima Rahman and Vibhav Giridhar Gogate},
 booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems},
 year={2025},
+abstract={We introduce learning to condition (L2C), a scalable, data-driven framework for accelerating Most Probable Explanation (MPE) inference in Probabilistic Graphical Models (PGMs), a fundamentally intractable problem. L2C trains a neural network to score variable-value assignments based on their utility for conditioning, given observed evidence. To facilitate supervised learning, we develop a scalable data generation pipeline that extracts training signals from the search traces of existing MPE solvers. The trained network serves as a heuristic that integrates with search algorithms, acting as a conditioning strategy prior to exact inference or as a branching and node selection policy within branch-and-bound solvers. We evaluate L2C on challenging MPE queries involving high-treewidth PGMs. Experiments show that our learned heuristic significantly reduces the search space while maintaining or improving solution quality over state-of-the-art methods.},
 url={https://openreview.net/forum?id=otIdC4tsYf},
-file={NeurIPS25_L2C.pdf},
+pdf={NeurIPS25_L2C.pdf},
 preview={L2C.png},
 }
 
@@ -26,7 +27,7 @@ numpages = {12},
 keywords = {closed networks, deep reinforcement learning, edge selection, influence maximization, social network analysis},
 location = {Seoul, Republic of Korea},
 series = {CIKM '25},
-file={RELINK_CIKM2025.pdf}
+pdf={RELINK_CIKM2025.pdf}
 }
 
 @InProceedings{pmlr-v258-arya25a,
@@ -40,11 +41,11 @@ file={RELINK_CIKM2025.pdf}
   series = 	 {Proceedings of Machine Learning Research},
   month = 	 {03--05 May},
   publisher =    {PMLR},
-  pdf = 	 {https://raw.githubusercontent.com/mlresearch/v258/main/assets/arya25a/arya25a.pdf},
+  pdf = 	 {SINE Scalable MPE Inference.pdf},
   url = 	 {https://proceedings.mlr.press/v258/arya25a.html},
   abstract = 	 {Our paper builds on the recent trend of using neural networks trained with self-supervised or supervised learning to solve the Most Probable Explanation (MPE) task in discrete graphical models. At inference time, these networks take an evidence assignment as input and generate the most likely assignment for the remaining variables via a single forward pass. We address two key limitations of existing approaches: (1) the inability to fully exploit the graphical model’s structure and parameters, and (2) the suboptimal discretization of continuous neural network outputs. Our approach embeds model structure and parameters into a more expressive feature representation, significantly improving  performance. Existing methods rely on standard thresholding, which often yields suboptimal results due to the non-convexity of the loss function. We introduce two methods to overcome discretization challenges: (1) an external oracle-based approach that infers uncertain variables using additional evidence from confidently predicted ones, and (2) a technique that identifies and selects the highest-scoring discrete solutions near the continuous output. Experimental results on various probabilistic models demonstrate the effectiveness and scalability of our approach, highlighting its practical impact.},
   code={https://github.com/Shivvrat/SINE-Advanced-Embedding-And-Discretization-For-MPE-in-PGMs}, 
-  file={SINE Scalable MPE Inference.pdf},
+  pdf={SINE Scalable MPE Inference.pdf},
   library={https://neupi.readthedocs.io/en/latest/}
 }
 
@@ -63,7 +64,7 @@ location = {Vancouver, BC, Canada},
 series = {NIPS '24},
 website={https://captaincook4d.github.io/captain-cook/},
 code={https://github.com/CaptainCook4D/},
-file={NeurIPS_1088_CaptainCook4D_A_Dataset_f.pdf},
+pdf={NeurIPS_1088_CaptainCook4D_A_Dataset_f.pdf},
 preview={CaptainCook4D.gif},
 }
 
@@ -74,12 +75,13 @@ preview={CaptainCook4D.gif},
  pages = {33538--33601},
  publisher = {Curran Associates, Inc.},
  title = {A Neural Network Approach for Efficiently Answering Most Probable Explanation Queries in Probabilistic Models},
+ abstract={We propose a novel neural networks based approach to efficiently answer arbitrary Most Probable Explanation (MPE) queries—a well-known NP-hard task—in large probabilistic models such as Bayesian and Markov networks, probabilistic circuits, and neural auto-regressive models. By arbitrary MPE queries, we mean that there is no predefined partition of variables into evidence and non-evidence variables. The key idea is to distill all MPE queries over a given probabilistic model into a neural network and then use the latter for answering queries, eliminating the need for time-consuming inference algorithms that operate directly on the probabilistic model. We improve upon this idea by incorporating inference-time optimization with self-supervised loss to iteratively improve the solutions and employ a teacher-student framework that provides a better initial network, which in turn, helps reduce the number of inference-time optimization steps. The teacher network utilizes a self-supervised loss function optimized for getting the exact MPE solution, while the student network learns from the teacher's near-optimal outputs through supervised loss. We demonstrate the efficacy and scalability of our approach on various datasets and a broad class of probabilistic models, showcasing its practical effectiveness.},
  url = {https://proceedings.neurips.cc/paper_files/paper/2024/file/3ae2d3297891cad0c56dd12d60ff7dde-Paper-Conference.pdf},
  volume = {37},
  year = {2024},
 comment = {Spotlight presentation (top 2% of papers)},
 url={https://openreview.net/forum?id=ufPPf9ghzP},
-file={NeurIPS_12727_A_Neural_Network_Approac.pdf},
+pdf={NeurIPS_12727_A_Neural_Network_Approac.pdf},
 library={https://neupi.readthedocs.io/en/latest/}
 }
 
@@ -91,10 +93,11 @@ author={Shivvrat Arya and Tahrima Rahman and Vibhav Giridhar Gogate},
 booktitle={The 7th Workshop on Tractable Probabilistic Modeling (TPM)},
 year={2024},
 month = may,
+abstract={We propose a novel neural networks based approach to efficiently answer arbitrary Most Probable Explanation (MPE) queries—a well-known NP-hard task—in large probabilistic models such as Bayesian and Markov networks, probabilistic circuits, and neural auto-regressive models. By arbitrary MPE queries, we mean that there is no predefined partition of variables into evidence and non-evidence variables. The key idea is to distill all MPE queries over a given probabilistic model into a neural network and then use the latter for answering queries, eliminating the need for time-consuming inference algorithms that operate directly on the probabilistic model. We improve upon this idea by incorporating inference-time optimization with self-supervised loss to iteratively improve the solutions and employ a teacher-student framework that provides a better initial network, which in turn, helps reduce the number of inference-time optimization steps. The teacher network utilizes a self-supervised loss function optimized for getting the exact MPE solution, while the student network learns from the teacher's near-optimal outputs through supervised loss. We demonstrate the efficacy and scalability of our approach on various datasets and a broad class of probabilistic models, showcasing its practical effectiveness.},
 url={https://openreview.net/forum?id=Gn7mpdBqqf},
 comment = {Best Paper Award},
 certificate = {/certificates/tpm_certificate.jpg},
-file = {TPM_11_a_neural_network_approach_for_.pdf},
+pdf={TPM_11_a_neural_network_approach_for_.pdf},
 library={https://neupi.readthedocs.io/en/latest/}
 }
 
@@ -113,7 +116,7 @@ library={https://neupi.readthedocs.io/en/latest/}
   url = 	 {https://proceedings.mlr.press/v238/arya24a.html},
   abstract = 	 {We present a unified framework called deep dependency networks (DDNs) that combines dependency networks and deep learning architectures for multi-label classification, with a particular emphasis on image and video data. The primary advantage of dependency networks is their ease of training, in contrast to other probabilistic graphical models like Markov networks. In particular, when combined with deep learning architectures, they provide an intuitive, easy-to-use loss function for multi-label classification. A drawback of DDNs compared to Markov networks is their lack of advanced inference schemes, necessitating the use of Gibbs sampling. To address this challenge, we propose novel inference schemes based on local search and integer linear programming for computing the most likely assignment to the labels given observations. We evaluate our novel methods on three video datasets (Charades, TACoS, Wetlab) and three image datasets (MS-COCO, PASCAL VOC, NUS-WIDE), comparing their performance with (a) basic neural architectures and (b) neural architectures combined with Markov networks equipped with advanced inference and learning techniques. Our results demonstrate the superiority of our new DDN methods over the two competing approaches.},
   code = {https://github.com/Shivvrat/Advanced-Inference-Schemes-for-DDNs},
-  file = {DDN_AISTATS2024CameraReady.pdf},
+  pdf={DDN_AISTATS2024CameraReady.pdf},
 }
 
             
@@ -132,7 +135,7 @@ https://ojs.aaai.org/index.php/AAAI/article/view/28966
   doi = {10.1609/aaai.v38i10.28966},
   urldate = {2024-03-27},
   copyright = {Copyright (c) 2024 Association for the Advancement of Artificial Intelligence},
-  file = {AAAI_arya_2024_networkapproximatorsa.pdf},
+  pdf={AAAI_arya_2024_networkapproximatorsa.pdf},
   langid = {english},
   comment = {Oral presentation (top 6% of papers)},
   library={https://neupi.readthedocs.io/en/latest/}
@@ -153,7 +156,8 @@ https://ojs.aaai.org/index.php/AAAI/article/view/28966
   series    = {Proceedings of Machine Learning Research},
   url       = {https://proceedings.mlr.press/v238/arya24b.html},
   abstract = {We propose a self-supervised learning approach for solving the following constrained optimization task in log-linear models or Markov networks. Let f and g be two log-linear models defined over the sets X and Y of random variables respectively. Given an assignment x to all variables in X (evidence) and a real number q, the constrained most-probable explanation (CMPE) task seeks to find an assignment y to all variables in Y such that f(x,y) is maximized and g(x,y)≤q. In our proposed self-supervised approach, given assignments x to X (data), we train a deep neural network that learns to output near-optimal solutions to the CMPE problem without requiring access to any pre-computed solutions. The key idea in our approach is to use first principles and approximate inference methods for CMPE to derive novel loss functions that seek to push infeasible solutions towards feasible ones and feasible solutions towards optimal ones. We analyze the properties of our proposed method and experimentally demonstrate its efficacy on several benchmark problems.},
-  file = {SS_CMPE_AISTATS2024CameraReady.pdf},
+  pdf={SS_CMPE_AISTATS2024CameraReady.pdf},
+  preview={cmpe.png},
   code = {https://github.com/Shivvrat/SS-CMPE},
   library={https://neupi.readthedocs.io/en/latest/}
 }
@@ -178,12 +182,12 @@ https://ojs.aaai.org/index.php/AAAI/article/view/28966
               author        = {Benjamin Rheault and Shivvrat Arya and Akshay Vyas and Jikai Wang and Rohith Peddi and Brett Benda and Vibhav Gogate and Nicholas Ruozzi and Yu Xiang and Eric D Ragan},
               year          = {2024},
               month = {june},
-              file = {Rheault_VR2024.pdf},
+              pdf={Rheault_VR2024.pdf},
 
               booktitle     = {IEEE Virtual Reality (IEEE VR)}
 }
 @article{Explainable_AI_TiiS,
-author = {Roy, Chiradeep* and Nourani, Mahsan* and Arya, Shivvrat* and Shanbhag, Mahesh and Rahman, Tahrima and Ragan, Eric D. and Ruozzi, Nicholas and Gogate, Vibhav (*equal contribution)},
+author = {Roy*, Chiradeep and Nourani*, Mahsan and Arya*, Shivvrat and Shanbhag, Mahesh and Rahman, Tahrima and Ragan, Eric D. and Ruozzi, Nicholas and Gogate, Vibhav (*equal contribution)},
 title = {Explainable Activity Recognition in Videos Using Deep Learning and Tractable Probabilistic Models},
 year = {2023},
 publisher = {Association for Computing Machinery},
@@ -192,7 +196,6 @@ issn = {2160-6455},
 url = {https://doi.org/10.1145/3626961},
 doi = {10.1145/3626961},
 abstract = {We consider the following video activity recognition (VAR) task: given a video, infer the set of activities being performed in the video and assign each frame to an activity. Although VAR can be solved accurately using existing deep learning techniques, deep networks are neither interpretable nor explainable and as a result their use is problematic in high stakes decision-making applications (e.g., in healthcare, experimental Biology, aviation, law, etc.). In such applications, failure may lead to disastrous consequences and therefore it is necessary that the user is able to either understand the inner workings of the model or probe it to understand its reasoning patterns for a given decision. We address these limitations of deep networks by proposing a new approach that feeds the output of a deep model into a tractable, interpretable probabilistic model called a dynamic conditional cutset network that is defined over the explanatory and output variables and then performing joint inference over the combined model. The two key benefits of using cutset networks are: (a) they explicitly model the relationship between the output and explanatory variables and as a result the combined model is likely to be more accurate than the vanilla deep model and (b) they can answer reasoning queries in polynomial time and as a result they can derive meaningful explanations by efficiently answering explanation queries. We demonstrate the efficacy of our approach on two datasets, Textually Annotated Cooking Scenes (TACoS), and wet lab, using conventional evaluation measures such as the Jaccard Index and Hamming Loss, as well as a human-subjects study.},
-note = {Just Accepted},
 journal = {ACM Transactions on Interactive Intelligent Systems (TiiS)},
 month = {oct},
 keywords = {Tractable Probabilistic Models, Temporal Models, Dynamic Bayesian Networks, Cutset Networks}

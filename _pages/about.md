@@ -48,6 +48,17 @@ The ARIA Research Lab in the Department of Computer Science at the Ying Wu Colle
 
 ---
 
+## Joining the lab
+
+We are always looking for **curious, rigorous, and collaborative** students who are excited about building the next generation of **structured, explainable, and reliable AI systems**.
+
+- **Ph.D. students**: Opportunities to work on core problems in neurosymbolic AI, probabilistic inference, graph optimization, and structured deep learning.
+- **M.S. and undergraduate students**: Positions for research-oriented students interested in gaining hands-on experience with modern AI methods, systems building, and publications.
+
+If you are interested in joining the ARIA Research Lab, please read the <a href="https://shivvrat.github.io/hiring/" target="_blank">hiring page</a> and follow the instructions there. Briefly describe your background, relevant coursework or projects, and which of the lab’s research directions you are most excited about.
+
+---
+
 ## Current research directions
 
 - **Neurosymbolic models for reasoning under uncertainty**  
@@ -79,12 +90,3 @@ The ARIA Research Lab in the Department of Computer Science at the Ying Wu Colle
   Lab publications have received **best paper awards**, **spotlights**, and **oral presentations** at venues such as NeurIPS, AISTATS, AAAI, and UAI.
 
 ---
-
-## Joining the lab
-
-We are always looking for **curious, rigorous, and collaborative** students who are excited about building the next generation of **structured, explainable, and reliable AI systems**.
-
-- **Ph.D. students**: Opportunities to work on core problems in neurosymbolic AI, probabilistic inference, graph optimization, and structured deep learning.
-- **M.S. and undergraduate students**: Positions for research-oriented students interested in gaining hands-on experience with modern AI methods, systems building, and publications.
-
-If you are interested in joining the ARIA Research Lab, please read the <a href="https://shivvrat.github.io/hiring/" target="_blank">hiring page</a> and follow the instructions there. Briefly describe your background, relevant coursework or projects, and which of the lab’s research directions you are most excited about.
