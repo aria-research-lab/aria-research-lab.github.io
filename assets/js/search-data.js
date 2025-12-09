@@ -30,13 +30,6 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "nav-repositories",
-          title: "repositories",
-          description: "",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/repositories/";
-          },
         },{id: "nav-people",
           title: "people",
           description: "Members of the ARIA Research Lab",
@@ -53,32 +46,7 @@ ninja.data = [{
           section: "News",},{id: "news-our-paper-learning-to-condition-a-neural-heuristic-for-scalable-mpe-inference-has-been-accepted-for-publication-in-the-thirty-ninth-annual-conference-on-neural-information-processing-systems-neurips-2025-as-a-poster-presentation",
           title: 'Our paper, “Learning to Condition: A Neural Heuristic for Scalable MPE Inference,” has...',
           description: "",
-          section: "News",},{id: "projects-advanced-mpe-inference-schemes-for-dependency-networks",
-          title: 'Advanced MPE Inference Schemes for Dependency Networks',
-          description: "",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/1_project/";
-            },},{id: "projects-neupi-neural-probabilistic-inference",
-          title: 'NeuPI: Neural Probabilistic Inference',
-          description: "PyTorch library for neural probabilistic inference",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/2_project/";
-            },},{id: "projects-captaincook4d-a-dataset-for-understanding-errors-in-procedural-activities",
-          title: 'CaptainCook4D: A Dataset for Understanding Errors in Procedural Activities',
-          description: "Egocentric 4D dataset of procedural cooking activities and errors",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/3_project/";
-            },},{id: "projects-project-4",
-          title: 'project 4',
-          description: "another without an image",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/4_project/";
-            },},{id: "projects-project-5",
-          title: 'project 5',
-          description: "a project with a background image",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/5_project/";
-            },},{id: "projects-project-6",
+          section: "News",},{id: "projects-project-6",
           title: 'project 6',
           description: "a project with no image",
           section: "Projects",handler: () => {
@@ -98,6 +66,31 @@ ninja.data = [{
           description: "another project with an image 🎉",
           section: "Projects",handler: () => {
               window.location.href = "/projects/9_project/";
+            },},{id: "projects-captaincook4d",
+          title: 'CaptainCook4D',
+          description: "A Dataset for Understanding Errors in Procedural Activities",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/CaptainCook4D/";
+            },},{id: "projects-advanced-mpe-inference-schemes-for-dependency-networks",
+          title: 'Advanced MPE Inference Schemes for Dependency Networks',
+          description: "",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/ddn/";
+            },},{id: "projects-neupi",
+          title: 'NeuPI',
+          description: "PyTorch-based library for neural probabilistic inference",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/neupi/";
+            },},{id: "projects-sine-scalable-mpe-inference-for-pgms",
+          title: 'SINE: Scalable MPE Inference for PGMs',
+          description: "Advanced Neural embeddings and discretization schemes for scalable MPE inference for discrete graphical models.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/sine/";
+            },},{id: "projects-ss-cmpe-learning-to-solve-the-constrained-mpe-task",
+          title: 'SS-CMPE: Learning to Solve the Constrained MPE Task',
+          description: "Self-supervised learning for constrained most probable explanation (CMPE) in probabilistic graphical models.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/ss-cmpe/";
             },},{
       id: 'light-theme',
       title: 'Change theme to light',
