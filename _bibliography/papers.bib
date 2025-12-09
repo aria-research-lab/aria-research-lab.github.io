@@ -36,6 +36,7 @@ pdf={RELINK_CIKM2025.pdf}
   booktitle = 	 {Proceedings of The 28th International Conference on Artificial Intelligence and Statistics},
   pages = 	 {4465--4473},
   year = 	 {2025},
+  preview={nn_pipeline.png},
   editor = 	 {Li, Yingzhen and Mandt, Stephan and Agrawal, Shipra and Khan, Emtiyaz},
   volume = 	 {258},
   series = 	 {Proceedings of Machine Learning Research},
@@ -79,6 +80,7 @@ preview={CaptainCook4D.gif},
  url = {https://proceedings.neurips.cc/paper_files/paper/2024/file/3ae2d3297891cad0c56dd12d60ff7dde-Paper-Conference.pdf},
  volume = {37},
  year = {2024},
+ preview={GUIDE.jpg},
 comment = {Spotlight presentation (top 2% of papers)},
 url={https://openreview.net/forum?id=ufPPf9ghzP},
 pdf={NeurIPS_12727_A_Neural_Network_Approac.pdf},
@@ -96,6 +98,7 @@ month = may,
 abstract={We propose a novel neural networks based approach to efficiently answer arbitrary Most Probable Explanation (MPE) queries—a well-known NP-hard task—in large probabilistic models such as Bayesian and Markov networks, probabilistic circuits, and neural auto-regressive models. By arbitrary MPE queries, we mean that there is no predefined partition of variables into evidence and non-evidence variables. The key idea is to distill all MPE queries over a given probabilistic model into a neural network and then use the latter for answering queries, eliminating the need for time-consuming inference algorithms that operate directly on the probabilistic model. We improve upon this idea by incorporating inference-time optimization with self-supervised loss to iteratively improve the solutions and employ a teacher-student framework that provides a better initial network, which in turn, helps reduce the number of inference-time optimization steps. The teacher network utilizes a self-supervised loss function optimized for getting the exact MPE solution, while the student network learns from the teacher's near-optimal outputs through supervised loss. We demonstrate the efficacy and scalability of our approach on various datasets and a broad class of probabilistic models, showcasing its practical effectiveness.},
 url={https://openreview.net/forum?id=Gn7mpdBqqf},
 comment = {Best Paper Award},
+preview={ITSELF.png},
 certificate = {/certificates/tpm_certificate.jpg},
 pdf={TPM_11_a_neural_network_approach_for_.pdf},
 library={https://neupi.readthedocs.io/en/latest/}
@@ -112,6 +115,7 @@ library={https://neupi.readthedocs.io/en/latest/}
   series = 	 {Proceedings of Machine Learning Research},
   month = 	 {02--04 May},
   publisher =    {PMLR},
+  preview={ddn.png},
   pdf = 	 {https://proceedings.mlr.press/v238/arya24a/arya24a.pdf},
   url = 	 {https://proceedings.mlr.press/v238/arya24a.html},
   abstract = 	 {We present a unified framework called deep dependency networks (DDNs) that combines dependency networks and deep learning architectures for multi-label classification, with a particular emphasis on image and video data. The primary advantage of dependency networks is their ease of training, in contrast to other probabilistic graphical models like Markov networks. In particular, when combined with deep learning architectures, they provide an intuitive, easy-to-use loss function for multi-label classification. A drawback of DDNs compared to Markov networks is their lack of advanced inference schemes, necessitating the use of Gibbs sampling. To address this challenge, we propose novel inference schemes based on local search and integer linear programming for computing the most likely assignment to the labels given observations. We evaluate our novel methods on three video datasets (Charades, TACoS, Wetlab) and three image datasets (MS-COCO, PASCAL VOC, NUS-WIDE), comparing their performance with (a) basic neural architectures and (b) neural architectures combined with Markov networks equipped with advanced inference and learning techniques. Our results demonstrate the superiority of our new DDN methods over the two competing approaches.},
@@ -119,8 +123,6 @@ library={https://neupi.readthedocs.io/en/latest/}
   pdf={DDN_AISTATS2024CameraReady.pdf},
 }
 
-            
-https://ojs.aaai.org/index.php/AAAI/article/view/28966
 @inproceedings{arya_2024_networkapproximatorsa,
   title = {Neural {{Network Approximators}} for {{Marginal MAP}} in {{Probabilistic Circuits}}},
   author = {Arya, Shivvrat and Rahman, Tahrima and Gogate, Vibhav},
@@ -131,8 +133,10 @@ https://ojs.aaai.org/index.php/AAAI/article/view/28966
   number = {10},
   pages = {10918--10926},
   issn = {2374-3468},
+  preview={SSMP.png},
   abstract = {Probabilistic circuits (PCs) such as sum-product networks efficiently represent large multi-variate probability distributions. They are preferred in practice over other probabilistic representations, such as Bayesian and Markov networks, because PCs can solve marginal inference (MAR) tasks in time that scales linearly in the size of the network. Unfortunately, the most probable explanation (MPE) task and its generalization, the marginal maximum-a-posteriori (MMAP) inference task remain NP-hard in these models. Inspired by the recent work on using neural networks for generating near-optimal solutions to optimization problems such as integer linear programming, we propose an approach that uses neural networks to approximate MMAP inference in PCs. The key idea in our approach is to approximate the cost of an assignment to the query variables using a continuous multilinear function and then use the latter as a loss function. The two main benefits of our new method are that it is self-supervised, and after the neural network is learned, it requires only linear time to output a solution. We evaluate our new approach on several benchmark datasets and show that it outperforms three competing linear time approximations: max-product inference, max-marginal inference, and sequential estimation, which are used in practice to solve MMAP tasks in PCs.},
   doi = {10.1609/aaai.v38i10.28966},
+  url = {https://ojs.aaai.org/index.php/AAAI/article/view/28966},
   urldate = {2024-03-27},
   copyright = {Copyright (c) 2024 Association for the Advancement of Artificial Intelligence},
   pdf={AAAI_arya_2024_networkapproximatorsa.pdf},
@@ -183,7 +187,7 @@ https://ojs.aaai.org/index.php/AAAI/article/view/28966
               year          = {2024},
               month = {june},
               pdf={Rheault_VR2024.pdf},
-
+              preview={HoloAR.png},
               booktitle     = {IEEE Virtual Reality (IEEE VR)}
 }
 @article{Explainable_AI_TiiS,
@@ -195,6 +199,7 @@ address = {New York, NY, USA},
 issn = {2160-6455},
 url = {https://doi.org/10.1145/3626961},
 doi = {10.1145/3626961},
+preview={exAR.jpg},
 abstract = {We consider the following video activity recognition (VAR) task: given a video, infer the set of activities being performed in the video and assign each frame to an activity. Although VAR can be solved accurately using existing deep learning techniques, deep networks are neither interpretable nor explainable and as a result their use is problematic in high stakes decision-making applications (e.g., in healthcare, experimental Biology, aviation, law, etc.). In such applications, failure may lead to disastrous consequences and therefore it is necessary that the user is able to either understand the inner workings of the model or probe it to understand its reasoning patterns for a given decision. We address these limitations of deep networks by proposing a new approach that feeds the output of a deep model into a tractable, interpretable probabilistic model called a dynamic conditional cutset network that is defined over the explanatory and output variables and then performing joint inference over the combined model. The two key benefits of using cutset networks are: (a) they explicitly model the relationship between the output and explanatory variables and as a result the combined model is likely to be more accurate than the vanilla deep model and (b) they can answer reasoning queries in polynomial time and as a result they can derive meaningful explanations by efficiently answering explanation queries. We demonstrate the efficacy of our approach on two datasets, Textually Annotated Cooking Scenes (TACoS), and wet lab, using conventional evaluation measures such as the Jaccard Index and Hamming Loss, as well as a human-subjects study.},
 journal = {ACM Transactions on Interactive Intelligent Systems (TiiS)},
 month = {oct},

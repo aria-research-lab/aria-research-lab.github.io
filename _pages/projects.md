@@ -2,7 +2,7 @@
 layout: page
 title: projects
 permalink: /projects/
-description: Research projects of the ARIA Lab
+# description: Research projects of the ARIA Lab
 nav: true
 nav_order: 3
 display_categories: [datasets, libraries, research]

@@ -16,7 +16,7 @@ subtitle: Welcome to the Algorithms and Architectures for Reasoning and Intellig
 #     <p>New Jersey Institute of Technology</p>
 #     <p>Newark, NJ 07102</p>
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
+# selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 
 announcements:
@@ -40,11 +40,22 @@ The ARIA Research Lab in the Department of Computer Science at the Ying Wu Colle
 
 ## What we work on
 
-- **Neurosymbolic AI & Explainable Systems**: Integrating symbolic structure (logic, constraints, programs, graphs) with deep learning to enable transparent, controllable reasoning instead of black-box prediction.
-- **Probabilistic Modeling & Inference**: Tractable and approximate inference in rich probabilistic models, including neural inference engines that answer complex queries in microseconds.
-- **Neural Combinatorial & Constrained Optimization**: Learning-based and neural approaches for solving large-scale combinatorial problems and constrained reasoning tasks.
-- **Deep Reinforcement Learning for Graph Optimization**: RL and graph neural network methods for routing, scheduling, and other graph-structured decision problems.
-- **Applications in Vision, Video, and HCI**: Egocentric and third-person video understanding, activity recognition, augmented reality task guidance, and human–AI collaboration using structured and neurosymbolic models.
+The **Algorithms and Architectures for Reasoning and Intelligent Automation (ARIA) Lab** develops models and algorithms that unify structured reasoning with data-driven learning. Our research spans:
+
+* **Neurosymbolic AI and Explainable Systems**
+  Methods that integrate symbolic structure such as logic, constraints, and graphs with deep learning to enable transparent, controllable reasoning.
+
+* **Probabilistic Modeling and Inference**
+  Tractable and approximate inference in rich probabilistic models, including neural inference engines capable of answering complex queries at scale.
+
+* **Neural Combinatorial and Constrained Optimization**
+  Learning-based solvers for large-scale combinatorial and constrained reasoning tasks.
+
+* **Reinforcement Learning for Graph Optimization**
+  RL and graph neural network approaches for routing, scheduling, and graph-structured decision-making.
+
+* **Applications in Vision, Video, and HCI**
+  Structured and neurosymbolic methods for video understanding, activity recognition, augmented reality task guidance, and human–AI collaboration.
 
 ---
 
@@ -56,22 +67,6 @@ We are always looking for **curious, rigorous, and collaborative** students who 
 - **M.S. and undergraduate students**: Positions for research-oriented students interested in gaining hands-on experience with modern AI methods, systems building, and publications.
 
 If you are interested in joining the ARIA Research Lab, please read the <a href="https://shivvrat.github.io/hiring/" target="_blank">hiring page</a> and follow the instructions there. Briefly describe your background, relevant coursework or projects, and which of the lab’s research directions you are most excited about.
-
----
-
-## Current research directions
-
-- **Neurosymbolic models for reasoning under uncertainty**  
-  We build models that combine deep neural architectures with symbolic and probabilistic structure to support tasks like explanation, counterfactual reasoning, and constrained decision-making.
-
-- **Neural inference for probabilistic graphical models**  
-  Our work on neural inference (e.g., **NeuPI**) learns to answer Most Probable Explanation (MPE) and related queries in complex probabilistic models, achieving orders-of-magnitude speedups over classical inference while preserving accuracy and structure.
-
-- **Optimization-based and learning-based inference schemes**  
-  We design optimization-inspired architectures (e.g., deep dependency networks and differentiable solvers) that leverage problem structure for multi-label prediction, structured outputs, and hybrid discrete–continuous reasoning.
-
-- **Video understanding, activity recognition, and procedural tasks**  
-  The lab develops models and datasets (e.g., **CaptainCook4D**) for understanding complex, multi-step tasks from video, focusing on explainable activity recognition, temporal reasoning, and predictive task guidance in AR.
 
 ---
 
