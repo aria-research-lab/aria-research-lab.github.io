@@ -36,11 +36,9 @@ latest_posts:
 
 <!-- ## Welcome to the Algorithms and Architectures for Reasoning and Intelligent Automation Lab -->
 
-The ARIA Research Lab in the Department of Computer Science at the Ying Wu College of Computing, New Jersey Institute of Technology (NJIT), led by Dr. Shivvrat Arya, develops methods for **trustworthy, structured, and efficient AI**. We work at the intersection of **neurosymbolic AI**, **probabilistic reasoning**, and **combinatorial optimization**, with applications in **computer vision**, **video understanding**, **human–AI interaction**, and **multimodal learning**.
+The ARIA Research Lab in the Department of Computer Science at the Ying Wu College of Computing, New Jersey Institute of Technology (NJIT), led by [Dr. Shivvrat Arya](https://shivvrat.github.io/), develops methods for **trustworthy**, **structured**, and **efficient AI**. Our research lies at the intersection of **neurosymbolic AI** and **probabilistic reasoning**, with applications in **computer vision**, **video understanding**, **human–AI interaction**, **multimodal learning**, and **reasoning with large language models**. In parallel, we advance **combinatorial optimization**, with a focus on **neural and learning-based solvers**.
 
 ## What we work on
-
-The **Algorithms and Architectures for Reasoning and Intelligent Automation (ARIA) Lab** develops models and algorithms that unify structured reasoning with data-driven learning. Our research spans:
 
 * **Neurosymbolic AI and Explainable Systems**
   Methods that integrate symbolic structure such as logic, constraints, and graphs with deep learning to enable transparent, controllable reasoning.
@@ -83,5 +81,3 @@ If you are interested in joining the ARIA Research Lab, please read the <a href=
 
 - **Award-winning work at top venues**  
   Lab publications have received **best paper awards**, **spotlights**, and **oral presentations** at venues such as NeurIPS, AISTATS, AAAI, and UAI.
-
----
