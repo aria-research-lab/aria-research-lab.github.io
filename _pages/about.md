@@ -31,7 +31,7 @@ latest_posts:
 ---
 
 <div class="alert alert-info">
-📢 The lab is recruiting motivated Ph.D. students (Spring & Fall 2026) as well as undergraduate and master’s students interested in research in AI and machine learning. For more details, please see the <a href="https://shivvrat.github.io/hiring/" target="_blank">hiring page</a>.
+📢 The lab is recruiting motivated Ph.D. students (Spring & Fall 2026) as well as undergraduate and master’s students interested in research in AI and machine learning. For more details, please see the <a href="/hiring/">hiring page</a>.
 </div>
 
 <!-- ## Welcome to the Algorithms and Architectures for Reasoning and Intelligent Automation Lab -->
@@ -64,7 +64,7 @@ We are always looking for **curious, rigorous, and collaborative** students who 
 - **Ph.D. students**: Opportunities to work on core problems in neurosymbolic AI, probabilistic inference, graph optimization, and structured deep learning.
 - **M.S. and undergraduate students**: Positions for research-oriented students interested in gaining hands-on experience with modern AI methods, systems building, and publications.
 
-If you are interested in joining the ARIA Research Lab, please read the <a href="https://shivvrat.github.io/hiring/" target="_blank">hiring page</a> and follow the instructions there. Briefly describe your background, relevant coursework or projects, and which of the lab’s research directions you are most excited about.
+If you are interested in joining the ARIA Research Lab, please read the <a href="/hiring/">hiring page</a> and follow the instructions there. Briefly describe your background, relevant coursework or projects, and which of the lab’s research directions you are most excited about.
 
 ---
 
