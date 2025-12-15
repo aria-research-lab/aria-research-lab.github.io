@@ -37,7 +37,42 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "nav-people",
+        },{id: "dropdown-open-positions",
+              title: "Open Positions",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/hiring/";
+              },
+            },{id: "dropdown-project-neurosymbolic-ai",
+              title: "Project: Neurosymbolic AI",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/hiring/neurosymbolic-ai";
+              },
+            },{id: "dropdown-project-neural-combinatorial-and-constrained-optimization",
+              title: "Project: Neural Combinatorial and Constrained Optimization",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/hiring/neural-optimization";
+              },
+            },{id: "dropdown-project-deep-reinforcement-learning-for-combinatorial-optimization-on-graphs",
+              title: "Project: Deep Reinforcement Learning for Combinatorial Optimization on Graphs",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/hiring/drl-graph-optimization";
+              },
+            },{id: "dropdown-project-research-applications-of-neurosymbolic-methods",
+              title: "Project: Research Applications of Neurosymbolic Methods",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/hiring/applications";
+              },
+            },{id: "nav-people",
           title: "people",
           description: "Members of the ARIA Research Lab",
           section: "Navigation",
