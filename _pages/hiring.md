@@ -26,9 +26,9 @@ seo:
 
 ---
 
-## Join our research lab
+## Join our lab
 
-I'm recruiting **Ph.D., MS, and undergraduate students** for research positions. Ph.D. positions are fully funded; MS/undergrad students can earn research credit. Self-funded visiting students/scholars are also welcome.
+We are the ARIA Research Lab in the Department of Computer Science at NJIT. We are recruiting **Ph.D., MS, and undergraduate students** for research positions. Ph.D. positions are fully funded; MS/undergrad students can earn research credit. Self-funded visiting students/scholars are also welcome.
 
 |               |                            |
 | ------------- | -------------------------- |
@@ -50,13 +50,13 @@ I'm recruiting **Ph.D., MS, and undergraduate students** for research positions.
 
 ---
 
-### Who can apply
+### Who can apply to our lab
 
 ##### Ph.D. students
 
-- Up to **2 TA/RA positions** for Spring 2026.
+- We are currently looking for up to **2 funded Ph.D. students** (RA/TA) to start in Spring/Fall 2026.
 - Strong research background in AI/ML required.
-- Must also apply through the [NJIT graduate admissions portal](https://www.njit.edu/admissions/graduate).
+- You must also apply through the [NJIT graduate admissions portal](https://www.njit.edu/admissions/graduate) and mention our lab in your Statement of Purpose.
 
 ##### MS students
 

@@ -18,7 +18,7 @@ This position is open to <strong>undergraduate, MS, and Ph.D. students</strong>.
 
 ### Project Overview
 
-We invite motivated undergraduate, MS, and Ph.D. researchers to join a project on **Neural Combinatorial and Constrained Optimization**, focusing on learning-based approaches for discrete and NP-hard problems.
+We invite motivated undergraduate, MS, and Ph.D. researchers to join our lab's project on **Neural Combinatorial and Constrained Optimization**, focusing on learning-based approaches for discrete and NP-hard problems.
 
 The project aims to build neural solvers that learn search strategies, constraint handling, and decision heuristics, complementing or surpassing classical optimization techniques in scalability and generalization.
 

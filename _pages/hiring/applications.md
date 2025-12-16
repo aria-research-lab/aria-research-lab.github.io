@@ -9,14 +9,14 @@ seo:
 ---
 
 <div class="alert alert-info">
-This position is open to <strong>undergraduate and MS students</strong>. Choose your corresponding research interest for the question "Which of the following match your research interests?" in the google form. Each team will be led by a Ph.D. student.
+This position is open to <strong>undergraduate, MS, and Ph.D. students</strong>. Choose your corresponding research interest for the question "Which of the following match your research interests?" in the google form. Each team will be led by a Ph.D. student.
 </div>
 
 ## Applications of Neurosymbolic Methods
 
 ### Project Overview
 
-This project explores how neurosymbolic methods, probabilistic inference, and learning-based optimization can be applied to real-world domains. Students will work on combining neural perception with symbolic structure, uncertainty modeling, and interpretable reasoning to address applied problems in vision, human-AI interaction, healthcare, energy systems, and multimodal understanding.
+In our lab, we explore how neurosymbolic methods, probabilistic inference, and learning-based optimization can be applied to real-world domains. You will work on combining neural perception with symbolic structure, uncertainty modeling, and interpretable reasoning to address applied problems in vision, human-AI interaction, healthcare, energy systems, and multimodal understanding.
 
 ---
 

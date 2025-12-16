@@ -18,7 +18,7 @@ This position is open to <strong>Ph.D., MS, and Undergraduate students</strong>.
 
 ### Project Overview
 
-We are seeking motivated researchers (Ph.D., MS, and Undergraduates) to work on cutting-edge research in **Neurosymbolic AI**, integrating symbolic structure with deep learning to create transparent and interpretable AI systems.
+We are seeking motivated researchers (Ph.D., MS, and Undergraduates) to join our lab and work on cutting-edge research in **Neurosymbolic AI**, integrating symbolic structure with deep learning to create transparent and interpretable AI systems.
 
 This position focuses on bridging the gap between neural learning and symbolic reasoning, enabling AI systems that are both powerful and explainable.
 

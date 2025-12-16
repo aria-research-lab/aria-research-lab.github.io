@@ -108,7 +108,7 @@ Depending on performance and interest, outcomes may include:
 
 ### Mentorship and Research Environment
 
-You will work closely with **Dr. Arya** and collaborators in a group focusing on learning-based solvers for large-scale decision-making on graphs. The group has prior experience with award-winning research, practical tooling for large graphs, and applications in social network analysis, medical, and energy systems.
+You will work closely with **Dr. Arya** and other members of our lab, which focuses on learning-based solvers for large-scale decision-making on graphs. The group has prior experience with award-winning research, practical tooling for large graphs, and applications in social network analysis, medical, and energy systems.
 
 You will have access to GPU resources, existing codebases for graph processing, and prior implementations of DRL and GNN models to accelerate progress.
 
