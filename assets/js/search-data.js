@@ -79,7 +79,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/people/";
           },
-        },{id: "news-dr-arya-has-joined-njit-as-an-assistant-professor-in-the-department-of-computer-science-and-engineering-at-the-ying-wu-college-of-computing",
+        },{id: "news-dr-arya-has-joined-njit-as-an-assistant-professor-in-the-department-of-computer-science-at-the-ying-wu-college-of-computing",
           title: 'Dr. Arya has joined NJIT as an Assistant Professor in the Department of...',
           description: "",
           section: "News",},{id: "news-our-paper-relink-edge-activation-for-closed-network-influence-maximization-via-deep-reinforcement-learning-has-been-accepted-for-publication-in-the-proceedings-of-the-34th-acm-international-conference-on-information-and-knowledge-management-cikm-2025",
