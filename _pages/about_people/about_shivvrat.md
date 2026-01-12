@@ -4,6 +4,6 @@ Put your address / P.O. box / other info right below your picture. You can also 
 
 Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them. -->
 
-Dr. Shivvrat Arya is an Assistant Professor of Computer Science at the Ying Wu College of Computing, New Jersey Institute of Technology (NJIT). He received his Ph.D. in Computer Science from the University of Texas at Dallas, advised by [Vibhav Gogate](https://personal.utdallas.edu/~vibhav.gogate/) and [Yu Xiang](https://yuxng.github.io/).
+Dr. Shivvrat Arya is an Assistant Professor of Computer Science at the Ying Wu College of Computing, New Jersey Institute of Technology (NJIT), where he serves as the Director of the [ARIA Lab](https://aria-research-lab.github.io/) and as a Core Faculty member of the [Center for AI Research](https://research.njit.edu/ai/). He received his Ph.D. in Computer Science from the University of Texas at Dallas under the supervision of [Vibhav Gogate](https://personal.utdallas.edu/~vibhav.gogate/) and [Yu Xiang](https://yuxng.github.io/).
 
 [Website](https://shivvrat.github.io/)
