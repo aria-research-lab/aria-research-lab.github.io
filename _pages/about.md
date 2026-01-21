@@ -31,29 +31,29 @@ latest_posts:
 ---
 
 <div class="alert alert-info">
-📢 The lab is recruiting motivated Ph.D. students (Spring & Fall 2026) as well as undergraduate and master’s students interested in research in AI and machine learning. For more details, please see the <a href="/hiring/">hiring page</a>.
+📢 The lab is recruiting motivated Ph.D. students (Spring & Fall 2026) as well as undergraduate and master’s students interested in research in artificial intelligence and machine learning. Applicants with strong backgrounds in algorithms, optimization, probability, or machine learning are especially encouraged to apply. For details, see the <a href="/hiring/">hiring page</a>.
 </div>
 
 <!-- ## Welcome to the Algorithms and Architectures for Reasoning and Intelligent Automation Lab -->
 
-The ARIA Research Lab in the Department of Computer Science at the Ying Wu College of Computing, New Jersey Institute of Technology (NJIT), led by [Dr. Shivvrat Arya](https://shivvrat.github.io/), develops methods for **trustworthy**, **structured**, and **efficient AI**. Our research lies at the intersection of **neurosymbolic AI** and **probabilistic reasoning**, with applications in **computer vision**, **video understanding**, **human–AI interaction**, **multimodal learning**, and **reasoning with large language models**. In parallel, we advance **combinatorial optimization**, with a focus on **neural and learning-based solvers**.
+The ARIA Research Lab in the Department of Computer Science at the Ying Wu College of Computing, New Jersey Institute of Technology (NJIT), led by [Dr. Shivvrat Arya](https://shivvrat.github.io/), develops methods for **trustworthy**, **structured**, and **efficient artificial intelligence**, integrating **learning, reasoning, and optimization** to build AI systems that are interpretable, reliable, and scalable. Our research focuses on foundational advances in **neurosymbolic AI**, **probabilistic reasoning**, and **neural combinatorial optimization**, with applications in **computer vision**, **video understanding**, and **human–AI interaction**, including **reasoning with large language models**.
 
-## What we work on
+## Research Directions
 
-* **Neurosymbolic AI and Explainable Systems**
-  Methods that integrate symbolic structure such as logic, constraints, and graphs with deep learning to enable transparent, controllable reasoning.
+* **Neurosymbolic and Explainable AI**  
+  We study AI systems that combine neural networks with symbolic logic and probabilistic modeling to encode structure, constraints, prior knowledge, and uncertainty, enabling transparent, controllable reasoning at scale.
 
-* **Probabilistic Modeling and Inference**
-  Tractable and approximate inference in rich probabilistic models, including neural inference engines capable of answering complex queries at scale.
+* **Probabilistic Modeling and Inference**  
+  We develop tractable and approximate inference methods for generative models, including neural inference engines capable of answering complex queries efficiently in large-scale settings.
 
-* **Neural Combinatorial and Constrained Optimization**
-  Learning-based solvers for large-scale combinatorial and constrained reasoning tasks.
+* **Neural Combinatorial and Constrained Optimization**  
+  We design learning-based solvers for large-scale discrete and constrained optimization problems, bridging classical combinatorial optimization with modern machine learning.
 
-* **Reinforcement Learning for Graph Optimization**
-  RL and graph neural network approaches for routing, scheduling, and graph-structured decision-making.
+* **Graph Optimization and Structured Decision-Making**  
+  A major focus is graph-structured optimization, using reinforcement learning and graph neural networks for social network analysis and graph-structured decision-making.
 
-* **Applications in Vision, Video, and HCI**
-  Structured and neurosymbolic methods for video understanding, activity recognition, augmented reality task guidance, and human–AI collaboration.
+* **Applications in Vision, Video, and Human–AI Interaction**  
+  We apply our methods to real-world domains, including structured and neurosymbolic approaches for video and activity understanding, multimodal learning, augmented reality task guidance, and systems that support effective human–AI collaboration.
 
 ---
 
