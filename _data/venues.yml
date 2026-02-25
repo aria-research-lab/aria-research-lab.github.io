@@ -7,3 +7,7 @@
 
 "Vision":
   color: "#009f36"
+
+"Neural Information Processing Systems":
+  url: https://nips.cc/
+  color: "#ff0000"

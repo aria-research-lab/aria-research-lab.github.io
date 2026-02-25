@@ -1,13 +1,20 @@
 ---
 layout: page
-title: projects
+title: repositories
 permalink: /projects/
 # description: Research projects of the ARIA Lab
 nav: true
-nav_order: 3
+nav_order: 4
 display_categories: [datasets, libraries, research]
 horizontal: false
 ---
+
+<div class="page-description" style="margin-bottom: 2em;">
+  <!-- <h2>ARIA Lab GitHub Repositories</h2> -->
+  <p>
+    This page showcases the public GitHub repositories and open-source resources maintained by the ARIA Research Lab. Explore our code, datasets, and collaborative projects. For more details, visit our <a href="https://github.com/aria-research-lab" target="_blank">GitHub organization</a>.
+  </p>
+</div>
 
 <!-- pages/projects.md -->
 <div class="projects">
