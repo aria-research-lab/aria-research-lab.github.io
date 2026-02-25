@@ -57,6 +57,9 @@ Here we learn **heuristic policies** that steer classical search-based inference
 - **Learning to Condition: A Neural Heuristic for Scalable MPE Inference** ([NeurIPS 2025](https://openreview.net/forum?id=otIdC4tsYf))
   - Introduces a scalable, data-driven framework for MPE inference that learns a neural conditioning policy from solver search traces, usable both as a conditioning strategy prior to exact inference and as a branching and node selection heuristic within branch-and-bound, significantly reducing the search space while maintaining or improving solution quality.
 
+- **BEACON: Learning to Guide Local Search for MPE Inference in Probabilistic Graphical Models** ([ArXiv](https://arxiv.org/abs/2602.01475))
+  - Introduces an attention-based neural amortization framework for repeated MPE inference in probabilistic graphical models with fixed structure. BEACON learns to score local search moves by predicting their effectiveness in reducing Hamming distance to near-optimal solutions, guiding neighbor selection in local search. By reusing learned guidance across multiple queries on the same model, this approach consistently improves convergence and solution quality over standard stochastic and guided local search, particularly in challenging high-treewidth settings.
+
 #### Optimization-based probabilistic inference schemes
 
 We also look at **optimization-based inference schemes** in structured models, especially for multi-label prediction in images and videos.
