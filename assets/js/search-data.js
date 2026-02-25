@@ -30,13 +30,6 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "nav-projects",
-          title: "projects",
-          description: "",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/projects/";
-          },
         },{id: "dropdown-open-positions",
               title: "Open Positions",
               description: "",
@@ -72,7 +65,14 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/hiring/applications";
               },
-            },{id: "nav-people",
+            },{id: "nav-repositories",
+          title: "repositories",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "nav-people",
           title: "people",
           description: "Members of the ARIA Research Lab",
           section: "Navigation",
