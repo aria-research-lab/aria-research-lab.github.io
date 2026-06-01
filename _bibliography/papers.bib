@@ -1,3 +1,35 @@
+@article {Chen2026.03.28.715052,
+	author = {Chen, Yeqing and Qi, Cong and Fang, Hanzhang and Luan, Feiyang and Zhang, Zhirong and Arya, Shivvrat and Wei, Zhi},
+	title = {CoLa-VAE: Cell-Cell Communication-aware Variational Autoencoder with Dynamic Graph Laplacian Constraints},
+	elocation-id = {2026.03.28.715052},
+	year = {2026},
+	doi = {10.64898/2026.03.28.715052},
+	publisher = {Cold Spring Harbor Laboratory},
+	abstract = {Intercellular communication is a fundamental driver of cellular identity and tissue homeostasis, yet current single-cell representation learning frameworks predominantly model cell state as a function of intrinsic gene expression, neglecting the extrinsic signaling context. Conversely, dedicated communication inference tools are often constrained by the sparsity and noise of raw transcriptomic data. Here, we present CoLa-VAE, a deep generative framework that explicitly integrates cell-cell communication (CCC) constraints into latent variable learning. By employing a dynamic graph Laplacian regularization derived from pairwise ligand-receptor interactions, CoLa-VAE disentangles communication-driven topology from intrinsic transcriptional heterogeneity within a variational autoencoder architecture. We demonstrate that CoLa-VAE serves as a robust, method-agnostic framework compatible with diverse signaling definitions, consistently outperforming state-of-the-art baselines in structural clustering metrics and denoising fidelity across heterogeneous sequencing platforms.Competing Interest StatementThe authors have declared no competing interest.},
+	URL = {https://www.biorxiv.org/content/early/2026/03/31/2026.03.28.715052},
+	eprint = {https://www.biorxiv.org/content/early/2026/03/31/2026.03.28.715052.full.pdf},
+	journal = {bioRxiv},
+  preview={CoLaVAE.png},
+
+}
+
+@article{10.1145/3816700,
+author = {Shahriari, Reza and Hashky, Amal and Arya, Shivvrat and Audino, Tyler and Ragan, Eric D. and Gogate, Vibhav and Ruiz, Jaime},
+title = {Comparison of Text-Based Inputs for Human-in-the-Loop Feedback in Vision–Language Models},
+year = {2026},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+issn = {2160-6455},
+url = {https://doi.org/10.1145/3816700},
+doi = {10.1145/3816700},
+abstract = {Human-in-the-loop methods leverage human feedback to enhance machine learning and artificial intelligence. Manual review of outputs can correct errors, identify model weaknesses, or expand labels to broaden model capabilities. Feedback collection methods range from simple flagging of outputs as correct or incorrect to more complex feature-level adjustments or natural language interpretations. This paper presents a user study evaluating changes in user performance over time and explores the trade-off between feedback quality and human effort. We compare four interactive input methods for reviewing and correcting outcomes in object detection and activity recognition in videos. Our findings indicate that while some complex input methods, such as free-text, require more time, the quality and impact of their feedback on model accuracy often surpass those of simpler methods that require less effort. However, more effort does not always lead to better-quality feedback, especially when aiming to improve the model. Our VLM experiments show that the most accurate models were trained using detailed natural language feedback or precise word-level corrections, while simple yes/no judgments also led to solid performance at a much lower annotation cost.},
+note = {Just Accepted},
+journal = {ACM Trans. Interact. Intell. Syst.},
+month = may,
+keywords = {Human-in-the-Loop Feedback, User Study, Vision-Language Models},
+preview={TiiS_FACOLE.png},
+}
+
 @misc{malhotra2026learningguidelocalsearch,
       title={Learning to Guide Local Search for MPE Inference in Probabilistic Graphical Models}, 
       author={Brij Malhotra and Shivvrat Arya and Tahrima Rahman and Vibhav Giridhar Gogate},
@@ -12,15 +44,32 @@ pdf={Beacon.pdf},
 }
 @inproceedings{
 malhotra2025learning,
-title={Learning to Condition: A Neural Heuristic for Scalable {MPE} Inference},
-author={Brij Malhotra and Shivvrat Arya and Tahrima Rahman and Vibhav Giridhar Gogate},
-booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems},
-year={2025},
+ author = {Malhotra, Brij and Arya, Shivvrat and Rahman, Tahrima and Gogate, Vibhav},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {D. Belgrave and C. Zhang and H. Lin and R. Pascanu and P. Koniusz and M. Ghassemi and N. Chen},
+ pages = {121270--121316},
+ publisher = {Curran Associates, Inc.},
+ title = {Learning to Condition: A Neural Heuristic for Scalable MPE Inference},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2025/file/af80ce1011eb35fe1023c320158c2ad9-Paper-Conference.pdf},
+ volume = {38},
+ year = {2025},
 abstract={We introduce learning to condition (L2C), a scalable, data-driven framework for accelerating Most Probable Explanation (MPE) inference in Probabilistic Graphical Models (PGMs), a fundamentally intractable problem. L2C trains a neural network to score variable-value assignments based on their utility for conditioning, given observed evidence. To facilitate supervised learning, we develop a scalable data generation pipeline that extracts training signals from the search traces of existing MPE solvers. The trained network serves as a heuristic that integrates with search algorithms, acting as a conditioning strategy prior to exact inference or as a branching and node selection policy within branch-and-bound solvers. We evaluate L2C on challenging MPE queries involving high-treewidth PGMs. Experiments show that our learned heuristic significantly reduces the search space while maintaining or improving solution quality over state-of-the-art methods.},
-url={https://openreview.net/forum?id=otIdC4tsYf},
 pdf={NeurIPS25_L2C.pdf},
 preview={L2C.png},
 }
+
+@inproceedings{NEURIPS2025_af80ce10,
+ author = {Malhotra, Brij and Arya, Shivvrat and Rahman, Tahrima and Gogate, Vibhav},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {D. Belgrave and C. Zhang and H. Lin and R. Pascanu and P. Koniusz and M. Ghassemi and N. Chen},
+ pages = {121270--121316},
+ publisher = {Curran Associates, Inc.},
+ title = {Learning to Condition: A Neural Heuristic for Scalable MPE Inference},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2025/file/af80ce1011eb35fe1023c320158c2ad9-Paper-Conference.pdf},
+ volume = {38},
+ year = {2025}
+}
+
 
 @inproceedings{arya2025relink,
 author = {Arya, Shivvrat and Ghosh, Smita and Maruyama, Bryan and Srinivasan, Venkatesh},
