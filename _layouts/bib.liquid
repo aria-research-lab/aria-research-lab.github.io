@@ -52,13 +52,29 @@
     <!-- Author -->
     <div class="author">
       {% assign author_array_size = entry.author_array | size %}
+      {% assign self_author_index = null %}
 
       {% assign author_array_limit = author_array_size %}
       {% if site.max_author_limit and author_array_size > site.max_author_limit %}
         {% assign author_array_limit = site.max_author_limit %}
       {% endif %}
 
-      {%- for author in entry.author_array limit: author_array_limit -%}
+      {%- for author in entry.author_array -%}
+        {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
+        {% if site.scholar.last_name contains author_last_name %}
+          {% if site.scholar.first_name contains author.first %}
+            {% assign self_author_index = forloop.index0 %}
+            {% break %}
+          {% endif %}
+        {%- endif -%}
+      {% endfor %}
+
+      {% assign rendered_author_count = author_array_limit %}
+      {% if self_author_index and self_author_index >= author_array_limit %}
+        {% assign rendered_author_count = author_array_size %}
+      {% endif %}
+
+      {%- for author in entry.author_array limit: rendered_author_count -%}
         {% assign author_is_self = false %}
         {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
         {%- assign author_last_html = author.last | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
@@ -78,17 +94,65 @@
           {% endfor %}
         {%- endif -%}
 
-        {%- if forloop.length > 1 -%}
+        {% assign visible_authors_before_self = 2 %}
+        {% if self_author_index and self_author_index < visible_authors_before_self %}
+          {% assign visible_authors_before_self = self_author_index %}
+        {% endif %}
+
+        {% if self_author_index and self_author_index >= author_array_limit and forloop.index0 >= visible_authors_before_self and forloop.index0 < self_author_index %}
+          {% if forloop.index0 == visible_authors_before_self %}
+            {%- assign more_authors_before = self_author_index | minus: visible_authors_before_self -%}
+            {%- assign more_authors_before_hide = more_authors_before | append: ' more author' -%}
+            {%- if more_authors_before > 1 -%}
+              {% assign more_authors_before_hide = more_authors_before_hide | append: 's' %}
+            {%- endif -%}
+            {% assign more_authors_before_show = '' %}
+            {%- for hidden_author in entry.author_array offset: visible_authors_before_self limit: more_authors_before -%}
+              {% assign more_authors_before_show = more_authors_before_show | append: hidden_author.first | append: ' ' | append: hidden_author.last %}
+              {% unless forloop.last %}
+                {% assign more_authors_before_show = more_authors_before_show | append: ', ' %}
+              {% endunless %}
+            {%- endfor -%}
+            {%- assign more_authors_before_show = more_authors_before_show | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
+            <span
+              class="more-authors"
+              title="click to view {{ more_authors_before_hide }}"
+              onclick="
+                  var element = $(this);
+                  element.attr('title', '');
+                  var more_authors_text = element.text() == '{{ more_authors_before_hide }}' ? '{{ more_authors_before_show }}' : '{{ more_authors_before_hide }}';
+                  var cursorPosition = 0;
+                  var textAdder = setInterval(function(){
+                    element.html(more_authors_text.substring(0, cursorPosition + 1));
+                    if (++cursorPosition == more_authors_text.length){
+                      clearInterval(textAdder);
+                    }
+                }, '{{ site.more_authors_animation_delay }}');
+              "
+            >
+              {{- more_authors_before_hide -}}
+            </span>
+            {% assign authors_after_self = author_array_size | minus: self_author_index | minus: 1 %}
+            {% if authors_after_self > 0 %}, {% else %} and {% endif %}
+          {% endif %}
+          {% continue %}
+        {% endif %}
+
+        {% assign self_author_follows_hidden_prefix = false %}
+        {% if self_author_index and self_author_index >= author_array_limit and forloop.index0 == self_author_index %}
+          {% assign self_author_follows_hidden_prefix = true %}
+        {% endif %}
+        {%- if forloop.length > 1 and self_author_follows_hidden_prefix == false -%}
           {% if forloop.first == false -%}
             {%- if forloop.length > 2 %}, {% elsif forloop.length == 2 %}  {% endif %}
           {%- endif %}
-          {%- if forloop.last and author_array_limit == author_array_size %}and {% endif -%}
+          {%- if forloop.last and rendered_author_count == author_array_size %}and {% endif -%}
         {% endif %}
         {%- if author_is_self -%}
-          <em>
+          <span class="author-self">
             {{- author.first }}
             {{ author_last_html -}}
-          </em>
+          </span>
         {%- else -%}
           {%- if coauthor_url -%}
             <a href="{{ coauthor_url }}">
@@ -101,7 +165,7 @@
           {% endif %}
         {%- endif -%}
       {% endfor %}
-      {%- assign more_authors = author_array_size | minus: author_array_limit -%}
+      {%- assign more_authors = author_array_size | minus: rendered_author_count -%}
 
       {%- assign more_authors_hide = more_authors | append: ' more author' -%}
       {% if more_authors > 0 %}
@@ -109,7 +173,7 @@
           {% assign more_authors_hide = more_authors_hide | append: 's' %}
         {%- endif -%}
         {% assign more_authors_show = '' %}
-        {%- for author in entry.author_array offset: author_array_limit -%}
+        {%- for author in entry.author_array offset: rendered_author_count -%}
           {% assign more_authors_show = more_authors_show | append: author.first | append: ' ' | append: author.last %}
           {% unless forloop.last %}
             {% assign more_authors_show = more_authors_show | append: ', ' %}

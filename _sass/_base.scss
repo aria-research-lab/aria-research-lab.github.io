@@ -790,6 +790,13 @@ footer.sticky-bottom {
           }
         }
 
+        > .author-self {
+          border-bottom: 1px solid currentColor;
+          color: var(--global-text-color);
+          font-style: normal;
+          font-weight: 700;
+        }
+
         > em {
           border-bottom: 1px solid;
           font-style: normal;
