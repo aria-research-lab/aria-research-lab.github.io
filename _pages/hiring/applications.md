@@ -1,8 +1,10 @@
 ---
 title: "Research Applications of Neurosymbolic Methods"
 layout: page
-sitemap: false
+sitemap: true
 permalink: /hiring/applications
+description: Student research opportunities at the ARIA Research Lab at NJIT applying neurosymbolic AI to vision, video understanding, multimodal reasoning, and human-AI interaction.
+keywords: neurosymbolic AI applications, ARIA Lab NJIT, Shivvrat Arya, AI research positions NJIT, computer vision research NJIT, video understanding research
 seo:
   title: "Research Applications of Neurosymbolic Methods – NJIT"
   description: "Application domains for neurosymbolic methods, probabilistic inference, and neural optimization research at NJIT."

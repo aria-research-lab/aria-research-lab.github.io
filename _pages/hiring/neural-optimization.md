@@ -1,8 +1,10 @@
 ---
 title: "Hiring: Neural Combinatorial and Constrained Optimization"
 layout: page
-sitemap: false
+sitemap: true
 permalink: /hiring/neural-optimization
+description: Student research opportunities at the ARIA Research Lab at NJIT on neural combinatorial optimization, constrained optimization, and learning-based solvers.
+keywords: neural combinatorial optimization, constrained optimization, ARIA Lab NJIT, Shivvrat Arya, AI PhD positions NJIT, machine learning research
 seo:
   title: "Ph.D. Position: Neural Combinatorial and Constrained Optimization – NJIT"
   description: "Fully funded Ph.D. position in neural combinatorial optimization, developing learning-based solvers for NP-hard problems."

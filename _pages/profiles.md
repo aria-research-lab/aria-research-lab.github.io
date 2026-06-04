@@ -2,7 +2,8 @@
 layout: profiles
 permalink: /people/
 title: people
-description: Members of the ARIA Research Lab
+description: Members of the ARIA Research Lab at NJIT, directed by Dr. Shivvrat Arya.
+keywords: ARIA Lab people, ARIA Research Lab members, Shivvrat Arya, NJIT Computer Science lab
 nav: true
 nav_order: 7
 

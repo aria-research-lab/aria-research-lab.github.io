@@ -1,8 +1,10 @@
 ---
 title: "Deep Reinforcement Learning for Combinatorial Optimization on Graphs"
 layout: page
-sitemap: false
+sitemap: true
 permalink: /hiring/drl-graph-optimization
+description: Student research opportunities at the ARIA Research Lab at NJIT on deep reinforcement learning, graph optimization, and combinatorial optimization.
+keywords: deep reinforcement learning graph optimization, combinatorial optimization, ARIA Lab NJIT, Shivvrat Arya, AI research positions NJIT
 seo:
   title: "Research Position: DRL for Graph Optimization – NJIT"
   description: "Undergraduate and MS research position in deep reinforcement learning for combinatorial optimization, focusing on influence maximization and graph problems."

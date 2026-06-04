@@ -1,8 +1,10 @@
 ---
 title: "hiring"
 layout: page
-sitemap: false
+sitemap: true
 permalink: /hiring/
+description: Open Ph.D., master's, and undergraduate research positions in AI and machine learning at the ARIA Research Lab at NJIT, directed by Dr. Shivvrat Arya.
+keywords: ARIA Lab hiring, Shivvrat Arya PhD positions, NJIT AI PhD, NJIT machine learning research, neurosymbolic AI PhD, neural combinatorial optimization, undergraduate AI research NJIT
 nav: true
 nav_order: 3
 dropdown: true
@@ -135,4 +137,3 @@ We are the ARIA Research Lab in the Department of Computer Science at NJIT. We a
 
 Submit your details via the [Google Form](https://forms.gle/SYb5HQeXQB3ogedo9).  
 For Ph.D. applications, also apply through NJIT admissions and mention my name in your Statement of Purpose.
-

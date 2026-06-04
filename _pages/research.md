@@ -2,7 +2,8 @@
 layout: page
 permalink: /research/
 title: research
-# description: Core research directions of the ARIA Lab
+description: Core research directions of the ARIA Research Lab at NJIT, including neurosymbolic AI, probabilistic reasoning, neural combinatorial optimization, graph optimization, and human-AI interaction.
+keywords: ARIA Research Lab research, NJIT AI research, Shivvrat Arya, neurosymbolic AI, probabilistic reasoning, neural combinatorial optimization, graph optimization, trustworthy AI
 nav: true
 nav_order: 1
 ---

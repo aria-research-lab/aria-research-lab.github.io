@@ -1,8 +1,10 @@
 ---
 title: "Hiring: Neurosymbolic AI"
 layout: page
-sitemap: false
+sitemap: true
 permalink: /hiring/neurosymbolic-ai
+description: Student research opportunities at the ARIA Research Lab at NJIT on neurosymbolic AI, explainable AI, probabilistic reasoning, and structured machine learning.
+keywords: neurosymbolic AI PhD, explainable AI, probabilistic reasoning, ARIA Lab NJIT, Shivvrat Arya, AI research positions NJIT
 seo:
   title: "Ph.D. Position: Neurosymbolic AI – NJIT"
   description: "Fully funded Ph.D. position in neurosymbolic AI, integrating symbolic structure with deep learning for transparent and interpretable AI systems."

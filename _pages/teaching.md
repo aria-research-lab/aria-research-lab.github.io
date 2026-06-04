@@ -2,7 +2,8 @@
 layout: page
 permalink: /teaching/
 title: teaching
-description: Materials for courses you taught. Replace this text with your description.
+description: Teaching and course information from Dr. Shivvrat Arya at the New Jersey Institute of Technology.
+keywords: Shivvrat Arya teaching, NJIT Computer Science courses, artificial intelligence teaching, machine learning teaching
 nav: false
 nav_order: 6
 ---
