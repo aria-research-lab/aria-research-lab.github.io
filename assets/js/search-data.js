@@ -3,29 +3,29 @@ const ninja = document.querySelector('ninja-keys');
 
 // add the home and posts menu items
 ninja.data = [{
-    id: "nav-about",
-    title: "about",
+    id: "nav-aria-research-lab-at-njit",
+    title: "ARIA Research Lab at NJIT",
     section: "Navigation",
     handler: () => {
       window.location.href = "/";
     },
   },{id: "nav-news",
           title: "news",
-          description: "",
+          description: "News and announcements from the ARIA Research Lab at NJIT, directed by Dr. Shivvrat Arya.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/news/";
           },
         },{id: "nav-research",
           title: "research",
-          description: "",
+          description: "Core research directions of the ARIA Research Lab at NJIT, including neurosymbolic AI, probabilistic reasoning, neural combinatorial optimization, graph optimization, and human-AI interaction.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/research/";
           },
         },{id: "nav-publications",
           title: "publications",
-          description: "",
+          description: "Publications from Dr. Shivvrat Arya and the ARIA Research Lab at NJIT in artificial intelligence, machine learning, probabilistic reasoning, optimization, and computer vision.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/publications/";
@@ -65,16 +65,16 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/hiring/applications";
               },
-            },{id: "nav-repositories",
-          title: "repositories",
-          description: "",
+            },{id: "nav-projects",
+          title: "projects",
+          description: "Research projects from the ARIA Research Lab at NJIT, including NeuPI, CaptainCook4D, neural probabilistic inference, structured AI, and human-AI interaction.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
           },
         },{id: "nav-people",
           title: "people",
-          description: "Members of the ARIA Research Lab",
+          description: "Members of the ARIA Research Lab at NJIT, directed by Dr. Shivvrat Arya.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/people/";
@@ -134,6 +134,13 @@ ninja.data = [{
           section: "Projects",handler: () => {
               window.location.href = "/projects/ss-cmpe/";
             },},{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/aria-research-lab", "_blank");
+        },
+      },{
       id: 'light-theme',
       title: 'Change theme to light',
       description: 'Change the theme of the site to Light',
