@@ -126,7 +126,7 @@ We study **procedural activities, error detection, and explanations in videos**,
 We study **vision-language and multimodal AI systems** that connect visual perception, language, and structured feedback in image and video understanding tasks. This line of work includes models and interfaces that use human guidance to improve reliability, interpretability, and downstream task performance.
 
 - **Comparison of Text-Based Inputs for Human-in-the-Loop Feedback in Vision-Language Models** ([ACM TiiS 2026](https://doi.org/10.1145/3816700))
-  - Compares feedback methods for object detection and activity recognition in videos, showing how detailed natural language feedback and word-level corrections can improve vision-language models while simpler judgments can still offer useful lower-cost supervision.
+  - Compares feedback methods for video understanding, showing how detailed natural language feedback and word-level corrections can improve vision-language models while simpler judgments can still offer useful lower-cost supervision.
 
 ---
 
