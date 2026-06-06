@@ -1,6 +1,6 @@
 ---
 layout: about
-title: ARIA Research Lab at NJIT
+title: ARIA Lab 
 permalink: /
 subtitle: Welcome to the Algorithms and Architectures for Reasoning and Intelligent Automation Lab
 description: ARIA Research Lab at NJIT, directed by Dr. Shivvrat Arya, studies trustworthy, structured, and efficient AI, including neurosymbolic AI, probabilistic reasoning, neural combinatorial optimization, computer vision, video understanding, and human-AI interaction.

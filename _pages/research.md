@@ -2,13 +2,13 @@
 layout: page
 permalink: /research/
 title: research
-description: Core research directions of the ARIA Research Lab at NJIT, including neurosymbolic AI, probabilistic reasoning, neural combinatorial optimization, graph optimization, and human-AI interaction.
-keywords: ARIA Research Lab research, NJIT AI research, Shivvrat Arya, neurosymbolic AI, probabilistic reasoning, neural combinatorial optimization, graph optimization, trustworthy AI
+description: Core research directions of the ARIA Research Lab at NJIT, including neurosymbolic AI, probabilistic reasoning, neural combinatorial optimization, graph optimization, human-AI interaction, vision-language AI, and AI applications.
+keywords: ARIA Research Lab research, NJIT AI research, Shivvrat Arya, neurosymbolic AI, probabilistic reasoning, neural combinatorial optimization, graph optimization, trustworthy AI, human-AI interaction, vision-language models, multimodal AI, computational biology
 nav: true
 nav_order: 1
 ---
 
-The **Algorithms and Architectures for Reasoning and Intelligent Automation (ARIA) Lab** advances **interpretable, reliable, and intelligent AI systems** through two tightly connected research directions. The first centers on **probabilistic reasoning, neurosymbolic AI, and explainable AI**, enabling transparent and structured decision making in domains such as computer vision and natural language processing. The second focuses on **combinatorial and constrained optimization**, emphasizing learning-based and neural approaches that power scalable reasoning and intelligent automation.  Our work integrates structured domain knowledge with data-driven learning, producing methods that span graph-based inference, symbolic reasoning, and neural solvers for optimization, with applications in video understanding, activity recognition, human–computer interaction, and multimodal reasoning.
+The **Algorithms and Architectures for Reasoning and Intelligent Automation (ARIA) Lab** advances **interpretable, reliable, and intelligent AI systems** through two tightly connected research directions. The first centers on **probabilistic reasoning, neurosymbolic AI, and explainable AI**, enabling transparent and structured decision making in domains such as computer vision and natural language processing. The second focuses on **combinatorial and constrained optimization**, emphasizing learning-based and neural approaches that power scalable reasoning and intelligent automation. Our work integrates structured domain knowledge with data-driven learning, producing methods that span graph-based inference, symbolic reasoning, neural solvers for optimization, and human-guided vision-language AI, with applications in video understanding, activity recognition, human–computer interaction, computational biology, and multimodal reasoning.
 
 ## Research directions
 
@@ -18,6 +18,8 @@ The **Algorithms and Architectures for Reasoning and Intelligent Automation (ARI
   - [Optimization-based probabilistic inference schemes](#optimization-based-probabilistic-inference-schemes)
 - **[Neural network-based solvers for combinatorial optimization](#neural-network-based-solvers-for-combinatorial-optimization)**
 - **[Video understanding and activity recognition](#video-understanding-and-activity-recognition)**
+- **[Vision-language and multimodal AI](#vision-language-and-multimodal-ai)**
+- **[AI applications in computational biology](#ai-applications-in-computational-biology)**
 - **[Multi-label classification](#multi-label-classification)**
 
 ---
@@ -112,6 +114,32 @@ We study **procedural activities, error detection, and explanations in videos**,
   - Feeds deep video features into dynamic cutset networks to get **interpretable** temporal models that can answer explanation queries while remaining competitive on recognition metrics.
 - **Predictive Task Guidance with Artificial Intelligence in Augmented Reality** (IEEE VR 2024 Workshop / Poster)
   - Explores AI-driven, predictive AR guidance for complex tasks, using structured models that anticipate user actions and provide proactive support.
+
+---
+
+## Vision-language and multimodal AI
+
+<figure class="figure">
+  <img src="/assets/img/publication_preview/TiiS_FACOLE.png" class="figure-img img-fluid" alt="Vision-language model feedback interface">
+</figure>
+
+We study **vision-language and multimodal AI systems** that connect visual perception, language, and structured feedback in image and video understanding tasks. This line of work includes models and interfaces that use human guidance to improve reliability, interpretability, and downstream task performance.
+
+- **Comparison of Text-Based Inputs for Human-in-the-Loop Feedback in Vision-Language Models** ([ACM TiiS 2026](https://doi.org/10.1145/3816700))
+  - Compares feedback methods for object detection and activity recognition in videos, showing how detailed natural language feedback and word-level corrections can improve vision-language models while simpler judgments can still offer useful lower-cost supervision.
+
+---
+
+## AI applications in computational biology
+
+<figure class="figure">
+  <img src="/assets/img/publication_preview/CoLaVAE.png" class="figure-img img-fluid" alt="CoLa-VAE cell-cell communication-aware variational autoencoder">
+</figure>
+
+We also collaborate on **AI methods for scientific and biomedical domains**, where structured learning can connect high-dimensional data with domain constraints. In computational biology, this includes representation learning methods that combine single-cell data with graph-based views of cellular communication.
+
+- **CoLa-VAE: Cell-Cell Communication-aware Variational Autoencoder with Dynamic Graph Laplacian Constraints** ([bioRxiv 2026](https://doi.org/10.64898/2026.03.28.715052))
+  - Integrates cell-cell communication constraints into variational autoencoder learning using dynamic graph Laplacian regularization derived from ligand-receptor interactions, improving latent representations for single-cell transcriptomic data.
 
 ---
 
