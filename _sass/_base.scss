@@ -301,6 +301,13 @@ ul.task-list input[type="checkbox"] {
     color: var(--global-text-color);
   }
 
+  .navbar-logo {
+    height: 1.6rem;
+    width: auto;
+    margin-right: 0.5rem;
+    vertical-align: text-bottom;
+  }
+
   .navbar-nav .nav-item .nav-link {
     color: var(--global-text-color);
 
@@ -570,6 +577,13 @@ footer.sticky-bottom {
     color: var(--global-theme-color);
     font-size: 5rem;
   }
+}
+
+.about-logo {
+  display: block;
+  height: 5rem;
+  width: auto;
+  margin: 0 auto 1rem;
 }
 
 .tag-category-list {
