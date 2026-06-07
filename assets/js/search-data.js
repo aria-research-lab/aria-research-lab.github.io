@@ -88,27 +88,7 @@ ninja.data = [{
           section: "News",},{id: "news-our-paper-learning-to-condition-a-neural-heuristic-for-scalable-mpe-inference-has-been-accepted-for-publication-in-the-thirty-ninth-annual-conference-on-neural-information-processing-systems-neurips-2025-as-a-poster-presentation",
           title: 'Our paper, “Learning to Condition: A Neural Heuristic for Scalable MPE Inference,” has...',
           description: "",
-          section: "News",},{id: "projects-project-6",
-          title: 'project 6',
-          description: "a project with no image",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/6_project/";
-            },},{id: "projects-project-7",
-          title: 'project 7',
-          description: "with background image",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/7_project/";
-            },},{id: "projects-project-8",
-          title: 'project 8',
-          description: "an other project with a background image and giscus comments",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/8_project/";
-            },},{id: "projects-project-9",
-          title: 'project 9',
-          description: "another project with an image 🎉",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/9_project/";
-            },},{id: "projects-captaincook4d",
+          section: "News",},{id: "projects-captaincook4d",
           title: 'CaptainCook4D',
           description: "A Dataset for Understanding Errors in Procedural Activities",
           section: "Projects",handler: () => {
