@@ -316,6 +316,11 @@ ul.task-list input[type="checkbox"] {
     }
   }
 
+  .navbar-nav .nav-item-home .nav-link {
+    white-space: nowrap;
+    min-width: max-content;
+  }
+
   .navbar-nav .nav-item.active > .nav-link {
     background-color: inherit;
     font-weight: bolder;
@@ -579,11 +584,18 @@ footer.sticky-bottom {
   }
 }
 
+.about-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .about-logo {
-  display: block;
-  height: 5rem;
+  flex: 0 0 auto;
+  height: 4.5rem;
   width: auto;
-  margin: 0 auto 1rem;
+  margin: 0;
 }
 
 .tag-category-list {
