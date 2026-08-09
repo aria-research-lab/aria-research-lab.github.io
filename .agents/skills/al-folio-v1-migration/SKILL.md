@@ -1,6 +1,9 @@
-# al-folio v1 Migration
+---
+name: al-folio-v1-migration
+description: Migrate an existing customized al-folio fork to v1.x while preserving site-owned content and intentional overrides and moving plugin-owned runtime back to versioned gems. Use when Codex needs to upgrade a pre-v1 or copied-runtime al-folio site, audit stale layouts, includes, Sass, scripts, or assets, rebase local overrides, or validate a migrated site with the al-folio upgrade tooling.
+---
 
-Use this skill when a user asks an agent to migrate an existing customized al-folio fork to v1.x.
+# al-folio v1 Migration
 
 ## Workflow
 

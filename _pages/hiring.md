@@ -1,16 +1,18 @@
 ---
-title: "hiring"
+title: "research opportunities"
 layout: page
 sitemap: true
 permalink: /hiring/
-description: Open Ph.D., master's, and undergraduate research positions in AI and machine learning at the ARIA Research Lab at NJIT, directed by Dr. Shivvrat Arya.
-keywords: ARIA Lab hiring, Shivvrat Arya PhD positions, NJIT AI PhD, NJIT machine learning research, neurosymbolic AI PhD, neural combinatorial optimization, undergraduate AI research NJIT
+description: Undergraduate, master's, and Ph.D. research opportunities in AI and machine learning at the ARIA Research Lab at NJIT, directed by Dr. Shivvrat Arya.
+keywords: ARIA Lab research opportunities, undergraduate research NJIT, NJIT master's research, Shivvrat Arya PhD positions, NJIT AI PhD, NJIT machine learning research, neurosymbolic AI PhD, neural combinatorial optimization
 nav: true
 nav_order: 3
 dropdown: true
 children:
-  - title: "Open Positions"
+  - title: "Research Opportunities"
     permalink: /hiring/
+  - title: "Undergraduate and M.S. Research"
+    permalink: /hiring/undergraduate-ms-research
   - title: "Project: Neurosymbolic AI"
     permalink: /hiring/neurosymbolic-ai
   - title: "Project: Neural Combinatorial and Constrained Optimization"
@@ -20,8 +22,8 @@ children:
   - title: "Project: Research Applications of Neurosymbolic Methods"
     permalink: /hiring/applications
 seo:
-  title: "Hiring – Open Positions in AI/ML at NJIT"
-  description: "Fully funded Ph.D. positions and research opportunities in neurosymbolic AI, neural combinatorial optimization, probabilistic inference, and computer vision at NJIT."
+  title: "Student Research Opportunities in AI/ML at NJIT"
+  description: "Undergraduate, master's, and Ph.D. research opportunities in neurosymbolic AI, neural combinatorial optimization, probabilistic inference, and computer vision at NJIT."
 ---
 
 > 📝 **Ready to apply?** Submit your details using the [Google Form](https://forms.gle/SYb5HQeXQB3ogedo9). Email may be missed—form submissions are reviewed regularly.
@@ -30,7 +32,25 @@ seo:
 
 ## Join our lab
 
-We are the ARIA Research Lab in the Department of Computer Science at NJIT. We are recruiting **Ph.D., MS, and undergraduate students** for research positions. Ph.D. positions are fully funded; MS/undergrad students can earn research credit. Self-funded visiting students/scholars are also welcome.
+We are the ARIA Research Lab in the Department of Computer Science at NJIT. Students in the lab contribute to research in artificial intelligence and machine learning, working toward rigorous and increasingly independent contributions.
+
+### Ph.D. Students
+
+We are recruiting motivated Ph.D. students to work on the lab's core research directions in AI and machine learning. We are currently seeking up to **two funded Ph.D. students** for Spring/Fall 2026, with support through research or teaching assistantships.
+
+- Applicants should have a strong background in AI, machine learning, or related areas and a clear interest in research.
+- Prospective students must apply through the [NJIT Graduate Admissions portal](https://www.njit.edu/admissions/graduate-admissions) and are encouraged to mention the lab and relevant research interests in their Statement of Purpose.
+- Visiting scholars interested in collaborating with the lab are also welcome to reach out.
+
+### Undergraduate and M.S. Students
+
+Undergraduate and M.S. students are encouraged to participate in sustained research projects mentored by Dr. Arya and aligned with the lab's research directions. Students can gain experience formulating research questions, developing and evaluating methods, conducting experiments, and contributing to active research projects.
+
+Research credit may be available when an appropriate project and supervision are available. Our goal is to help committed students progress toward increasingly independent and technically rigorous research. When project results are sufficiently strong, students may have the opportunity to contribute to submissions to leading research conferences or journals.
+
+<!-- Research participation or course enrollment, however, does not guarantee authorship or publication. -->
+
+See [undergraduate and M.S. research opportunities]({{ '/hiring/undergraduate-ms-research' | relative_url }}) for detailed course pathways and guidance on getting involved.
 
 |                   |                                                |
 | ----------------- | ---------------------------------------------- |
@@ -41,7 +61,7 @@ We are the ARIA Research Lab in the Department of Computer Science at NJIT. We a
 
 ---
 
-### Open research projects
+## Open research projects
 
 | Project                                                              | Levels                    | Summary                                                                                    |
 | -------------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------ |
@@ -50,41 +70,19 @@ We are the ARIA Research Lab in the Department of Computer Science at NJIT. We a
 | [**DRL for graph optimization**](/hiring/drl-graph-optimization)     | MS, undergrad             | Apply deep reinforcement learning to graph-based combinatorial optimization problems.      |
 | [**Applications of neurosymbolic methods**](/hiring/applications)    | All levels                | Apply neurosymbolic methods to vision, video understanding, and multimodal reasoning.      |
 
----
-
-### Who can apply to our lab
-
-##### Ph.D. students
-
-- We are currently looking for up to **2 funded Ph.D. students** (RA/TA) to start in Spring/Fall 2026.
-- Strong research background in AI/ML required.
-- You must also apply through the [NJIT graduate admissions portal](https://www.njit.edu/admissions/graduate) and mention our lab in your Statement of Purpose.
-
-##### MS students
-
-- Research credit via **CS 700B** (Master's Project) or **CS 701B** (Master's Thesis).
-- Exceptional contributors may continue long-term or transition to Ph.D.
-
-##### Undergraduates
-
-- Research credit via **CS 488** (Independent Study).
-- Outstanding contributors may extend to full research projects and potential publications.
-
----
-
-### What you'll do
+## What you'll do
 
 - Prototype novel algorithms and run ablations at scale.
 - Build reliable, reproducible research pipelines.
 - Design experiments, interpret results, and iterate.
 - Apply methods to vision/video and multimodal tasks.
-- Work on projects that can be submitted to top-tier AI/ML venues.
+- Develop technically strong results that may be submitted to strong or top-tier AI/ML venues when the work warrants it.
 
 ---
 
-### What you'll bring
+## What you'll bring
 
-#### Essential
+### Essential
 
 - Strong ML/AI fundamentals.
 - Python + PyTorch/JAX (optionally PyTorch Geometric).
@@ -100,15 +98,15 @@ We are the ARIA Research Lab in the Department of Computer Science at NJIT. We a
 
 ---
 
-### Lab resources
+## Lab resources
 
 - **Funding**: Fully funded Ph.D. (RA/TA), research credit for MS/undergrad.
 - **Compute**: University [Wulver GPU cluster](https://arcs-njit-edu.github.io/Docs/clusters/wulver/) + lab GPUs.
-- **Mentorship**: Direct guidance, with opportunities for publications at venues such as NeurIPS, ICML, ICLR, AAAI, KDD, and CIKM.
+- **Mentorship**: Direct guidance in developing rigorous research contributions, with the possibility of submissions to venues such as NeurIPS, ICML, ICLR, AAAI, KDD, and CIKM when results are ready.
 
 ---
 
-### Why NJIT
+## Why NJIT
 
 - Ranked **#72** in the U.S. for AI & Machine Learning (CSRankings).
 - Ranked **#80** Graduate School for Computer Science (U.S. News & World Report).
@@ -117,7 +115,7 @@ We are the ARIA Research Lab in the Department of Computer Science at NJIT. We a
 
 ---
 
-### FAQ
+## FAQ
 
 **Q:** Should I email you directly?  
 **A:** No—please use the Google Form. Emails are often missed, but form submissions are reviewed regularly.
@@ -133,7 +131,7 @@ We are the ARIA Research Lab in the Department of Computer Science at NJIT. We a
 
 ---
 
-### Ready to apply?
+## Ready to apply?
 
 Submit your details via the [Google Form](https://forms.gle/SYb5HQeXQB3ogedo9).  
 For Ph.D. applications, also apply through NJIT admissions and mention my name in your Statement of Purpose.

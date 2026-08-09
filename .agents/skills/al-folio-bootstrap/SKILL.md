@@ -1,6 +1,9 @@
-# al-folio Bootstrap
+---
+name: al-folio-bootstrap
+description: Create, configure, or personalize a new al-folio v1.x website while preserving the thin-starter plugin ownership boundaries. Use when Codex needs to bootstrap a new al-folio site, configure site metadata and features, add academic content or assets, or decide whether a customization belongs in the starter or an al-folio plugin.
+---
 
-Use this skill when a user asks an agent to create, configure, or personalize a new al-folio v1.x website.
+# al-folio Bootstrap
 
 ## Workflow
 

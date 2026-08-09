@@ -32,7 +32,7 @@ latest_posts:
 ---
 
 <div class="alert alert-info">
-📢 The lab is recruiting motivated Ph.D. students (Spring & Fall 2026) as well as undergraduate and master’s students interested in research in artificial intelligence and machine learning. Applicants with strong backgrounds in algorithms, optimization, probability, or machine learning are especially encouraged to apply. For details, see the <a href="/hiring/">hiring page</a>.
+📢 We are recruiting motivated Ph.D. students for Spring and Fall 2026 to pursue research in artificial intelligence and machine learning. Research opportunities are available for undergraduate and MS students interested in sustained projects, strong technical contributions, and potential conference submissions when the results warrant it. Applicants with backgrounds in algorithms, optimization, probability, or machine learning are encouraged to apply. Explore our <a href="/hiring/">student research opportunities and application details</a>.
 </div>
 
 <!-- ## Welcome to the Algorithms and Architectures for Reasoning and Intelligent Automation Lab -->
@@ -63,9 +63,10 @@ The ARIA Research Lab in the Department of Computer Science at the Ying Wu Colle
 We are always looking for **curious, rigorous, and collaborative** students who are excited about building the next generation of **structured, explainable, and reliable AI systems**.
 
 - **Ph.D. students**: Opportunities to work on core problems in neurosymbolic AI, probabilistic inference, graph optimization, and structured deep learning.
-- **M.S. and undergraduate students**: Positions for research-oriented students interested in gaining hands-on experience with modern AI methods, systems building, and publications.
+- **Undergraduate students**: Opportunities to join active projects, learn how to conduct research, and build toward increasingly independent work through options such as CS 488 and CS 489.
+- **M.S. students**: Opportunities for deeper research through faculty-mentored projects or the CS 700B/CS 701B thesis pathway, subject to advisor availability.
 
-If you are interested in joining the ARIA Research Lab, please read the <a href="/hiring/">hiring page</a> and follow the instructions there. Briefly describe your background, relevant coursework or projects, and which of the lab’s research directions you are most excited about.
+If you are interested in joining the ARIA Research Lab, please review the <a href="/hiring/">student research opportunities</a> and follow the application instructions there. Briefly describe your background, relevant coursework or projects, and which of the lab’s research directions you are most excited about.
 
 ---
 
