@@ -10,8 +10,9 @@ contact_note: >
   For prospective students, please see the <a href="/hiring/" target="_blank">hiring page</a>.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   ARIA Research Lab at the New Jersey Institute of Technology (NJIT), directed by Dr. Shivvrat Arya, studies trustworthy, structured, and efficient artificial intelligence, including neurosymbolic AI, probabilistic reasoning, neural combinatorial optimization, computer vision, video understanding, and human-AI interaction.
-footer_text: >
-  © 2026 ARIA Lab · New Jersey Institute of Technology
+footer_text: 
+# >
+  # © 2026 ARIA Lab · New Jersey Institute of Technology
 
 keywords: >
   ARIA Research Lab, ARIA Lab, Dr. Shivvrat Arya, Shivvrat Arya, NJIT, New Jersey Institute of Technology, Ying Wu College of Computing, NJIT Computer Science, artificial intelligence research lab, machine learning research lab, neurosymbolic AI, probabilistic reasoning, neural combinatorial optimization, graph optimization, trustworthy AI, explainable AI, human-AI interaction, PhD positions AI, AI research opportunities NJIT

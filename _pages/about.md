@@ -62,9 +62,9 @@ The ARIA Research Lab in the Department of Computer Science at the Ying Wu Colle
 
 We are always looking for **curious, rigorous, and collaborative** students who are excited about building the next generation of **structured, explainable, and reliable AI systems**.
 
-- **Ph.D. students**: Opportunities to work on core problems in neurosymbolic AI, probabilistic inference, graph optimization, and structured deep learning.
-- **Undergraduate students**: Opportunities to join active projects, learn how to conduct research, and build toward increasingly independent work through options such as CS 488 and CS 489.
-- **M.S. students**: Opportunities for deeper research through faculty-mentored projects or the CS 700B/CS 701B thesis pathway, subject to advisor availability.
+- **[Ph.D. students](/hiring/)**: Opportunities to work on core problems in neurosymbolic AI, probabilistic inference, graph optimization, and structured deep learning.
+- **[Undergraduate students](/hiring/undergraduate-ms-research)**: Opportunities to join active projects, learn how to conduct research, and build toward increasingly independent work through options such as CS 488 and CS 489.
+- **[M.S. students](/hiring/undergraduate-ms-research)**: Opportunities for deeper research through faculty-mentored projects or the CS 700B/CS 701B thesis pathway, subject to advisor availability.
 
 If you are interested in joining the ARIA Research Lab, please review the <a href="/hiring/">student research opportunities</a> and follow the application instructions there. Briefly describe your background, relevant coursework or projects, and which of the lab’s research directions you are most excited about.
 
