@@ -26,7 +26,23 @@
         {% endif %}
       {% endif %}
       {% if entry.preview %}
-        {% if entry.preview contains '://' %}
+        {%- comment -%}
+          A preview may be a video file rather than an image. Rendering one through the
+          image path below produces a broken <img>, so hand it to video.liquid instead.
+          Keep this list in sync with the native-video branch of _includes/video.liquid:
+          an extension it does not recognize falls through to its <iframe> branch.
+          See alshedivat/al-folio#3564.
+        {%- endcomment -%}
+        {% assign preview_video_extensions = 'mp4,webm,ogg,mov' | split: ',' %}
+        {% assign preview_extension = entry.preview | split: '.' | last | split: '?' | first | downcase %}
+        {% if preview_video_extensions contains preview_extension %}
+          {% if entry.preview contains '://' %}
+            {% assign preview_video_path = entry.preview %}
+          {% else %}
+            {% assign preview_video_path = entry.preview | prepend: '/assets/img/publication_preview/' %}
+          {% endif %}
+          {% include video.liquid path=preview_video_path class="preview z-depth-1 rounded" controls=true %}
+        {% elsif entry.preview contains '://' %}
           <img class="preview z-depth-1 rounded" src="{{ entry.preview }}">
         {% else %}
           {% assign entry_path = entry.preview | prepend: '/assets/img/publication_preview/' %}
@@ -99,7 +115,11 @@
           {% assign visible_authors_before_self = self_author_index %}
         {% endif %}
 
-        {% if self_author_index and self_author_index >= author_array_limit and forloop.index0 >= visible_authors_before_self and forloop.index0 < self_author_index %}
+        {% if self_author_index
+          and self_author_index >= author_array_limit
+          and forloop.index0 >= visible_authors_before_self
+          and forloop.index0 < self_author_index
+        %}
           {% if forloop.index0 == visible_authors_before_self %}
             {%- assign more_authors_before = self_author_index | minus: visible_authors_before_self -%}
             {%- assign more_authors_before_hide = more_authors_before | append: ' more author' -%}
@@ -108,7 +128,11 @@
             {%- endif -%}
             {% assign more_authors_before_show = '' %}
             {%- for hidden_author in entry.author_array offset: visible_authors_before_self limit: more_authors_before -%}
-              {% assign more_authors_before_show = more_authors_before_show | append: hidden_author.first | append: ' ' | append: hidden_author.last %}
+              {% assign more_authors_before_show = more_authors_before_show
+                | append: hidden_author.first
+                | append: ' '
+                | append: hidden_author.last
+              %}
               {% unless forloop.last %}
                 {% assign more_authors_before_show = more_authors_before_show | append: ', ' %}
               {% endunless %}
@@ -118,12 +142,12 @@
               class="more-authors"
               title="click to view {{ more_authors_before_hide }}"
               onclick="
-                  var element = $(this);
-                  element.attr('title', '');
-                  var more_authors_text = element.text() == '{{ more_authors_before_hide }}' ? '{{ more_authors_before_show }}' : '{{ more_authors_before_hide }}';
+                  var element = this;
+                  element.setAttribute('title', '');
+                  var more_authors_text = element.textContent == '{{ more_authors_before_hide }}' ? '{{ more_authors_before_show }}' : '{{ more_authors_before_hide }}';
                   var cursorPosition = 0;
                   var textAdder = setInterval(function(){
-                    element.html(more_authors_text.substring(0, cursorPosition + 1));
+                    element.innerHTML = more_authors_text.substring(0, cursorPosition + 1);
                     if (++cursorPosition == more_authors_text.length){
                       clearInterval(textAdder);
                     }
@@ -149,7 +173,10 @@
           {%- if forloop.last and rendered_author_count == author_array_size %}and {% endif -%}
         {% endif %}
         {%- if author_is_self -%}
-          <span class="author-self">
+          <span
+            class="author-self"
+            style="border-bottom: 1px solid currentColor; color: var(--global-text-color); font-style: normal; font-weight: 700;"
+          >
             {{- author.first }}
             {{ author_last_html -}}
           </span>
@@ -185,12 +212,12 @@
           class="more-authors"
           title="click to view {{ more_authors_hide }}"
           onclick="
-              var element = $(this);
-              element.attr('title', '');
-              var more_authors_text = element.text() == '{{ more_authors_hide }}' ? '{{ more_authors_show }}' : '{{ more_authors_hide }}';
+              var element = this;
+              element.setAttribute('title', '');
+              var more_authors_text = element.textContent == '{{ more_authors_hide }}' ? '{{ more_authors_show }}' : '{{ more_authors_hide }}';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.html(more_authors_text.substring(0, cursorPosition + 1));
+                element.innerHTML = more_authors_text.substring(0, cursorPosition + 1);
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
@@ -224,9 +251,11 @@
     {% else %}
       {% capture entrytype %}{% endcapture %}
     {% endif %}
+    {% assign entrymonth = '' %}
     {% if entry.month %}
       {% capture entrymonth %}{{ " " }}{{ entry.month | capitalize }}{% endcapture %}
     {% endif %}
+    {% assign entryyear = '' %}
     {% if entry.year %}
       {% capture entryyear %}{{ " " }}{{ entry.year }}{% endcapture %}
     {% endif %}
@@ -264,6 +293,9 @@
       {% endif %}
       {% if entry.arxiv %}
         <a href="http://arxiv.org/abs/{{ entry.arxiv }}" class="btn btn-sm z-depth-0" role="button">arXiv</a>
+      {% endif %}
+      {% if entry.hal %}
+        <a href="https://hal.science/{{ entry.hal }}" class="btn btn-sm z-depth-0" role="button">HAL</a>
       {% endif %}
       {% if entry.bibtex_show %}
         <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>

@@ -55,26 +55,30 @@ The goal is to produce research results competitive with existing methods, suita
 ### What You Will Learn
 
 **AI and Deep Learning**
+
 - Reinforcement learning for sequential decision-making on structured state spaces.
 - GNNs and graph embeddings for large network data.
 - Practical training of deep models on GPUs, including batching, memory management, and scaling.
 
 **Algorithms and Optimization**
+
 - Formulation of NP-hard graph optimization problems such as IM, coverage, and routing.
 - Approximation and heuristic design for large combinatorial spaces.
 - Experimental methodology and evaluation protocols for optimization algorithms.
-  
+
 ---
 
 ### Ideal Background and Interests
 
 You are a good fit if you:
+
 - Enjoy AI, machine learning, and especially Deep RL.
 - Like working with graphs, algorithms, and optimization theory.
 - Are comfortable programming in Python and using PyTorch or similar frameworks.
 - Are interested in building, testing, and analyzing models rather than strictly using off-the-shelf tools.
 
 **Helpful but not required:**
+
 - Prior exposure to RL (value iteration, policy gradient).
 - Experience with GNNs or PyTorch Geometric.
 - Background in algorithms, probability, or graph theory.
@@ -90,6 +94,7 @@ Typical expectations for a research-oriented project:
 **Regular meetings:** Weekly or biweekly research meetings for updates and guidance
 
 **Deliverables:**
+
 - Working DRL + GNN codebase for at least one IM variant.
 - Experimental study on several graph datasets.
 - Final research-style report and presentation.

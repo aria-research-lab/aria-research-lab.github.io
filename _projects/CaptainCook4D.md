@@ -7,7 +7,6 @@ importance: 3
 category: datasets
 ---
 
-
 <div align="center">
   <a href="https://captaincook4d.github.io/captain-cook/">
     <img src="https://img.shields.io/badge/project-website-green" alt="Project website">
@@ -28,12 +27,12 @@ category: datasets
 
 ### Updates
 
-- **Dec 22nd 2024**: Released all the checkpoints for error recognition models.  
-- **Oct 31st 2024**: Released final code for baselines and features used for training the models.  
-- **Sep 26th 2024**: Paper accepted to NeurIPS 2024 with scores: 8, 8, 7.  
-- **Oct 30th 2024**: Released updated final code for baselines on (a) **Error Recognition** – (Supervised, Zero-Shot), (b) **Multi-Step Localization**.  
-- **Aug 2024**: Released extracted features for the dataset using video recognition models.  
-- **July 2024**: Released baseline code for (a) **Error Recognition**, (b) **Multi-Step Localization**.  
+- **Dec 22nd 2024**: Released all the checkpoints for error recognition models.
+- **Oct 31st 2024**: Released final code for baselines and features used for training the models.
+- **Sep 26th 2024**: Paper accepted to NeurIPS 2024 with scores: 8, 8, 7.
+- **Oct 30th 2024**: Released updated final code for baselines on (a) **Error Recognition** – (Supervised, Zero-Shot), (b) **Multi-Step Localization**.
+- **Aug 2024**: Released extracted features for the dataset using video recognition models.
+- **July 2024**: Released baseline code for (a) **Error Recognition**, (b) **Multi-Step Localization**.
 - **Dec 2023**: Released dataset v1.0.
 
 ---

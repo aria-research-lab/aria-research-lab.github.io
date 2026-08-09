@@ -32,23 +32,23 @@ seo:
 
 We are the ARIA Research Lab in the Department of Computer Science at NJIT. We are recruiting **Ph.D., MS, and undergraduate students** for research positions. Ph.D. positions are fully funded; MS/undergrad students can earn research credit. Self-funded visiting students/scholars are also welcome.
 
-|               |                            |
-| ------------- | -------------------------- |
-| **University** | NJIT (R1), Newark, NJ      |
-| **Start date** | Spring/Fall 2026           |
+|                   |                                                |
+| ----------------- | ---------------------------------------------- |
+| **University**    | NJIT (R1), Newark, NJ                          |
+| **Start date**    | Spring/Fall 2026                               |
 | **Ph.D. funding** | RA/TA (2 fully funded positions + self-funded) |
-| **MS/Undergrad** | Research credit available |
+| **MS/Undergrad**  | Research credit available                      |
 
 ---
 
 ### Open research projects
 
-| Project | Levels | Summary |
-| --- | --- | --- |
-| [**Neurosymbolic AI**](/hiring/neurosymbolic-ai) | Ph.D. lead, MS, undergrad | Integrate symbolic reasoning with deep learning for transparent, interpretable AI systems. |
-| [**Neural combinatorial optimization**](/hiring/neural-optimization) | Ph.D. lead, MS, undergrad | Build neural solvers for discrete and graph-structured optimization problems. |
-| [**DRL for graph optimization**](/hiring/drl-graph-optimization) | MS, undergrad | Apply deep reinforcement learning to graph-based combinatorial optimization problems. |
-| [**Applications of neurosymbolic methods**](/hiring/applications) | All levels | Apply neurosymbolic methods to vision, video understanding, and multimodal reasoning. |
+| Project                                                              | Levels                    | Summary                                                                                    |
+| -------------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------ |
+| [**Neurosymbolic AI**](/hiring/neurosymbolic-ai)                     | Ph.D. lead, MS, undergrad | Integrate symbolic reasoning with deep learning for transparent, interpretable AI systems. |
+| [**Neural combinatorial optimization**](/hiring/neural-optimization) | Ph.D. lead, MS, undergrad | Build neural solvers for discrete and graph-structured optimization problems.              |
+| [**DRL for graph optimization**](/hiring/drl-graph-optimization)     | MS, undergrad             | Apply deep reinforcement learning to graph-based combinatorial optimization problems.      |
+| [**Applications of neurosymbolic methods**](/hiring/applications)    | All levels                | Apply neurosymbolic methods to vision, video understanding, and multimodal reasoning.      |
 
 ---
 

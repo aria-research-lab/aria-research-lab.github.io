@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Advanced MPE Inference Schemes for Dependency Networks
-description: 
+description:
 img: assets/img/projects/ddn/dn_main_figure.png
 importance: 1
 category: research
@@ -12,7 +12,7 @@ Deep Dependency Networks (DDNs) combine dependency networks with deep neural arc
 
 They keep the **easy training** of dependency networks while adding **strong inference** via local search and integer linear programming (ILP), going beyond standard Gibbs sampling.
 
-[Read the paper](https://proceedings.mlr.press/v238/arya24a/arya24a.pdf){:target="_blank"}
+[Read the paper](https://proceedings.mlr.press/v238/arya24a/arya24a.pdf){:target="\_blank"}
 
 ## Model & Inference
 
@@ -57,22 +57,25 @@ We build a dependency network on top of deep encoders (CNNs / video backbones). 
 ## Datasets & Results
 
 We evaluate on:
+
 - **Video**: Charades, TACoS, Wetlab
 - **Image**: MS-COCO, PASCAL VOC, NUS-WIDE
 
 Across these benchmarks, our advanced DDN inference schemes outperform:
+
 - **(a)** strong neural baselines without structured inference, and
 - **(b)** neural + Markov network models equipped with advanced inference/learning.
 
 ## Getting the Code
 
 The official implementation includes:
+
 - Joint training of DDNs across all datasets above.
 - Implementations of Gibbs sampling, local search, and MILP-based inference.
 - Environment files for each dataset and for the advanced inference schemes.
 
 See the project README and `MODEL_ZOO.md` files in the code repository for:
+
 - Exact environment setup (per dataset and for advanced inference),
 - Pretrained models and baseline implementations,
 - Scripts for training and running the different inference strategies.
-

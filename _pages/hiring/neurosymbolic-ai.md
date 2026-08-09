@@ -29,7 +29,6 @@ This position focuses on bridging the gap between neural learning and symbolic r
 ### Research Focus Areas
 
 1. **Formal World Models and Neural Architectures**
-
    - Representing relational, temporal, and causal structure through formal world models grounded in logic or probabilistic semantics
 
    - Integrating these structured representations with deep architectures to enable learning under explicit constraints
@@ -37,7 +36,6 @@ This position focuses on bridging the gap between neural learning and symbolic r
    - Designing differentiable interfaces that allow neural modules to query, update, and reason over symbolic world states
 
 2. **Interpretable Neural Reasoning**
-
    - Developing neural reasoning systems with tractable, polynomial-time inference guarantees
 
    - Extracting logical rules, program-like structures, or circuit-level decision boundaries from trained networks
@@ -45,7 +43,6 @@ This position focuses on bridging the gap between neural learning and symbolic r
    - Building explainability methods that reveal how latent representations support multi-step reasoning, abstraction, and generalization
 
 3. **Tractable Neurosymbolic Integration**
-
    - Combining symbolic knowledge bases with tractable probabilistic models such as probabilistic circuits, SDDs, and arithmetic circuits
 
    - Ensuring efficient exact or approximate inference when coupling discrete logical structure with continuous neural components
@@ -72,24 +69,24 @@ This position focuses on bridging the gap between neural learning and symbolic r
 
 **Essential**
 
-* Strong background in machine learning, deep learning, and modern neural architectures
-* Proficiency in Python and contemporary DL frameworks (PyTorch, JAX), with an emphasis on efficient, well engineered code
-* Solid grounding in algorithms, probability theory, and numerical optimization
-* Demonstrated experience conducting reproducible research, including version control, testing, experiment tracking, and documentation
+- Strong background in machine learning, deep learning, and modern neural architectures
+- Proficiency in Python and contemporary DL frameworks (PyTorch, JAX), with an emphasis on efficient, well engineered code
+- Solid grounding in algorithms, probability theory, and numerical optimization
+- Demonstrated experience conducting reproducible research, including version control, testing, experiment tracking, and documentation
 
 **Nice to Have**
 
-* Experience with symbolic reasoning, logic programming, constraint solving, or knowledge representation formalisms
-* Familiarity with graphical models, probabilistic programming languages, or tractable probabilistic circuits
-* Publications in top-tier ML or AI venues (NeurIPS, ICML, AAAI, etc.)
+- Experience with symbolic reasoning, logic programming, constraint solving, or knowledge representation formalisms
+- Familiarity with graphical models, probabilistic programming languages, or tractable probabilistic circuits
+- Publications in top-tier ML or AI venues (NeurIPS, ICML, AAAI, etc.)
 
 ---
 
 ### What You'll Gain
 
-* Advanced expertise in neurosymbolic AI, interpretable machine learning, and formal reasoning methods
-* Hands-on experience with state-of-the-art deep learning, symbolic reasoning frameworks, and hybrid architectures
-* Opportunities to lead and coauthor publications at top ML and AI venues such as NeurIPS, ICML, ICLR, AAAI, etc.
+- Advanced expertise in neurosymbolic AI, interpretable machine learning, and formal reasoning methods
+- Hands-on experience with state-of-the-art deep learning, symbolic reasoning frameworks, and hybrid architectures
+- Opportunities to lead and coauthor publications at top ML and AI venues such as NeurIPS, ICML, ICLR, AAAI, etc.
 
 ---
 

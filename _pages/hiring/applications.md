@@ -30,17 +30,17 @@ In our lab, we explore how neurosymbolic methods, probabilistic inference, and l
 
 **Key Problems:**
 
-* Activity recognition in egocentric and third-person video
-* Procedural task understanding in complex environments
-* Object detection and tracking in dynamic scenes
-* Scene graph construction and relational reasoning
+- Activity recognition in egocentric and third-person video
+- Procedural task understanding in complex environments
+- Object detection and tracking in dynamic scenes
+- Scene graph construction and relational reasoning
 
 **Methods:**
 
-* Deep learning for visual recognition and feature extraction
-* Neurosymbolic models for interpretable activity and event reasoning
-* Probabilistic temporal models for multi-step predictions
-* Graph-based representations for structured scene understanding
+- Deep learning for visual recognition and feature extraction
+- Neurosymbolic models for interpretable activity and event reasoning
+- Probabilistic temporal models for multi-step predictions
+- Graph-based representations for structured scene understanding
 
 **Example Work:**
 
@@ -56,16 +56,16 @@ In our lab, we explore how neurosymbolic methods, probabilistic inference, and l
 
 **Key Problems:**
 
-* Real-time task guidance in augmented reality
-* Predictive assistance for multi-step procedural workflows
-* Error detection and recovery in human activities
-* Adaptive instruction generation
+- Real-time task guidance in augmented reality
+- Predictive assistance for multi-step procedural workflows
+- Error detection and recovery in human activities
+- Adaptive instruction generation
 
 **Methods:**
 
-* Neurosymbolic models integrating perception with symbolic task graphs
-* Probabilistic inference for action prediction and intent estimation
-* Multimodal reasoning over visual, language, and contextual signals
+- Neurosymbolic models integrating perception with symbolic task graphs
+- Probabilistic inference for action prediction and intent estimation
+- Multimodal reasoning over visual, language, and contextual signals
 
 **Example Work:**
 
@@ -88,17 +88,17 @@ In our lab, we explore how neurosymbolic methods, probabilistic inference, and l
 
 **Methods:**
 
-* Probabilistic models for uncertainty quantification and risk estimation
-* Explainable AI for clinical decision support
-* Graph-based patient modeling and knowledge graph inference
-* Learning-based models for diagnostic and prognostic prediction
+- Probabilistic models for uncertainty quantification and risk estimation
+- Explainable AI for clinical decision support
+- Graph-based patient modeling and knowledge graph inference
+- Learning-based models for diagnostic and prognostic prediction
 
 **Applications:**
 
-* Disease spread modeling and intervention planning
-* Personalized treatment and risk-based stratification
-* Explainable medical image analysis
-* Hospital resource allocation and scheduling
+- Disease spread modeling and intervention planning
+- Personalized treatment and risk-based stratification
+- Explainable medical image analysis
+- Hospital resource allocation and scheduling
 
 ---
 
@@ -108,17 +108,17 @@ In our lab, we explore how neurosymbolic methods, probabilistic inference, and l
 
 **Key Problems:**
 
-* Power grid optimization and stability analysis
-* Smart grid management and demand-side forecasting
-* Maintenance scheduling in large infrastructure networks
-* Integration of renewable energy sources
+- Power grid optimization and stability analysis
+- Smart grid management and demand-side forecasting
+- Maintenance scheduling in large infrastructure networks
+- Integration of renewable energy sources
 
 **Methods:**
 
-* Graph neural networks for grid and network modeling
-* Reinforcement learning for dynamic resource allocation
-* Probabilistic models for forecasting and reliability analysis
-* Combinatorial optimization for scheduling and planning
+- Graph neural networks for grid and network modeling
+- Reinforcement learning for dynamic resource allocation
+- Probabilistic models for forecasting and reliability analysis
+- Combinatorial optimization for scheduling and planning
 
 ---
 
@@ -128,24 +128,24 @@ In our lab, we explore how neurosymbolic methods, probabilistic inference, and l
 
 **Key Problems:**
 
-* Multimodal reasoning across text, images, and video
-* Knowledge-grounded question answering
-* Language-guided planning and action prediction
-* Document understanding and structured information extraction
+- Multimodal reasoning across text, images, and video
+- Knowledge-grounded question answering
+- Language-guided planning and action prediction
+- Document understanding and structured information extraction
 
 **Methods:**
 
-* Neurosymbolic models integrating language with symbolic knowledge bases
-* Probabilistic reasoning for ambiguity resolution
-* Graph-based representations for knowledge and relational structure
-* Deep learning for language understanding and grounding tasks
+- Neurosymbolic models integrating language with symbolic knowledge bases
+- Probabilistic reasoning for ambiguity resolution
+- Graph-based representations for knowledge and relational structure
+- Deep learning for language understanding and grounding tasks
 
 **Applications:**
 
-* Visual question answering and multimodal inference
-* Instruction following and task planning
-* Knowledge base reasoning and retrieval
-* Multimodal document and scene interpretation
+- Visual question answering and multimodal inference
+- Instruction following and task planning
+- Knowledge base reasoning and retrieval
+- Multimodal document and scene interpretation
 
 ---
 

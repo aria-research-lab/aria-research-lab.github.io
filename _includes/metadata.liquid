@@ -58,7 +58,13 @@
   <meta property="og:url" content="{{ canonical_url }}">
   <meta property="og:description" content="{{ page_description | strip | escape }}">
   {% if page.og_image or site.og_image %}
-    <meta property="og:image" content="{% if page.og_image %}{{ page.og_image | absolute_url }}{% else %}{{ site.og_image | absolute_url }}{% endif %}">
+    {% assign og_image_source = page.og_image | default: site.og_image %}
+    {% if og_image_source contains '://' %}
+      {% assign og_image_url = og_image_source %}
+    {% else %}
+      {% assign og_image_url = og_image_source | prepend: site.baseurl | prepend: site.url %}
+    {% endif %}
+    <meta property="og:image" content="{{ og_image_url }}">
   {% endif %}
   <meta property="og:locale" content="{{ site.lang }}">
 
@@ -67,7 +73,7 @@
   <meta name="twitter:title" content="{% if page_title %}{{ page_title }}{% else %}{{ site_name }}{% endif %}">
   <meta name="twitter:description" content="{{ page_description | strip | escape }}">
   {% if page.og_image or site.og_image %}
-    <meta name="twitter:image" content="{% if page.og_image %}{{ page.og_image | absolute_url }}{% else %}{{ site.og_image | absolute_url }}{% endif %}">
+    <meta name="twitter:image" content="{{ og_image_url }}">
   {% endif %}
   {% if site.x_username %}
     <meta name="twitter:site" content="@{{ site.x_username }}">
@@ -244,7 +250,7 @@
           "url": "{{ site.url }}/",
           "description": {{ site.description | strip | jsonify }},
           {% if sameaslinks != blank %}
-          "sameAs": {{ sameaslinks | jsonify }},
+            "sameAs": {{ sameaslinks | jsonify }},
           {% endif %}
           "parentOrganization": {
             "@id": "https://www.njit.edu/#organization"

@@ -1,11 +1,10 @@
 ---
 layout: about
-title: ARIA Lab 
+title: ARIA Lab
 permalink: /
 subtitle: Welcome to the Algorithms and Architectures for Reasoning and Intelligent Automation Lab
 description: ARIA Research Lab at NJIT, directed by Dr. Shivvrat Arya, studies trustworthy, structured, and efficient AI, including neurosymbolic AI, probabilistic reasoning, neural combinatorial optimization, computer vision, video understanding, and human-AI interaction.
 keywords: ARIA Research Lab, ARIA Lab NJIT, Shivvrat Arya, Dr. Shivvrat Arya, NJIT AI lab, NJIT machine learning lab, neurosymbolic AI, probabilistic reasoning, neural combinatorial optimization, trustworthy AI
-
 
 # profile:
 #   align: right
@@ -42,19 +41,19 @@ The ARIA Research Lab in the Department of Computer Science at the Ying Wu Colle
 
 ## Research Directions
 
-* **Neurosymbolic and Explainable AI**  
+- **Neurosymbolic and Explainable AI**
   We study AI systems that combine neural networks with symbolic logic and probabilistic modeling to encode structure, constraints, prior knowledge, and uncertainty, enabling transparent, controllable reasoning at scale.
 
-* **Probabilistic Modeling and Inference**  
+- **Probabilistic Modeling and Inference**
   We develop tractable and approximate inference methods for generative models, including neural inference engines capable of answering complex queries efficiently in large-scale settings.
 
-* **Neural Combinatorial and Constrained Optimization**  
+- **Neural Combinatorial and Constrained Optimization**
   We design learning-based solvers for large-scale discrete and constrained optimization problems, bridging classical combinatorial optimization with modern machine learning.
 
-* **Graph Optimization and Structured Decision-Making**  
+- **Graph Optimization and Structured Decision-Making**
   A major focus is graph-structured optimization, using reinforcement learning and graph neural networks for social network analysis and graph-structured decision-making.
 
-* **Applications in Vision, Video, and Human–AI Interaction**  
+- **Applications in Vision, Video, and Human–AI Interaction**
   We apply our methods to real-world domains, including structured and neurosymbolic approaches for video and activity understanding, multimodal learning, augmented reality task guidance, and systems that support effective human–AI collaboration.
 
 ---

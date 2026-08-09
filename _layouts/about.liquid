@@ -3,11 +3,11 @@ layout: default
 ---
 <div class="post">
   <header class="post-header">
-    <h1 class="post-title about-title">
+    <h1 class="post-title about-title" style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
       <img
         src="{{ '/assets/img/aria-symbol.svg' | relative_url }}"
         alt="ARIA Research Lab"
-        class="about-logo"
+        style="flex: 0 0 auto; height: 4.5rem; width: auto; margin: 0;"
       >
       {% if site.title == 'blank' %}
         <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
@@ -72,14 +72,18 @@ layout: default
     <!-- Social -->
     {% if page.social %}
       <div class="social">
-        <div class="contact-icons">{% include social.liquid %}</div>
+        <div class="contact-icons">{% social_links %}</div>
 
         <div class="contact-note">{{ site.contact_note }}</div>
       </div>
     {% endif %}
 
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
-      {% include newsletter.liquid center=true %}
+      {% if site.plugins contains 'al_newsletter' %}
+        {% include plugins/al_newsletter_form_center_margin.liquid %}
+      {% else %}
+        {% include newsletter.liquid center=true %}
+      {% endif %}
     {% endif %}
   </article>
 </div>

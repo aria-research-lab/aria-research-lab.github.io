@@ -17,6 +17,7 @@ The main entry point is `main.py` in the `mpe_advanced_models/model_1/src` direc
 It configures the experiment, builds data loaders and models, and runs training and evaluation.
 
 Core limitations addressed compared to prior neural MPE methods:
+
 - **Richer embeddings**: SINE embeds both **query variables** and the **graphical model structure/parameters** into expressive feature representations.
 - **Better discretization**: Instead of naive thresholding, it explores the space of nearby discrete solutions and/or uses oracle-style reasoning over uncertain variables.
 
@@ -68,10 +69,10 @@ python src/main.py [arguments]
 
 **Important arguments** (see `utils_folder/arguments.py` for the full list):
 
-- `--model`          : `nn` or `transformer` (neural architecture).
-- `--pgm`            : PGM family / benchmark type (e.g., UAI-06 vs UAI-22 models).
-- `--dataset`        : Specific dataset/benchmark instance.
-- `--task`           : Inference task (e.g., MPE).
+- `--model` : `nn` or `transformer` (neural architecture).
+- `--pgm` : PGM family / benchmark type (e.g., UAI-06 vs UAI-22 models).
+- `--dataset` : Specific dataset/benchmark instance.
+- `--task` : Inference task (e.g., MPE).
 - `--embedding-type` : `discrete` or `hgnn`.
 - `--threshold_type` : `basic`, `knearest_binary_vectors`, `branch_and_bound`, or the combined option.
 - `--experiment-dir` : Output directory for logs, metrics, and checkpoints.
@@ -128,6 +129,7 @@ The environment includes PyTorch (with CUDA support if available), Lightning, an
 4. **Run** `src/main.py` and monitor logs for training and evaluation metrics.
 
 All runs write to the experiment directory specified by `--experiment-dir`, including:
+
 - Logs and scalar metrics over epochs.
 - Model checkpoints (for restarting or analysis).
 - Any additional artifacts produced by the trainer/evaluator.

@@ -13,16 +13,16 @@ Given an evidence assignment and a hard constraint, SS-CMPE trains a neural netw
 
 ### Paper
 
-- **Title**: Learning to Solve the Constrained Most Probable Explanation Task in Probabilistic Graphical Models  
-- **Authors**: Shivvrat Arya, Tahrima Rahman, Vibhav Gogate  
-- **Venue**: AISTATS 2024  
+- **Title**: Learning to Solve the Constrained Most Probable Explanation Task in Probabilistic Graphical Models
+- **Authors**: Shivvrat Arya, Tahrima Rahman, Vibhav Gogate
+- **Venue**: AISTATS 2024
 - **PDF**: [`https://proceedings.mlr.press/v238/arya24b/arya24b.pdf`](https://proceedings.mlr.press/v238/arya24b/arya24b.pdf)
 
 ### Problem Setting
 
 - **Models**: Two log-linear models / Markov networks `f(x, y)` and `g(x, y)` defined over random variables `X` (evidence) and `Y` (decision variables).
 - **Task (CMPE)**: For a given evidence assignment `x` and threshold `q`, find `y` that
-  - maximizes `f(x, y)`  
+  - maximizes `f(x, y)`
   - subject to the constraint `g(x, y) \le q`.
 - **Goal**: Learn a neural network that, given `x`, outputs `y` that approximately solves this constrained optimization problem.
 
@@ -63,8 +63,8 @@ conda activate sscmpe
 
 - **Choose a task**: CMPE on circuits / Markov networks (`ssl_adv`) or adversarial example generation (`ssl_pgm`).
 - **Follow the local README**:
-  - dataset / benchmark download instructions,  
-  - configuration files or CLI flags (architecture, learning rate, constraint threshold `q`, etc.),  
+  - dataset / benchmark download instructions,
+  - configuration files or CLI flags (architecture, learning rate, constraint threshold `q`, etc.),
   - training and evaluation scripts.
 - **Outputs** typically include:
   - constraint violation statistics (`g(x, y) - q`),

@@ -39,34 +39,34 @@ NeuPI trains neural solvers to answer queries such as Most Probable Explanation 
 3. **Train with `SelfSupervisedTrainer`**  
    The trainer queries the solver for a solution, scores it with the PM evaluator, and backpropagates the negative log-likelihood to update the network.
 
-4. **Perform inference**  
-   - `SinglePassInferenceEngine`: one forward pass for fast MPE / MMAP inference.  
+4. **Perform inference**
+   - `SinglePassInferenceEngine`: one forward pass for fast MPE / MMAP inference.
    - `ITSELF_Engine`: test-time self-supervised fine-tuning for each query, improving solution quality by iteratively optimizing against the PM.
 
 5. **Discretize the output**  
-   Convert continuous probabilities into binary assignments using:  
-   - `ThresholdDiscretizer` for speed,  
+   Convert continuous probabilities into binary assignments using:
+   - `ThresholdDiscretizer` for speed,
    - `KNearestDiscretizer` or `OAUAI` for higher-quality discrete solutions.
 
 ### Examples (in the `examples/` directory)
 
-- **Example 1**: Compute the negative log-likelihood (loss) of a solution to an MPE query on Markov Networks (PGMs) and Sum-Product Networks (probabilistic circuits).  
-- **Example 2**: Train a neural solver for MPE queries on Markov Networks and Sum-Product Networks.  
-- **Example 3**: Run inference using a trained neural solver on Markov Networks and Sum-Product Networks.  
+- **Example 1**: Compute the negative log-likelihood (loss) of a solution to an MPE query on Markov Networks (PGMs) and Sum-Product Networks (probabilistic circuits).
+- **Example 2**: Train a neural solver for MPE queries on Markov Networks and Sum-Product Networks.
+- **Example 3**: Run inference using a trained neural solver on Markov Networks and Sum-Product Networks.
 - **Example 4**: Discretize probabilities into binary assignments using `ThresholdDiscretizer`, `KNearestDiscretizer`, and `OAUAI`.
 
 ### Implemented Methods and References
 
-| Type        | Component                  | Primary reference(s)                                                     | Description |
-|------------|----------------------------|---------------------------------------------------------------------------|-------------|
-| Trainer    | `SelfSupervisedTrainer`    | Arya et al., AAAI 2024; Arya et al., NeurIPS 2024; Arya et al., AISTATS 2025 (SINE) | Core self-supervised training loop using negative log-likelihood from a PM evaluator (`MarkovNetwork`, `SumProductNetwork`). |
-| Loss       | `MarkovNetwork`, `SumProductNetwork` | Arya et al., AAAI 2024; Arya et al., NeurIPS 2024; Arya et al., AISTATS 2025 (SINE) | Compute negative log-likelihood for a given probabilistic model; used as the loss signal. |
-| Embedding  | `DiscreteEmbedder`         | Arya et al., AAAI 2024; Arya et al., NeurIPS 2024                         | Creates discrete input representations from variable assignments and bucket information (evidence, query, unobserved). |
-| Inference  | `SinglePassInferenceEngine`| Arya et al., AAAI 2024; Arya et al., AISTATS 2025 (SINE)                  | Single-pass inference pipeline for MPE / MMAP. |
-| Inference  | `ITSELF_Engine`            | Arya et al., NeurIPS 2024                                                 | Inference Time Self-Supervised Learning fine-tuning engine for per-instance optimization. |
-| Discretizer| `ThresholdDiscretizer`     | Arya et al., AAAI 2024; Arya et al., NeurIPS 2024                         | Simple threshold-based discretization. |
-| Discretizer| `KNearestDiscretizer`      | Arya et al., AISTATS 2025 (SINE)                                          | Beam search over k-nearest binary vectors to find high-quality discrete assignments. |
-| Discretizer| `OAUAI`                    | Arya et al., AISTATS 2025 (SINE)                                          | Oracle-based heuristic that focuses queries on variables with highest uncertainty. |
+| Type        | Component                            | Primary reference(s)                                                                | Description                                                                                                                  |
+| ----------- | ------------------------------------ | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Trainer     | `SelfSupervisedTrainer`              | Arya et al., AAAI 2024; Arya et al., NeurIPS 2024; Arya et al., AISTATS 2025 (SINE) | Core self-supervised training loop using negative log-likelihood from a PM evaluator (`MarkovNetwork`, `SumProductNetwork`). |
+| Loss        | `MarkovNetwork`, `SumProductNetwork` | Arya et al., AAAI 2024; Arya et al., NeurIPS 2024; Arya et al., AISTATS 2025 (SINE) | Compute negative log-likelihood for a given probabilistic model; used as the loss signal.                                    |
+| Embedding   | `DiscreteEmbedder`                   | Arya et al., AAAI 2024; Arya et al., NeurIPS 2024                                   | Creates discrete input representations from variable assignments and bucket information (evidence, query, unobserved).       |
+| Inference   | `SinglePassInferenceEngine`          | Arya et al., AAAI 2024; Arya et al., AISTATS 2025 (SINE)                            | Single-pass inference pipeline for MPE / MMAP.                                                                               |
+| Inference   | `ITSELF_Engine`                      | Arya et al., NeurIPS 2024                                                           | Inference Time Self-Supervised Learning fine-tuning engine for per-instance optimization.                                    |
+| Discretizer | `ThresholdDiscretizer`               | Arya et al., AAAI 2024; Arya et al., NeurIPS 2024                                   | Simple threshold-based discretization.                                                                                       |
+| Discretizer | `KNearestDiscretizer`                | Arya et al., AISTATS 2025 (SINE)                                                    | Beam search over k-nearest binary vectors to find high-quality discrete assignments.                                         |
+| Discretizer | `OAUAI`                              | Arya et al., AISTATS 2025 (SINE)                                                    | Oracle-based heuristic that focuses queries on variables with highest uncertainty.                                           |
 
 ### License
 
