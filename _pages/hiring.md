@@ -36,10 +36,10 @@ We are the ARIA Research Lab in the Department of Computer Science at NJIT. Stud
 
 ### Ph.D. Students
 
-We are recruiting motivated Ph.D. students to work on the lab's core research directions in AI and machine learning. We are currently seeking up to **two funded Ph.D. students** for Spring/Fall 2026, with support through research or teaching assistantships.
+We are recruiting motivated Ph.D. students to work on the lab's core research directions in AI and machine learning. We are currently seeking up to **{{ site.data.recruiting.phd_max_funded_words }} funded Ph.D. students** for {{ site.data.recruiting.start_terms_slash }}, with support through research or teaching assistantships.
 
 - Applicants should have a strong background in AI, machine learning, or related areas and a clear interest in research.
-- Prospective students must apply through the [NJIT Graduate Admissions portal](https://www.njit.edu/admissions/graduate-admissions) and are encouraged to mention the lab and relevant research interests in their Statement of Purpose.
+- Prospective students must apply through the [NJIT Graduate Admissions portal]({{ site.data.recruiting.admissions_url }}) and are encouraged to mention the lab and relevant research interests in their Statement of Purpose.
 - Visiting scholars interested in collaborating with the lab are also welcome to reach out.
 
 ### Undergraduate and M.S. Students
@@ -55,8 +55,8 @@ See [undergraduate and M.S. research opportunities]({{ '/hiring/undergraduate-ms
 |                   |                                                |
 | ----------------- | ---------------------------------------------- |
 | **University**    | NJIT (R1), Newark, NJ                          |
-| **Start date**    | Spring/Fall 2026                               |
-| **Ph.D. funding** | RA/TA (2 fully funded positions + self-funded) |
+| **Start date**    | {{ site.data.recruiting.start_terms_slash }}   |
+| **Ph.D. funding** | {{ site.data.recruiting.phd_funding_summary }} |
 | **MS/Undergrad**  | Research credit available                      |
 
 ---
@@ -100,7 +100,7 @@ See [undergraduate and M.S. research opportunities]({{ '/hiring/undergraduate-ms
 
 ## Lab resources
 
-- **Funding**: Fully funded Ph.D. (RA/TA), research credit for MS/undergrad.
+- **Funding**: Fully funded Ph.D. ({{ site.data.recruiting.phd_funding_type }}), research credit for MS/undergrad.
 - **Compute**: University [Wulver GPU cluster](https://arcs-njit-edu.github.io/Docs/clusters/wulver/) + lab GPUs.
 - **Mentorship**: Direct guidance in developing rigorous research contributions, with the possibility of submissions to venues such as NeurIPS, ICML, ICLR, AAAI, KDD, and CIKM when results are ready.
 

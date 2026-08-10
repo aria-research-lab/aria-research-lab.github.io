@@ -32,7 +32,7 @@ latest_posts:
 ---
 
 <div class="alert alert-info">
-📢 We are recruiting motivated Ph.D. students for Spring and Fall 2026 to pursue research in artificial intelligence and machine learning. Research opportunities are available for undergraduate and MS students interested in sustained projects, strong technical contributions, and potential conference submissions when the results warrant it. Applicants with backgrounds in algorithms, optimization, probability, or machine learning are encouraged to apply. Explore our <a href="/hiring/">student research opportunities and application details</a>.
+📢 We are recruiting motivated Ph.D. students for {{ site.data.recruiting.start_terms_and }} to pursue research in artificial intelligence and machine learning. Research opportunities are available for undergraduate and MS students interested in sustained projects, strong technical contributions, and potential conference submissions when the results warrant it. Applicants with backgrounds in algorithms, optimization, probability, or machine learning are encouraged to apply. Explore our <a href="/hiring/">student research opportunities and application details</a>.
 </div>
 
 <!-- ## Welcome to the Algorithms and Architectures for Reasoning and Intelligent Automation Lab -->
