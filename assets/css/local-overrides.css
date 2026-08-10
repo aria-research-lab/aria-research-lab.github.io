@@ -15,3 +15,19 @@
 #navbarNav.collapse {
   visibility: visible;
 }
+
+/*
+  al_folio_core's main.css (loads last, after bootstrap-compat.css) carries
+  legacy .af-popover/.af-tooltip rules that set position:absolute. But
+  bootstrap-compat.js positions these bubbles using getBoundingClientRect(),
+  which is viewport-relative and only correct for position:fixed (what
+  bootstrap-compat.css itself actually specifies). With position:absolute the
+  bubble is placed relative to the document instead of the viewport, so for
+  anything below the first screenful the popover/tooltip renders off-screen —
+  hovering the icon silently does nothing. !important because main.css always
+  loads last and a plain override would just lose the same way.
+*/
+.af-popover,
+.af-tooltip {
+  position: fixed !important;
+}
