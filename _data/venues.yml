@@ -1,13 +1,173 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
-  color: "#00369f"
-
-"PhysRev":
-  url: https://journals.aps.org/
-
-"Vision":
-  color: "#009f36"
+# Machine Learning / Artificial Intelligence
 
 "Neural Information Processing Systems":
-  url: https://nips.cc/
-  color: "#ff0000"
+  url: https://neurips.cc/
+  color: "#7b2cbf"
+
+"NeurIPS":
+  url: https://neurips.cc/
+  color: "#7b2cbf"
+
+"International Conference on Machine Learning":
+  url: https://icml.cc/
+  color: "#3a86ff"
+
+"ICML":
+  url: https://icml.cc/
+  color: "#3a86ff"
+
+"International Conference on Learning Representations":
+  url: https://iclr.cc/
+  color: "#4361ee"
+
+"ICLR":
+  url: https://iclr.cc/
+  color: "#4361ee"
+
+"AAAI Conference on Artificial Intelligence":
+  url: https://aaai.org/conference/aaai/
+  color: "#d62828"
+
+"AAAI":
+  url: https://aaai.org/conference/aaai/
+  color: "#d62828"
+
+"International Joint Conference on Artificial Intelligence":
+  url: https://www.ijcai.org/
+  color: "#e76f51"
+
+"IJCAI":
+  url: https://www.ijcai.org/
+  color: "#e76f51"
+
+"International Conference on Artificial Intelligence and Statistics":
+  url: https://aistats.org/
+  color: "#5a189a"
+
+"AISTATS":
+  url: https://aistats.org/
+  color: "#5a189a"
+
+"Conference on Uncertainty in Artificial Intelligence":
+  url: https://www.auai.org/uai/
+  color: "#6a4c93"
+
+"UAI":
+  url: https://www.auai.org/uai/
+  color: "#6a4c93"
+
+
+# Computer Vision
+
+"IEEE/CVF Conference on Computer Vision and Pattern Recognition":
+  url: https://cvpr.thecvf.com/
+  color: "#0077b6"
+
+"CVPR":
+  url: https://cvpr.thecvf.com/
+  color: "#0077b6"
+
+"IEEE/CVF International Conference on Computer Vision":
+  url: https://iccv.thecvf.com/
+  color: "#0096c7"
+
+"ICCV":
+  url: https://iccv.thecvf.com/
+  color: "#0096c7"
+
+"European Conference on Computer Vision":
+  url: https://eccv.ecva.net/
+  color: "#00b4d8"
+
+"ECCV":
+  url: https://eccv.ecva.net/
+  color: "#00b4d8"
+
+"IEEE/CVF Winter Conference on Applications of Computer Vision":
+  url: https://wacv.thecvf.com/
+  color: "#48cae4"
+
+"WACV":
+  url: https://wacv.thecvf.com/
+  color: "#48cae4"
+
+
+# IEEE / ACM Journals
+
+"IEEE Transactions on Pattern Analysis and Machine Intelligence":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=34
+  color: "#00629b"
+
+"IEEE TPAMI":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=34
+  color: "#00629b"
+
+"IEEE Transactions on Knowledge and Data Engineering":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=69
+  color: "#005f73"
+
+"IEEE TKDE":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=69
+  color: "#005f73"
+
+"IEEE Transactions on Neural Networks and Learning Systems":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=5962385
+  color: "#0a9396"
+
+"IEEE TNNLS":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=5962385
+  color: "#0a9396"
+
+"IEEE Transactions on Network Science and Engineering":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=6488902
+  color: "#00798c"
+
+"IEEE TNSE":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=6488902
+  color: "#00798c"
+
+"IEEE Transactions on Computational Social Systems":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=6570650
+  color: "#2a9d8f"
+
+"IEEE TCSS":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=6570650
+  color: "#2a9d8f"
+
+"IEEE Systems Journal":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=4267003
+  color: "#264653"
+
+"ACM Transactions on Knowledge Discovery from Data":
+  url: https://dl.acm.org/journal/tkdd
+  color: "#f77f00"
+
+"ACM TKDD":
+  url: https://dl.acm.org/journal/tkdd
+  color: "#f77f00"
+
+
+# Interdisciplinary / Applied AI
+
+"Scientific Reports":
+  url: https://www.nature.com/srep/
+  color: "#333333"
+
+"Social Network Analysis and Mining":
+  url: https://link.springer.com/journal/13278
+  color: "#6c757d"
+
+"SNAM":
+  url: https://link.springer.com/journal/13278
+  color: "#6c757d"
+
+"JMIR Mental Health":
+  url: https://mental.jmir.org/
+  color: "#00a6a6"
+
+
+# Workshops / Symposia
+
+"BayLearn":
+  url: https://baylearn.org/
+  color: "#f4a261"
