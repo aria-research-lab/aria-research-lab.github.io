@@ -1,3 +1,9 @@
+{% comment %}
+  Site-local CSS overrides, isolated from theme files so gem upgrades never
+  touch or conflict with them. See assets/css/local-overrides.css.
+{% endcomment %}
+<link rel="stylesheet" href="{{ '/assets/css/local-overrides.css' | relative_url | bust_file_cache }}">
+
 {% if site.enable_google_verification or site.enable_bing_verification %}
   <!-- Website verification -->
   {% if site.enable_google_verification %}
