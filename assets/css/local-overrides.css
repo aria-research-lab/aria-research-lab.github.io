@@ -1,0 +1,17 @@
+/*
+  Local, theme-independent overrides for this site. Kept separate from any
+  al_folio_core/al_folio_bootstrap_compat file so gem upgrades never touch or
+  conflict with it. Add new fixes below with a comment explaining why.
+*/
+
+/*
+  al_folio_bootstrap_compat's bootstrap-compat.css loads after tailwind.css and
+  redeclares .collapse{visibility:hidden}, which (same specificity, later in the
+  cascade) wins over tailwind.css's .collapse{visibility:visible} and hides the
+  entire nav menu even though display:flex still applies. #navbarNav.collapse
+  has higher specificity than either plain .collapse rule, so this stays correct
+  regardless of stylesheet load order.
+*/
+#navbarNav.collapse {
+  visibility: visible;
+}
