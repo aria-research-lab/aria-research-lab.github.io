@@ -1,0 +1,4 @@
+interface:
+  display_name: "Run Lab Site"
+  short_description: "Build and verify the ARIA Lab website"
+  default_prompt: "Use $run-lab-site to build and verify the ARIA Lab website."
