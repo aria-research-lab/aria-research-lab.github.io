@@ -1,0 +1,366 @@
+[
+  {
+    "name": "AAAI Conference on Artificial Intelligence",
+    "shortform": "AAAI",
+    "aliases": ["AAAI Conference on Artificial Intelligence", "Proceedings of the AAAI Conference on Artificial Intelligence"]
+  },
+  {
+    "name": "International Conference on Artificial Intelligence and Statistics",
+    "shortform": "AISTATS",
+    "aliases": [
+      "International Conference on Artificial Intelligence and Statistics",
+      "Proceedings of the International Conference on Artificial Intelligence and Statistics"
+    ]
+  },
+  {
+    "name": "ACM International Conference on Information and Knowledge Management",
+    "shortform": "CIKM",
+    "aliases": [
+      "ACM International Conference on Information and Knowledge Management",
+      "Proceedings of the ACM International Conference on Information and Knowledge Management"
+    ]
+  },
+  {
+    "name": "European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases",
+    "shortform": "ECML PKDD",
+    "aliases": [
+      "European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases",
+      "Joint European Conference on Machine Learning and Knowledge Discovery in Databases"
+    ]
+  },
+  {
+    "name": "International Conference on Learning Representations",
+    "shortform": "ICLR",
+    "aliases": ["International Conference on Learning Representations", "Proceedings of the International Conference on Learning Representations"]
+  },
+  {
+    "name": "International Conference on Machine Learning",
+    "shortform": "ICML",
+    "aliases": ["International Conference on Machine Learning", "Proceedings of the International Conference on Machine Learning"]
+  },
+  {
+    "name": "International Conference on Data Mining",
+    "shortform": "ICDM",
+    "aliases": ["IEEE International Conference on Data Mining", "Proceedings of the IEEE International Conference on Data Mining"]
+  },
+  {
+    "name": "International Joint Conference on Artificial Intelligence",
+    "shortform": "IJCAI",
+    "aliases": [
+      "International Joint Conference on Artificial Intelligence",
+      "Proceedings of the International Joint Conference on Artificial Intelligence"
+    ]
+  },
+  {
+    "name": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+    "shortform": "KDD",
+    "aliases": [
+      "ACM SIGKDD International Conference on Knowledge Discovery and Data Mining",
+      "Proceedings of the ACM SIGKDD International Conference on Knowledge Discovery and Data Mining"
+    ]
+  },
+  {
+    "name": "Conference on Neural Information Processing Systems",
+    "shortform": "NeurIPS",
+    "aliases": ["Advances in Neural Information Processing Systems", "Proceedings of the Conference on Neural Information Processing Systems"]
+  },
+  {
+    "name": "SIAM International Conference on Data Mining",
+    "shortform": "SDM",
+    "aliases": ["SIAM International Conference on Data Mining", "Proceedings of the SIAM International Conference on Data Mining"]
+  },
+  {
+    "name": "ACM Special Interest Group on Information Retrieval Conference",
+    "shortform": "SIGIR",
+    "aliases": [
+      "International ACM SIGIR Conference on Research and Development in Information Retrieval",
+      "Proceedings of the International ACM SIGIR Conference on Research and Development in Information Retrieval"
+    ]
+  },
+  {
+    "name": "Conference on Uncertainty in Artificial Intelligence",
+    "shortform": "UAI",
+    "aliases": ["Conference on Uncertainty in Artificial Intelligence", "Proceedings of the Conference on Uncertainty in Artificial Intelligence"]
+  },
+  {
+    "name": "ACM Web Conference",
+    "shortform": "WWW",
+    "aliases": ["The Web Conference", "Proceedings of The Web Conference", "Proceedings of the ACM Web Conference"]
+  },
+  {
+    "name": "ACM International Conference on Web Search and Data Mining",
+    "shortform": "WSDM",
+    "aliases": [
+      "ACM International Conference on Web Search and Data Mining",
+      "Proceedings of the ACM International Conference on Web Search and Data Mining"
+    ]
+  },
+  {
+    "name": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "shortform": "CVPR",
+    "aliases": [
+      "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+      "IEEE Conference on Computer Vision and Pattern Recognition",
+      "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+      "Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition"
+    ]
+  },
+  {
+    "name": "IEEE/CVF International Conference on Computer Vision",
+    "shortform": "ICCV",
+    "aliases": [
+      "IEEE/CVF International Conference on Computer Vision",
+      "IEEE International Conference on Computer Vision",
+      "Proceedings of the IEEE/CVF International Conference on Computer Vision",
+      "Proceedings of the IEEE International Conference on Computer Vision"
+    ]
+  },
+  {
+    "name": "European Conference on Computer Vision",
+    "shortform": "ECCV",
+    "aliases": [
+      "European Conference on Computer Vision",
+      "Proceedings of the European Conference on Computer Vision",
+      "Computer Vision - ECCV"
+    ]
+  },
+  {
+    "name": "IEEE/CVF Winter Conference on Applications of Computer Vision",
+    "shortform": "WACV",
+    "aliases": [
+      "IEEE/CVF Winter Conference on Applications of Computer Vision",
+      "IEEE Winter Conference on Applications of Computer Vision",
+      "Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision",
+      "Proceedings of the IEEE Winter Conference on Applications of Computer Vision"
+    ]
+  },
+  {
+    "name": "Conference on Learning Theory",
+    "shortform": "COLT",
+    "aliases": [
+      "Conference on Learning Theory",
+      "Proceedings of the Conference on Learning Theory",
+      "Annual Conference on Learning Theory"
+    ]
+  },
+  {
+    "name": "International Conference on Algorithmic Learning Theory",
+    "shortform": "ALT",
+    "aliases": [
+      "International Conference on Algorithmic Learning Theory",
+      "Algorithmic Learning Theory",
+      "Proceedings of the International Conference on Algorithmic Learning Theory"
+    ]
+  },
+  {
+    "name": "Asian Conference on Machine Learning",
+    "shortform": "ACML",
+    "aliases": [
+      "Asian Conference on Machine Learning",
+      "Proceedings of the Asian Conference on Machine Learning"
+    ]
+  },
+  {
+    "name": "Conference on Machine Learning and Systems",
+    "shortform": "MLSys",
+    "aliases": [
+      "Conference on Machine Learning and Systems",
+      "Proceedings of Machine Learning and Systems",
+      "Proceedings of the Conference on Machine Learning and Systems"
+    ]
+  },
+  {
+    "name": "Conference on Robot Learning",
+    "shortform": "CoRL",
+    "aliases": [
+      "Conference on Robot Learning",
+      "Proceedings of the Conference on Robot Learning"
+    ]
+  },
+  {
+    "name": "International Conference on Autonomous Agents and Multiagent Systems",
+    "shortform": "AAMAS",
+    "aliases": [
+      "International Conference on Autonomous Agents and Multiagent Systems",
+      "International Conference on Autonomous Agents and Multi-Agent Systems",
+      "Proceedings of the International Conference on Autonomous Agents and Multiagent Systems",
+      "Proceedings of the International Conference on Autonomous Agents and Multi-Agent Systems"
+    ]
+  },
+  {
+    "name": "European Conference on Artificial Intelligence",
+    "shortform": "ECAI",
+    "aliases": [
+      "European Conference on Artificial Intelligence",
+      "Proceedings of the European Conference on Artificial Intelligence"
+    ]
+  },
+  {
+    "name": "Pacific-Asia Conference on Knowledge Discovery and Data Mining",
+    "shortform": "PAKDD",
+    "aliases": [
+      "Pacific-Asia Conference on Knowledge Discovery and Data Mining",
+      "Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD)",
+      "Proceedings of the Pacific-Asia Conference on Knowledge Discovery and Data Mining"
+    ]
+  },
+  {
+    "name": "International Conference on Knowledge Discovery and Information Retrieval",
+    "shortform": "KDIR",
+    "aliases": [
+      "International Conference on Knowledge Discovery and Information Retrieval",
+      "Proceedings of the International Conference on Knowledge Discovery and Information Retrieval"
+    ]
+  },
+  {
+    "name": "IEEE International Conference on Big Data",
+    "shortform": "BigData",
+    "aliases": [
+      "IEEE International Conference on Big Data",
+      "IEEE Big Data",
+      "Proceedings of the IEEE International Conference on Big Data"
+    ]
+  }, 
+  {
+    "name": "Journal of Machine Learning Research",
+    "shortform": "JMLR",
+    "aliases": [
+      "Journal of Machine Learning Research",
+      "JMLR"
+    ]
+  },
+  {
+    "name": "Transactions on Machine Learning Research",
+    "shortform": "TMLR",
+    "aliases": [
+      "Transactions on Machine Learning Research",
+      "TMLR"
+    ]
+  },
+  {
+    "name": "Artificial Intelligence",
+    "shortform": "AIJ",
+    "aliases": [
+      "Artificial Intelligence",
+      "Artificial Intelligence Journal",
+      "AIJ"
+    ]
+  },
+  {
+    "name": "Journal of Artificial Intelligence Research",
+    "shortform": "JAIR",
+    "aliases": [
+      "Journal of Artificial Intelligence Research",
+      "JAIR"
+    ]
+  },
+  {
+    "name": "Machine Learning",
+    "shortform": "MLJ",
+    "aliases": [
+      "Machine Learning",
+      "Machine Learning Journal",
+      "MLJ"
+    ]
+  },
+  {
+    "name": "ACM Transactions on Probabilistic Machine Learning",
+    "shortform": "TOPML",
+    "aliases": [
+      "ACM Transactions on Probabilistic Machine Learning",
+      "ACM TOPML",
+      "TOPML"
+    ]
+  },
+  {
+    "name": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "shortform": "TPAMI",
+    "aliases": [
+      "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+      "IEEE TPAMI",
+      "TPAMI",
+      "IEEE Trans. Pattern Anal. Mach. Intell."
+    ]
+  },
+  {
+    "name": "International Journal of Computer Vision",
+    "shortform": "IJCV",
+    "aliases": [
+      "International Journal of Computer Vision",
+      "IJCV"
+    ]
+  },
+  {
+    "name": "IEEE Transactions on Neural Networks and Learning Systems",
+    "shortform": "TNNLS",
+    "aliases": [
+      "IEEE Transactions on Neural Networks and Learning Systems",
+      "IEEE TNNLS",
+      "TNNLS",
+      "IEEE Trans. Neural Netw. Learn. Syst."
+    ]
+  },
+  {
+    "name": "IEEE Transactions on Knowledge and Data Engineering",
+    "shortform": "TKDE",
+    "aliases": [
+      "IEEE Transactions on Knowledge and Data Engineering",
+      "IEEE TKDE",
+      "TKDE",
+      "IEEE Trans. Knowl. Data Eng."
+    ]
+  },
+  {
+    "name": "ACM Transactions on Knowledge Discovery from Data",
+    "shortform": "TKDD",
+    "aliases": [
+      "ACM Transactions on Knowledge Discovery from Data",
+      "ACM TKDD",
+      "TKDD"
+    ]
+  },
+  {
+    "name": "Data Mining and Knowledge Discovery",
+    "shortform": "DMKD",
+    "aliases": [
+      "Data Mining and Knowledge Discovery",
+      "DMKD"
+    ]
+  },
+  {
+    "name": "IEEE Transactions on Network Science and Engineering",
+    "shortform": "TNSE",
+    "aliases": [
+      "IEEE Transactions on Network Science and Engineering",
+      "IEEE TNSE",
+      "TNSE"
+    ]
+  },
+  {
+    "name": "IEEE Transactions on Computational Social Systems",
+    "shortform": "TCSS",
+    "aliases": [
+      "IEEE Transactions on Computational Social Systems",
+      "IEEE TCSS",
+      "TCSS"
+    ]
+  },
+  {
+    "name": "ACM Computing Surveys",
+    "shortform": "CSUR",
+    "aliases": [
+      "ACM Computing Surveys",
+      "ACM CSUR",
+      "CSUR"
+    ]
+  },
+  {
+    "name": "ACM Transactions on Interactive Intelligent Systems",
+    "shortform": "TiiS",
+    "aliases": [
+      "ACM Transactions on Interactive Intelligent Systems",
+      "ACM TiiS",
+      "TiiS"
+    ]
+  }
+]

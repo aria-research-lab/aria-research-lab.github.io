@@ -239,38 +239,83 @@
       {% endif %}
     </div>
 
-    <!-- Journal/Book title and date -->
+    <!-- Publication venue and metadata -->
     {% assign proceedings = 'inproceedings,incollection' | split: ',' %}
     {% assign thesis = 'thesis,mastersthesis,phdthesis' | split: ',' %}
-    {% if entry.type == 'article' %}
+    {% assign metadata_fields = site.publication_metadata.fields
+      | default: 'venue,volume,issue,article,pages,location,date'
+      | join: ','
+      | split: ','
+    %}
+    {% assign metadata_items = '' | split: '' %}
+    {% assign conference = null %}
+    {% if entry.booktitle %}
+      {% for conference_record in site.data.conference_shortforms %}
+        {% if conference_record.aliases contains entry.booktitle or entry.booktitle contains conference_record.name %}
+          {% assign conference = conference_record %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    {% if entry.journal %}
       {% capture entrytype %}<em>{{ entry.journal }}</em>{% endcapture %}
-    {% elsif proceedings contains entry.type %}
-      {% capture entrytype %}<em>In {{ entry.booktitle }}</em>{% endcapture %}
+    {% elsif entry.booktitle %}
+      {% if conference %}
+        {% capture entrytype %}<em>{{ conference.name }} ({{ conference.shortform }})</em>{% endcapture %}
+      {% else %}
+        {% capture entrytype %}<em>In {{ entry.booktitle }}</em>{% endcapture %}
+      {% endif %}
     {% elsif thesis contains entry.type %}
       {% capture entrytype %}<em>{{ entry.school }}</em>{% endcapture %}
     {% else %}
       {% capture entrytype %}{% endcapture %}
     {% endif %}
-    {% assign entrymonth = '' %}
-    {% if entry.month %}
-      {% capture entrymonth %}{{ " " }}{{ entry.month | capitalize }}{% endcapture %}
+    {% assign entrytype_text = entrytype | strip_html | strip %}
+    {% if site.publication_metadata.enabled != false %}
+      {% if metadata_fields contains 'venue' or metadata_fields contains 'journal' or metadata_fields contains 'booktitle' %}
+        {% if entrytype_text != '' %}
+          {% assign metadata_items = metadata_items | push: entrytype %}
+        {% endif %}
+      {% endif %}
     {% endif %}
-    {% assign entryyear = '' %}
-    {% if entry.year %}
-      {% capture entryyear %}{{ " " }}{{ entry.year }}{% endcapture %}
+    {% if site.publication_metadata.enabled != false and metadata_fields contains 'volume' and entry.volume %}
+      {% capture volume %}vol. {{ entry.volume }}{% endcapture %}
+      {% assign metadata_items = metadata_items | push: volume %}
     {% endif %}
-    {% if entry.location %}
-      {% capture entrytype %}{{ entrytype }}{{ ", " }}{{ entry.location }}{% endcapture %}
+    {% if site.publication_metadata.enabled != false and metadata_fields contains 'issue' and entry.number %}
+      {% capture issue %}no. {{ entry.number }}{% endcapture %}
+      {% assign metadata_items = metadata_items | push: issue %}
     {% endif -%}
+    {% if site.publication_metadata.enabled != false and metadata_fields contains 'article' %}
+      {% assign article_number = entry.articleno | default: entry['elocation-id'] %}
+      {% if article_number %}
+        {% capture article %}article {{ article_number }}{% endcapture %}
+        {% assign metadata_items = metadata_items | push: article %}
+      {% endif %}
+    {% endif %}
+    {% if site.publication_metadata.enabled != false and metadata_fields contains 'pages' and entry.pages %}
+      {% capture pages %}pp. {{ entry.pages }}{% endcapture %}
+      {% assign metadata_items = metadata_items | push: pages %}
+    {% endif %}
+    {% if site.publication_metadata.enabled != false and metadata_fields contains 'location' and entry.location %}
+      {% assign metadata_items = metadata_items | push: entry.location %}
+    {% endif %}
+    {% if site.publication_metadata.enabled != false and metadata_fields contains 'date' %}
+      {% capture date %}{% if site.publication_metadata.date_format != 'year' and entry.month %}{{ entry.month | capitalize }} {% endif %}{{ entry.year }}{% endcapture %}
+      {% assign date = date | strip %}
+      {% if date != '' %}
+        {% assign metadata_items = metadata_items | push: date %}
+      {% endif %}
+    {% endif %}
     {% if entry.additional_info %}
-      {% capture entrytype %}{{ entrytype }}{{ entry.additional_info | markdownify | remove: '<p>' | remove: '</p>' }}{% endcapture %}
+      {% capture additional_info %}{{ entry.additional_info | markdownify | remove: '<p>' | remove: '</p>' }}{% endcapture %}
+      {% assign metadata_items = metadata_items | push: additional_info %}
     {% endif %}
     {% capture hook_exists %}{% file_exists _includes/hook/bib.liquid %}{% endcapture %}
     {% if hook_exists == 'true' %}
       {% include hook/bib.liquid %}
     {% endif %}
-    {% assign entrytype_text = entrytype | strip_html | strip %}
-    {% capture periodical %}{{ entrytype }}{% if entrytype_text != "" and entryyear != "" %}, {% endif %}{{ entrymonth }}{{ entryyear }}{% endcapture %}
+    {% capture periodical %}{{ metadata_items | join: ' · ' }}{% endcapture %}
     <div class="periodical">
       {{ periodical | strip }}
     </div>
@@ -296,6 +341,40 @@
       {% endif %}
       {% if entry.hal %}
         <a href="https://hal.science/{{ entry.hal }}" class="btn btn-sm z-depth-0" role="button">HAL</a>
+      {% endif %}
+      {% if site.enable_bibtex_copy %}
+        <a
+          class="btn btn-sm z-depth-0"
+          role="button"
+          aria-label="Copy BibTeX citation for {{ entry.title | escape }}"
+          onclick="
+            var button = this;
+            var citation = button.nextElementSibling.value;
+            var setLabel = function(label) {
+              button.textContent = label;
+              window.setTimeout(function() { button.textContent = 'BibTeX'; }, 1600);
+            };
+            var fallbackCopy = function() {
+              var temporary = document.createElement('textarea');
+              temporary.value = citation;
+              temporary.style.position = 'fixed';
+              temporary.style.opacity = '0';
+              document.body.appendChild(temporary);
+              temporary.select();
+              var copied = document.execCommand('copy');
+              document.body.removeChild(temporary);
+              setLabel(copied ? 'Copied' : 'Copy failed');
+            };
+            if (navigator.clipboard && window.isSecureContext) {
+              navigator.clipboard.writeText(citation).then(function() { setLabel('Copied'); }).catch(fallbackCopy);
+            } else {
+              fallbackCopy();
+            }
+          "
+        >
+          BibTeX
+        </a>
+        <textarea hidden aria-hidden="true" tabindex="-1">{{- entry.bibtex | hideCustomBibtex -}}</textarea>
       {% endif %}
       {% if entry.bibtex_show %}
         <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
@@ -331,6 +410,9 @@
       {% endif %}
       {% if entry.code %}
         <a href="{{ entry.code }}" class="btn btn-sm z-depth-0" role="button">Code</a>
+      {% endif %}
+      {% if entry.library %}
+        <a href="{{ entry.library }}" class="btn btn-sm z-depth-0" role="button">Library</a>
       {% endif %}
       {% if entry.poster %}
         {% if entry.poster contains '://' %}

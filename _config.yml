@@ -385,6 +385,7 @@ filtered_bibtex_keywords:
     abbr,
     abstract,
     additional_info,
+    academic_year,
     altmetric,
     annotation,
     arxiv,
@@ -392,7 +393,7 @@ filtered_bibtex_keywords:
     award_name,
     bibtex_show,
     blog,
-    code,
+    certificate,
     dimensions,
     eprint,
     google_scholar_id,
@@ -403,9 +404,13 @@ filtered_bibtex_keywords:
     pmid,
     poster,
     preview,
+    role,
     selected,
+    selected_group,
+    status,
     slides,
     supp,
+    type,
     video,
     website,
   ]
@@ -416,6 +421,16 @@ more_authors_animation_delay: 10 # more authors are revealed on click using anim
 
 # Enables publication thumbnails. If disabled, none of the publications will display thumbnails, even if specified in the bib entry.
 enable_publication_thumbnails: true
+
+# Adds a BibTeX button that copies a citation without site-only BibTeX fields.
+enable_bibtex_copy: true
+
+# Controls the publication details shown below each title and author list. Fields
+# are displayed only when they are present in the corresponding BibTeX entry.
+publication_metadata:
+  enabled: true
+  fields: [venue, date]
+  date_format: year
 
 # -----------------------------------------------------------------------------
 # Jekyll Link Attributes

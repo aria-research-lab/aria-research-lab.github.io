@@ -7,9 +7,17 @@ CONFIG_FILE=_config.yml
 DOCKER_DESTINATION=/tmp/_site
 
 # Function to manage Gemfile.lock
+git_metadata_available() {
+    if [ -f .git ]; then
+        git_dir=$(sed -n 's/^gitdir: //p' .git)
+        [ -n "$git_dir" ] || return 1
+        [ -e "$git_dir" ] || [ -e "$(pwd)/$git_dir" ] || return 1
+    fi
+}
+
 manage_gemfile_lock() {
-    git config --global --add safe.directory /srv/jekyll
-    if command -v git &> /dev/null && [ -f Gemfile.lock ]; then
+    if command -v git &> /dev/null && [ -f Gemfile.lock ] && git_metadata_available; then
+        git config --global --add safe.directory /srv/jekyll
         if git ls-files --error-unmatch Gemfile.lock &> /dev/null; then
             echo "Gemfile.lock is tracked by git, keeping it intact"
             git restore Gemfile.lock 2>/dev/null || true
@@ -17,6 +25,8 @@ manage_gemfile_lock() {
             echo "Gemfile.lock is not tracked by git, removing it"
             rm Gemfile.lock
         fi
+    elif [ -f Gemfile.lock ]; then
+        echo "Git metadata is unavailable, keeping Gemfile.lock intact"
     fi
 }
 
