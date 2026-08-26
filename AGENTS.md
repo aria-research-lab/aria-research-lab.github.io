@@ -20,6 +20,7 @@ Find your change on the left; edit only what is on the right.
 | Feature behavior (search, math, charts, comments, cookies, icons, CV, distill, analytics, images, newsletter, citations) | that feature's gem — see [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md)                                           |
 | Component/unit test for gem-owned behavior                                                                               | the owning gem, not here                                                                                      |
 | A feature with no existing owner                                                                                         | open a plugin proposal issue first, then a standalone plugin repo                                             |
+| An academic fact behind `_data/recruiting.yml` or a post-PhD entry in `_bibliography/papers.bib` | **not here** — see "Academic Data Sync" below                                                                 |
 
 [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md) is the authoritative area-to-gem table. [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) explains how the pieces connect.
 
@@ -80,6 +81,15 @@ All seven `test/integration_*.sh` scripts are gated by `unit-tests.yml`; run the
 - Keep docs aligned with v1 ownership, and keep each fact in one place — link rather than restate.
 - If you create or keep local overrides of plugin-owned files, run `bundle exec al-folio upgrade overrides audit` and commit `.al-folio-overrides.yml` after review.
 
+## Academic Data Sync (site-specific addendum)
+
+This checkout is also a Git submodule of `arya-academic-hub-website-cv`, a separate coordination repo that centralizes Shivvrat Arya's academic facts (publications, recruiting, profile, etc.) in a sibling submodule, `arya-academic-data`, and generates two files in this repo from it:
+
+- `_data/recruiting.yml` — fully generated. Do not hand-edit; it is overwritten by every `sync --write` run from the hub.
+- `_bibliography/papers.bib` — sync only **adds** missing post-PhD publication entries here (prepended at the top) from `arya-academic-data/publications.bib`; it never edits, reorders, or enriches an entry that already exists here by BibTeX key. After sync adds a new entry, add this site's display-only fields (`preview`, `pdf`, `selected`, award flags, etc.) directly in this file — those are never touched by sync.
+
+Everything else on this site (`_pages/about.md`, `_pages/profiles.md`, `_projects/*.md`, `_data/socials.yml`, `_config.yml`'s lab-identity fields) is hand-written and not part of this sync — see `arya-academic-data/docs/manual-updates-lab-site.md` for the complete list, including which theme `_data/*.yml` files are inactive template placeholders vs. real content. To add or change an academic fact, edit `arya-academic-data` (see its `AGENTS.md`) and run the hub's sync, not this repo directly.
+
 ## Further reading
 
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — how the starter and gems fit together, silent failure modes, the v1 config contract, local overrides.
@@ -89,3 +99,4 @@ All seven `test/integration_*.sh` scripts are gated by `unit-tests.yml`; run the
 - `.agents/skills/al-folio-bootstrap/SKILL.md` — new-site setup workflow.
 - `.agents/skills/al-folio-v1-migration/SKILL.md` — customized-fork migration and override drift auditing.
 - `.codex/skills` and `.claude/skills` are symlinks to `.agents/skills` for agent-specific discovery.
+- `../arya-academic-hub-website-cv/AGENTS.md` — the outer coordination hub's entry point, if this checkout is nested inside it.
