@@ -10,6 +10,8 @@ nav_order: 1
 
 The **Algorithms and Architectures for Reasoning and Intelligent Automation (ARIA) Lab** advances **interpretable, reliable, and intelligent AI systems** through two tightly connected research directions. The first centers on **probabilistic reasoning, neurosymbolic AI, and explainable AI**, enabling transparent and structured decision making in domains such as computer vision and natural language processing. The second focuses on **combinatorial and constrained optimization**, emphasizing learning-based and neural approaches that power scalable reasoning and intelligent automation. Our work integrates structured domain knowledge with data-driven learning, producing methods that span graph-based inference, symbolic reasoning, neural solvers for optimization, and human-guided vision-language AI, with applications in video understanding, activity recognition, human–computer interaction, computational biology, and multimodal reasoning.
 
+We welcome collaborations with academic and industry researchers on projects related to the research areas listed below. If you are interested in exploring potential collaborations, please contact Dr. Arya.
+
 ## Research directions
 
 - **Inference in neurosymbolic models**
