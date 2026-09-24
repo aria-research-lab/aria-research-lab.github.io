@@ -17,8 +17,8 @@ The **Algorithms and Architectures for Reasoning and Intelligent Automation (ARI
 ## Research directions
 
 - **Inference in neurosymbolic models**
-  - [Neural network-based probabilistic inference](#neural-network-based-probabilistic-inference)
-  - [Neural network-based heuristics for probabilistic inference](#neural-network-based-heuristics-for-probabilistic-inference)
+  - [NeSy: Neural Approximation of Probabilistic Inference](#nesy-neural-approximation-of-probabilistic-inference)
+  - [NeSy: Neural-augmented classical probabilistic inference](#nesy-neural-augmented-classical-probabilistic-inference)
   - [Optimization-based probabilistic inference schemes](#optimization-based-probabilistic-inference-schemes)
 - **[Neural network-based solvers for combinatorial optimization](#neural-network-based-solvers-for-combinatorial-optimization)**
 - **[Video understanding and activity recognition](#video-understanding-and-activity-recognition)**
@@ -32,7 +32,7 @@ The **Algorithms and Architectures for Reasoning and Intelligent Automation (ARI
 
 We build **neural inference engines** that plug into neurosymbolic models and answer hard queries like MPE, constrained MPE, and marginal MAP in (near) real time. The common thread is to **treat the probabilistic model as the teacher**, train neural approximators or neural network-based heuristics using self-supervision or distillation, and get near-optimal outputs in (near) real time.
 
-#### Neural network-based approaches for constrained and unconstrained probabilistic inference
+#### NeSy: Neural Approximation of Probabilistic Inference
 
 <figure class="figure">
   <img src="/assets/img/publication_preview/nn_pipeline.png"
@@ -51,7 +51,7 @@ We design neural architectures that approximate probabilistic inference tasks di
 - **Learning to Solve the Constrained Most Probable Explanation Task in Probabilistic Graphical Models** ([AISTATS 2024](https://proceedings.mlr.press/v238/arya24b.html))
   - Introduces a self-supervised framework for constrained MPE (CMPE) where feasibility and optimality are enforced through carefully designed loss functions.
 
-#### Neural network-based heuristics for probabilistic inference
+#### NeSy: Neural-Augmented Classical Probabilistic Inference
 
 Here we learn **heuristic policies** that steer classical search-based inference algorithms, rather than directly predicting solutions.
 
@@ -62,7 +62,7 @@ Here we learn **heuristic policies** that steer classical search-based inference
 </figure>
 
 - **Neural Dual Bounds: Valid-by-Construction JGLP Warm-Starts for MAP and Constrained MAP** ([NeurIPS 2026 Spotlight](https://openreview.net/forum?id=fdwZvjybdN))
-  - Develops a learning-based framework that predicts valid-by-construction dual bounds to warm-start Join Graph Linear Programming (JGLP) for MAP and constrained MAP inference in probabilistic graphical models. By guaranteeing dual validity through architectural construction and accelerating solver convergence, the method substantially reduces optimization time while providing rigorous bounding certificates for complex reasoning queries.
+  - Develops a learning-based framework that predicts valid-by-construction dual bounds to warm-start Join Graph Linear Programming (JGLP) for MAP and constrained MAP inference in probabilistic graphical models. By guaranteeing bound validity through architectural construction and accelerating solver convergence, the method substantially reduces optimization time while providing rigorous bounding certificates for complex reasoning queries.
 
 - **Learning to Condition: A Neural Heuristic for Scalable MPE Inference** ([NeurIPS 2025](https://openreview.net/forum?id=otIdC4tsYf))
   - Introduces a scalable, data-driven framework for MPE inference that learns a neural conditioning policy from solver search traces, usable both as a conditioning strategy prior to exact inference and as a branching and node selection heuristic within branch-and-bound, significantly reducing the search space while maintaining or improving solution quality.
