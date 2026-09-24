@@ -87,8 +87,10 @@ This checkout is also a Git submodule of `arya-academic-hub-website-cv`, a separ
 
 - `_data/recruiting.yml` — fully generated. Do not hand-edit; it is overwritten by every `sync --write` run from the hub.
 - `_bibliography/papers.bib` — sync only **adds** missing post-PhD publication entries here (prepended at the top) from `arya-academic-data/20-research/bibliography/publications.bib`; it never edits, reorders, or enriches an entry that already exists here by BibTeX key. After sync adds a new entry, add this site's display-only fields (`preview`, `pdf`, `selected`, award flags, etc.) directly in this file — those are never touched by sync.
+- `_pages/research.md` — whenever a new paper is added, **always update this page** to include the paper under its corresponding research section (or add a new section if it represents a new research direction). In tandem, ensure the personal website's research page (`shivvrat.github.io/_pages/research.md`) is updated.
+- News announcements for newly accepted papers and awards must be added to `_news/announcement_<n>.md` (as well as `shivvrat.github.io/_data/news.yml`).
 
-Everything else on this site (`_pages/about.md`, `_pages/profiles.md`, `_projects/*.md`, `_data/socials.yml`, `_config.yml`'s lab-identity fields) is hand-written and not part of this sync — see `arya-academic-data/docs/manual-updates-lab-site.md` for the complete list, including which theme `_data/*.yml` files are inactive template placeholders vs. real content. To add or change an academic fact, edit `arya-academic-data` (see its `AGENTS.md`) and run the hub's sync, not this repo directly.
+Everything else on this site (`_pages/about.md`, `_pages/profiles.md`, `_projects/*.md`, `_data/socials.yml`, `_config.yml`'s lab-identity fields) is hand-written and not part of this sync — see `arya-academic-data/docs/manual-updates-lab-site.md` for the complete list, including which theme `_data/*.yml` files are inactive template placeholders vs. real content. When adding new content or data, always adhere strictly to the practices, structure, and style of existing records and pages. To add or change an academic fact, edit `arya-academic-data` (see its `AGENTS.md`) and run the hub's sync, not this repo directly.
 
 ## Further reading
 

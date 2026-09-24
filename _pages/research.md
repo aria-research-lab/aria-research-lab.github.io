@@ -61,6 +61,9 @@ Here we learn **heuristic policies** that steer classical search-based inference
        alt="Learning to Condition (L2C) heuristic architecture">
 </figure>
 
+- **Neural Dual Bounds: Valid-by-Construction JGLP Warm-Starts for MAP and Constrained MAP** ([NeurIPS 2026 Spotlight](https://openreview.net/forum?id=fdwZvjybdN))
+  - Develops a learning-based framework that predicts valid-by-construction dual bounds to warm-start Join Graph Linear Programming (JGLP) for MAP and constrained MAP inference in probabilistic graphical models. By guaranteeing dual validity through architectural construction and accelerating solver convergence, the method substantially reduces optimization time while providing rigorous bounding certificates for complex reasoning queries.
+
 - **Learning to Condition: A Neural Heuristic for Scalable MPE Inference** ([NeurIPS 2025](https://openreview.net/forum?id=otIdC4tsYf))
   - Introduces a scalable, data-driven framework for MPE inference that learns a neural conditioning policy from solver search traces, usable both as a conditioning strategy prior to exact inference and as a branching and node selection heuristic within branch-and-bound, significantly reducing the search space while maintaining or improving solution quality.
 
