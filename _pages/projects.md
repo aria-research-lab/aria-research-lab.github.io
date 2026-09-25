@@ -70,18 +70,4 @@ horizontal: false
   </div>
   {% endif %}
 {% endif %}
-
-{% if site.data.repositories.github_repos %}
-
-  <hr>
-  <a id="github-repositories" href=".#github-repositories">
-    <h2 class="category">GitHub Repositories</h2>
-  </a>
-
-  <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-    {% for repo in site.data.repositories.github_repos %}
-      {% include repository/repo.liquid repository=repo %}
-    {% endfor %}
-  </div>
-{% endif %}
 </div>
