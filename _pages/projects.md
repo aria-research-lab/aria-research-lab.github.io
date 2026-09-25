@@ -2,8 +2,8 @@
 layout: page
 title: open-source projects
 permalink: /projects/
-description: Research projects from the ARIA Research Lab at NJIT, including NeuPI, CaptainCook4D, neural probabilistic inference, structured AI, and human-AI interaction.
-keywords: ARIA Lab projects, NJIT AI projects, Shivvrat Arya, NeuPI, CaptainCook4D, neural probabilistic inference, structured AI
+description: Open-source research projects and repositories from the ARIA Research Lab at NJIT, including NeuPI, CaptainCook4D, Learning to Condition, CoLa-VAE, and neural optimization.
+keywords: ARIA Lab projects, NJIT AI projects, Shivvrat Arya, NeuPI, CaptainCook4D, Learning to Condition, CoLa-VAE, neural combinatorial optimization, structured AI
 nav: true
 nav_order: 4
 display_categories: [datasets, libraries, research]
@@ -69,5 +69,19 @@ horizontal: false
     {% endfor %}
   </div>
   {% endif %}
+{% endif %}
+
+{% if site.data.repositories.github_repos %}
+
+  <hr>
+  <a id="github-repositories" href=".#github-repositories">
+    <h2 class="category">GitHub Repositories</h2>
+  </a>
+
+  <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
+    {% for repo in site.data.repositories.github_repos %}
+      {% include repository/repo.liquid repository=repo %}
+    {% endfor %}
+  </div>
 {% endif %}
 </div>
