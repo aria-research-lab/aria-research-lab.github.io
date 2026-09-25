@@ -57,7 +57,7 @@ The project aims to build neural solvers that learn search strategies, constrain
 **Essential:**
 
 - Strong background in algorithms and optimization
-- Proficiency in Python and deep learning frameworks (PyTorch, Jax)
+- Proficiency in Python and deep learning frameworks (PyTorch, JAX)
 - Understanding of graph algorithms, dynamic programming, and complexity theory
 - Experience with reproducible research practices
 - Experience with classical optimization (integer programming, constraint programming)
@@ -83,7 +83,7 @@ The project aims to build neural solvers that learn search strategies, constrain
 
 Please submit your details using the <a href="https://forms.gle/SYb5HQeXQB3ogedo9" target="_blank">Google Form</a>.
 
-> **Note**: Choose "Neural Combinatorial and Constrained Optimization" for the question "Which of the following match your research interests?" in the google form.
+> **Note**: Choose "Neural Combinatorial and Constrained Optimization" for the question "Which of the following match your research interests?" in the Google Form.
 
 Selected students may be invited for a brief meeting to discuss fit and potential directions.
 

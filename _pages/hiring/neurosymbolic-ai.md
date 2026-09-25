@@ -11,7 +11,7 @@ seo:
 ---
 
 <div class="alert alert-info">
-This position is open to <strong>Ph.D., MS, and Undergraduate students</strong>. Choose "Neurosymbolic AI" for the question "Which of the following match your research interests?" in the Google Form. Each team will be lead by a Ph.D. student.
+This position is open to <strong>Ph.D., MS, and undergraduate students</strong>. Choose "Neurosymbolic AI" for the question "Which of the following match your research interests?" in the Google Form. Each team will be led by a Ph.D. student.
 </div>
 
 ---
@@ -20,7 +20,7 @@ This position is open to <strong>Ph.D., MS, and Undergraduate students</strong>.
 
 ### Project Overview
 
-We are seeking motivated researchers (Ph.D., MS, and Undergraduates) to join our lab and work on cutting-edge research in **Neurosymbolic AI**, integrating symbolic structure with deep learning to create transparent and interpretable AI systems.
+We are seeking motivated researchers (Ph.D., MS, and undergraduate students) to join our lab and work on cutting-edge research in **Neurosymbolic AI**, integrating symbolic structure with deep learning to create transparent and interpretable AI systems.
 
 This position focuses on bridging the gap between neural learning and symbolic reasoning, enabling AI systems that are both powerful and explainable.
 
@@ -94,7 +94,7 @@ This position focuses on bridging the gap between neural learning and symbolic r
 
 Please submit your details using the <a href="https://forms.gle/SYb5HQeXQB3ogedo9" target="_blank">Google Form</a>.
 
-> **Note**: Choose "Neurosymbolic AI" for the question "Which of the following match your research interests?" in the google form.
+> **Note**: Choose "Neurosymbolic AI" for the question "Which of the following match your research interests?" in the Google Form.
 
 Selected students may be invited for a brief meeting to discuss fit and potential directions.
 

@@ -3,8 +3,8 @@ layout: about
 title: ARIA Lab
 permalink: /
 subtitle: Welcome to the Algorithms and Architectures for Reasoning and Intelligent Automation Lab
-description: ARIA Research Lab at NJIT, directed by Dr. Shivvrat Arya, studies trustworthy, structured, and efficient AI, including neurosymbolic AI, probabilistic reasoning, neural combinatorial optimization, computer vision, video understanding, and human-AI interaction.
-keywords: ARIA Research Lab, ARIA Lab NJIT, Shivvrat Arya, Dr. Shivvrat Arya, NJIT AI lab, NJIT machine learning lab, neurosymbolic AI, probabilistic reasoning, neural combinatorial optimization, trustworthy AI
+description: ARIA Research Lab at NJIT, directed by Dr. Shivvrat Arya, studies trustworthy, structured, and efficient AI, including neuro-symbolic reasoning, probabilistic inference, neural combinatorial optimization, structured and multimodal intelligence, and AI for scientific discovery.
+keywords: ARIA Research Lab, ARIA Lab NJIT, Shivvrat Arya, Dr. Shivvrat Arya, NJIT AI lab, NJIT machine learning lab, neuro-symbolic reasoning, probabilistic inference, neural combinatorial optimization, structured multimodal intelligence, AI for scientific discovery, trustworthy AI
 
 # profile:
 #   align: right
@@ -37,24 +37,21 @@ latest_posts:
 
 <!-- ## Welcome to the Algorithms and Architectures for Reasoning and Intelligent Automation Lab -->
 
-The ARIA Research Lab in the Department of Computer Science at the Ying Wu College of Computing, New Jersey Institute of Technology (NJIT), led by [Dr. Shivvrat Arya](https://shivvrat.github.io/), develops methods for **trustworthy**, **structured**, and **efficient artificial intelligence**, integrating **learning, reasoning, and optimization** to build AI systems that are interpretable, reliable, and scalable. Our research focuses on foundational advances in **neurosymbolic AI**, **probabilistic reasoning**, and **neural combinatorial optimization**, with applications in **computer vision**, **video understanding**, and **human–AI interaction**, including **reasoning with large language models**.
+The ARIA Research Lab in the Department of Computer Science at the Ying Wu College of Computing, New Jersey Institute of Technology (NJIT), led by [Dr. Shivvrat Arya](https://shivvrat.github.io/), develops methods for **trustworthy**, **structured**, and **efficient artificial intelligence**, integrating **learning, reasoning, and optimization** to build AI systems that are interpretable, reliable, and scalable. Our research focuses on foundational advances in **neuro-symbolic reasoning and probabilistic inference** and **neural combinatorial optimization**, alongside applications in **structured and multimodal intelligence** and **AI for scientific discovery**.
 
 ## Research Directions
 
-- **Neurosymbolic and Explainable AI**
-  We study AI systems that combine neural networks with symbolic logic and probabilistic modeling to encode structure, constraints, prior knowledge, and uncertainty, enabling transparent, controllable reasoning at scale.
+- **[Neuro-Symbolic Reasoning and Probabilistic Inference](/research/#neuro-symbolic-reasoning-and-probabilistic-inference)**
+  We combine neural networks with symbolic structure, classical algorithms, and mathematical optimization to develop fast, reliable, and scalable methods for probabilistic inference and reasoning under uncertainty.
 
-- **Probabilistic Modeling and Inference**
-  We develop tractable and approximate inference methods for generative models, including neural inference engines capable of answering complex queries efficiently in large-scale settings.
+- **[Neural Combinatorial Optimization](/research/#neural-combinatorial-optimization)**
+  We design learning-based solvers—integrating deep reinforcement learning, representation learning, and classical optimization—to tackle large-scale discrete and graph-structured decision-making problems under complex constraints.
 
-- **Neural Combinatorial and Constrained Optimization**
-  We design learning-based solvers for large-scale discrete and constrained optimization problems, bridging classical combinatorial optimization with modern machine learning.
+- **[Structured and Multimodal Intelligence](/research/#structured-and-multimodal-intelligence)**
+  We integrate explicit temporal, procedural, and relational structure with human feedback to build reliable, interpretable models for procedural video understanding and vision-language reasoning.
 
-- **Graph Optimization and Structured Decision-Making**
-  A major focus is graph-structured optimization, using reinforcement learning and graph neural networks for social network analysis and graph-structured decision-making.
-
-- **Applications in Vision, Video, and Human–AI Interaction**
-  We apply our methods to real-world domains, including structured and neurosymbolic approaches for video and activity understanding, multimodal learning, augmented reality task guidance, and systems that support effective human–AI collaboration.
+- **[AI for Scientific Discovery](/research/#ai-for-scientific-discovery)**
+  We develop machine learning methods that incorporate domain knowledge, biological interactions, and scientific constraints into structured generative models, with an emphasis on computational biology and single-cell genomics.
 
 ---
 
@@ -62,7 +59,7 @@ The ARIA Research Lab in the Department of Computer Science at the Ying Wu Colle
 
 We are always looking for **curious, rigorous, and collaborative** students who are excited about building the next generation of **structured, explainable, and reliable AI systems**.
 
-- **[Ph.D. students](/hiring/)**: Opportunities to work on core problems in neurosymbolic AI, probabilistic inference, graph optimization, and structured deep learning.
+- **[Ph.D. students](/hiring/)**: Opportunities to work on core problems in neuro-symbolic reasoning, probabilistic inference, neural combinatorial optimization, and structured deep learning.
 - **[Undergraduate students](/hiring/undergraduate-ms-research)**: Opportunities to join active projects, learn how to conduct research, and build toward increasingly independent work through options such as CS 488 and CS 489.
 - **[M.S. students](/hiring/undergraduate-ms-research)**: Opportunities for deeper research through faculty-mentored projects or the CS 700B/CS 701B thesis pathway, subject to advisor availability.
 
@@ -72,14 +69,17 @@ If you are interested in joining the ARIA Research Lab, please review the <a hre
 
 ## Selected projects & highlights
 
-- **[NeuPI](https://neupi.readthedocs.io/en/latest/) – Neural Inference Engine**  
-  A neural engine for probabilistic inference that accelerates reasoning in graphical models from minutes to microseconds, enabling real-time decision-making in structured domains.
+- **[NeuPI](https://neupi.readthedocs.io/en/latest/) – Neural Probabilistic Inference**  
+  A neural engine for probabilistic graphical models and circuits that distills complex queries into neural network approximators, accelerating query answering from minutes to microseconds for real-time decision-making.
 
-- **[CaptainCook4D](https://captaincook4d.github.io/captain-cook/)**  
-  A large-scale egocentric 4D dataset for procedural task understanding, used to study how AI systems perceive and reason about long-horizon activities in realistic, cluttered environments.
+- **[Neural Dual Bounds](https://openreview.net/forum?id=fdwZvjybdN) & [Learning to Condition](https://github.com/brijml/L2C) – Neural-Augmented Classical Solvers**  
+  Learned heuristics and valid-by-construction dual bounds integrated directly into classical inference algorithms, accelerating solver convergence and shrinking search spaces while preserving theoretical guarantees.
 
-- **Explainable activity recognition & AR task guidance**  
-  Models that not only recognize what people are doing but also provide structured, interpretable explanations and real-time guidance in augmented reality for complex tasks.
+- **[RELINK](https://dl.acm.org/doi/10.1145/3746252.3761006) – Neural Combinatorial Optimization**  
+  Deep reinforcement learning policies for sequential discrete decisions over complex networks, tackling large-scale network optimization and influence maximization under privacy constraints.
 
-- **Award-winning work at top venues**  
-  Lab publications have received **best paper awards**, **spotlights**, and **oral presentations** at venues such as NeurIPS, AISTATS, AAAI, and UAI.
+- **[CaptainCook4D](https://captaincook4d.github.io/captain-cook/) – Procedural Activity Understanding**  
+  A large-scale egocentric 4D dataset and benchmark for procedural task understanding, studying how AI systems recognize multi-step workflows, detect procedural errors, and assist users in complex environments.
+
+- **[CoLa-VAE](https://github.com/Yeqing95/CoLa-VAE) – AI for Scientific Discovery**  
+  A cell-cell communication-aware variational autoencoder incorporating dynamic graph Laplacian constraints, advancing structured representation learning in single-cell genomics and computational biology.

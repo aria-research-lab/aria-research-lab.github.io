@@ -11,7 +11,7 @@ seo:
 ---
 
 <div class="alert alert-info">
-This position is open to <strong>undergraduate, MS, and Ph.D. students</strong>. Choose your corresponding research interest for the question "Which of the following match your research interests?" in the google form. Each team will be led by a Ph.D. student.
+This position is open to <strong>undergraduate, MS, and Ph.D. students</strong>. Choose your corresponding research interest for the question "Which of the following match your research interests?" in the Google Form. Each team will be led by a Ph.D. student.
 </div>
 
 ## Applications of Neurosymbolic Methods

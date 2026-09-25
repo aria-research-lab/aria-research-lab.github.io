@@ -11,7 +11,7 @@ seo:
 ---
 
 <div class="alert alert-info">
-This position is open to <strong>undergraduate and MS students</strong>. Choose "Deep Reinforcement Learning for Influence Maximization" for the question "Which of the following match your research interests?" in the google form.
+This position is open to <strong>undergraduate and MS students</strong>. Choose "Deep Reinforcement Learning for Influence Maximization" for the question "Which of the following match your research interests?" in the Google Form.
 </div>
 
 ## Deep Reinforcement Learning for Combinatorial Optimization on Graphs
@@ -125,7 +125,7 @@ You will have access to GPU resources, existing codebases for graph processing, 
 
 Please submit your details using the <a href="https://forms.gle/SYb5HQeXQB3ogedo9" target="_blank">Google Form</a>.
 
-> **Note**: Choose "Deep Reinforcement Learning for Influence Maximization" for the question "Which of the following match your research interests?" in the google form.
+> **Note**: Choose "Deep Reinforcement Learning for Influence Maximization" for the question "Which of the following match your research interests?" in the Google Form.
 
 Selected students may be invited for a brief meeting to discuss fit and potential directions.
 

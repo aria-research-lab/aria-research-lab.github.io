@@ -52,23 +52,23 @@ Research credit may be available when an appropriate project and supervision are
 
 See [undergraduate and M.S. research opportunities]({{ '/hiring/undergraduate-ms-research' | relative_url }}) for detailed course pathways and guidance on getting involved.
 
-|                   |                                                |
-| ----------------- | ---------------------------------------------- |
-| **University**    | NJIT (R1), Newark, NJ                          |
-| **Start date**    | {{ site.data.recruiting.start_terms_slash }}   |
-| **Ph.D. funding** | {{ site.data.recruiting.phd_funding_summary }} |
-| **MS/Undergrad**  | Research credit available                      |
+|                                 |                                                |
+| ------------------------------- | ---------------------------------------------- |
+| **University**                  | NJIT (R1), Newark, NJ                          |
+| **Start date**                  | {{ site.data.recruiting.start_terms_slash }}   |
+| **Ph.D. funding**               | {{ site.data.recruiting.phd_funding_summary }} |
+| **MS / Undergraduate students** | Research credit available                      |
 
 ---
 
 ## Open research projects
 
-| Project                                                              | Levels                    | Summary                                                                                    |
-| -------------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------ |
-| [**Neurosymbolic AI**](/hiring/neurosymbolic-ai)                     | Ph.D. lead, MS, undergrad | Integrate symbolic reasoning with deep learning for transparent, interpretable AI systems. |
-| [**Neural combinatorial optimization**](/hiring/neural-optimization) | Ph.D. lead, MS, undergrad | Build neural solvers for discrete and graph-structured optimization problems.              |
-| [**DRL for graph optimization**](/hiring/drl-graph-optimization)     | MS, undergrad             | Apply deep reinforcement learning to graph-based combinatorial optimization problems.      |
-| [**Applications of neurosymbolic methods**](/hiring/applications)    | All levels                | Apply neurosymbolic methods to vision, video understanding, and multimodal reasoning.      |
+| Project                                                              | Levels                                 | Summary                                                                                    |
+| -------------------------------------------------------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------ |
+| [**Neurosymbolic AI**](/hiring/neurosymbolic-ai)                     | Ph.D. lead, MS, undergraduate students | Integrate symbolic reasoning with deep learning for transparent, interpretable AI systems. |
+| [**Neural combinatorial optimization**](/hiring/neural-optimization) | Ph.D. lead, MS, undergraduate students | Build neural solvers for discrete and graph-structured optimization problems.              |
+| [**DRL for graph optimization**](/hiring/drl-graph-optimization)     | MS, undergraduate students             | Apply deep reinforcement learning to graph-based combinatorial optimization problems.      |
+| [**Applications of neurosymbolic methods**](/hiring/applications)    | All levels                             | Apply neurosymbolic methods to vision, video understanding, and multimodal reasoning.      |
 
 ## What you'll do
 
@@ -100,7 +100,7 @@ See [undergraduate and M.S. research opportunities]({{ '/hiring/undergraduate-ms
 
 ## Lab resources
 
-- **Funding**: Fully funded Ph.D. ({{ site.data.recruiting.phd_funding_type }}), research credit for MS/undergrad.
+- **Funding**: Fully funded Ph.D. ({{ site.data.recruiting.phd_funding_type }}), research credit for MS and undergraduate students.
 - **Compute**: University [Wulver GPU cluster](https://arcs-njit-edu.github.io/Docs/clusters/wulver/) + lab GPUs.
 - **Mentorship**: Direct guidance in developing rigorous research contributions, with the possibility of submissions to venues such as NeurIPS, ICML, ICLR, AAAI, KDD, and CIKM when results are ready.
 
@@ -108,9 +108,9 @@ See [undergraduate and M.S. research opportunities]({{ '/hiring/undergraduate-ms
 
 ## Why NJIT
 
-- Ranked **#72** in the U.S. for AI & Machine Learning (CSRankings).
-- Ranked **#80** Graduate School for Computer Science (U.S. News & World Report).
-- Ranked **#84** among National Universities and **#42** among Top Public Universities (U.S. News & World Report).
+- Ranked **#72** in the U.S. for AI & Machine Learning (CSRankings 2026).
+- Ranked **#80** Graduate School for Computer Science (U.S. News & World Report 2026).
+- Ranked **#84** among National Universities and **#42** among Top Public Universities (U.S. News & World Report 2026).
 - Located in Newark, NJ—part of the NYC metropolitan area, ~30 minutes from Manhattan with strong industry connections.
 
 ---
