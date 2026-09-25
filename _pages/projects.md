@@ -1,6 +1,6 @@
 ---
 layout: page
-title: projects
+title: open-source projects
 permalink: /projects/
 description: Research projects from the ARIA Research Lab at NJIT, including NeuPI, CaptainCook4D, neural probabilistic inference, structured AI, and human-AI interaction.
 keywords: ARIA Lab projects, NJIT AI projects, Shivvrat Arya, NeuPI, CaptainCook4D, neural probabilistic inference, structured AI
