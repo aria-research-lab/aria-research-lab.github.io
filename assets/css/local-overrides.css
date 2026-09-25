@@ -31,3 +31,122 @@
 .af-tooltip {
   position: fixed !important;
 }
+
+/*
+  Award & Spotlight Publications Highlighting
+  Highlights papers that received awards or honors (Spotlight, Oral, Best Paper)
+  with a distinguished gold/amber accent border, subtle warm background tint,
+  and elevated card styling to clearly differentiate against other publications.
+*/
+.award-paper-highlight {
+  position: relative;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(245, 158, 11, 0.02) 100%);
+  border-left: 4px solid #f59e0b;
+  border-radius: 8px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 0.75rem;
+  padding-left: 0.5rem;
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-top: 0.75rem;
+  margin-bottom: 1.5rem !important;
+  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.08);
+  transition: all 0.2s ease-in-out;
+}
+
+.award-paper-highlight:hover {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(245, 158, 11, 0.04) 100%);
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.14);
+}
+
+/* Dark mode adjustment for award paper highlight */
+html[data-theme="dark"] .award-paper-highlight,
+html[data-theme-setting="dark"] .award-paper-highlight,
+body.dark .award-paper-highlight {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.14) 0%, rgba(245, 158, 11, 0.03) 100%);
+  border-left-color: #fbbf24;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme="dark"] .award-paper-highlight:hover,
+html[data-theme-setting="dark"] .award-paper-highlight:hover,
+body.dark .award-paper-highlight:hover {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, rgba(245, 158, 11, 0.05) 100%);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+}
+
+/* Award & Recognition Badges */
+.award-announcement {
+  margin-top: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.award-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.015em;
+  color: #92400e;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 0 1px 3px rgba(245, 158, 11, 0.1);
+  transition: all 0.2s ease;
+}
+
+.award-badge:hover {
+  background: rgba(245, 158, 11, 0.22);
+  border-color: rgba(245, 158, 11, 0.5);
+  transform: translateY(-1px);
+}
+
+.award-badge .award-icon {
+  color: #d97706;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+/* Dark mode adjustment for badge */
+html[data-theme="dark"] .award-badge,
+html[data-theme-setting="dark"] .award-badge,
+body.dark .award-badge {
+  color: #fef3c7;
+  background: rgba(245, 158, 11, 0.22);
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="dark"] .award-badge:hover,
+html[data-theme-setting="dark"] .award-badge:hover,
+body.dark .award-badge:hover {
+  background: rgba(245, 158, 11, 0.3);
+  border-color: rgba(245, 158, 11, 0.6);
+}
+
+html[data-theme="dark"] .award-badge .award-icon,
+html[data-theme-setting="dark"] .award-badge .award-icon,
+body.dark .award-badge .award-icon {
+  color: #fbbf24;
+}
+
+/* Certificate button highlight */
+.links a.btn[href*="certificate"] {
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.links a.btn[href*="certificate"]:hover {
+  color: #d97706 !important;
+  border-color: #d97706 !important;
+}
+
+html[data-theme="dark"] .links a.btn[href*="certificate"]:hover,
+html[data-theme-setting="dark"] .links a.btn[href*="certificate"]:hover,
+body.dark .links a.btn[href*="certificate"]:hover {
+  color: #fbbf24 !important;
+  border-color: #fbbf24 !important;
+}
