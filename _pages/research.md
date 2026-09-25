@@ -80,7 +80,7 @@ Neural augmentation preserves the structure of classical inference algorithms wh
 - **Neural Dual Bounds: Valid-by-Construction JGLP Warm-Starts for MAP and Constrained MAP** ([NeurIPS 2026 Spotlight](https://openreview.net/forum?id=fdwZvjybdN))
   - Predicts valid-by-construction dual bounds to warm-start Join Graph Linear Programming (JGLP) for MAP and constrained MAP inference in graphical models, guaranteeing bound validity architecturally while accelerating solver convergence and providing rigorous bounding certificates.
 
-- **Learning to Condition: A Neural Heuristic for Scalable MPE Inference** ([NeurIPS 2025](https://openreview.net/forum?id=otIdC4tsYf))
+- **Learning to Condition: A Neural Heuristic for Scalable MPE Inference** ([NeurIPS 2025](https://openreview.net/forum?id=otIdC4tsYf); [Code](https://github.com/brijml/L2C))
   - Learns a neural conditioning policy from solver search traces that serves both as a variable-conditioning strategy before exact inference and as a branching and node-selection heuristic within branch-and-bound, substantially reducing search spaces while maintaining solution quality.
 
 - **BEACON: Learning to Guide Local Search for MPE Inference in Probabilistic Graphical Models** ([ArXiv](https://arxiv.org/abs/2602.01475))
@@ -179,5 +179,5 @@ We develop machine learning methods that incorporate scientific structure, prior
 
 Our work in computational biology develops structured representation-learning methods for complex biological systems, with a current emphasis on single-cell genomics and transcriptomics. We incorporate biological knowledge, including molecular interactions and cell-cell communication structure, directly into deep generative models to learn representations that better reflect cellular organization, heterogeneity, and intercellular relationships.
 
-- **CoLa-VAE: Cell-Cell Communication-aware Variational Autoencoder with Dynamic Graph Laplacian Constraints** ([bioRxiv 2026](https://doi.org/10.64898/2026.03.28.715052))
+- **CoLa-VAE: Cell-Cell Communication-aware Variational Autoencoder with Dynamic Graph Laplacian Constraints** ([bioRxiv 2026](https://doi.org/10.64898/2026.03.28.715052); [Code](https://github.com/Yeqing95/CoLa-VAE))
   - Integrates cell-cell communication structure into a variational autoencoder through dynamic graph Laplacian regularization derived from ligand-receptor interactions, improving learned representations of single-cell transcriptomic data.
