@@ -1,6 +1,6 @@
 ---
 ---
-<div class="row">
+<div class="row{% if entry.annotation or entry.award %} award-paper-highlight{% endif %}">
   {% if site.enable_publication_thumbnails %}
     <div class="col col-sm-2 abbr">
       {%- if entry.abbr -%}
@@ -65,6 +65,31 @@
   <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
     <!-- Title -->
     <div class="title">{{ entry.title }}</div>
+    {% if entry.annotation %}
+      <div class="award-announcement">
+        <span class="award-badge">
+          {% if entry.annotation contains 'Best' or entry.annotation contains 'Award' or entry.annotation contains 'award' %}
+            <i class="fa-solid fa-trophy award-icon" aria-hidden="true"></i>
+          {% elsif entry.annotation contains 'Spotlight' or entry.annotation contains 'spotlight' %}
+            <i class="fa-solid fa-star award-icon" aria-hidden="true"></i>
+          {% elsif entry.annotation contains 'Oral' or entry.annotation contains 'oral' %}
+            <i class="fa-solid fa-bullhorn award-icon" aria-hidden="true"></i>
+          {% else %}
+            <i class="fa-solid fa-award award-icon" aria-hidden="true"></i>
+          {% endif %}
+          <span class="award-text">{{ entry.annotation }}</span>
+        </span>
+      </div>
+    {% elsif entry.award %}
+      <div class="award-announcement">
+        <span class="award-badge">
+          <i class="fa-solid fa-trophy award-icon" aria-hidden="true"></i>
+          <span class="award-text">
+            {%- if entry.award_name %}{{ entry.award_name }}{% else %}{{ entry.award }}{% endif -%}
+          </span>
+        </span>
+      </div>
+    {% endif %}
     <!-- Author -->
     <div class="author">
       {% assign author_array_size = entry.author_array | size %}
@@ -226,16 +251,6 @@
         >
           {{- more_authors_hide -}}
         </span>
-      {% endif %}
-      {% if entry.annotation %}
-        <i
-          class="fa-solid fa-circle-info ml-1"
-          data-toggle="popover"
-          data-placement="top"
-          data-html="true"
-          data-content="{{ entry.annotation | escape }}"
-        >
-        </i>
       {% endif %}
     </div>
 
@@ -430,6 +445,15 @@
       {% endif %}
       {% if entry.website %}
         <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
+      {% endif %}
+      {% if entry.certificate %}
+        {% if entry.certificate contains '://' %}
+          <a href="{{ entry.certificate }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">Certificate</a>
+        {% else %}
+          <a href="{{ entry.certificate | relative_url }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer"
+            >Certificate</a
+          >
+        {% endif %}
       {% endif %}
     </div>
     {% if site.enable_publication_badges %}
