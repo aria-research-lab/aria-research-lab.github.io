@@ -16,9 +16,7 @@ This position is open to <strong>undergraduate, MS, and Ph.D. students</strong>.
 
 ---
 
-## Neural Combinatorial and Constrained Optimization
-
-### Project Overview
+## Project Overview
 
 We invite motivated undergraduate, MS, and Ph.D. researchers to join our lab's project on **Neural Combinatorial and Constrained Optimization**, focusing on learning-based approaches for discrete and NP-hard problems.
 
@@ -26,7 +24,7 @@ The project aims to build neural solvers that learn search strategies, constrain
 
 ---
 
-### Research Focus Areas
+## Research Focus Areas
 
 **1. Neural Architectures for Structured Optimization**
 
@@ -42,7 +40,7 @@ The project aims to build neural solvers that learn search strategies, constrain
 
 ---
 
-### What You'll Work On
+## What You'll Work On
 
 - Design neural architectures for optimization problems
 - Develop training algorithms that respect problem constraints
@@ -52,7 +50,7 @@ The project aims to build neural solvers that learn search strategies, constrain
 
 ---
 
-### What We're Looking For
+## What We're Looking For
 
 **Essential:**
 
@@ -70,7 +68,7 @@ The project aims to build neural solvers that learn search strategies, constrain
 
 ---
 
-### What You'll Gain
+## What You'll Gain
 
 - Deep expertise in neural optimization algorithms
 - Experience with state-of-the-art deep learning and optimization techniques
@@ -79,7 +77,7 @@ The project aims to build neural solvers that learn search strategies, constrain
 
 ---
 
-### How To Apply
+## How To Apply
 
 Please submit your details using the <a href="https://forms.gle/SYb5HQeXQB3ogedo9" target="_blank">Google Form</a>.
 

@@ -16,9 +16,7 @@ This position is open to <strong>Ph.D., MS, and undergraduate students</strong>.
 
 ---
 
-## Neurosymbolic AI
-
-### Project Overview
+## Project Overview
 
 We are seeking motivated researchers (Ph.D., MS, and undergraduate students) to join our lab and work on cutting-edge research in **Neurosymbolic AI**, integrating symbolic structure with deep learning to create transparent and interpretable AI systems.
 
@@ -26,7 +24,7 @@ This position focuses on bridging the gap between neural learning and symbolic r
 
 ---
 
-### Research Focus Areas
+## Research Focus Areas
 
 1. **Formal World Models and Neural Architectures**
    - Representing relational, temporal, and causal structure through formal world models grounded in logic or probabilistic semantics
@@ -51,7 +49,7 @@ This position focuses on bridging the gap between neural learning and symbolic r
 
 ---
 
-### What You'll Work On
+## What You'll Work On
 
 - Designing and implementing new neurosymbolic architectures that couple structured reasoning with high-capacity neural models
 
@@ -65,7 +63,7 @@ This position focuses on bridging the gap between neural learning and symbolic r
 
 ---
 
-### What We're Looking For
+## What We're Looking For
 
 **Essential**
 
@@ -82,7 +80,7 @@ This position focuses on bridging the gap between neural learning and symbolic r
 
 ---
 
-### What You'll Gain
+## What You'll Gain
 
 - Advanced expertise in neurosymbolic AI, interpretable machine learning, and formal reasoning methods
 - Hands-on experience with state-of-the-art deep learning, symbolic reasoning frameworks, and hybrid architectures
@@ -90,7 +88,7 @@ This position focuses on bridging the gap between neural learning and symbolic r
 
 ---
 
-### How To Apply
+## How To Apply
 
 Please submit your details using the <a href="https://forms.gle/SYb5HQeXQB3ogedo9" target="_blank">Google Form</a>.
 

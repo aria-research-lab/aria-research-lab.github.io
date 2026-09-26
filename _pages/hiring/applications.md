@@ -14,17 +14,15 @@ seo:
 This position is open to <strong>undergraduate, MS, and Ph.D. students</strong>. Choose your corresponding research interest for the question "Which of the following match your research interests?" in the Google Form. Each team will be led by a Ph.D. student.
 </div>
 
-## Applications of Neurosymbolic Methods
-
-### Project Overview
+## Project Overview
 
 In our lab, we explore how neurosymbolic methods, probabilistic inference, and learning-based optimization can be applied to real-world domains. You will work on combining neural perception with symbolic structure, uncertainty modeling, and interpretable reasoning to address applied problems in vision, human-AI interaction, healthcare, energy systems, and multimodal understanding.
 
 ---
 
-### Research Focus Areas
+## Research Focus Areas
 
-#### 1. **Computer Vision and Video Understanding**
+### 1. **Computer Vision and Video Understanding**
 
 **Focus**: Building models that understand visual environments, recognize human activities, and reason over temporal and relational structure in videos.
 
@@ -50,7 +48,7 @@ In our lab, we explore how neurosymbolic methods, probabilistic inference, and l
 
 ---
 
-#### 2. **Human-AI Interaction and Task Guidance**
+### 2. **Human-AI Interaction and Task Guidance**
 
 **Focus**: Developing systems that provide real-time assistance for physical and cognitive tasks through perception, prediction, and symbolic task knowledge.
 
@@ -75,7 +73,7 @@ In our lab, we explore how neurosymbolic methods, probabilistic inference, and l
 
 ---
 
-#### 3. **Medical and Healthcare Applications**
+### 3. **Medical and Healthcare Applications**
 
 **Focus**: Applying AI to clinical decision support, diagnostics, and health systems optimization.
 
@@ -102,7 +100,7 @@ In our lab, we explore how neurosymbolic methods, probabilistic inference, and l
 
 ---
 
-#### 4. **Energy Systems and Infrastructure**
+### 4. **Energy Systems and Infrastructure**
 
 **Focus**: Optimizing and forecasting behavior in large-scale infrastructure systems.
 
@@ -122,7 +120,7 @@ In our lab, we explore how neurosymbolic methods, probabilistic inference, and l
 
 ---
 
-#### 5. **Natural Language Processing and Reasoning**
+### 5. **Natural Language Processing and Reasoning**
 
 **Focus**: Developing systems that combine language, vision, and structured knowledge for reasoning and decision making.
 
@@ -149,7 +147,7 @@ In our lab, we explore how neurosymbolic methods, probabilistic inference, and l
 
 ---
 
-### How To Apply
+## How To Apply
 
 Please submit your details using the <a href="https://forms.gle/SYb5HQeXQB3ogedo9" target="_blank">Google Form</a>.
 
