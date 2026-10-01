@@ -122,7 +122,7 @@ We develop learning-based methods for solving large-scale combinatorial optimiza
 
 Our current work investigates neural combinatorial optimization for decision-making over complex networks, including problems in which solutions require sequentially selecting or modifying nodes, edges, or other discrete structures. These methods aim to amortize expensive optimization across problem instances by learning policies that capture reusable structural patterns while accommodating operational, privacy, and other application-specific constraints.
 
-- **RELINK: Edge Activation for Closed Network Influence Maximization via Deep Reinforcement Learning** ([CIKM 2025](https://dl.acm.org/doi/10.1145/3746252.3761006))
+- **RELINK: Edge Activation for Closed Network Influence Maximization via Deep Reinforcement Learning** ([CIKM 2025 Oral](https://dl.acm.org/doi/10.1145/3746252.3761006))
   - Formulates edge-level influence maximization in privacy-constrained closed networks as a Markov Decision Process and learns an edge-centric deep Q-learning policy for sequential edge activation, outperforming conventional edge-activation baselines.
 
 ---
