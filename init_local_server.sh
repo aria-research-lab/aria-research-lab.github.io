@@ -18,3 +18,5 @@ docker compose pull
 docker compose up
 
 # http://localhost:${LOCAL_PORT}
+# http://localhost:8080
+
