@@ -20,8 +20,8 @@ Find your change on the left; edit only what is on the right.
 | Feature behavior (search, math, charts, comments, cookies, icons, CV, distill, analytics, images, newsletter, citations) | that feature's gem — see [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md)                                           |
 | Component/unit test for gem-owned behavior                                                                               | the owning gem, not here                                                                                      |
 | A feature with no existing owner                                                                                         | open a plugin proposal issue first, then a standalone plugin repo                                             |
-| Open-source repository, software library, dataset card                                                                   | this repo: `_projects/<name>.md` and `_data/repositories.yml` (see below)                                     |
-| An academic fact behind `_data/recruiting.yml` or a post-PhD entry in `_bibliography/papers.bib`                         | **not here** — see "Academic Data Sync" below                                                                 |
+| Open-source repository, software library, dataset card                                                                   | this repo: `_projects/<name>.md` and `_data/repositories.yml`                                                |
+| Additional workspace-specific guidelines                                                                                 | See `../docs/submodules/lab-site.md` if available                                                             |
 
 [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md) is the authoritative area-to-gem table. [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) explains how the pieces connect.
 
@@ -82,18 +82,10 @@ All seven `test/integration_*.sh` scripts are gated by `unit-tests.yml`; run the
 - Keep docs aligned with v1 ownership, and keep each fact in one place — link rather than restate.
 - If you create or keep local overrides of plugin-owned files, run `bundle exec al-folio upgrade overrides audit` and commit `.al-folio-overrides.yml` after review.
 
-## Academic Data Sync (site-specific addendum)
+## Workspace Guidelines
 
-This checkout is also a Git submodule of `arya-academic-hub-website-cv`, a separate coordination repo that centralizes Shivvrat Arya's academic facts (publications, recruiting, profile, etc.) in a sibling submodule, `arya-academic-data`, and generates two files in this repo from it:
-
-- `_data/recruiting.yml` — fully generated. Do not hand-edit; it is overwritten by every `sync --write` run from the hub.
-- `_bibliography/papers.bib` — sync only **adds** missing post-PhD publication entries here (prepended at the top) from `arya-academic-data/20-research/bibliography/publications.bib`; it never edits, reorders, or enriches an entry that already exists here by BibTeX key. After sync adds a new entry, add this site's display-only fields (`preview`, `pdf`, `selected`, award flags, etc.) directly in this file — those are never touched by sync.
-- `_pages/research.md` — whenever a new paper is added, **always update this page** to include the paper under its corresponding research section (or add a new section if it represents a new research direction). In tandem, ensure the personal website's research page (`shivvrat.github.io/_pages/research.md`) is updated. **Image rule**: Each research section has only a single representative image/figure; do not add multiple images to a section. Only add an image from a paper if creating a brand new research section.
-- News announcements for newly accepted papers and awards must be added to `_news/announcement_<n>.md` (as well as `shivvrat.github.io/_data/news.yml`).
-- `_projects/*.md` (Open-Source Projects & Repositories): The public "open-source projects" page (`_pages/projects.md`) displays projects from `_projects/*.md` grouped by category (`datasets`, `libraries`, `research`). To add an open-source tool, library, dataset, or research codebase, create a dedicated project file in `_projects/<name>.md` (with `title`, `description`, `img`, `importance`, `category`, and links to the GitHub repo, paper, and BibTeX citation) and add the repository identifier to `_data/repositories.yml` under `github_repos`. **Do NOT add separate repository widgets or duplicate listings to `_pages/projects.md`**; all projects are unified in the categorized grid so they are never shown twice. In tandem, add `code = {<github-url>}` to `_bibliography/papers.bib` and `arya-academic-data/20-research/bibliography/publications.bib`, and add `[Code](...)` to `_pages/research.md`.
-- `_includes/research-interactive-demos/*.html` (Interactive Research Demos): Every interactive research demo, benchmark explorer, or simulation widget MUST be created in a dedicated include file under `_includes/research-interactive-demos/<name>.html` and included in `_pages/research.md` via `{% include research-interactive-demos/<name>.html %}`. Never inline large demo HTML/JS blocks into `_pages/research.md`. Always place each demo include **directly below the specific publication bullet point** it demonstrates (rather than at the top of a section or grouped in a cluster), so visitors can immediately see which demo corresponds to which paper. The UI must explicitly distinguish whether numbers are published empirical findings or illustrative conceptual simulations (synthetic sample points). For visual animations, prefer lightweight looped GIFs in `assets/img/publication_preview/` over HTML5 `<video>` tags for instant, reliable cross-browser playback.
-
-Everything else on this site (`_pages/about.md`, `_pages/profiles.md`, `_projects/*.md`, `_data/socials.yml`, `_config.yml`'s lab-identity fields) is hand-written and not part of this sync — see `arya-academic-data/docs/manual-updates-lab-site.md` for the complete list, including which theme `_data/*.yml` files are inactive template placeholders vs. real content. When adding new content or data, always adhere strictly to the practices, structure, and style of existing records and pages. To add or change an academic fact, edit `arya-academic-data` (see its `AGENTS.md`) and run the hub's sync, not this repo directly.
+If parent workspace documentation is available, refer to:
+- `../docs/submodules/lab-site.md`
 
 ## Further reading
 
@@ -104,4 +96,3 @@ Everything else on this site (`_pages/about.md`, `_pages/profiles.md`, `_project
 - `.agents/skills/al-folio-bootstrap/SKILL.md` — new-site setup workflow.
 - `.agents/skills/al-folio-v1-migration/SKILL.md` — customized-fork migration and override drift auditing.
 - `.codex/skills` and `.claude/skills` are symlinks to `.agents/skills` for agent-specific discovery.
-- `../arya-academic-hub-website-cv/AGENTS.md` — the outer coordination hub's entry point, if this checkout is nested inside it.
