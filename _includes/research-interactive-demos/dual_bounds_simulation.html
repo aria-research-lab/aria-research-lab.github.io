@@ -11,7 +11,8 @@
       <div class="demo-title-group">
         <h4>Dual Bounding Guarantees &amp; JGLP Warm-Starts</h4>
         <p>
-          Illustrative simulation demonstrating how antisymmetric neural messages guarantee 100% valid upper bounds to warm-start Join Graph Linear
+          Illustrative simulation demonstrating how antisymmetric neural messages guarantee 100% valid upper bounds to
+          warm-start Join Graph Linear
           Programming (JGLP).
         </p>
       </div>
@@ -26,9 +27,9 @@
       <div class="workload-header">
         <h5>
           Conceptual Bound Validity Simulation
-          <span class="badge badge-secondary" style="font-size: 0.72rem; vertical-align: middle; margin-left: 0.35rem; font-weight: normal"
-            >Illustrative &bull; Synthetic Samples</span
-          >
+          <span class="badge badge-secondary"
+            style="font-size: 0.72rem; vertical-align: middle; margin-left: 0.35rem; font-weight: normal">Illustrative
+            &bull; Synthetic Samples</span>
         </h5>
         <div class="workload-controls">
           <button type="button" class="workload-btn active" id="btn-sample-bounds">Sample 25 Simulated Points</button>
@@ -36,18 +37,25 @@
         </div>
       </div>
       <p class="demo-video-caption" style="margin-top: 0.35rem; margin-bottom: 0.75rem">
-        <strong>Visualization Note:</strong> This interactive track is an <em>illustrative conceptual simulation</em> designed to demonstrate
-        architectural bounding principles. The sample points generated below are dynamically simulated to contrast guarantees versus unconstrained
-        heuristics: In branch-and-bound solvers, any predicted bound that falls below the true optimum (MAP*) prunes optimal branches and corrupts
-        exactness. <strong>Antisymmetric messages</strong> architecturally guarantee every predicted bound lies above the optimum (100% valid upper
-        bound), whereas unconstrained neural predictors frequently violate the bounding guarantee.
+        <strong>Visualization Note:</strong> This interactive track is an <em>illustrative conceptual simulation</em>
+        designed to demonstrate
+        architectural bounding principles. The sample points generated below are dynamically simulated to contrast
+        guarantees versus unconstrained
+        heuristics: In branch-and-bound solvers, any predicted bound that falls below the true optimum (MAP*) prunes
+        optimal branches and corrupts
+        exactness. <strong>Antisymmetric messages</strong> architecturally guarantee every predicted bound lies above
+        the optimum (100% valid upper
+        bound), whereas unconstrained neural predictors are not guaranteed to satisfy the bounding condition and can
+        violate it.
       </p>
 
       <div class="sim-strip">
         <div class="sim-strip-row">
           <div class="sim-strip-meta">
-            <span class="sim-strip-name">Antisymmetric Messages (Neural Dual Bounds) &ndash; Valid by Construction</span>
-            <span class="sim-strip-count" id="count-anti"><strong>25</strong> of 25 simulated samples valid (100%)</span>
+            <span class="sim-strip-name">Antisymmetric Messages (Neural Dual Bounds) &ndash; Valid by
+              Construction</span>
+            <span class="sim-strip-count" id="count-anti"><strong>25</strong> of 25 simulated samples valid
+              (100%)</span>
           </div>
           <div class="sim-track" id="track-anti" aria-label="Valid by construction track"></div>
         </div>

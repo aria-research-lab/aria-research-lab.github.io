@@ -31,7 +31,7 @@
             Inference Mechanism: Independent Predictions vs. Structured DDN-ILP
           </h5>
           <span class="badge badge-info" style="font-size: 0.72rem; font-weight: normal;">
-            Paper Figure 1 Example &bull; MS-COCO
+            Paper Figure 1 Example
           </span>
         </div>
         <div class="workload-controls" role="group" aria-label="Inference mode toggle">
@@ -47,7 +47,7 @@
       <!-- Context description -->
       <p style="font-size: 0.83rem; color: var(--global-text-color-light, #6b7280); margin: 0.4rem 0 0.75rem; line-height: 1.45;">
         <strong>Visual Context (Figure 1):</strong> Pitcher throwing on the mound. The sports ball is small, fast-moving, or occluded.
-        Independent neural classification applies a threshold (&tau; = 0.50) to each output in isolation.
+        For the neural baseline, each label is selected independently using a threshold of &tau; = 0.50.
       </p>
 
       <!-- Layout: Input Image + SVG Dependency Diagram -->
@@ -60,11 +60,11 @@
           <div style="position: relative; border-radius: 6px; overflow: hidden; border: 1px solid var(--global-divider-color, rgba(0,0,0,0.12)); margin-bottom: 0.4rem; flex: 1; display: flex; align-items: center; justify-content: center; background: #000;">
             <img
               src="/assets/img/publication_preview/baseball_pitcher.jpg"
-              alt="MS-COCO Input Image: Baseball pitcher throwing on the mound"
+              alt="Input Image: Baseball pitcher throwing on the mound"
               style="width: 100%; height: 100%; max-height: 180px; object-fit: cover; display: block;"
             />
             <span style="position: absolute; bottom: 4px; right: 5px; background: rgba(0,0,0,0.72); color: #ffffff; padding: 1px 5px; border-radius: 3px; font-size: 0.68rem; font-weight: 600;">
-              MS-COCO
+              Figure 1
             </span>
           </div>
           <div style="font-size: 0.74rem; color: var(--global-text-color-light, #6b7280); line-height: 1.35;">
@@ -103,7 +103,7 @@
 
               <!-- Edge status text -->
               <text id="ddn-edge-lbl-top" x="310" y="75" text-anchor="middle" font-size="9.5" fill="#94a3b8">No label dependencies modeled</text>
-              <text id="ddn-edge-lbl-bot" x="310" y="156" text-anchor="middle" font-size="9" fill="#94a3b8">Independent marginal decisions</text>
+              <text id="ddn-edge-lbl-bot" x="310" y="156" text-anchor="middle" font-size="9" fill="#94a3b8">Independent neural decisions</text>
             </g>
 
             <!-- Label Nodes -->
@@ -145,28 +145,28 @@
         <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.6rem 0.75rem;">
           <div style="font-size: 0.74rem; color: var(--global-text-color-light, #6b7280);">Label 1</div>
           <div style="font-size: 0.95rem; font-weight: 700; color: var(--global-text-color, #111827);">person</div>
-          <div style="font-size: 0.8rem; margin: 0.2rem 0;">Marginal: <strong>0.99</strong> (&ge; 0.50)</div>
-          <div id="card-status-person" style="font-size: 0.78rem; font-weight: 600; color: #059669;">&check; Predicted (Active)</div>
+          <div style="font-size: 0.8rem; margin: 0.2rem 0;">Neural score: <strong>0.99</strong> (&ge; 0.50)</div>
+          <div id="card-status-person" style="font-size: 0.78rem; font-weight: 600; color: #059669;"><i class="fa-solid fa-check"></i> Predicted (Active)</div>
         </div>
 
         <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.6rem 0.75rem;">
           <div style="font-size: 0.74rem; color: var(--global-text-color-light, #6b7280);">Label 2</div>
           <div style="font-size: 0.95rem; font-weight: 700; color: var(--global-text-color, #111827);">baseball glove</div>
-          <div style="font-size: 0.8rem; margin: 0.2rem 0;">Marginal: <strong>0.99</strong> (&ge; 0.50)</div>
-          <div id="card-status-glove" style="font-size: 0.78rem; font-weight: 600; color: #059669;">&check; Predicted (Active)</div>
+          <div style="font-size: 0.8rem; margin: 0.2rem 0;">Neural score: <strong>0.99</strong> (&ge; 0.50)</div>
+          <div id="card-status-glove" style="font-size: 0.78rem; font-weight: 600; color: #059669;"><i class="fa-solid fa-check"></i> Predicted (Active)</div>
         </div>
 
         <div id="card-ball-box" style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.6rem 0.75rem; transition: border-color 0.25s ease, background 0.25s ease;">
           <div style="font-size: 0.74rem; color: var(--global-text-color-light, #6b7280);">Label 3 (Concealed/Small)</div>
           <div style="font-size: 0.95rem; font-weight: 700; color: var(--global-text-color, #111827);">sports ball</div>
-          <div style="font-size: 0.8rem; margin: 0.2rem 0;">Marginal: <strong>0.24</strong> (&lt; 0.50)</div>
-          <div id="card-status-ball" style="font-size: 0.78rem; font-weight: 600; color: #dc2626;">&cross; Missed by baseline</div>
+          <div style="font-size: 0.8rem; margin: 0.2rem 0;">Neural score: <strong>0.24</strong> (&lt; 0.50)</div>
+          <div id="card-status-ball" style="font-size: 0.78rem; font-weight: 600; color: #dc2626;"><i class="fa-solid fa-xmark"></i> Missed by baseline</div>
         </div>
       </div>
 
       <!-- Mechanism Insight Callout -->
       <div id="ddn-mech-explanation" class="demo-video-caption" style="margin: 0; padding: 0.75rem 0.9rem; border-radius: 6px; background: rgba(0,0,0,0.03); border-left: 3px solid #94a3b8; font-size: 0.84rem; line-height: 1.5;">
-        <strong>Independent Neural Predictions:</strong> Each label is decided independently by applying a marginal threshold (&tau; = 0.50) to individual neural outputs. Because the sports ball is partially occluded in the pitching motion, its marginal score (0.24) falls below threshold. Independent classification cannot use contextual cues from <code>person</code> or <code>baseball glove</code> to recover it.
+        <strong>Independent Neural Baseline:</strong> For the neural baseline, each label is selected independently using a threshold of &tau; = 0.50 on individual neural outputs. Because the sports ball is partially occluded in the pitching motion, its neural score (0.24) falls below the threshold. Independent baseline prediction cannot use learned dependencies among labels to recover it.
       </div>
     </div>
 
@@ -177,11 +177,11 @@
           <span>Subset Accuracy (SA) Gains</span>
           <span class="badge badge-success" style="font-size: 0.72rem;">Tables 1 &amp; 2</span>
         </div>
-        <div class="metric-speedup speedup-ssmp" id="metric-ddn-gain">+23% Subset Accuracy</div>
+        <div class="metric-speedup speedup-ssmp" id="metric-ddn-gain">+23 percentage points SA</div>
         <div class="metric-stats">
-          <strong>Wetlab Actions:</strong> 0.35 &rarr; 0.65 (+30% gain)<br>
-          <strong>TACoS Cooking:</strong> 0.40 &rarr; 0.63 (+23% gain)<br>
-          <strong>PASCAL-VOC:</strong> 0.71 &rarr; 0.89 (+18% gain)
+          <strong>Wetlab Actions:</strong> 0.35 &rarr; 0.65 (+30 percentage points)<br>
+          <strong>TACoS Cooking:</strong> 0.40 &rarr; 0.63 (+23 percentage points)<br>
+          <strong>PASCAL-VOC:</strong> 0.71 &rarr; 0.89 (+18 percentage points)
         </div>
       </div>
 
@@ -190,11 +190,11 @@
           <span>DDN-ILP Formulation</span>
           <span class="badge badge-info" style="font-size: 0.72rem;">Our Method</span>
         </div>
-        <div class="metric-speedup speedup-itself" style="font-size: 1.15rem; font-weight: 700; margin: 0.35rem 0;">Structured MPE via MILP</div>
+        <div class="metric-speedup speedup-itself" style="font-size: 1.15rem; font-weight: 700; margin: 0.35rem 0;">Structured MPE via ILP</div>
         <div class="metric-stats">
           <strong>Inference Task:</strong> Most Probable Explanation (MPE)<br>
-          <strong>Solver:</strong> Mixed Integer Linear Programming (MILP)<br>
-          <strong>Advantage:</strong> Reasons jointly over learned label dependencies
+          <strong>Solver:</strong> Integer Linear Programming (ILP)<br>
+          <strong>Approximation:</strong> Piecewise-linear approximation of nonlinear DDN terms
         </div>
       </div>
 
@@ -228,7 +228,7 @@
       <div class="demo-progress-group" id="ddn-progress-group">
         <div class="demo-progress-row" id="ddn-row-1">
           <div class="demo-progress-meta">
-            <span class="demo-progress-name" id="ddn-row1-label">DDN-ILP (Ours, Structured MPE via MILP)</span>
+            <span class="demo-progress-name" id="ddn-row1-label">DDN-ILP (Ours, Structured MPE via ILP)</span>
             <span class="demo-progress-val speedup-ssmp" id="ddn-row1-val">63.0% Subset Accuracy (0.72 JI, 0.040 HL)</span>
           </div>
           <div class="demo-progress-track">
@@ -268,7 +268,7 @@
       </div>
 
       <p class="demo-video-caption" id="ddn-takeaway" style="margin-top: 0.85rem; margin-bottom: 0;">
-        <strong>Paper Finding (TACoS Cooking Actions, Table 1):</strong> DDN-ILP achieves a <strong>+23% increase in Subset Accuracy</strong> (from 0.40 to 0.63) over the InceptionV3 baseline and reduces Hamming error by more than half (0.082 &rarr; 0.040). Combinatorial MILP inference enforces consistent concurrent action sets (e.g. chopping, holding utensil) that independent classifiers miss.
+        <strong>Paper Finding (TACoS Cooking Actions, Table 1):</strong> DDN-ILP achieves a <strong>+23 percentage point increase in Subset Accuracy</strong> (from 0.40 to 0.63) over the InceptionV3 baseline and reduces Hamming error by more than half (0.082 &rarr; 0.040). Joint MPE inference reasons over learned dependencies among concurrent actions rather than making label decisions independently.
       </p>
     </div>
 
@@ -328,7 +328,7 @@
           edgeLblTop.setAttribute("fill", "#059669");
         }
         if (edgeLblBot) {
-          edgeLblBot.textContent = "Coupled MPE Optimization: Joint Assignment y*";
+          edgeLblBot.textContent = "Joint MPE inference over the label configuration";
           edgeLblBot.setAttribute("fill", "#059669");
         }
 
@@ -346,17 +346,17 @@
         if (txt1Ball) txt1Ball.setAttribute("fill", "#065f46");
         if (txt2Ball) txt2Ball.setAttribute("fill", "#065f46");
         if (scoreBall) {
-          scoreBall.textContent = "Recovered!";
+          scoreBall.textContent = "0.24";
           scoreBall.setAttribute("fill", "#047857");
         }
         if (badgeRectBall) {
           badgeRectBall.setAttribute("fill", "#d1fae5");
           badgeRectBall.setAttribute("stroke", "#10b981");
-          badgeRectBall.setAttribute("x", "-47");
-          badgeRectBall.setAttribute("width", "94");
+          badgeRectBall.setAttribute("x", "-52");
+          badgeRectBall.setAttribute("width", "104");
         }
         if (badgeBall) {
-          badgeBall.textContent = "+ Recovered (Active)";
+          badgeBall.textContent = "Recovered by ILP";
           badgeBall.setAttribute("fill", "#065f46");
         }
 
@@ -365,16 +365,16 @@
           cardBallBox.style.background = "rgba(16, 185, 129, 0.07)";
         }
         if (cardStatusBall) {
-          cardStatusBall.innerHTML = "&check; <strong>Recovered by DDN-ILP!</strong>";
+          cardStatusBall.innerHTML = '<i class="fa-solid fa-check"></i> <strong>Recovered by DDN-ILP</strong>';
           cardStatusBall.style.color = "#059669";
         }
 
         if (explanationEl) {
           explanationEl.style.borderLeftColor = "#10b981";
           explanationEl.innerHTML =
-            "<strong>Structured MPE Inference via MILP:</strong> The Deep Dependency Network (DDN) captures learned pairwise and higher-order label dependencies. " +
-            "When formulated as a Mixed Integer Linear Program (MILP), inference searches for the globally optimal joint assignment. " +
-            "Even though the independent neural score for <em>sports ball</em> is low (0.24) due to occlusion, its strong learned compatibility with <em>person</em> and <em>baseball glove</em> overrides the weak marginal evidence, successfully recovering the true object!";
+            "<strong>Structured MPE Inference via ILP:</strong> The Deep Dependency Network models learned dependencies among labels. " +
+            "DDN-ILP jointly searches over the label configuration using an ILP derived from a piecewise-linear approximation of the DDN MPE objective. " +
+            "In the Figure 1 example, the neural model assigns <em>sports ball</em> a low score of 0.24, while structured inference recovers the label by reasoning jointly over learned label dependencies.";
         }
       } else {
         // Independent predictions baseline state
@@ -398,7 +398,7 @@
           edgeLblTop.setAttribute("fill", "#94a3b8");
         }
         if (edgeLblBot) {
-          edgeLblBot.textContent = "Independent marginal decisions";
+          edgeLblBot.textContent = "Independent neural decisions";
           edgeLblBot.setAttribute("fill", "#94a3b8");
         }
 
@@ -434,16 +434,16 @@
           cardBallBox.style.background = "var(--global-card-bg-color, #ffffff)";
         }
         if (cardStatusBall) {
-          cardStatusBall.innerHTML = "&cross; Missed by baseline (&lt; 0.50)";
+          cardStatusBall.innerHTML = '<i class="fa-solid fa-xmark"></i> Missed by baseline (&lt; 0.50)';
           cardStatusBall.style.color = "#dc2626";
         }
 
         if (explanationEl) {
           explanationEl.style.borderLeftColor = "#94a3b8";
           explanationEl.innerHTML =
-            "<strong>Independent Neural Predictions:</strong> Each label is decided independently by applying a marginal threshold (&tau; = 0.50) to individual neural outputs. " +
-            "Because the sports ball is partially occluded in the pitching motion, its marginal score (0.24) falls below threshold. " +
-            "Independent classification cannot use contextual cues from <code>person</code> or <code>baseball glove</code> to recover it.";
+            "<strong>Independent Neural Baseline:</strong> For the neural baseline, each label is selected independently using a threshold of &tau; = 0.50 on individual neural outputs. " +
+            "Because the sports ball is partially occluded in the pitching motion, its neural score (0.24) falls below the threshold. " +
+            "Independent baseline prediction cannot use learned dependencies among labels to recover it.";
         }
       }
     }
@@ -498,30 +498,30 @@
 
     var datasetData = {
       "tacos": {
-        gain: "+23% Subset Accuracy",
-        takeaway: "<strong>Paper Finding (TACoS Cooking Actions, Table 1):</strong> DDN-ILP achieves a <strong>+23% increase in Subset Accuracy</strong> (from 0.40 to 0.63) over the InceptionV3 baseline and reduces Hamming error by more than half (0.082 &rarr; 0.040). Combinatorial MILP inference enforces consistent concurrent action sets (e.g. chopping, holding utensil) that independent classifiers miss.",
+        gain: "+23 percentage points SA",
+        takeaway: "<strong>Paper Finding (TACoS Cooking Actions, Table 1):</strong> DDN-ILP achieves a <strong>+23 percentage point increase in Subset Accuracy</strong> (from 0.40 to 0.63) over the InceptionV3 baseline and reduces Hamming error by more than half (0.082 &rarr; 0.040). Joint MPE inference reasons over learned dependencies among concurrent actions rather than making label decisions independently.",
         rows: [
-          { show: true, label: "DDN-ILP (Ours, Structured MPE via MILP)", val: "63.0% Subset Accuracy (0.72 JI, 0.040 HL)", pct: 63.0, cls: "fill-green", style: "" },
+          { show: true, label: "DDN-ILP (Ours, Structured MPE via ILP)", val: "63.0% Subset Accuracy (0.72 JI, 0.040 HL)", pct: 63.0, cls: "fill-green", style: "" },
           { show: true, label: "DDN-Greedy (Ours, Greedy Local Search)", val: "56.0% Subset Accuracy (0.69 JI, 0.040 HL)", pct: 56.0, cls: "fill-blue", style: "" },
           { show: true, label: "DRF-ILP (Discriminative Random Field)", val: "51.0% Subset Accuracy (0.65 JI, 0.030 HL)", pct: 51.0, cls: "fill-gray", style: "" },
           { show: true, label: "InceptionV3 Feature Extractor Baseline", val: "40.0% Subset Accuracy (0.61 JI, 0.082 HL)", pct: 40.0, cls: "", style: "background: #9ca3af;" }
         ]
       },
       "wetlab": {
-        gain: "+30% Subset Accuracy",
-        takeaway: "<strong>Paper Finding (Wetlab Protocol Actions, Table 1):</strong> DDN-ILP delivers a <strong>+30% gain in Subset Accuracy</strong> (from 0.35 to 0.65) and improves Jaccard Index from 0.64 to 0.76. In multi-step biology experiments with rigid procedural dependencies, exact MPE inference prevents contradictory or physically impossible concurrent label assignments.",
+        gain: "+30 percentage points SA",
+        takeaway: "<strong>Paper Finding (Wetlab Protocol Actions, Table 1):</strong> DDN-ILP delivers a <strong>+30 percentage point gain in Subset Accuracy</strong> (from 0.35 to 0.65) and improves Jaccard Index from 0.64 to 0.76. In multi-step biology experiments, joint MPE inference allows predictions to account for learned dependencies among actions in multi-step procedures.",
         rows: [
-          { show: true, label: "DDN-ILP (Ours, Structured MPE via MILP)", val: "65.0% Subset Accuracy (0.76 JI, 0.014 HL)", pct: 65.0, cls: "fill-green", style: "" },
+          { show: true, label: "DDN-ILP (Ours, Structured MPE via ILP)", val: "65.0% Subset Accuracy (0.76 JI, 0.014 HL)", pct: 65.0, cls: "fill-green", style: "" },
           { show: true, label: "DRF-ILP (Discriminative Random Field)", val: "60.0% Subset Accuracy (0.73 JI, 0.014 HL)", pct: 60.0, cls: "fill-gray", style: "" },
           { show: true, label: "DDN-Greedy (Ours, Greedy Local Search)", val: "55.0% Subset Accuracy (0.68 JI, 0.014 HL)", pct: 55.0, cls: "fill-blue", style: "" },
           { show: true, label: "InceptionV3 Feature Extractor Baseline", val: "35.0% Subset Accuracy (0.64 JI, 0.017 HL)", pct: 35.0, cls: "", style: "background: #9ca3af;" }
         ]
       },
       "pascal": {
-        gain: "+18% Subset Accuracy",
-        takeaway: "<strong>Paper Finding (PASCAL-VOC Image Classification, Table 2):</strong> DDN-ILP achieves an <strong>+18% improvement in Subset Accuracy</strong> (from 0.71 to 0.89), reaches <strong>0.95 Jaccard Index</strong>, and slashes Hamming loss from 0.015 down to 0.006 (a 60% error reduction) compared to the MSRN baseline.",
+        gain: "+18 percentage points SA",
+        takeaway: "<strong>Paper Finding (PASCAL-VOC Image Classification, Table 2):</strong> DDN-ILP achieves an <strong>+18 percentage point improvement in Subset Accuracy</strong> (from 0.71 to 0.89), reaches <strong>0.95 Jaccard Index</strong>, and slashes Hamming loss from 0.015 down to 0.006 compared to the MSRN baseline.",
         rows: [
-          { show: true, label: "DDN-ILP (Ours, Structured MPE via MILP)", val: "89.0% Subset Accuracy (0.95 JI, 0.006 HL)", pct: 89.0, cls: "fill-green", style: "" },
+          { show: true, label: "DDN-ILP (Ours, Structured MPE via ILP)", val: "89.0% Subset Accuracy (0.95 JI, 0.006 HL)", pct: 89.0, cls: "fill-green", style: "" },
           { show: true, label: "DDN-Greedy (Ours, Greedy Local Search)", val: "86.0% Subset Accuracy (0.91 JI, 0.007 HL)", pct: 86.0, cls: "fill-blue", style: "" },
           { show: true, label: "DRF-ILP (Discriminative Random Field)", val: "76.0% Subset Accuracy (0.88 JI, 0.019 HL)", pct: 76.0, cls: "fill-gray", style: "" },
           { show: true, label: "MSRN Feature Extractor Baseline", val: "71.0% Subset Accuracy (0.85 JI, 0.015 HL)", pct: 71.0, cls: "", style: "background: #9ca3af;" }
@@ -531,7 +531,7 @@
         gain: "0.55 SA / 0.83 JI",
         takeaway: "<strong>Paper Finding (MS-COCO 80 Categories, Table 2):</strong> Over 80 complex object categories, DDN-ILP outperforms Query2Label (Q2L) transformer in Subset Accuracy (0.51 &rarr; 0.55) and Jaccard Index (0.80 &rarr; 0.83). As illustrated in Figure 3, DDN-ILP recovers missed contextual objects (e.g. dining table, sports ball) and suppresses false positive detections.",
         rows: [
-          { show: true, label: "DDN-ILP (Ours, Structured MPE via MILP)", val: "55.0% Subset Accuracy (0.83 JI, 0.88 F1)", pct: 55.0, cls: "fill-green", style: "" },
+          { show: true, label: "DDN-ILP (Ours, Structured MPE via ILP)", val: "55.0% Subset Accuracy (0.83 JI, 0.88 F1)", pct: 55.0, cls: "fill-green", style: "" },
           { show: true, label: "DDN-Greedy (Ours, Greedy Local Search)", val: "55.0% Subset Accuracy (0.82 JI, 0.87 F1)", pct: 55.0, cls: "fill-blue", style: "" },
           { show: true, label: "DRF-ILP (Discriminative Random Field)", val: "54.0% Subset Accuracy (0.82 JI, 0.82 F1)", pct: 54.0, cls: "fill-gray", style: "" },
           { show: true, label: "Q2L Transformer Baseline (Liu et al., 2021)", val: "51.0% Subset Accuracy (0.80 JI, 0.88 F1)", pct: 51.0, cls: "", style: "background: #9ca3af;" }
@@ -541,7 +541,7 @@
         gain: "0.33 JI / 0.36 Macro F1",
         takeaway: "<strong>Paper Finding (Charades 157 Action Classes, Table 1):</strong> Across 157 fine-grained video action classes, DDN-ILP improves Jaccard Index from 0.29 to 0.33 and Macro F1 from 0.32 to 0.36 over the SlowFast 3D-CNN backbone, demonstrating effective structured inference even under extreme label diversity.",
         rows: [
-          { show: true, label: "DDN-ILP (Ours, Structured MPE via MILP)", val: "33.0% Jaccard Index (0.36 Macro F1, 0.47 Micro F1)", pct: 33.0, cls: "fill-green", style: "" },
+          { show: true, label: "DDN-ILP (Ours, Structured MPE via ILP)", val: "33.0% Jaccard Index (0.36 Macro F1, 0.47 Micro F1)", pct: 33.0, cls: "fill-green", style: "" },
           { show: true, label: "DDN-Greedy (Ours, Greedy Local Search)", val: "31.0% Jaccard Index (0.33 Macro F1, 0.44 Micro F1)", pct: 31.0, cls: "fill-blue", style: "" },
           { show: true, label: "DRF-ILP (Discriminative Random Field)", val: "31.0% Jaccard Index (0.18 Macro F1, 0.21 Micro F1)", pct: 31.0, cls: "fill-gray", style: "" },
           { show: true, label: "SlowFast 3D-CNN Baseline (Feichtenhofer et al.)", val: "29.0% Jaccard Index (0.32 Macro F1, 0.45 Micro F1)", pct: 29.0, cls: "", style: "background: #9ca3af;" }

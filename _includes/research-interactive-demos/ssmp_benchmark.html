@@ -11,7 +11,8 @@
       <div class="demo-title-group">
         <h4>Interactive Benchmark: Neural Inference Latency & Speedup</h4>
         <p>
-          Empirical latency and throughput comparison of our methods (<strong>SSMP</strong>, <strong>ITSELF</strong>) against traditional
+          Empirical latency and throughput comparison of our methods (<strong>SSMP</strong>, <strong>ITSELF</strong>)
+          against traditional
           combinatorial baselines.
         </p>
       </div>
@@ -23,28 +24,23 @@
     </div>
 
     <div class="demo-video-wrapper" id="benchmark-video-wrapper" style="text-align: center; position: relative">
-      <img
-        id="ssmp-benchmark-gif"
-        src="{{ '/assets/img/publication_preview/itself_comparison.gif' | relative_url }}"
+      <img id="ssmp-benchmark-gif" src="{{ '/assets/img/publication_preview/itself_comparison.gif' | relative_url }}"
         class="figure-img img-fluid gif-replayable"
         style="width: 100%; border-radius: 6px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); cursor: pointer"
         title="Click to replay animation"
-        alt="Neural inference latency and speedup benchmark comparison: SSMP vs ITSELF vs Baseline"
-      />
-      <button
-        type="button"
-        class="gif-replay-badge"
-        id="btn-replay-ssmp-gif"
-        title="Replay animation"
-        style="position: absolute; bottom: 12px; right: 12px; z-index: 2; margin: 0"
-      >
+        alt="Neural inference latency and speedup benchmark comparison: SSMP vs ITSELF vs Baseline" />
+      <button type="button" class="gif-replay-badge" id="btn-replay-ssmp-gif" title="Replay animation"
+        style="position: absolute; bottom: 12px; right: 12px; z-index: 2; margin: 0">
         &#8635; Replay
       </button>
     </div>
     <p class="demo-video-caption" id="benchmark-caption">
-      <strong>Benchmark Visualization:</strong> One Left&rarr;Right traverse represents 1 inference query. In the time the classical baseline takes to
-      complete 1 inference query (2.703 s/inf), <strong>ITSELF</strong> completes an iterative test-time optimization pass (784 ms/inf, 3.4&times;
-      faster, 3 traverses), while <strong>SSMP</strong> processes over 273,000 queries via amortized continuous relaxation (9.87 &micro;s/inf,
+      <strong>Benchmark Visualization:</strong> One Left&rarr;Right traverse represents 1 inference query. In the time
+      the classical baseline takes to
+      complete 1 inference query (2.703 s/inf), <strong>ITSELF</strong> completes an iterative test-time optimization
+      pass (784 ms/inf, 3.4&times;
+      faster, 3 traverses), while <strong>SSMP</strong> processes over 273,000 queries via amortized continuous
+      relaxation (9.87 &micro;s/inf,
       &gt;273,000&times; faster, 273,860 traverses).
     </p>
 
@@ -77,7 +73,7 @@
 
       <div class="demo-metric-card highlight-gray">
         <div class="metric-name">
-          <span>Traditional Baseline</span>
+          <span>Branch and Bound</span>
           <span class="badge badge-secondary" style="font-size: 0.72rem">Exact Solver</span>
         </div>
         <div class="metric-speedup speedup-baseline" id="card-speedup-baseline">&times;1.0</div>
@@ -114,7 +110,8 @@
         </div>
       </div>
       <p class="demo-video-caption" id="calc-speedup-highlight" style="margin-top: 0.65rem; margin-bottom: 0">
-        <strong>Key Takeaway:</strong> For 10,000 queries, SSMP finishes in <strong>98.7 ms</strong>, whereas the traditional baseline stalls for
+        <strong>Key Takeaway:</strong> For 10,000 queries, SSMP finishes in <strong>98.7 ms</strong>, whereas the
+        traditional baseline stalls for
         <strong>7.51 hours</strong> (over 273,000&times; speedup), unlocking real-time probabilistic reasoning.
       </p>
     </div>
