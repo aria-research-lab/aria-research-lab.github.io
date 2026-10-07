@@ -1,0 +1,173 @@
+<details class="interactive-demo-wrapper" markdown="0">
+  <summary class="interactive-demo-summary">
+    <span class="interactive-demo-summary-title">
+      <span class="interactive-demo-summary-badge">Interactive Demo</span>
+      <span>Valid-by-Construction Dual Bounds &amp; Search Guidance Simulation (Neural Dual Bounds &amp; L2C)</span>
+    </span>
+    <span class="interactive-demo-summary-chevron">&#9654;</span>
+  </summary>
+  <div class="interactive-demo-card" id="dual-bounds-demo">
+    <div class="demo-card-header">
+      <div class="demo-title-group">
+        <h4>Dual Bounding Guarantees &amp; Neural Search Pruning</h4>
+        <p>Interactive simulation demonstrating how antisymmetric neural messages guarantee 100% valid upper bounds to warm-start JGLP, while learned conditioning policies (L2C) prune branch-and-bound search trees.</p>
+      </div>
+      <div class="demo-badges">
+        <span class="demo-badge demo-badge-spotlight">NeurIPS Spotlight</span>
+        <span class="demo-badge demo-badge-oral">NeurIPS 2025</span>
+        <span class="demo-badge demo-badge-sim">Interactive Simulation</span>
+      </div>
+    </div>
+
+    <!-- Live Simulation Instrument -->
+    <div class="demo-workload-box" style="margin-top: 0.5rem;">
+      <div class="workload-header">
+        <h5>Bound Validity Simulation</h5>
+        <div class="workload-controls">
+          <button type="button" class="workload-btn active" id="btn-sample-bounds">Sample 25 Predictions</button>
+          <button type="button" class="workload-btn" id="btn-reset-bounds">Reset</button>
+        </div>
+      </div>
+      <p class="demo-video-caption" style="margin-top: 0.2rem; margin-bottom: 0.75rem;">
+        Each dot represents a predicted dual solution. In exact solvers like branch-and-bound, predicted bounds that fall below the true optimum prune optimal branches. <strong>Antisymmetric messages</strong> guarantee every prediction remains a valid upper bound by construction, whereas unconstrained predictors frequently violate the bounding guarantee.
+      </p>
+
+      <div class="sim-strip">
+        <div class="sim-strip-row">
+          <div class="sim-strip-meta">
+            <span class="sim-strip-name">Antisymmetric Messages (Neural Dual Bounds)</span>
+            <span class="sim-strip-count" id="count-anti"><strong>25</strong> of 25 valid (100%)</span>
+          </div>
+          <div class="sim-track" id="track-anti" aria-label="Valid by construction track"></div>
+        </div>
+
+        <div class="sim-strip-row">
+          <div class="sim-strip-meta">
+            <span class="sim-strip-name">Unconstrained Neural Predictors</span>
+            <span class="sim-strip-count" id="count-free"><strong>17</strong> of 25 valid (68%)</span>
+          </div>
+          <div class="sim-track" id="track-free" aria-label="Unconstrained predictors track"></div>
+        </div>
+      </div>
+
+      <div class="sim-legend">
+        <span class="sim-legend-item"><i class="sim-legend-line"></i> True Optimum (MAP*)</span>
+        <span class="sim-legend-item"><i class="sim-legend-dot"></i> Valid Upper Bound</span>
+        <span class="sim-legend-item"><i class="sim-legend-bad"></i> Invalid (Below Optimum)</span>
+      </div>
+    </div>
+
+    <!-- Metric Cards Grid -->
+    <div class="demo-metrics-grid">
+      <div class="demo-metric-card highlight-green">
+        <div class="metric-name">
+          <span>Neural Dual Bounds</span>
+          <span class="badge badge-info" style="font-size: 0.72rem;">NeurIPS Spotlight</span>
+        </div>
+        <div class="metric-speedup speedup-ssmp">0 Violations</div>
+        <div class="metric-stats">
+          <strong>Validity:</strong> 100% by construction<br>
+          <strong>Dual Gap:</strong> Up to 10<sup>6</sup>&times; reduction in 100 iters<br>
+          <strong>Solvers:</strong> JGLP &amp; Constrained MAP
+        </div>
+      </div>
+
+      <div class="demo-metric-card highlight-blue">
+        <div class="metric-name">
+          <span>Learning to Condition (L2C)</span>
+          <span class="badge badge-success" style="font-size: 0.72rem;">NeurIPS 2025</span>
+        </div>
+        <div class="metric-speedup speedup-itself">5&times;–10&times;</div>
+        <div class="metric-stats">
+          <strong>Search tree:</strong> Up to 90% node reduction<br>
+          <strong>Policy:</strong> Learned from solver traces<br>
+          <strong>Solvers:</strong> AND/OR Branch-and-Bound
+        </div>
+      </div>
+
+      <div class="demo-metric-card highlight-gray">
+        <div class="metric-name">
+          <span>Standard Exact Solvers</span>
+          <span class="badge badge-secondary" style="font-size: 0.72rem;">Baseline</span>
+        </div>
+        <div class="metric-speedup speedup-baseline">&times;1.0</div>
+        <div class="metric-stats">
+          <strong>Scaling:</strong> Exponential in treewidth <em>w</em><br>
+          <strong>Search:</strong> Full combinatorial tree expansion<br>
+          <strong>Initialization:</strong> Zero or uniform warm-starts
+        </div>
+      </div>
+    </div>
+
+  </div>
+</details>
+
+<script>
+(function() {
+  function initDualBoundsSimulation() {
+    var btnSample = document.getElementById("btn-sample-bounds");
+    var btnReset = document.getElementById("btn-reset-bounds");
+    var trackAnti = document.getElementById("track-anti");
+    var trackFree = document.getElementById("track-free");
+    var countAnti = document.getElementById("count-anti");
+    var countFree = document.getElementById("count-free");
+
+    if (!btnSample || !btnReset || !trackAnti || !trackFree) return;
+
+    var totalSamples = 0;
+    var validAnti = 0;
+    var validFree = 0;
+
+    function renderDots(num) {
+      for (var i = 0; i < num; i++) {
+        totalSamples++;
+
+        var posAnti = 40 + Math.random() * 56;
+        validAnti++;
+        var dotA = document.createElement("div");
+        dotA.className = "sim-dot";
+        dotA.style.left = posAnti + "%";
+        dotA.style.top = (15 + Math.random() * 70) + "%";
+        trackAnti.appendChild(dotA);
+
+        var posFree = 8 + Math.random() * 84;
+        var dotF = document.createElement("div");
+        if (posFree < 40) {
+          dotF.className = "sim-dot bad";
+        } else {
+          validFree++;
+          dotF.className = "sim-dot";
+        }
+        dotF.style.left = posFree + "%";
+        dotF.style.top = (15 + Math.random() * 70) + "%";
+        trackFree.appendChild(dotF);
+      }
+
+      countAnti.innerHTML = "<strong>" + validAnti + "</strong> of " + totalSamples + " valid (100%)";
+      var pctFree = Math.round((validFree / totalSamples) * 100);
+      countFree.innerHTML = "<strong>" + validFree + "</strong> of " + totalSamples + " valid (" + pctFree + "%)";
+    }
+
+    btnSample.addEventListener("click", function() {
+      renderDots(25);
+    });
+
+    btnReset.addEventListener("click", function() {
+      totalSamples = 0;
+      validAnti = 0;
+      validFree = 0;
+      trackAnti.innerHTML = "";
+      trackFree.innerHTML = "";
+      renderDots(25);
+    });
+
+    renderDots(25);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initDualBoundsSimulation);
+  } else {
+    initDualBoundsSimulation();
+  }
+})();
+</script>

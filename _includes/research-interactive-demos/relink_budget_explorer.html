@@ -1,0 +1,240 @@
+<!-- Interactive Demo: RELINK Edge Activation Budget Explorer -->
+<details class="interactive-demo-wrapper" markdown="0">
+  <summary class="interactive-demo-summary">
+    <span class="interactive-demo-summary-title">
+      <span>Interactive Demo: RELINK Edge Activation Budget &amp; Benchmark Explorer</span>
+      <span class="interactive-demo-summary-badge">CIKM 2025 Oral</span>
+    </span>
+    <span class="interactive-demo-summary-chevron">&#9656;</span>
+  </summary>
+
+  <div class="interactive-demo-card">
+    <div class="demo-card-header">
+      <div class="demo-title-group">
+        <h4>RELINK Edge Activation for Closed-Network Influence Maximization</h4>
+        <p>Empirical edge activation budget regimes and comparative benchmark findings from our CIKM 2025 paper</p>
+      </div>
+      <div class="demo-badges">
+        <span class="demo-badge demo-badge-oral">CIKM 2025 Oral</span>
+        <span class="demo-badge demo-badge-sim">Combinatorial Optmization over Graphs</span>
+      </div>
+    </div>
+
+    <!-- Metric Cards Grid -->
+    <div class="demo-metrics-grid">
+      <div class="demo-metric-card highlight-green">
+        <div class="metric-name">
+          <span>RELINK (DRL Policy)</span>
+          <span class="badge badge-success" style="font-size: 0.72rem;">Our Work</span>
+        </div>
+        <div class="metric-speedup speedup-ssmp" id="metric-relink-gain">Up to +15% Spread</div>
+        <div class="metric-stats">
+          <strong>Formulation:</strong> Edge-centric <em>n</em>-step Double DQN with SVD embeddings<br>
+          <strong>Training:</strong> True marginal influence gain rewards (IC model)<br>
+          <strong>Win Rate:</strong> 456 / 480 wins (95.0%) across 20 real networks
+        </div>
+      </div>
+
+      <div class="demo-metric-card highlight-blue">
+        <div class="metric-name">
+          <span>PSNA (Huang et al.)</span>
+          <span class="badge badge-info" style="font-size: 0.72rem;">IM-CSN Baseline</span>
+        </div>
+        <div class="metric-speedup speedup-itself">95.0% RELINK Win</div>
+        <div class="metric-stats">
+          <strong>Formulation:</strong> Practical Subnetwork Augmentation heuristic<br>
+          <strong>Complexity:</strong> &Omicron;(<em>I</em>(|<em>V</em>| + |<em>E</em>|) log |<em>V</em>| + |<em>V</em>|<em>d</em><sub><em>m</em></sub> log <em>d</em><sub><em>m</em></sub>)<br>
+          <strong>Limitation:</strong> High overhead on large graphs; caught by budget saturation
+        </div>
+      </div>
+
+      <div class="demo-metric-card highlight-gray">
+        <div class="metric-name">
+          <span>Traditional Baselines</span>
+          <span class="badge badge-secondary" style="font-size: 0.72rem;">Degree &amp; Random</span>
+        </div>
+        <div class="metric-speedup speedup-baseline">&gt;96% RELINK Win</div>
+        <div class="metric-stats">
+          <strong>Formulation:</strong> Static degree centrality &amp; uniform random selection<br>
+          <strong>Win Rate:</strong> 464 / 480 vs. Degree, 462 / 480 vs. Random &amp; FoF<br>
+          <strong>Limitation:</strong> Trapped in local dense hubs; misses boundary bridges
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Baseline Selector & Live Win-Rate Comparison Graph -->
+    <div class="demo-workload-box">
+      <div class="workload-header">
+        <h5>Select Evaluated Baseline Comparison (Figure 3 Contingency Matrix, 480 Experiments):</h5>
+        <div class="workload-controls">
+          <button type="button" class="workload-btn relink-btn active" data-view="all">All Baselines Overview</button>
+          <button type="button" class="workload-btn relink-btn" data-view="psna">vs. PSNA (IM-CSN)</button>
+          <button type="button" class="workload-btn relink-btn" data-view="degree">vs. Degree Centrality</button>
+          <button type="button" class="workload-btn relink-btn" data-view="random_fof">vs. Random &amp; FoF</button>
+        </div>
+      </div>
+
+      <div class="demo-progress-group" id="relink-progress-group">
+        <div class="demo-progress-row" id="relink-row-1">
+          <div class="demo-progress-meta">
+            <span class="demo-progress-name" id="relink-row1-label">RELINK vs. Degree Centrality</span>
+            <span class="demo-progress-val speedup-ssmp" id="relink-row1-val">96.7% (464 / 480 wins)</span>
+          </div>
+          <div class="demo-progress-track">
+            <div class="demo-progress-fill fill-green" id="relink-row1-bar" style="width: 96.7%;"></div>
+          </div>
+        </div>
+
+        <div class="demo-progress-row" id="relink-row-2">
+          <div class="demo-progress-meta">
+            <span class="demo-progress-name" id="relink-row2-label">RELINK vs. Random Selection</span>
+            <span class="demo-progress-val speedup-itself" id="relink-row2-val">96.2% (462 / 480 wins)</span>
+          </div>
+          <div class="demo-progress-track">
+            <div class="demo-progress-fill fill-blue" id="relink-row2-bar" style="width: 96.2%;"></div>
+          </div>
+        </div>
+
+        <div class="demo-progress-row" id="relink-row-3">
+          <div class="demo-progress-meta">
+            <span class="demo-progress-name" id="relink-row3-label">RELINK vs. Friend-of-Friend (FoF)</span>
+            <span class="demo-progress-val speedup-baseline" id="relink-row3-val">96.2% (462 / 480 wins)</span>
+          </div>
+          <div class="demo-progress-track">
+            <div class="demo-progress-fill fill-gray" id="relink-row3-bar" style="width: 96.2%;"></div>
+          </div>
+        </div>
+
+        <div class="demo-progress-row" id="relink-row-4">
+          <div class="demo-progress-meta">
+            <span class="demo-progress-name" id="relink-row4-label">RELINK vs. PSNA (Huang et al., IM-CSN Baseline)</span>
+            <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="relink-row4-val">95.0% (456 / 480 wins)</span>
+          </div>
+          <div class="demo-progress-track">
+            <div class="demo-progress-fill" style="background: #10b981;" id="relink-row4-bar" style="width: 95.0%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="demo-video-caption" id="relink-takeaway" style="margin-top: 0.85rem; margin-bottom: 0;">
+        <strong>Paper Finding (Figure 3 Contingency Matrix &amp; Section 6.2):</strong> Across 480 total experimental configurations spanning 20 real-world social networks (evaluated with 100,000 Monte Carlo runs under the IC model), RELINK outperforms all competing methods in at least 95% of experiments. In low edge budget regimes (<em>k</em> &le; 10), Section 6.3 reports that RELINK frequently achieves influence spread improvements exceeding 15% over PSNA.
+      </p>
+    </div>
+
+  </div>
+</details>
+
+<script>
+(function() {
+  function initRelinkSimulation() {
+    var buttons = document.querySelectorAll(".relink-btn");
+    var row1 = document.getElementById("relink-row-1");
+    var row2 = document.getElementById("relink-row-2");
+    var row3 = document.getElementById("relink-row-3");
+    var row4 = document.getElementById("relink-row-4");
+    var row1Label = document.getElementById("relink-row1-label");
+    var row1Val = document.getElementById("relink-row1-val");
+    var row1Bar = document.getElementById("relink-row1-bar");
+    var row2Label = document.getElementById("relink-row2-label");
+    var row2Val = document.getElementById("relink-row2-val");
+    var row2Bar = document.getElementById("relink-row2-bar");
+    var row3Label = document.getElementById("relink-row3-label");
+    var row3Val = document.getElementById("relink-row3-val");
+    var row3Bar = document.getElementById("relink-row3-bar");
+    var row4Label = document.getElementById("relink-row4-label");
+    var row4Val = document.getElementById("relink-row4-val");
+    var row4Bar = document.getElementById("relink-row4-bar");
+    var metricGain = document.getElementById("metric-relink-gain");
+    var takeaway = document.getElementById("relink-takeaway");
+
+    if (!buttons.length || !row1 || !row2 || !row3 || !row4) return;
+
+    var viewData = {
+      "all": {
+        gain: "95.0% – 96.7% Win Rate",
+        takeaway: "<strong>Paper Finding (Figure 3 Contingency Matrix &amp; Section 6.2):</strong> Across 480 total experimental configurations spanning 20 real-world social networks (evaluated with 100,000 Monte Carlo runs under the IC model), RELINK outperforms all competing methods in at least 95% of experiments. In low edge budget regimes (<em>k</em> &le; 10), Section 6.3 reports that RELINK frequently achieves influence spread improvements exceeding 15% over PSNA.",
+        rows: [
+          { show: true, label: "RELINK vs. Degree Centrality", val: "96.7% (464 / 480 wins)", pct: 96.7, cls: "fill-green", style: "" },
+          { show: true, label: "RELINK vs. Random Selection", val: "96.2% (462 / 480 wins)", pct: 96.2, cls: "fill-blue", style: "" },
+          { show: true, label: "RELINK vs. Friend-of-Friend (FoF)", val: "96.2% (462 / 480 wins)", pct: 96.2, cls: "fill-gray", style: "" },
+          { show: true, label: "RELINK vs. PSNA (Huang et al., IM-CSN Baseline)", val: "95.0% (456 / 480 wins)", pct: 95.0, cls: "", style: "background: #10b981;" }
+        ]
+      },
+      "psna": {
+        gain: "456 / 480 Wins (95.0%)",
+        takeaway: "<strong>Paper Finding (Section 6.2 Q2 &amp; Section 6.3):</strong> RELINK outperforms PSNA in <strong>456 out of 480</strong> experiments (95.0%), while PSNA performs better in only 24 cases. Under low edge budgets (<em>k</em> &le; 10), RELINK significantly outperforms PSNA (Figure 6 heatmap, frequently exceeding 15% spread improvements) by prioritizing high-impact boundary bridges early; PSNA partially closes the gap under higher budgets as redundant edges are activated.",
+        rows: [
+          { show: true, label: "RELINK (Deep Reinforcement Learning Policy)", val: "95.0% Win Rate (456 / 480 wins)", pct: 95.0, cls: "fill-green", style: "" },
+          { show: true, label: "PSNA (Huang et al., IM-CSN Baseline)", val: "5.0% Win Rate (24 / 480 wins)", pct: 5.0, cls: "fill-blue", style: "" },
+          { show: false },
+          { show: false }
+        ]
+      },
+      "degree": {
+        gain: "464 / 480 Wins (96.7%)",
+        takeaway: "<strong>Paper Finding (Section 6.2 Q1):</strong> RELINK outperforms Degree Centrality in <strong>464 out of 480</strong> experiments (96.7%). Degree centrality performs worst on the IM-CSN task because it greedily activates edges connecting already dense internal hubs, failing to bridge privacy-shielded cluster boundaries.",
+        rows: [
+          { show: true, label: "RELINK (Deep Reinforcement Learning Policy)", val: "96.7% Win Rate (464 / 480 wins)", pct: 96.7, cls: "fill-green", style: "" },
+          { show: true, label: "Degree Centrality Heuristic", val: "3.3% Win Rate (16 / 480 wins)", pct: 3.3, cls: "fill-gray", style: "" },
+          { show: false },
+          { show: false }
+        ]
+      },
+      "random_fof": {
+        gain: "462 / 480 Wins (96.2%)",
+        takeaway: "<strong>Paper Finding (Section 6.2 Q1):</strong> RELINK outperforms both Random and Friend-of-Friend (FoF) in <strong>462 out of 480</strong> experiments each (96.2%). Notably, Random outperforms FoF and Degree on IM-CSN because uniform random selection occasionally discovers exploratory bridge links across disconnected components that local heuristics miss.",
+        rows: [
+          { show: true, label: "RELINK (Deep Reinforcement Learning Policy)", val: "96.2% Win Rate (462 / 480 wins)", pct: 96.2, cls: "fill-green", style: "" },
+          { show: true, label: "Random Edge Selection", val: "4.2% Win Rate (20 / 480 wins)", pct: 4.2, cls: "fill-gray", style: "" },
+          { show: true, label: "Friend-of-Friend (FoF)", val: "3.8% Win Rate (18 / 480 wins)", pct: 3.8, cls: "fill-gray", style: "" },
+          { show: false }
+        ]
+      }
+    };
+
+    var rowElements = [
+      { row: row1, label: row1Label, val: row1Val, bar: row1Bar },
+      { row: row2, label: row2Label, val: row2Val, bar: row2Bar },
+      { row: row3, label: row3Label, val: row3Val, bar: row3Bar },
+      { row: row4, label: row4Label, val: row4Val, bar: row4Bar }
+    ];
+
+    buttons.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        buttons.forEach(function(b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+        var view = btn.getAttribute("data-view");
+        var d = viewData[view];
+        if (!d) return;
+
+        if (metricGain) metricGain.innerHTML = d.gain;
+        takeaway.innerHTML = d.takeaway;
+
+        d.rows.forEach(function(rData, idx) {
+          var el = rowElements[idx];
+          if (!rData.show) {
+            el.row.style.display = "none";
+          } else {
+            el.row.style.display = "";
+            el.label.innerHTML = rData.label;
+            el.val.innerHTML = rData.val;
+            el.bar.style.width = rData.pct + "%";
+            el.bar.className = "demo-progress-fill" + (rData.cls ? " " + rData.cls : "");
+            if (rData.style) {
+              el.bar.setAttribute("style", "width: " + rData.pct + "%; " + rData.style);
+            } else {
+              el.bar.setAttribute("style", "width: " + rData.pct + "%;");
+            }
+          }
+        });
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initRelinkSimulation);
+  } else {
+    initRelinkSimulation();
+  }
+})();
+</script>

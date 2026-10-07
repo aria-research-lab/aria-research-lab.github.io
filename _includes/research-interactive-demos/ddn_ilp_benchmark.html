@@ -1,0 +1,252 @@
+<!-- Interactive Demo: DDN-ILP Structured Inference vs Neural Baselines -->
+<details class="interactive-demo-wrapper" markdown="0">
+  <summary class="interactive-demo-summary">
+    <span class="interactive-demo-summary-title">
+      <span>Interactive Benchmark: DDN-ILP Structured Inference vs. Neural Baselines</span>
+      <span class="interactive-demo-summary-badge">AISTATS 2024</span>
+    </span>
+    <span class="interactive-demo-summary-chevron">&#9656;</span>
+  </summary>
+
+  <div class="interactive-demo-card" id="demo-ddn-card">
+    <!-- Header with title, brief description, and badges -->
+    <div class="demo-card-header">
+      <div class="demo-title-group">
+        <h4>Deep Dependency Networks &amp; Advanced MPE Inference (DDN-ILP)</h4>
+        <p>Empirical benchmark results from AISTATS 2024 (Tables 1 &amp; 2) comparing combinatorial MILP inference against baseline neural models</p>
+      </div>
+      <div class="demo-badges">
+        <span class="demo-badge demo-badge-oral">AISTATS 2024</span>
+        <span class="demo-badge demo-badge-sim">Neurosymbolic AI</span>
+      </div>
+    </div>
+
+    <!-- Metric Cards Grid -->
+    <div class="demo-metrics-grid">
+      <div class="demo-metric-card highlight-green">
+        <div class="metric-name">
+          <span>Subset Accuracy (SA) Gains</span>
+          <span class="badge badge-success" style="font-size: 0.72rem;">Tables 1 &amp; 2</span>
+        </div>
+        <div class="metric-speedup speedup-ssmp" id="metric-ddn-gain">+23% Subset Accuracy</div>
+        <div class="metric-stats">
+          <strong>Wetlab Actions:</strong> 0.35 &rarr; 0.65 (+30% gain)<br>
+          <strong>TACoS Cooking:</strong> 0.40 &rarr; 0.63 (+23% gain)<br>
+          <strong>PASCAL-VOC:</strong> 0.71 &rarr; 0.89 (+18% gain)
+        </div>
+      </div>
+
+      <div class="demo-metric-card highlight-blue">
+        <div class="metric-name">
+          <span>DDN-ILP Formulation</span>
+          <span class="badge badge-info" style="font-size: 0.72rem;">Our Work</span>
+        </div>
+        <div class="metric-speedup speedup-itself">MILP MPE Solver</div>
+        <div class="metric-stats">
+          <strong>Inference:</strong> MPE via Mixed Integer Linear Programming<br>
+          <strong>Approximation:</strong> Piecewise linear relaxation (&epsilon; = 0.001)<br>
+          <strong>Advantage:</strong> Eliminates independent output assumptions
+        </div>
+      </div>
+
+      <div class="demo-metric-card highlight-gray">
+        <div class="metric-name">
+          <span>Jaccard Index &amp; Error</span>
+          <span class="badge badge-secondary" style="font-size: 0.72rem;">Hamming Loss</span>
+        </div>
+        <div class="metric-speedup speedup-baseline">Up to 0.95 JI</div>
+        <div class="metric-stats">
+          <strong>PASCAL-VOC:</strong> 0.95 JI (0.006 Hamming loss)<br>
+          <strong>TACoS Actions:</strong> 0.72 JI (0.040 Hamming loss)<br>
+          <strong>MS-COCO:</strong> 0.83 JI (0.88 F1 score)
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Dataset Selector & Live Comparison Graph -->
+    <div class="demo-workload-box">
+      <div class="workload-header">
+        <h5>Select Evaluated Benchmark Dataset (Tables 1 &amp; 2, AISTATS 2024):</h5>
+        <div class="workload-controls">
+          <button type="button" class="workload-btn ddn-btn active" data-dataset="tacos">TACoS (Cooking Actions)</button>
+          <button type="button" class="workload-btn ddn-btn" data-dataset="wetlab">Wetlab (Bio Protocols)</button>
+          <button type="button" class="workload-btn ddn-btn" data-dataset="pascal">PASCAL-VOC (Images)</button>
+          <button type="button" class="workload-btn ddn-btn" data-dataset="coco">MS-COCO (80 Classes)</button>
+          <button type="button" class="workload-btn ddn-btn" data-dataset="charades">Charades (157 Actions)</button>
+        </div>
+      </div>
+
+      <div class="demo-progress-group" id="ddn-progress-group">
+        <div class="demo-progress-row" id="ddn-row-1">
+          <div class="demo-progress-meta">
+            <span class="demo-progress-name" id="ddn-row1-label">DDN - ILP (Ours, MILP MPE Solver)</span>
+            <span class="demo-progress-val speedup-ssmp" id="ddn-row1-val">63.0% Subset Accuracy (0.72 JI, 0.040 HL)</span>
+          </div>
+          <div class="demo-progress-track">
+            <div class="demo-progress-fill fill-green" id="ddn-row1-bar" style="width: 63%;"></div>
+          </div>
+        </div>
+
+        <div class="demo-progress-row" id="ddn-row-2">
+          <div class="demo-progress-meta">
+            <span class="demo-progress-name" id="ddn-row2-label">DDN - Greedy (Ours, Local Search)</span>
+            <span class="demo-progress-val speedup-itself" id="ddn-row2-val">56.0% Subset Accuracy (0.69 JI, 0.040 HL)</span>
+          </div>
+          <div class="demo-progress-track">
+            <div class="demo-progress-fill fill-blue" id="ddn-row2-bar" style="width: 56%;"></div>
+          </div>
+        </div>
+
+        <div class="demo-progress-row" id="ddn-row-3">
+          <div class="demo-progress-meta">
+            <span class="demo-progress-name" id="ddn-row3-label">DRF - ILP (Discriminative Random Field)</span>
+            <span class="demo-progress-val speedup-baseline" id="ddn-row3-val">51.0% Subset Accuracy (0.65 JI, 0.030 HL)</span>
+          </div>
+          <div class="demo-progress-track">
+            <div class="demo-progress-fill fill-gray" id="ddn-row3-bar" style="width: 51%;"></div>
+          </div>
+        </div>
+
+        <div class="demo-progress-row" id="ddn-row-4">
+          <div class="demo-progress-meta">
+            <span class="demo-progress-name" id="ddn-row4-label">InceptionV3 Feature Extractor Baseline</span>
+            <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="ddn-row4-val">40.0% Subset Accuracy (0.61 JI, 0.082 HL)</span>
+          </div>
+          <div class="demo-progress-track">
+            <div class="demo-progress-fill" style="background: #9ca3af;" id="ddn-row4-bar" style="width: 40%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="demo-video-caption" id="ddn-takeaway" style="margin-top: 0.85rem; margin-bottom: 0;">
+        <strong>Paper Finding (TACoS Cooking Actions, Table 1):</strong> DDN-ILP achieves a <strong>+23% increase in Subset Accuracy</strong> (from 0.40 to 0.63) over the InceptionV3 baseline and reduces Hamming error by more than half (0.082 &rarr; 0.040). Combinatorial MILP inference enforces consistent concurrent action sets (e.g. chopping, holding utensil) that independent classifiers miss.
+      </p>
+    </div>
+
+  </div>
+</details>
+
+<script>
+(function() {
+  function initDdnSimulation() {
+    var buttons = document.querySelectorAll(".ddn-btn");
+    var row1 = document.getElementById("ddn-row-1");
+    var row2 = document.getElementById("ddn-row-2");
+    var row3 = document.getElementById("ddn-row-3");
+    var row4 = document.getElementById("ddn-row-4");
+    var row1Label = document.getElementById("ddn-row1-label");
+    var row1Val = document.getElementById("ddn-row1-val");
+    var row1Bar = document.getElementById("ddn-row1-bar");
+    var row2Label = document.getElementById("ddn-row2-label");
+    var row2Val = document.getElementById("ddn-row2-val");
+    var row2Bar = document.getElementById("ddn-row2-bar");
+    var row3Label = document.getElementById("ddn-row3-label");
+    var row3Val = document.getElementById("ddn-row3-val");
+    var row3Bar = document.getElementById("ddn-row3-bar");
+    var row4Label = document.getElementById("ddn-row4-label");
+    var row4Val = document.getElementById("ddn-row4-val");
+    var row4Bar = document.getElementById("ddn-row4-bar");
+    var metricGain = document.getElementById("metric-ddn-gain");
+    var takeaway = document.getElementById("ddn-takeaway");
+
+    if (!buttons.length || !row1 || !row2 || !row3 || !row4) return;
+
+    var datasetData = {
+      "tacos": {
+        gain: "+23% Subset Accuracy",
+        takeaway: "<strong>Paper Finding (TACoS Cooking Actions, Table 1):</strong> DDN-ILP achieves a <strong>+23% increase in Subset Accuracy</strong> (from 0.40 to 0.63) over the InceptionV3 baseline and reduces Hamming error by more than half (0.082 &rarr; 0.040). Combinatorial MILP inference enforces consistent concurrent action sets (e.g. chopping, holding utensil) that independent classifiers miss.",
+        rows: [
+          { show: true, label: "DDN - ILP (Ours, MILP MPE Solver)", val: "63.0% Subset Accuracy (0.72 JI, 0.040 HL)", pct: 63.0, cls: "fill-green", style: "" },
+          { show: true, label: "DDN - Greedy (Ours, Local Search)", val: "56.0% Subset Accuracy (0.69 JI, 0.040 HL)", pct: 56.0, cls: "fill-blue", style: "" },
+          { show: true, label: "DRF - ILP (Discriminative Random Field)", val: "51.0% Subset Accuracy (0.65 JI, 0.030 HL)", pct: 51.0, cls: "fill-gray", style: "" },
+          { show: true, label: "InceptionV3 Feature Extractor Baseline", val: "40.0% Subset Accuracy (0.61 JI, 0.082 HL)", pct: 40.0, cls: "", style: "background: #9ca3af;" }
+        ]
+      },
+      "wetlab": {
+        gain: "+30% Subset Accuracy",
+        takeaway: "<strong>Paper Finding (Wetlab Protocol Actions, Table 1):</strong> DDN-ILP delivers a <strong>+30% gain in Subset Accuracy</strong> (from 0.35 to 0.65) and improves Jaccard Index from 0.64 to 0.76. In multi-step biology experiments with rigid procedural dependencies, exact MPE inference prevents contradictory or physically impossible concurrent label assignments.",
+        rows: [
+          { show: true, label: "DDN - ILP (Ours, MILP MPE Solver)", val: "65.0% Subset Accuracy (0.76 JI, 0.014 HL)", pct: 65.0, cls: "fill-green", style: "" },
+          { show: true, label: "DRF - ILP (Discriminative Random Field)", val: "60.0% Subset Accuracy (0.73 JI, 0.014 HL)", pct: 60.0, cls: "fill-gray", style: "" },
+          { show: true, label: "DDN - Greedy (Ours, Local Search)", val: "55.0% Subset Accuracy (0.68 JI, 0.014 HL)", pct: 55.0, cls: "fill-blue", style: "" },
+          { show: true, label: "InceptionV3 Feature Extractor Baseline", val: "35.0% Subset Accuracy (0.64 JI, 0.017 HL)", pct: 35.0, cls: "", style: "background: #9ca3af;" }
+        ]
+      },
+      "pascal": {
+        gain: "+18% Subset Accuracy",
+        takeaway: "<strong>Paper Finding (PASCAL-VOC Image Classification, Table 2):</strong> DDN-ILP achieves an <strong>+18% improvement in Subset Accuracy</strong> (from 0.71 to 0.89), reaches <strong>0.95 Jaccard Index</strong>, and slashes Hamming loss from 0.015 down to 0.006 (a 60% error reduction) compared to the MSRN baseline.",
+        rows: [
+          { show: true, label: "DDN - ILP (Ours, MILP MPE Solver)", val: "89.0% Subset Accuracy (0.95 JI, 0.006 HL)", pct: 89.0, cls: "fill-green", style: "" },
+          { show: true, label: "DDN - Greedy (Ours, Local Search)", val: "86.0% Subset Accuracy (0.91 JI, 0.007 HL)", pct: 86.0, cls: "fill-blue", style: "" },
+          { show: true, label: "DRF - ILP (Discriminative Random Field)", val: "76.0% Subset Accuracy (0.88 JI, 0.019 HL)", pct: 76.0, cls: "fill-gray", style: "" },
+          { show: true, label: "MSRN Feature Extractor Baseline", val: "71.0% Subset Accuracy (0.85 JI, 0.015 HL)", pct: 71.0, cls: "", style: "background: #9ca3af;" }
+        ]
+      },
+      "coco": {
+        gain: "0.55 SA / 0.83 JI",
+        takeaway: "<strong>Paper Finding (MS-COCO 80 Categories, Table 2):</strong> Over 80 complex object categories, DDN-ILP outperforms Query2Label (Q2L) transformer in Subset Accuracy (0.51 &rarr; 0.55) and Jaccard Index (0.80 &rarr; 0.83). As illustrated in Figure 3, DDN-ILP recovers missed contextual objects (e.g. dining table, sports ball) and suppresses false positive detections.",
+        rows: [
+          { show: true, label: "DDN - ILP (Ours, MILP MPE Solver)", val: "55.0% Subset Accuracy (0.83 JI, 0.88 F1)", pct: 55.0, cls: "fill-green", style: "" },
+          { show: true, label: "DDN - Greedy (Ours, Local Search)", val: "55.0% Subset Accuracy (0.82 JI, 0.87 F1)", pct: 55.0, cls: "fill-blue", style: "" },
+          { show: true, label: "DRF - ILP (Discriminative Random Field)", val: "54.0% Subset Accuracy (0.82 JI, 0.82 F1)", pct: 54.0, cls: "fill-gray", style: "" },
+          { show: true, label: "Q2L Transformer Baseline (Liu et al., 2021)", val: "51.0% Subset Accuracy (0.80 JI, 0.88 F1)", pct: 51.0, cls: "", style: "background: #9ca3af;" }
+        ]
+      },
+      "charades": {
+        gain: "0.33 JI / 0.36 Macro F1",
+        takeaway: "<strong>Paper Finding (Charades 157 Action Classes, Table 1):</strong> Across 157 fine-grained video action classes, DDN-ILP improves Jaccard Index from 0.29 to 0.33 and Macro F1 from 0.32 to 0.36 over the SlowFast 3D-CNN backbone, demonstrating effective structured inference even under extreme label diversity.",
+        rows: [
+          { show: true, label: "DDN - ILP (Ours, MILP MPE Solver)", val: "33.0% Jaccard Index (0.36 Macro F1, 0.47 Micro F1)", pct: 33.0, cls: "fill-green", style: "" },
+          { show: true, label: "DDN - Greedy (Ours, Local Search)", val: "31.0% Jaccard Index (0.33 Macro F1, 0.44 Micro F1)", pct: 31.0, cls: "fill-blue", style: "" },
+          { show: true, label: "DRF - ILP (Discriminative Random Field)", val: "31.0% Jaccard Index (0.18 Macro F1, 0.21 Micro F1)", pct: 31.0, cls: "fill-gray", style: "" },
+          { show: true, label: "SlowFast 3D-CNN Baseline (Feichtenhofer et al.)", val: "29.0% Jaccard Index (0.32 Macro F1, 0.45 Micro F1)", pct: 29.0, cls: "", style: "background: #9ca3af;" }
+        ]
+      }
+    };
+
+    var rowElements = [
+      { row: row1, label: row1Label, val: row1Val, bar: row1Bar },
+      { row: row2, label: row2Label, val: row2Val, bar: row2Bar },
+      { row: row3, label: row3Label, val: row3Val, bar: row3Bar },
+      { row: row4, label: row4Label, val: row4Val, bar: row4Bar }
+    ];
+
+    buttons.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        buttons.forEach(function(b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+        var ds = btn.getAttribute("data-dataset");
+        var d = datasetData[ds];
+        if (!d) return;
+
+        if (metricGain) metricGain.innerHTML = d.gain;
+        takeaway.innerHTML = d.takeaway;
+
+        d.rows.forEach(function(rData, idx) {
+          var el = rowElements[idx];
+          if (!rData.show) {
+            el.row.style.display = "none";
+          } else {
+            el.row.style.display = "";
+            el.label.innerHTML = rData.label;
+            el.val.innerHTML = rData.val;
+            el.bar.style.width = rData.pct + "%";
+            el.bar.className = "demo-progress-fill" + (rData.cls ? " " + rData.cls : "");
+            if (rData.style) {
+              el.bar.setAttribute("style", "width: " + rData.pct + "%; " + rData.style);
+            } else {
+              el.bar.setAttribute("style", "width: " + rData.pct + "%;");
+            }
+          }
+        });
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initDdnSimulation);
+  } else {
+    initDdnSimulation();
+  }
+})();
+</script>
