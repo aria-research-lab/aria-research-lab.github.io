@@ -1,11 +1,10 @@
 ---
-layout: cv
+layout: page
 permalink: /cv/
-title: cv
+title: curriculum vitae
 nav: false
 nav_order: 5
-cv_pdf: example_pdf.pdf # you can also use external links here
-description: This is a description of the page. You can modify it in '_pages/cv.md'. You can also change or remove the top pdf download button.
-toc:
-  sidebar: left
+description: Curriculum vitae of Dr. Shivvrat Arya, director of the ARIA Research Lab at NJIT.
 ---
+
+Dr. Shivvrat Arya's [curriculum vitae](https://shivvrat.github.io/cv/CV_Shivvrat_Arya.pdf) is available on his personal website.
