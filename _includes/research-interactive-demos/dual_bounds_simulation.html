@@ -2,7 +2,7 @@
   <summary class="interactive-demo-summary">
     <span class="interactive-demo-summary-title">
       <span class="interactive-demo-summary-badge">Interactive Demo</span>
-      <span>Valid-by-Construction Dual Bounds &amp; Search Guidance Simulation (Neural Dual Bounds &amp; L2C)</span>
+      <span>Valid-by-Construction Dual Bounds &amp; Search Guidance (Neural Dual Bounds &amp; L2C)</span>
     </span>
     <span class="interactive-demo-summary-chevron">&#9654;</span>
   </summary>
@@ -10,41 +10,42 @@
     <div class="demo-card-header">
       <div class="demo-title-group">
         <h4>Dual Bounding Guarantees &amp; Neural Search Pruning</h4>
-        <p>Interactive simulation demonstrating how antisymmetric neural messages guarantee 100% valid upper bounds to warm-start JGLP, while learned conditioning policies (L2C) prune branch-and-bound search trees.</p>
+        <p>Illustrative simulation demonstrating how antisymmetric neural messages guarantee 100% valid upper bounds to warm-start JGLP, while learned conditioning policies (L2C) prune branch-and-bound search trees.</p>
       </div>
       <div class="demo-badges">
         <span class="demo-badge demo-badge-spotlight">NeurIPS Spotlight</span>
         <span class="demo-badge demo-badge-oral">NeurIPS 2025</span>
-        <span class="demo-badge demo-badge-sim">Interactive Simulation</span>
+        <span class="demo-badge demo-badge-sim">Illustrative Simulation</span>
       </div>
     </div>
 
-    <!-- Live Simulation Instrument -->
+    <!-- Live Illustrative Simulation Instrument -->
     <div class="demo-workload-box" style="margin-top: 0.5rem;">
       <div class="workload-header">
-        <h5>Bound Validity Simulation</h5>
+        <h5>Conceptual Bound Validity Simulation <span class="badge badge-secondary" style="font-size: 0.72rem; vertical-align: middle; margin-left: 0.35rem; font-weight: normal;">Illustrative &bull; Synthetic Samples</span></h5>
         <div class="workload-controls">
-          <button type="button" class="workload-btn active" id="btn-sample-bounds">Sample 25 Predictions</button>
+          <button type="button" class="workload-btn active" id="btn-sample-bounds">Sample 25 Simulated Points</button>
           <button type="button" class="workload-btn" id="btn-reset-bounds">Reset</button>
         </div>
       </div>
-      <p class="demo-video-caption" style="margin-top: 0.2rem; margin-bottom: 0.75rem;">
-        Each dot represents a predicted dual solution. In exact solvers like branch-and-bound, predicted bounds that fall below the true optimum prune optimal branches. <strong>Antisymmetric messages</strong> guarantee every prediction remains a valid upper bound by construction, whereas unconstrained predictors frequently violate the bounding guarantee.
+      <p class="demo-video-caption" style="margin-top: 0.35rem; margin-bottom: 0.75rem;">
+        <strong>Visualization Note:</strong> This interactive track is an <em>illustrative conceptual simulation</em> designed to demonstrate architectural bounding principles. The sample points generated below are dynamically simulated to contrast guarantees versus unconstrained heuristics:
+        In branch-and-bound solvers, any predicted bound that falls below the true optimum (MAP*) prunes optimal branches and corrupts exactness. <strong>Antisymmetric messages</strong> architecturally guarantee every predicted bound lies above the optimum (100% valid upper bound), whereas unconstrained neural predictors frequently violate the bounding guarantee.
       </p>
 
       <div class="sim-strip">
         <div class="sim-strip-row">
           <div class="sim-strip-meta">
-            <span class="sim-strip-name">Antisymmetric Messages (Neural Dual Bounds)</span>
-            <span class="sim-strip-count" id="count-anti"><strong>25</strong> of 25 valid (100%)</span>
+            <span class="sim-strip-name">Antisymmetric Messages (Neural Dual Bounds) &ndash; Valid by Construction</span>
+            <span class="sim-strip-count" id="count-anti"><strong>25</strong> of 25 simulated samples valid (100%)</span>
           </div>
           <div class="sim-track" id="track-anti" aria-label="Valid by construction track"></div>
         </div>
 
         <div class="sim-strip-row">
           <div class="sim-strip-meta">
-            <span class="sim-strip-name">Unconstrained Neural Predictors</span>
-            <span class="sim-strip-count" id="count-free"><strong>17</strong> of 25 valid (68%)</span>
+            <span class="sim-strip-name">Unconstrained Predictors &ndash; Simulated Heuristic Violations</span>
+            <span class="sim-strip-count" id="count-free"><strong>17</strong> of 25 simulated samples valid (68%)</span>
           </div>
           <div class="sim-track" id="track-free" aria-label="Unconstrained predictors track"></div>
         </div>
@@ -57,7 +58,7 @@
       </div>
     </div>
 
-    <!-- Metric Cards Grid -->
+    <!-- Metric Cards Grid: Empirical Paper Findings -->
     <div class="demo-metrics-grid">
       <div class="demo-metric-card highlight-green">
         <div class="metric-name">
@@ -143,9 +144,9 @@
         trackFree.appendChild(dotF);
       }
 
-      countAnti.innerHTML = "<strong>" + validAnti + "</strong> of " + totalSamples + " valid (100%)";
+      countAnti.innerHTML = "<strong>" + validAnti + "</strong> of " + totalSamples + " simulated samples valid (100%)";
       var pctFree = Math.round((validFree / totalSamples) * 100);
-      countFree.innerHTML = "<strong>" + validFree + "</strong> of " + totalSamples + " valid (" + pctFree + "%)";
+      countFree.innerHTML = "<strong>" + validFree + "</strong> of " + totalSamples + " simulated samples valid (" + pctFree + "%)";
     }
 
     btnSample.addEventListener("click", function() {
