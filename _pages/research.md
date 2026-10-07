@@ -55,7 +55,7 @@ Our work currently spans three complementary directions:
 
 Neural approximation treats probabilistic inference itself as a learnable mapping. Given a probabilistic model and evidence, a neural network predicts high-quality solutions to inference queries in one or a few forward passes. These predictions can also be refined through inference-time or test-time self-supervised optimization when additional accuracy is required.
 
-<details class="interactive-demo-wrapper" markdown="0">
+<details class="interactive-demo-wrapper" id="neural-inference-details" markdown="0">
   <summary class="interactive-demo-summary">
     <span class="interactive-demo-summary-title">
       <span class="interactive-demo-summary-badge">Interactive Demo</span>
@@ -76,14 +76,27 @@ Neural approximation treats probabilistic inference itself as a learnable mappin
     </div>
   </div>
 
-  <div class="demo-video-wrapper">
-    <video id="benchmark-video" controls playsinline autoplay muted loop preload="metadata">
+  <div class="demo-video-wrapper" id="benchmark-video-wrapper">
+    <video id="benchmark-video"
+           controls
+           playsinline
+           autoplay
+           muted
+           loop
+           preload="auto"
+           poster="{{ '/assets/img/benchmark_poster.png' | relative_url }}">
       <source src="{{ '/assets/video/itself_comparison.mp4' | relative_url }}" type="video/mp4">
       Your browser does not support the video tag.
     </video>
+    <div class="demo-video-overlay hidden" id="benchmark-video-overlay">
+      <button type="button" class="demo-video-play-btn" id="benchmark-video-play-btn" aria-label="Play benchmark animation">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <span>Play Benchmark Animation</span>
+      </button>
+    </div>
   </div>
-  <p class="demo-video-caption">
-    <strong>Benchmark Visualization:</strong> One Left&rarr;Right traverse represents 1 inference query. In the time the classical baseline completes a fraction of a query (2.703 s/inf), <strong>ITSELF</strong> completes an iterative test-time optimization pass (784 ms/inf, 3.4&times; faster), while <strong>SSMP</strong> processes over 111,000 queries via amortized continuous relaxation (9.87 &micro;s/inf, &gt;273,000&times; faster).
+  <p class="demo-video-caption" id="benchmark-caption">
+    <strong>Benchmark Visualization:</strong> One Left&rarr;Right traverse represents 1 inference query. In the time the classical baseline takes to complete 1 inference query (2.703 s/inf), <strong>ITSELF</strong> completes an iterative test-time optimization pass (784 ms/inf, 3.4&times; faster, 3 traverses), while <strong>SSMP</strong> processes over 273,000 queries via amortized continuous relaxation (9.87 &micro;s/inf, &gt;273,000&times; faster, 273,860 traverses).
   </p>
 
   <div class="demo-metrics-grid">
@@ -92,11 +105,11 @@ Neural approximation treats probabilistic inference itself as a learnable mappin
         <span>SSMP</span>
         <span class="badge badge-success" style="font-size: 0.72rem;">AAAI Oral</span>
       </div>
-      <div class="metric-speedup speedup-ssmp">&times;273,860.2</div>
-      <div class="metric-stats">
+      <div class="metric-speedup speedup-ssmp" id="card-speedup-ssmp">&times;273,860.2</div>
+      <div class="metric-stats" id="card-stats-ssmp">
         <strong>1 inference:</strong> 9.870 &micro;s<br>
         <strong>Throughput:</strong> 101,317.12 /s<br>
-        <strong>Traverses:</strong> 111,448 one-way
+        <strong>Traverses:</strong> 273,860 one-way (136,930 round-trips)
       </div>
     </div>
 
@@ -105,11 +118,11 @@ Neural approximation treats probabilistic inference itself as a learnable mappin
         <span>ITSELF</span>
         <span class="badge badge-info" style="font-size: 0.72rem;">NeurIPS Spotlight</span>
       </div>
-      <div class="metric-speedup speedup-itself">&times;3.4</div>
-      <div class="metric-stats">
+      <div class="metric-speedup speedup-itself" id="card-speedup-itself">&times;3.4</div>
+      <div class="metric-stats" id="card-stats-itself">
         <strong>1 inference:</strong> 784.000 ms<br>
         <strong>Throughput:</strong> 1.28 /s<br>
-        <strong>Traverses:</strong> 1 one-way pass
+        <strong>Traverses:</strong> 3 one-way (1 round-trip)
       </div>
     </div>
 
@@ -118,11 +131,11 @@ Neural approximation treats probabilistic inference itself as a learnable mappin
         <span>Traditional Baseline</span>
         <span class="badge badge-secondary" style="font-size: 0.72rem;">Exact Solver</span>
       </div>
-      <div class="metric-speedup speedup-baseline">&times;1.0</div>
-      <div class="metric-stats">
+      <div class="metric-speedup speedup-baseline" id="card-speedup-baseline">&times;1.0</div>
+      <div class="metric-stats" id="card-stats-baseline">
         <strong>1 inference:</strong> 2.703 s<br>
         <strong>Throughput:</strong> 0.37 /s<br>
-        <strong>Traverses:</strong> 0 completed in window
+        <strong>Traverses:</strong> 1 completed in window
       </div>
     </div>
 
@@ -161,8 +174,60 @@ Neural approximation treats probabilistic inference itself as a learnable mappin
 
 <script>
 (function() {
+  var BENCHMARK_CONFIG = {
+    // Ground-truth latencies per single inference query in seconds
+    baselineLatency: 2.703,
+    itselfLatency: 0.784,
+    ssmpLatency: 0.00000987, // 9.870 µs
+
+    // Comparison interval represents 1 full baseline query duration (2.703 s)
+    get comparisonWindow() {
+      return this.baselineLatency;
+    },
+
+    // Derived throughputs (inferences / second)
+    get baselineThroughput() {
+      return 1 / this.baselineLatency;
+    },
+    get itselfThroughput() {
+      return 1 / this.itselfLatency;
+    },
+    get ssmpThroughput() {
+      return 1 / this.ssmpLatency;
+    },
+
+    // Derived speedups relative to baseline
+    get itselfSpeedup() {
+      return this.baselineLatency / this.itselfLatency;
+    },
+    get ssmpSpeedup() {
+      return this.baselineLatency / this.ssmpLatency;
+    },
+
+    // Traverses completed during the comparison interval
+    get baselineTraverses() {
+      return Math.floor(this.comparisonWindow * this.baselineThroughput);
+    },
+    get itselfTraverses() {
+      return Math.floor(this.comparisonWindow * this.itselfThroughput);
+    },
+    get ssmpTraverses() {
+      return Math.round(this.comparisonWindow * this.ssmpThroughput);
+    }
+  };
+
+  function formatTime(seconds) {
+    if (seconds < 0.001) return (seconds * 1000000).toFixed(1) + " µs";
+    if (seconds < 1) return (seconds * 1000).toFixed(1) + " ms";
+    if (seconds < 60) return seconds.toFixed(2) + " sec";
+    if (seconds < 3600) return (seconds / 60).toFixed(2) + " min";
+    var hours = seconds / 3600;
+    if (hours < 24) return hours.toFixed(2) + " hours";
+    return (hours / 24).toFixed(1) + " days";
+  }
+
   function initBenchmarkCalculator() {
-    var buttons = document.querySelectorAll(".workload-btn");
+    var buttons = document.querySelectorAll("#neural-inference-demo .workload-btn");
     var resSSMP = document.getElementById("time-ssmp");
     var resITSELF = document.getElementById("time-itself");
     var resBase = document.getElementById("time-baseline");
@@ -170,20 +235,23 @@ Neural approximation treats probabilistic inference itself as a learnable mappin
 
     if (!buttons.length || !resSSMP || !resITSELF || !resBase) return;
 
-    var latencies = {
-      ssmp: 0.00000987,
-      itself: 0.784,
-      baseline: 2.703
-    };
+    function updateWorkload(count) {
+      var tSSMP = count * BENCHMARK_CONFIG.ssmpLatency;
+      var tITSELF = count * BENCHMARK_CONFIG.itselfLatency;
+      var tBase = count * BENCHMARK_CONFIG.baselineLatency;
 
-    function formatTime(seconds) {
-      if (seconds < 0.001) return (seconds * 1000000).toFixed(1) + " µs";
-      if (seconds < 1) return (seconds * 1000).toFixed(1) + " ms";
-      if (seconds < 60) return seconds.toFixed(2) + " sec";
-      if (seconds < 3600) return (seconds / 60).toFixed(2) + " min";
-      var hours = seconds / 3600;
-      if (hours < 24) return hours.toFixed(2) + " hours";
-      return (hours / 24).toFixed(1) + " days";
+      resSSMP.textContent = formatTime(tSSMP);
+      resITSELF.textContent = formatTime(tITSELF);
+      resBase.textContent = formatTime(tBase);
+
+      if (resSpeedup) {
+        var speedupRatio = tBase / tSSMP;
+        if (count >= 10000) {
+          resSpeedup.innerHTML = "<strong>Key Takeaway:</strong> For " + count.toLocaleString("en-US") + " queries, SSMP finishes in <strong>" + formatTime(tSSMP) + "</strong>, whereas the traditional baseline stalls for <strong>" + formatTime(tBase) + "</strong> (over " + Math.floor(speedupRatio / 1000).toLocaleString("en-US") + ",000&times; speedup), unlocking real-time probabilistic reasoning.";
+        } else {
+          resSpeedup.innerHTML = "<strong>Key Takeaway:</strong> SSMP processes queries in real time (&lt;10 &micro;s per query), delivering over " + Math.floor(BENCHMARK_CONFIG.ssmpSpeedup / 1000).toLocaleString("en-US") + ",000&times; speedup over the combinatorial baseline.";
+        }
+      }
     }
 
     buttons.forEach(function(btn) {
@@ -191,31 +259,105 @@ Neural approximation treats probabilistic inference itself as a learnable mappin
         buttons.forEach(function(b) { b.classList.remove("active"); });
         btn.classList.add("active");
         var count = parseInt(btn.getAttribute("data-count"), 10);
-        if (isNaN(count)) return;
-
-        var tSSMP = count * latencies.ssmp;
-        var tITSELF = count * latencies.itself;
-        var tBase = count * latencies.baseline;
-
-        resSSMP.textContent = formatTime(tSSMP);
-        resITSELF.textContent = formatTime(tITSELF);
-        resBase.textContent = formatTime(tBase);
-
-        if (resSpeedup) {
-          if (count >= 10000) {
-            resSpeedup.innerHTML = "<strong>Key Takeaway:</strong> For " + count.toLocaleString() + " queries, SSMP finishes in <strong>" + formatTime(tSSMP) + "</strong>, whereas the traditional baseline stalls for <strong>" + formatTime(tBase) + "</strong> (" + (tBase / tSSMP).toFixed(0).toLocaleString() + "&times; speedup), unlocking real-time probabilistic reasoning.";
-          } else {
-            resSpeedup.innerHTML = "<strong>Key Takeaway:</strong> SSMP processes queries in real time (&lt;10 &micro;s per query), delivering over 273,000&times; speedup over the combinatorial baseline.";
-          }
+        if (!isNaN(count)) {
+          updateWorkload(count);
         }
       });
     });
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initBenchmarkCalculator);
-  } else {
+  function setupVideoLifecycle() {
+    var details = document.getElementById("neural-inference-details");
+    var video = document.getElementById("benchmark-video");
+    var overlay = document.getElementById("benchmark-video-overlay");
+    var playBtn = document.getElementById("benchmark-video-play-btn");
+
+    if (!video) return;
+
+    function hideOverlay() {
+      if (overlay) overlay.classList.add("hidden");
+    }
+
+    function showOverlay() {
+      if (overlay) overlay.classList.remove("hidden");
+    }
+
+    function safePlay() {
+      if (video.readyState === 0) {
+        video.load();
+      }
+      var playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.then(function() {
+          hideOverlay();
+        }).catch(function(err) {
+          console.warn("Autoplay was deferred or blocked by browser:", err);
+          showOverlay();
+        });
+      }
+    }
+
+    function safePauseAndReset() {
+      video.pause();
+      video.currentTime = 0;
+      hideOverlay();
+    }
+
+    if (playBtn) {
+      playBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        safePlay();
+      });
+    }
+
+    if (overlay) {
+      overlay.addEventListener("click", function() {
+        safePlay();
+      });
+    }
+
+    video.addEventListener("play", hideOverlay);
+    video.addEventListener("playing", hideOverlay);
+    video.addEventListener("pause", function() {
+      if (details && details.open && !video.ended) {
+        showOverlay();
+      }
+    });
+    video.addEventListener("ended", function() {
+      showOverlay();
+    });
+    video.addEventListener("error", function() {
+      console.error("Benchmark video load error:", video.error);
+      if (overlay) {
+        overlay.innerHTML = '<div style="color: #fca5a5; font-size: 0.9rem; text-align: center; padding: 1rem;">Video preview currently unavailable. Please reload or check network.</div>';
+        overlay.classList.remove("hidden");
+      }
+    });
+
+    if (details) {
+      details.addEventListener("toggle", function() {
+        if (details.open) {
+          safePlay();
+        } else {
+          safePauseAndReset();
+        }
+      });
+
+      if (details.open) {
+        safePlay();
+      }
+    }
+  }
+
+  function init() {
     initBenchmarkCalculator();
+    setupVideoLifecycle();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
   }
 })();
 </script>
