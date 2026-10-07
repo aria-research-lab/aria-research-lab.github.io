@@ -1,18 +1,18 @@
 <!-- Interactive Demo: CaptainCook4D Procedural Error Taxonomy Explorer -->
-<details class="interactive-demo-wrapper" markdown="0">
+<details class="interactive-demo-wrapper" id="captaincook-details-wrapper" markdown="0">
   <summary class="interactive-demo-summary">
     <span class="interactive-demo-summary-title">
-      <span>Interactive Demo: CaptainCook4D Procedural Error Taxonomy Explorer</span>
-      <span class="interactive-demo-summary-badge">NeurIPS 2024 D&amp;B</span>
+      <span class="interactive-demo-summary-badge">Interactive Demo</span>
+      <span>CaptainCook4D: Normal vs. Error Execution Explorer</span>
     </span>
     <span class="interactive-demo-summary-chevron">&#9656;</span>
   </summary>
 
-  <div class="interactive-demo-card">
+  <div class="interactive-demo-card" id="demo-captaincook-card">
     <div class="demo-card-header">
       <div class="demo-title-group">
-        <h4>CaptainCook4D Procedural Activity &amp; Error Taxonomy Explorer</h4>
-        <p>Explore genuine error categories, recipe tasks, and multimodal sensory capture from the CaptainCook4D benchmark</p>
+        <h4>CaptainCook4D: Normal vs. Error Procedural Execution &amp; Taxonomy Explorer</h4>
+        <p>Compare genuine normal executions against recorded procedural errors, and inspect egocentric 4D sensory capture and task graphs.</p>
       </div>
       <div class="demo-badges">
         <span class="demo-badge demo-badge-oral">NeurIPS 2024 D&amp;B</span>
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <!-- Metric Cards Grid -->
+    <!-- Verified Dataset Metric Cards Grid -->
     <div class="demo-metrics-grid">
       <div class="demo-metric-card highlight-green">
         <div class="metric-name">
@@ -44,7 +44,7 @@
         <div class="metric-stats">
           <strong>Categories:</strong> Technique, Measurement, Order, Prep, Timing, Temp, Missing<br />
           <strong>Protocols:</strong> Adherent normal steps vs. induced error deviations<br />
-          <strong>Ground truth:</strong> Frame-accurate temporal boundaries
+          <strong>Ground truth:</strong> Annotated step start/end times
         </div>
       </div>
 
@@ -62,11 +62,17 @@
       </div>
     </div>
 
-    <!-- Interactive Step & Error Inspector with Authentic Video Showcase -->
+    <!-- Interactive Procedural Error & Multimodal Explorer Box -->
     <div class="demo-workload-box">
-      <div class="workload-header">
-        <h5>Select Demonstration from Project Benchmark:</h5>
-        <div class="workload-controls">
+      <!-- 1. Taxonomy Category Selector -->
+      <div class="workload-header" style="flex-wrap: wrap; gap: 0.6rem; align-items: center;">
+        <div>
+          <h5 style="margin-bottom: 0.2rem;">1. Select Procedural Demonstration from Benchmark:</h5>
+          <span class="badge badge-info" style="font-size: 0.72rem; font-weight: normal;">
+            Authentic CaptainCook4D Benchmark Recordings
+          </span>
+        </div>
+        <div class="workload-controls" role="group" aria-label="Error Category Selector">
           <button type="button" class="workload-btn cc-tax-btn active" data-cat="technique_spill">Technique (Spillage)</button>
           <button type="button" class="workload-btn cc-tax-btn" data-cat="measurement">Measurement (Quantity)</button>
           <button type="button" class="workload-btn cc-tax-btn" data-cat="order">Order (Sequence)</button>
@@ -77,53 +83,217 @@
         </div>
       </div>
 
-      <!-- Embedded Authentic Video Player -->
-      <div class="demo-video-wrapper" style="margin-top: 0.75rem; margin-bottom: 0.5rem; text-align: center">
-        <video
-          id="cc-video-player"
-          class="demo-video-player"
-          controls
-          playsinline
-          muted
-          loop
-          style="max-height: 320px; width: 100%; border-radius: 6px; background-color: #000"
-        >
-          <source
-            id="cc-video-source"
-            src="https://captaincook4d.github.io/captain-cook/static/videos/error_categories/technique_error_1.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-        <p
-          class="demo-video-caption"
-          id="cc-video-caption"
-          style="margin-top: 0.4rem; font-size: 0.82rem; color: var(--global-text-color-light, #6b7280)"
-        >
-          Butter corn cup: First 2 snippets exhibit correct execution without spillage; next 3 exhibit induced corn spillage while mixing.
-        </p>
+      <!-- Active Demonstration Context Bar -->
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center; margin: 0.65rem 0 0.85rem; padding: 0.55rem 0.8rem; background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px;">
+        <div>
+          <span style="font-size: 0.92rem; font-weight: 700; color: var(--global-text-color, #111827);" id="cc-tax-recipe">Recipe: Butter Corn Cup</span>
+          <span style="font-size: 0.82rem; color: var(--global-text-color-light, #6b7280); display: block; margin-top: 0.15rem;" id="cc-tax-step">Instruction: "Mix the contents of the bowl well"</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap;">
+          <span class="badge badge-danger" id="cc-tax-badge" style="font-size: 0.78rem; font-weight: 700;">Error Type: Technique</span>
+          <span class="badge badge-secondary" id="cc-source-label" style="font-size: 0.72rem; font-weight: normal;">Recorded CaptainCook4D Session</span>
+        </div>
       </div>
 
-      <div class="demo-inspector-card" id="cc-inspector-display" style="margin-top: 0.75rem">
-        <div class="demo-inspector-status">
-          <div>
-            <div class="demo-inspector-step-title" id="cc-tax-recipe">Recipe: Butter Corn Cup</div>
-            <span style="font-size: 0.85rem; color: var(--global-text-color-light, #6b7280)" id="cc-tax-step"
-              >Instruction: "Mix the contents of the bowl well"</span
-            >
+      <!-- 2. Execution View Selector (Normal vs. Error vs. Side-by-Side vs. Full Strip) -->
+      <div id="cc-view-controls-bar" style="display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; padding: 0.45rem 0.75rem; background: rgba(0,0,0,0.02); border-radius: 6px; border: 1px solid var(--global-divider-color, rgba(0,0,0,0.06));">
+        <div style="display: flex; align-items: center; gap: 0.45rem; font-size: 0.82rem; font-weight: 700; color: var(--global-text-color, #111827);">
+          <span>Execution Comparison:</span>
+        </div>
+        <div class="workload-controls" id="cc-view-mode-group" role="group" aria-label="Execution View Mode">
+          <button type="button" class="workload-btn cc-view-btn active" data-view="side_by_side">Side-by-Side (Normal vs. Error)</button>
+          <button type="button" class="workload-btn cc-view-btn" data-view="normal_only">Normal Execution</button>
+          <button type="button" class="workload-btn cc-view-btn" data-view="error_only">Error Execution</button>
+          <button type="button" class="workload-btn cc-view-btn" data-view="full_strip">All 5 Multi-View Sessions</button>
+        </div>
+      </div>
+
+      <!-- 3. Primary Media Showcase Area -->
+
+      <!-- A. Normal vs. Error Comparison Grid (Used for Procedural Categories) -->
+      <div id="cc-comparison-container" class="cc-comparison-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-bottom: 0.6rem;">
+        <!-- Left Column: Normal Execution -->
+        <div id="cc-panel-normal" class="cc-execution-panel" style="background: var(--global-card-bg-color, #ffffff); border: 1.5px solid #10b981; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+          <div style="padding: 0.45rem 0.75rem; background: rgba(16, 185, 129, 0.08); border-bottom: 1px solid rgba(16, 185, 129, 0.2); display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 700; font-size: 0.82rem; color: #047857; display: flex; align-items: center; gap: 0.35rem;">
+              <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981;"></span>
+              Normal Execution (Adherent Step)
+            </span>
+            <span class="badge badge-success" style="font-size: 0.68rem; font-weight: normal;">Recorded Dataset Session</span>
           </div>
-          <span class="badge badge-danger" id="cc-tax-badge" style="font-size: 0.78rem">Technique Error</span>
+
+          <div class="cc-video-viewport" id="cc-viewport-normal" style="position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #000; cursor: pointer;">
+            <video
+              id="cc-video-normal"
+              class="cc-crop-video"
+              style="position: absolute; top: 0; left: 0; width: 500%; height: 100%; object-fit: fill; transform: translateX(0%); pointer-events: none;"
+              playsinline
+              muted
+              preload="metadata"
+              poster="{{ '/assets/img/publication_preview/captaincook4d_poster.jpg' | relative_url }}"
+            >
+              <source id="cc-source-normal" src="https://captaincook4d.github.io/captain-cook/static/videos/error_categories/technique_error_1.mp4" type="video/mp4" />
+            </video>
+            <!-- Overlay Retry State on Error -->
+            <div class="cc-error-overlay" id="cc-overlay-normal" style="display: none; position: absolute; inset: 0; background: rgba(0,0,0,0.85); color: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.8rem; text-align: center; z-index: 10;">
+              <span style="font-size: 0.8rem; color: #fca5a5;">Recording snippet could not be loaded from source repository.</span>
+              <button type="button" class="workload-btn cc-retry-btn" style="padding: 0.2rem 0.6rem; font-size: 0.74rem;">↺ Retry Loading</button>
+            </div>
+            <!-- Click-to-Play Indicator Icon -->
+            <div class="cc-play-overlay-badge" id="cc-play-overlay-normal" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; background: rgba(0,0,0,0.15);">
+              <span style="background: rgba(0,0,0,0.65); color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">▶</span>
+            </div>
+          </div>
+
+          <div style="padding: 0.55rem 0.75rem; font-size: 0.8rem; line-height: 1.45; color: var(--global-text-color, #111827); border-top: 1px solid var(--global-divider-color, rgba(0,0,0,0.06)); background: rgba(0,0,0,0.01); flex-grow: 1;">
+            <strong style="color: #047857;">Expected Execution:</strong> <span id="cc-card-normal-text">Contents of the bowl are mixed thoroughly without spillage.</span>
+          </div>
         </div>
 
-        <div style="font-size: 0.88rem; line-height: 1.5; margin: 0.5rem 0">
-          <p style="margin: 0.25rem 0">
-            <strong>Normal Execution:</strong> <span id="cc-tax-normal">Contents of the bowl are mixed thoroughly without spillage.</span>
-          </p>
-          <p style="margin: 0.25rem 0">
-            <strong>Recorded Error:</strong>
-            <span id="cc-tax-error" style="color: #ef4444"
-              >Participant mixes too aggressively, spilling corn kernels out of the bowl while mixing.</span
+        <!-- Right Column: Error Execution -->
+        <div id="cc-panel-error" class="cc-execution-panel" style="background: var(--global-card-bg-color, #ffffff); border: 1.5px solid #ef4444; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+          <div style="padding: 0.45rem 0.75rem; background: rgba(239, 68, 68, 0.08); border-bottom: 1px solid rgba(239, 68, 68, 0.2); display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 700; font-size: 0.82rem; color: #b91c1c; display: flex; align-items: center; gap: 0.35rem;">
+              <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ef4444;"></span>
+              Error Execution (Procedural Deviation)
+            </span>
+            <span class="badge badge-danger" id="cc-card-error-badge" style="font-size: 0.68rem; font-weight: normal;">Technique Error</span>
+          </div>
+
+          <div class="cc-video-viewport" id="cc-viewport-error" style="position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #000; cursor: pointer;">
+            <video
+              id="cc-video-error"
+              class="cc-crop-video"
+              style="position: absolute; top: 0; left: 0; width: 500%; height: 100%; object-fit: fill; transform: translateX(-40%); pointer-events: none;"
+              playsinline
+              muted
+              preload="metadata"
+              poster="{{ '/assets/img/publication_preview/captaincook4d_poster.jpg' | relative_url }}"
             >
+              <source id="cc-source-error" src="https://captaincook4d.github.io/captain-cook/static/videos/error_categories/technique_error_1.mp4" type="video/mp4" />
+            </video>
+            <!-- Overlay Retry State on Error -->
+            <div class="cc-error-overlay" id="cc-overlay-error" style="display: none; position: absolute; inset: 0; background: rgba(0,0,0,0.85); color: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.8rem; text-align: center; z-index: 10;">
+              <span style="font-size: 0.8rem; color: #fca5a5;">Recording snippet could not be loaded from source repository.</span>
+              <button type="button" class="workload-btn cc-retry-btn" style="padding: 0.2rem 0.6rem; font-size: 0.74rem;">↺ Retry Loading</button>
+            </div>
+            <!-- Click-to-Play Indicator Icon -->
+            <div class="cc-play-overlay-badge" id="cc-play-overlay-error" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; background: rgba(0,0,0,0.15);">
+              <span style="background: rgba(0,0,0,0.65); color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">▶</span>
+            </div>
+          </div>
+
+          <div style="padding: 0.55rem 0.75rem; font-size: 0.8rem; line-height: 1.45; color: var(--global-text-color, #111827); border-top: 1px solid var(--global-divider-color, rgba(0,0,0,0.06)); background: rgba(0,0,0,0.01); flex-grow: 1;">
+            <strong style="color: #b91c1c;">Recorded Deviation:</strong> <span id="cc-card-error-text">Participant mixes too aggressively, spilling corn kernels out of the bowl while mixing.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- B. Full Panoramic Strip View (Uncropped 5-Snippet Video Strip) -->
+      <div id="cc-strip-container" style="display: none; margin-bottom: 0.6rem;">
+        <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; overflow: hidden; padding: 0.6rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; font-size: 0.8rem;">
+            <span style="font-weight: 700; color: var(--global-text-color, #111827);">Full 5-Session Benchmark Recording Strip (3200 &times; 360 px)</span>
+            <span style="color: #64748b; font-size: 0.72rem;">Snippets 1-2: Normal | Snippets 3-5: Error Deviations</span>
+          </div>
+          <div style="position: relative; width: 100%; overflow-x: auto; background: #000; border-radius: 6px;">
+            <video
+              id="cc-video-strip"
+              style="width: 100%; height: auto; max-height: 220px; display: block; margin: 0 auto; cursor: pointer;"
+              playsinline
+              muted
+              preload="metadata"
+              poster="{{ '/assets/img/publication_preview/captaincook4d_poster.jpg' | relative_url }}"
+            >
+              <source id="cc-source-strip" src="https://captaincook4d.github.io/captain-cook/static/videos/error_categories/technique_error_1.mp4" type="video/mp4" />
+            </video>
+            <!-- Error State -->
+            <div class="cc-error-overlay" id="cc-overlay-strip" style="display: none; position: absolute; inset: 0; background: rgba(0,0,0,0.85); color: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.8rem; text-align: center; z-index: 10;">
+              <span style="font-size: 0.8rem; color: #fca5a5;">Panoramic video stream could not be loaded from source repository.</span>
+              <button type="button" class="workload-btn cc-retry-btn" style="padding: 0.2rem 0.6rem; font-size: 0.74rem;">↺ Retry Loading</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- C. Multimodal / Structured Representation Single-View Player (4D Point Cloud & Task Graph) -->
+      <div id="cc-multimodal-container" style="display: none; margin-bottom: 0.6rem;">
+        <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; overflow: hidden;">
+          <div style="padding: 0.45rem 0.75rem; background: rgba(0,0,0,0.03); border-bottom: 1px solid var(--global-divider-color, rgba(0,0,0,0.08)); display: flex; justify-content: space-between; align-items: center;">
+            <span id="cc-multimodal-title" style="font-weight: 700; font-size: 0.84rem; color: var(--global-text-color, #111827);">
+              Egocentric 4D Point Cloud &amp; Spatial Mesh
+            </span>
+            <span class="badge badge-success" id="cc-multimodal-badge" style="font-size: 0.7rem; font-weight: normal;">4D Reconstruction</span>
+          </div>
+          <div style="position: relative; width: 100%; background: #000; text-align: center;">
+            <video
+              id="cc-video-multimodal"
+              style="max-height: 340px; width: 100%; display: block; cursor: pointer;"
+              playsinline
+              muted
+              preload="metadata"
+              poster="{{ '/assets/img/publication_preview/captaincook4d_poster.jpg' | relative_url }}"
+            >
+              <source id="cc-source-multimodal" src="https://captaincook4d.github.io/captain-cook/static/videos/4D/4D_SHIVVRAT_HOUSE.mp4" type="video/mp4" />
+            </video>
+            <!-- Error State -->
+            <div class="cc-error-overlay" id="cc-overlay-multimodal" style="display: none; position: absolute; inset: 0; background: rgba(0,0,0,0.85); color: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.8rem; text-align: center; z-index: 10;">
+              <span style="font-size: 0.8rem; color: #fca5a5;">Multimodal stream could not be loaded from source repository.</span>
+              <button type="button" class="workload-btn cc-retry-btn" style="padding: 0.2rem 0.6rem; font-size: 0.74rem;">↺ Retry Loading</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Unified Synchronized Playback Controls Bar -->
+      <div class="cc-player-controls" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem; padding: 0.5rem 0.8rem; background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+          <button type="button" id="cc-play-btn" class="workload-btn" style="min-width: 80px; font-weight: 700; padding: 0.25rem 0.65rem;">
+            ▶ Play
+          </button>
+          <button type="button" id="cc-restart-btn" class="workload-btn" style="padding: 0.25rem 0.55rem;" title="Replay from start">
+            ↺ Replay
+          </button>
+          <button type="button" id="cc-mute-btn" class="workload-btn" style="padding: 0.25rem 0.55rem;" title="Toggle Mute">
+            🔇 Muted
+          </button>
+          <span id="cc-time-display" style="font-size: 0.78rem; font-family: monospace; color: var(--global-text-color-light, #6b7280);">
+            0:00 / --:--
+          </span>
+        </div>
+
+        <div style="flex-grow: 1; min-width: 160px; max-width: 320px; display: flex; align-items: center; gap: 0.5rem;">
+          <input type="range" id="cc-time-scrubber" min="0" max="100" value="0" step="0.2" style="width: 100%; cursor: pointer;" aria-label="Playback scrubber" />
+        </div>
+
+        <div style="font-size: 0.74rem; color: #64748b; display: flex; align-items: center; gap: 0.35rem;">
+          <span id="cc-sync-dot" style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #10b981;"></span>
+          <span id="cc-sync-label">Linked Normal/Error Playback</span>
+        </div>
+      </div>
+
+      <!-- Caption Context Line -->
+      <p class="demo-video-caption" id="cc-video-caption" style="margin-top: 0.5rem; margin-bottom: 0.75rem; font-size: 0.82rem; color: var(--global-text-color-light, #6b7280);">
+        Recorded CaptainCook4D session: Butter corn cup. First 2 snippets exhibit correct execution without spillage; next 3 exhibit induced corn spillage while mixing.
+      </p>
+
+      <!-- 5. Procedural Details & Multimodal Stream Card -->
+      <div class="demo-inspector-card" id="cc-inspector-display" style="margin-top: 0.65rem;">
+        <div class="demo-inspector-status">
+          <div>
+            <div class="demo-inspector-step-title" id="cc-card-recipe-title">Recipe: Butter Corn Cup</div>
+            <span style="font-size: 0.85rem; color: var(--global-text-color-light, #6b7280)" id="cc-card-step-title">Instruction: "Mix the contents of the bowl well"</span>
+          </div>
+          <span class="badge badge-danger" id="cc-card-status-badge" style="font-size: 0.78rem">Technique Error</span>
+        </div>
+
+        <div style="font-size: 0.88rem; line-height: 1.5; margin: 0.5rem 0;">
+          <p style="margin: 0.3rem 0;">
+            <strong style="color: #047857;">Normal Execution:</strong> <span id="cc-card-normal-desc">Contents of the bowl are mixed thoroughly without spillage.</span>
+          </p>
+          <p style="margin: 0.3rem 0;">
+            <strong style="color: #b91c1c;">Recorded Deviation:</strong>
+            <span id="cc-card-error-desc">Participant mixes too aggressively, spilling corn kernels out of the bowl while mixing.</span>
           </p>
         </div>
 
@@ -139,6 +309,7 @@
         </div>
       </div>
 
+      <!-- Official Resources Footer -->
       <div
         style="
           display: flex;
@@ -171,187 +342,652 @@
 </details>
 
 <script>
-  (function () {
-    function initCaptainCookTaxonomy() {
-      var taxBtns = document.querySelectorAll(".cc-tax-btn");
-      var recipeEl = document.getElementById("cc-tax-recipe");
-      var stepEl = document.getElementById("cc-tax-step");
-      var badgeEl = document.getElementById("cc-tax-badge");
-      var normalEl = document.getElementById("cc-tax-normal");
-      var errorEl = document.getElementById("cc-tax-error");
-      var streamsEl = document.getElementById("cc-tax-streams");
-      var taskEl = document.getElementById("cc-tax-task");
-      var videoPlayer = document.getElementById("cc-video-player");
-      var videoSource = document.getElementById("cc-video-source");
-      var videoCaption = document.getElementById("cc-video-caption");
+(function() {
+  function initCaptainCookDemo() {
+    var detailsWrapper = document.getElementById("captaincook-details-wrapper");
 
-      if (!taxBtns.length || !recipeEl) return;
+    // Category Buttons
+    var taxBtns = document.querySelectorAll(".cc-tax-btn");
 
-      var taxData = {
-        technique_spill: {
-          recipe: "Recipe: Butter Corn Cup",
-          step: 'Instruction: "Mix the contents of the bowl well"',
-          badge: "Technique Error",
-          badgeClass: "badge-danger",
-          normal: "Contents of the bowl are mixed thoroughly without any spillage.",
-          error: "Participant induces error by spilling out corn from the bowl while mixing.",
-          streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
-          task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
-          videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/technique_error_1.mp4",
-          caption: "Butter corn cup: First 2 snippets exhibit correct execution without spillage; next 3 exhibit induced corn spillage while mixing.",
-        },
-        measurement: {
-          recipe: "Recipe: Scrambled Eggs",
-          step: 'Instruction: "Peel 2 garlic cloves"',
-          badge: "Measurement Error",
-          badgeClass: "badge-warning",
-          normal: "Participant counts and peels exactly 2 garlic cloves as specified in the recipe.",
-          error: "Incorrect quantity peeled (4 garlic cloves, 1 clove, and 1 clove respectively peeled instead of 2).",
-          streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
-          task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
-          videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/measurement_error.mp4",
-          caption: "Scrambled eggs: First 2 snippets show correct 2-clove peeling; next 3 snippets show incorrect quantities (4, 1, and 1 cloves).",
-        },
-        order: {
-          recipe: "Recipe: Spicy Tuna Avocado Wraps",
-          step: 'Instruction: "Top lettuce leaves with tuna mixture"',
-          badge: "Order Error",
-          badgeClass: "badge-info",
-          normal: "Steps executed in valid topological dependency order defined by the recipe task graph.",
-          error: "Incorrect sequence followed: avocado is added after topping lettuce leaves with tuna mixture instead of before.",
-          streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
-          task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
-          videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/order_error.mp4",
-          caption: "Spicy tuna avocado wraps: First 2 snippets show correct step order; next 3 show avocado added out of sequence.",
-        },
-        prep: {
-          recipe: "Recipe: Mug Cake",
-          step: 'Instruction: "Whisk batter"',
-          badge: "Preparation Error",
-          badgeClass: "badge-danger",
-          normal: "Proper whisk utensil used to blend batter ingredients uniformly.",
-          error: "Incorrect utensil or implement utilized: participant uses a spoon, tablespoon, or hand to perform whisking.",
-          streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
-          task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
-          videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/preparation_error.mp4",
-          caption:
-            "Mug cake: First 2 snippets show proper whisk utensil usage; remaining snippets show incorrect utensils (spoon, tablespoon, hand).",
-        },
-        technique_cut: {
-          recipe: "Recipe: Cucumber Raita",
-          step: 'Instruction: "Chop or grate the cucumber"',
-          badge: "Technique Error",
-          badgeClass: "badge-danger",
-          normal: "Cucumber is chopped or grated evenly according to culinary technique.",
-          error: "Improper knife execution: cucumber cut incorrectly, sliced vertically, or sliced horizontally.",
-          streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
-          task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
-          videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/technique_error_2.mp4",
-          caption: "Cucumber raita: First 2 snippets show correct chopping/grating; next 3 show vertical and horizontal slicing errors.",
-        },
-        spatial_4d: {
-          recipe: "Kitchen Environment: Real-World 4D Reconstructions",
-          step: "Modality: HoloLens 2 AHAT Depth & Egocentric Spatial Meshing",
-          badge: "4D Point Cloud & Mesh",
-          badgeClass: "badge-success",
-          normal: "Continuous 3D spatial surfaces and egocentric point clouds reconstructed across 10 real kitchen environments.",
-          error: "Captures 3D spatial relations, object-hand interactions, and metric scene depth for 384 recording sessions.",
-          streams: "HoloLens 2 AHAT (Short-Throw) Depth, 3D Hand/Head Poses, 3D Spatial Surface Mesh",
-          task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
-          videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/4D/4D_SHIVVRAT_HOUSE.mp4",
-          caption: "4D egocentric point cloud and spatial mesh reconstructed from HoloLens 2 depth and sensor poses in a real kitchen environment.",
-        },
-        task_graph: {
-          recipe: "Recipe: Blender Banana Pancakes",
-          step: "Structure: Hierarchical Directed Acyclic Task Graph (DAG)",
-          badge: "Task Graph Representation",
-          badgeClass: "badge-secondary",
-          normal: "Formulates recipes as directed acyclic graphs encoding step prerequisites, parallel paths, and optional sub-activities.",
-          error: "Enables grounding execution paths against procedural constraints to detect missing, skipped, or misordered actions.",
-          streams: "WikiHow Recipe Dependency Graph, Step Annotations & Temporal Alignments",
-          task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
-          videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/task_graph_blender_banana_pancakes.mp4",
-          caption: "Task graph animation: Procedural workflow representation modeling step execution order and dependency constraints.",
-        },
-      };
+    // Header Elements
+    var recipeEl = document.getElementById("cc-tax-recipe");
+    var stepEl = document.getElementById("cc-tax-step");
+    var badgeEl = document.getElementById("cc-tax-badge");
+    var sourceLabelEl = document.getElementById("cc-source-label");
 
-      taxBtns.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          taxBtns.forEach(function (b) {
-            b.classList.remove("active");
-          });
-          btn.classList.add("active");
-          var cat = btn.getAttribute("data-cat");
-          var d = taxData[cat];
-          if (!d) return;
+    // View Mode Buttons & Bar
+    var viewControlsBar = document.getElementById("cc-view-controls-bar");
+    var viewBtns = document.querySelectorAll(".cc-view-btn");
 
-          recipeEl.textContent = d.recipe;
-          stepEl.textContent = d.step;
-          badgeEl.textContent = d.badge;
-          badgeEl.className = "badge " + d.badgeClass;
-          normalEl.textContent = d.normal;
-          errorEl.textContent = d.error;
-          streamsEl.textContent = d.streams;
-          taskEl.textContent = d.task;
+    // Video Containers
+    var comparisonContainer = document.getElementById("cc-comparison-container");
+    var panelNormal = document.getElementById("cc-panel-normal");
+    var panelError = document.getElementById("cc-panel-error");
+    var stripContainer = document.getElementById("cc-strip-container");
+    var multimodalContainer = document.getElementById("cc-multimodal-container");
 
-          if (videoPlayer && videoSource && d.videoUrl) {
-            videoSource.src = d.videoUrl;
-            videoPlayer.load();
-          }
-          if (videoCaption && d.caption) {
-            videoCaption.textContent = d.caption;
-          }
-        });
-      });
+    // Video Elements & Sources
+    var videoNormal = document.getElementById("cc-video-normal");
+    var sourceNormal = document.getElementById("cc-source-normal");
+    var videoError = document.getElementById("cc-video-error");
+    var sourceError = document.getElementById("cc-source-error");
+    var videoStrip = document.getElementById("cc-video-strip");
+    var sourceStrip = document.getElementById("cc-source-strip");
+    var videoMultimodal = document.getElementById("cc-video-multimodal");
+    var sourceMultimodal = document.getElementById("cc-source-multimodal");
 
-      /* Replay GIF Handler: click to replay */
-      document.addEventListener("click", function (e) {
-        var replayBtn = e.target.closest(".gif-replay-badge");
-        if (replayBtn) {
-          var container = replayBtn.closest("figure, .demo-video-wrapper, div");
-          var img = container ? container.querySelector("img") : null;
-          if (img && img.src.indexOf(".gif") !== -1) {
-            var base = img.src.split("?")[0];
-            img.src = base + "?t=" + Date.now();
-          }
-          return;
+    // Viewports (for click-to-play)
+    var viewportNormal = document.getElementById("cc-viewport-normal");
+    var viewportError = document.getElementById("cc-viewport-error");
+    var playOverlayNormal = document.getElementById("cc-play-overlay-normal");
+    var playOverlayError = document.getElementById("cc-play-overlay-error");
+
+    // Overlays for error states
+    var overlayNormal = document.getElementById("cc-overlay-normal");
+    var overlayError = document.getElementById("cc-overlay-error");
+    var overlayStrip = document.getElementById("cc-overlay-strip");
+    var overlayMultimodal = document.getElementById("cc-overlay-multimodal");
+
+    // Multimodal header texts
+    var multimodalTitleEl = document.getElementById("cc-multimodal-title");
+    var multimodalBadgeEl = document.getElementById("cc-multimodal-badge");
+
+    // Cards Callouts
+    var cardNormalText = document.getElementById("cc-card-normal-text");
+    var cardErrorText = document.getElementById("cc-card-error-text");
+    var cardErrorBadge = document.getElementById("cc-card-error-badge");
+    var videoCaption = document.getElementById("cc-video-caption");
+
+    // Bottom Inspector Display
+    var cardRecipeTitle = document.getElementById("cc-card-recipe-title");
+    var cardStepTitle = document.getElementById("cc-card-step-title");
+    var cardStatusBadge = document.getElementById("cc-card-status-badge");
+    var cardNormalDesc = document.getElementById("cc-card-normal-desc");
+    var cardErrorDesc = document.getElementById("cc-card-error-desc");
+    var streamsEl = document.getElementById("cc-tax-streams");
+    var taskEl = document.getElementById("cc-tax-task");
+
+    // Master Controls
+    var playBtn = document.getElementById("cc-play-btn");
+    var restartBtn = document.getElementById("cc-restart-btn");
+    var muteBtn = document.getElementById("cc-mute-btn");
+    var timeDisplay = document.getElementById("cc-time-display");
+    var timeScrubber = document.getElementById("cc-time-scrubber");
+    var syncDot = document.getElementById("cc-sync-dot");
+    var syncLabel = document.getElementById("cc-sync-label");
+
+    if (!taxBtns.length || !videoNormal) return;
+
+    var currentCat = "technique_spill";
+    var currentViewMode = "side_by_side"; // side_by_side, normal_only, error_only, full_strip
+    var isMuted = true;
+    var isUserScrubbing = false;
+
+    var CATEGORY_DATA = {
+      technique_spill: {
+        type: "procedural",
+        recipe: "Recipe: Butter Corn Cup",
+        step: 'Instruction: "Mix the contents of the bowl well"',
+        badge: "Technique Error: Spillage",
+        badgeClass: "badge-danger",
+        isRecorded: true,
+        normal: "Contents of the bowl are mixed thoroughly without spillage.",
+        error: "Participant mixes too aggressively, spilling corn kernels out of the bowl while mixing.",
+        streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
+        task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
+        videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/technique_error_1.mp4",
+        caption: "Recorded CaptainCook4D session: Butter corn cup. Normal execution exhibits careful mixing without spillage; Error execution captures corn kernel spillage from aggressive mixing.",
+        normalCrop: "translateX(0%)",
+        errorCrop: "translateX(-40%)"
+      },
+      measurement: {
+        type: "procedural",
+        recipe: "Recipe: Scrambled Eggs",
+        step: 'Instruction: "Peel 2 garlic cloves"',
+        badge: "Measurement Error: Quantity",
+        badgeClass: "badge-warning",
+        isRecorded: true,
+        normal: "Participant counts and peels exactly 2 garlic cloves as specified in the recipe.",
+        error: "Incorrect quantity peeled: participant peels 4 garlic cloves (or 1 clove) instead of the intended 2 cloves.",
+        streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
+        task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
+        videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/measurement_error.mp4",
+        caption: "Recorded CaptainCook4D session: Scrambled eggs. Normal execution shows peeling exactly 2 garlic cloves; Error execution captures peeling an incorrect quantity (4 cloves).",
+        normalCrop: "translateX(0%)",
+        errorCrop: "translateX(-40%)"
+      },
+      order: {
+        type: "procedural",
+        recipe: "Recipe: Spicy Tuna Avocado Wraps",
+        step: 'Instruction: "Top lettuce leaves with tuna mixture"',
+        badge: "Order Error: Sequence Deviation",
+        badgeClass: "badge-info",
+        isRecorded: true,
+        normal: "Steps executed in valid topological dependency order defined by the recipe task graph.",
+        error: "Incorrect sequence followed: avocado is added after topping lettuce leaves with tuna mixture instead of before.",
+        streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
+        task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
+        videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/order_error.mp4",
+        caption: "Recorded CaptainCook4D session: Spicy tuna avocado wraps. Normal execution follows step precedence; Error execution captures avocado added out of sequence.",
+        normalCrop: "translateX(0%)",
+        errorCrop: "translateX(-40%)"
+      },
+      prep: {
+        type: "procedural",
+        recipe: "Recipe: Mug Cake",
+        step: 'Instruction: "Whisk batter"',
+        badge: "Preparation Error: Utensil Misuse",
+        badgeClass: "badge-danger",
+        isRecorded: true,
+        normal: "Proper whisk utensil used to blend batter ingredients uniformly.",
+        error: "Incorrect utensil utilized: participant uses a spoon, tablespoon, or hand instead of a whisk.",
+        streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
+        task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
+        videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/preparation_error.mp4",
+        caption: "Recorded CaptainCook4D session: Mug cake. Normal execution shows proper whisk utensil usage; Error execution captures substitution of improper implements (spoon/hand).",
+        normalCrop: "translateX(0%)",
+        errorCrop: "translateX(-40%)"
+      },
+      technique_cut: {
+        type: "procedural",
+        recipe: "Recipe: Cucumber Raita",
+        step: 'Instruction: "Chop or grate the cucumber"',
+        badge: "Technique Error: Improper Cutting",
+        badgeClass: "badge-danger",
+        isRecorded: true,
+        normal: "Cucumber is chopped or grated evenly according to culinary technique.",
+        error: "Improper knife execution: cucumber is sliced vertically or horizontally rather than chopped or grated.",
+        streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
+        task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
+        videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/technique_error_2.mp4",
+        caption: "Recorded CaptainCook4D session: Cucumber raita. Normal execution exhibits proper chopping/grating; Error execution captures improper knife stroke orientation.",
+        normalCrop: "translateX(0%)",
+        errorCrop: "translateX(-40%)"
+      },
+      spatial_4d: {
+        type: "multimodal",
+        recipe: "Kitchen Environment: Metric 4D Reconstructions",
+        step: "Modality: HoloLens 2 AHAT Depth & Egocentric Spatial Meshing",
+        badge: "4D Point Cloud & Mesh",
+        badgeClass: "badge-success",
+        isRecorded: true,
+        normal: "Continuous 3D spatial surfaces and egocentric point clouds reconstructed across 10 real kitchen environments.",
+        error: "Captures 3D spatial relations, object-hand interactions, and metric scene depth for 384 recording sessions.",
+        streams: "HoloLens 2 AHAT (Short-Throw) Depth, 3D Hand/Head Poses, 3D Spatial Surface Mesh",
+        task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
+        videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/4D/4D_SHIVVRAT_HOUSE.mp4",
+        caption: "Recorded CaptainCook4D sensory stream: 4D egocentric point cloud and spatial mesh reconstructed from HoloLens 2 depth and sensor poses in a real kitchen environment."
+      },
+      task_graph: {
+        type: "multimodal",
+        recipe: "Recipe: Blender Banana Pancakes",
+        step: "Structure: Hierarchical Directed Acyclic Task Graph (DAG)",
+        badge: "Structured Task Representation (DAG)",
+        badgeClass: "badge-secondary",
+        isRecorded: false, // Schematic representation
+        normal: "Formulates recipes as directed acyclic graphs encoding step prerequisites, parallel paths, and optional sub-activities.",
+        error: "Enables grounding execution paths against procedural constraints to detect missing, skipped, or misordered actions.",
+        streams: "WikiHow Recipe Dependency Graph, Step Annotations & Temporal Alignments",
+        task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
+        videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/task_graph_blender_banana_pancakes.mp4",
+        caption: "Schematic task representation: Procedural workflow graph modeling step execution order and dependency constraints."
+      }
+    };
+
+    function formatTime(sec) {
+      if (!Number.isFinite(sec) || sec < 0) return "0:00";
+      var m = Math.floor(sec / 60);
+      var s = Math.floor(sec % 60);
+      return m + ":" + (s < 10 ? "0" : "") + s;
+    }
+
+    function updateTimeUI(currTime, duration) {
+      var c = (Number.isFinite(currTime) && currTime >= 0) ? currTime : 0;
+      var d = (Number.isFinite(duration) && duration > 0) ? duration : 0;
+      if (timeDisplay) {
+        if (d > 0) {
+          timeDisplay.textContent = formatTime(c) + " / " + formatTime(d);
+        } else {
+          timeDisplay.textContent = formatTime(c) + " / --:--";
         }
-        var gifImg = e.target.closest("img.gif-replayable");
-        if (gifImg && gifImg.src.indexOf(".gif") !== -1) {
-          var base = gifImg.src.split("?")[0];
-          gifImg.src = base + "?t=" + Date.now();
+      }
+      if (timeScrubber && !isUserScrubbing) {
+        if (d > 0) {
+          timeScrubber.value = (c / d) * 100;
+        } else {
+          timeScrubber.value = 0;
         }
-      });
+      }
+    }
 
-      /* Scroll Observer: restart GIF when scrolled into view so visitor sees full animation */
-      if ("IntersectionObserver" in window) {
-        var gifObserver = new IntersectionObserver(
-          function (entries, observer) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                var img = entry.target;
-                if (img.src && img.src.indexOf(".gif") !== -1 && !img.dataset.hasPlayed) {
-                  img.dataset.hasPlayed = "true";
-                  var base = img.src.split("?")[0];
-                  img.src = base + "?t=" + Date.now();
-                }
-                observer.unobserve(img);
-              }
-            });
-          },
-          { threshold: 0.2 }
-        );
+    function getActiveVideo() {
+      var d = CATEGORY_DATA[currentCat];
+      if (d && d.type === "multimodal") {
+        return videoMultimodal;
+      }
+      if (currentViewMode === "full_strip") {
+        return videoStrip;
+      }
+      if (currentViewMode === "error_only") {
+        return videoError;
+      }
+      return videoNormal;
+    }
 
-        document.querySelectorAll("figure img.gif-replayable").forEach(function (img) {
-          gifObserver.observe(img);
+    function pauseAll() {
+      if (videoNormal) videoNormal.pause();
+      if (videoError) videoError.pause();
+      if (videoStrip) videoStrip.pause();
+      if (videoMultimodal) videoMultimodal.pause();
+      if (playBtn) playBtn.textContent = "▶ Play";
+      if (playOverlayNormal) playOverlayNormal.style.display = "flex";
+      if (playOverlayError) playOverlayError.style.display = "flex";
+    }
+
+    function safePlay(videoEl, overlayEl) {
+      if (!videoEl) return;
+      var p = videoEl.play();
+      if (p && typeof p.catch === "function") {
+        p.catch(function(err) {
+          if (err && err.name === "AbortError") {
+            return;
+          }
+          pauseAll();
+          if (videoEl.error && overlayEl) {
+            overlayEl.style.display = "flex";
+          }
         });
       }
     }
 
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initCaptainCookTaxonomy);
-    } else {
-      initCaptainCookTaxonomy();
+    function playActive() {
+      var d = CATEGORY_DATA[currentCat];
+      if (d.type === "multimodal") {
+        safePlay(videoMultimodal, overlayMultimodal);
+      } else if (currentViewMode === "full_strip") {
+        safePlay(videoStrip, overlayStrip);
+      } else if (currentViewMode === "normal_only") {
+        safePlay(videoNormal, overlayNormal);
+      } else if (currentViewMode === "error_only") {
+        safePlay(videoError, overlayError);
+      } else {
+        // side_by_side
+        safePlay(videoNormal, overlayNormal);
+        safePlay(videoError, overlayError);
+      }
+      if (playBtn) playBtn.textContent = "⏸ Pause";
+      if (playOverlayNormal) playOverlayNormal.style.display = "none";
+      if (playOverlayError) playOverlayError.style.display = "none";
     }
-  })();
+
+    function togglePlay() {
+      var active = getActiveVideo();
+      if (!active) return;
+      if (active.paused || active.ended) {
+        playActive();
+      } else {
+        pauseAll();
+      }
+    }
+
+    function syncMuteState() {
+      if (currentViewMode === "error_only") {
+        if (videoError) videoError.muted = isMuted;
+        if (videoNormal) videoNormal.muted = true;
+      } else {
+        if (videoNormal) videoNormal.muted = isMuted;
+        if (videoError) videoError.muted = true; // Avoid dual-stream echo in side-by-side
+      }
+      if (videoStrip) videoStrip.muted = isMuted;
+      if (videoMultimodal) videoMultimodal.muted = isMuted;
+      if (muteBtn) muteBtn.textContent = isMuted ? "🔇 Muted" : "🔊 Audio";
+    }
+
+    function applyViewMode() {
+      var d = CATEGORY_DATA[currentCat];
+      if (d.type === "multimodal") {
+        if (viewControlsBar) viewControlsBar.style.display = "none";
+        if (comparisonContainer) comparisonContainer.style.display = "none";
+        if (stripContainer) stripContainer.style.display = "none";
+        if (multimodalContainer) multimodalContainer.style.display = "block";
+        if (syncDot) syncDot.style.background = "#3b82f6";
+        if (syncLabel) syncLabel.textContent = "Multimodal Benchmark Stream";
+        return;
+      }
+
+      // Procedural category:
+      if (viewControlsBar) viewControlsBar.style.display = "flex";
+      if (multimodalContainer) multimodalContainer.style.display = "none";
+
+      viewBtns.forEach(function(btn) {
+        btn.classList.toggle("active", btn.getAttribute("data-view") === currentViewMode);
+      });
+
+      if (currentViewMode === "full_strip") {
+        if (comparisonContainer) comparisonContainer.style.display = "none";
+        if (stripContainer) stripContainer.style.display = "block";
+        if (syncDot) syncDot.style.background = "#64748b";
+        if (syncLabel) syncLabel.textContent = "5-Session Panoramic Stream";
+      } else if (currentViewMode === "normal_only") {
+        if (stripContainer) stripContainer.style.display = "none";
+        if (comparisonContainer) {
+          comparisonContainer.style.display = "grid";
+          comparisonContainer.style.gridTemplateColumns = "1fr";
+        }
+        if (panelNormal) panelNormal.style.display = "flex";
+        if (panelError) panelError.style.display = "none";
+        if (syncDot) syncDot.style.background = "#10b981";
+        if (syncLabel) syncLabel.textContent = "Normal Execution View";
+      } else if (currentViewMode === "error_only") {
+        if (stripContainer) stripContainer.style.display = "none";
+        if (comparisonContainer) {
+          comparisonContainer.style.display = "grid";
+          comparisonContainer.style.gridTemplateColumns = "1fr";
+        }
+        if (panelNormal) panelNormal.style.display = "none";
+        if (panelError) panelError.style.display = "flex";
+        if (syncDot) syncDot.style.background = "#ef4444";
+        if (syncLabel) syncLabel.textContent = "Error Execution View";
+      } else {
+        // side_by_side
+        if (stripContainer) stripContainer.style.display = "none";
+        if (comparisonContainer) {
+          comparisonContainer.style.display = "grid";
+          comparisonContainer.style.gridTemplateColumns = "repeat(auto-fit, minmax(280px, 1fr))";
+        }
+        if (panelNormal) panelNormal.style.display = "flex";
+        if (panelError) panelError.style.display = "flex";
+        if (syncDot) syncDot.style.background = "#10b981";
+        if (syncLabel) syncLabel.textContent = "Linked Normal/Error Playback";
+      }
+    }
+
+    function loadCategory(catKey) {
+      currentCat = catKey;
+      var d = CATEGORY_DATA[catKey];
+      if (!d) return;
+
+      pauseAll();
+
+      // Update text & badges
+      if (recipeEl) recipeEl.textContent = d.recipe;
+      if (stepEl) stepEl.textContent = d.step;
+      if (badgeEl) {
+        badgeEl.textContent = d.badge;
+        badgeEl.className = "badge " + d.badgeClass;
+      }
+      if (sourceLabelEl) {
+        sourceLabelEl.textContent = d.isRecorded ? "Recorded CaptainCook4D Session" : "Schematic Task Graph Representation";
+      }
+
+      if (cardNormalText) cardNormalText.textContent = d.normal;
+      if (cardErrorText) cardErrorText.textContent = d.error;
+      if (cardErrorBadge) {
+        cardErrorBadge.textContent = d.badge;
+        cardErrorBadge.className = "badge " + d.badgeClass;
+      }
+      if (videoCaption) videoCaption.textContent = d.caption;
+
+      if (cardRecipeTitle) cardRecipeTitle.textContent = d.recipe;
+      if (cardStepTitle) cardStepTitle.textContent = d.step;
+      if (cardStatusBadge) {
+        cardStatusBadge.textContent = d.badge;
+        cardStatusBadge.className = "badge " + d.badgeClass;
+      }
+      if (cardNormalDesc) cardNormalDesc.textContent = d.normal;
+      if (cardErrorDesc) cardErrorDesc.textContent = d.error;
+      if (streamsEl) streamsEl.textContent = d.streams;
+      if (taskEl) taskEl.textContent = d.task;
+
+      // Reset overlays
+      if (overlayNormal) overlayNormal.style.display = "none";
+      if (overlayError) overlayError.style.display = "none";
+      if (overlayStrip) overlayStrip.style.display = "none";
+      if (overlayMultimodal) overlayMultimodal.style.display = "none";
+
+      if (d.type === "multimodal") {
+        if (multimodalTitleEl) multimodalTitleEl.textContent = d.recipe;
+        if (multimodalBadgeEl) {
+          multimodalBadgeEl.textContent = d.badge;
+          multimodalBadgeEl.className = "badge " + d.badgeClass;
+        }
+        if (sourceMultimodal && d.videoUrl) {
+          sourceMultimodal.src = d.videoUrl;
+          videoMultimodal.load();
+        }
+      } else {
+        // Procedural
+        if (sourceNormal && d.videoUrl) {
+          sourceNormal.src = d.videoUrl;
+          videoNormal.load();
+        }
+        if (sourceError && d.videoUrl) {
+          sourceError.src = d.videoUrl;
+          videoError.load();
+        }
+        if (sourceStrip && d.videoUrl) {
+          sourceStrip.src = d.videoUrl;
+          videoStrip.load();
+        }
+      }
+
+      applyViewMode();
+      syncMuteState();
+      var active = getActiveVideo();
+      updateTimeUI(0, active ? active.duration : 0);
+    }
+
+    // Category button events
+    taxBtns.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        taxBtns.forEach(function(b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+        var cat = btn.getAttribute("data-cat");
+        loadCategory(cat);
+      });
+    });
+
+    // View Mode button events
+    viewBtns.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var targetMode = btn.getAttribute("data-view");
+        if (targetMode === currentViewMode) return;
+
+        var previousActive = getActiveVideo();
+        var wasPlaying = previousActive && !previousActive.paused && !previousActive.ended;
+        var previousTime = previousActive && Number.isFinite(previousActive.currentTime)
+          ? previousActive.currentTime
+          : 0;
+
+        pauseAll();
+
+        currentViewMode = targetMode;
+        applyViewMode();
+        syncMuteState();
+
+        var nextActive = getActiveVideo();
+        if (nextActive && Number.isFinite(nextActive.duration) && nextActive.duration > 0 && previousTime >= 0) {
+          var targetTime = Math.min(previousTime, nextActive.duration);
+          if (currentViewMode === "side_by_side") {
+            if (videoNormal) videoNormal.currentTime = targetTime;
+            if (videoError) videoError.currentTime = targetTime;
+          } else {
+            nextActive.currentTime = targetTime;
+          }
+          updateTimeUI(targetTime, nextActive.duration);
+        } else if (nextActive) {
+          updateTimeUI(nextActive.currentTime, nextActive.duration);
+        }
+
+        if (wasPlaying) {
+          playActive();
+        }
+      });
+    });
+
+    // Master Controls Events
+    if (playBtn) playBtn.addEventListener("click", togglePlay);
+    if (viewportNormal) viewportNormal.addEventListener("click", togglePlay);
+    if (viewportError) viewportError.addEventListener("click", togglePlay);
+    if (videoStrip) videoStrip.addEventListener("click", togglePlay);
+    if (videoMultimodal) videoMultimodal.addEventListener("click", togglePlay);
+
+    if (restartBtn) {
+      restartBtn.addEventListener("click", function() {
+        var d = CATEGORY_DATA[currentCat];
+        if (d.type === "multimodal") {
+          if (videoMultimodal) videoMultimodal.currentTime = 0;
+        } else if (currentViewMode === "error_only") {
+          if (videoError) videoError.currentTime = 0;
+        } else if (currentViewMode === "normal_only") {
+          if (videoNormal) videoNormal.currentTime = 0;
+        } else if (currentViewMode === "full_strip") {
+          if (videoStrip) videoStrip.currentTime = 0;
+        } else {
+          // side_by_side
+          if (videoNormal) videoNormal.currentTime = 0;
+          if (videoError) videoError.currentTime = 0;
+        }
+        var active = getActiveVideo();
+        if (active) updateTimeUI(0, active.duration);
+        playActive();
+      });
+    }
+
+    if (muteBtn) {
+      muteBtn.addEventListener("click", function() {
+        isMuted = !isMuted;
+        syncMuteState();
+      });
+    }
+
+    if (timeScrubber) {
+      timeScrubber.addEventListener("input", function() {
+        isUserScrubbing = true;
+        var active = getActiveVideo();
+        if (active && Number.isFinite(active.duration) && active.duration > 0) {
+          var t = (timeScrubber.value / 100) * active.duration;
+          updateTimeUI(t, active.duration);
+        }
+      });
+
+      timeScrubber.addEventListener("change", function() {
+        isUserScrubbing = false;
+        var active = getActiveVideo();
+        if (active && Number.isFinite(active.duration) && active.duration > 0) {
+          var t = (timeScrubber.value / 100) * active.duration;
+          var d = CATEGORY_DATA[currentCat];
+          if (d.type === "multimodal") {
+            if (videoMultimodal) videoMultimodal.currentTime = t;
+          } else if (currentViewMode === "error_only") {
+            if (videoError) videoError.currentTime = t;
+          } else if (currentViewMode === "normal_only") {
+            if (videoNormal) videoNormal.currentTime = t;
+          } else if (currentViewMode === "full_strip") {
+            if (videoStrip) videoStrip.currentTime = t;
+          } else {
+            // side_by_side
+            if (videoNormal) videoNormal.currentTime = t;
+            if (videoError) videoError.currentTime = t;
+          }
+          updateTimeUI(t, active.duration);
+        }
+      });
+    }
+
+    // Time update listener on primary active stream
+    function onStreamTimeUpdate(vid) {
+      if (isUserScrubbing) return;
+      var active = getActiveVideo();
+      if (currentViewMode === "side_by_side") {
+        if (vid !== videoNormal) return;
+      } else {
+        if (vid !== active) return;
+      }
+      if (vid && Number.isFinite(vid.duration) && vid.duration > 0) {
+        updateTimeUI(vid.currentTime, vid.duration);
+
+        // Keep videoError in tight sync in side-by-side mode
+        if (currentViewMode === "side_by_side" && vid === videoNormal && videoError) {
+          if (Math.abs(videoError.currentTime - videoNormal.currentTime) > 0.15) {
+            videoError.currentTime = videoNormal.currentTime;
+          }
+        }
+      }
+    }
+
+    videoNormal.addEventListener("timeupdate", function() { onStreamTimeUpdate(videoNormal); });
+    videoError.addEventListener("timeupdate", function() { onStreamTimeUpdate(videoError); });
+    videoStrip.addEventListener("timeupdate", function() { onStreamTimeUpdate(videoStrip); });
+    videoMultimodal.addEventListener("timeupdate", function() { onStreamTimeUpdate(videoMultimodal); });
+
+    function onStreamEnded(e) {
+      var active = getActiveVideo();
+      if (currentViewMode === "side_by_side") {
+        if (e && e.target !== videoNormal) return;
+      } else {
+        if (e && e.target !== active) return;
+      }
+      pauseAll();
+      if (playBtn) playBtn.textContent = "↺ Replay";
+    }
+
+    videoNormal.addEventListener("ended", onStreamEnded);
+    videoError.addEventListener("ended", onStreamEnded);
+    videoStrip.addEventListener("ended", onStreamEnded);
+    videoMultimodal.addEventListener("ended", onStreamEnded);
+
+    function onLoadedMetadata(vid) {
+      var active = getActiveVideo();
+      if (vid === active || (currentViewMode === "side_by_side" && vid === videoNormal)) {
+        updateTimeUI(vid.currentTime, vid.duration);
+      }
+    }
+
+    videoNormal.addEventListener("loadedmetadata", function() { onLoadedMetadata(videoNormal); });
+    videoError.addEventListener("loadedmetadata", function() { onLoadedMetadata(videoError); });
+    videoStrip.addEventListener("loadedmetadata", function() { onLoadedMetadata(videoStrip); });
+    videoMultimodal.addEventListener("loadedmetadata", function() { onLoadedMetadata(videoMultimodal); });
+
+    // Media error handlers with graceful UI fallbacks
+    function handleVideoError(overlayEl, videoEl) {
+      if (overlayEl) overlayEl.style.display = "flex";
+      var retryBtn = overlayEl ? overlayEl.querySelector(".cc-retry-btn") : null;
+      if (retryBtn) {
+        retryBtn.onclick = function() {
+          overlayEl.style.display = "none";
+          videoEl.load();
+        };
+      }
+    }
+
+    videoNormal.addEventListener("error", function() { handleVideoError(overlayNormal, videoNormal); });
+    videoError.addEventListener("error", function() { handleVideoError(overlayError, videoError); });
+    videoStrip.addEventListener("error", function() { handleVideoError(overlayStrip, videoStrip); });
+    videoMultimodal.addEventListener("error", function() { handleVideoError(overlayMultimodal, videoMultimodal); });
+
+    // Details wrapper lifecycle: pause on close to avoid playing hidden media
+    if (detailsWrapper) {
+      detailsWrapper.addEventListener("toggle", function() {
+        if (!detailsWrapper.open) {
+          pauseAll();
+        } else {
+          var active = getActiveVideo();
+          if (active && Number.isFinite(active.duration) && active.duration > 0) {
+            updateTimeUI(active.currentTime, active.duration);
+          }
+        }
+      });
+    }
+
+    // Initialize initial state
+    loadCategory("technique_spill");
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCaptainCookDemo);
+  } else {
+    initCaptainCookDemo();
+  }
+})();
 </script>

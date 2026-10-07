@@ -1,8 +1,8 @@
 <!-- Interactive Demo: VLM Accuracy Across Human Feedback Modalities -->
-<details class="interactive-demo-wrapper" markdown="0">
+<details class="interactive-demo-wrapper" id="tiis-details-wrapper" markdown="0">
   <summary class="interactive-demo-summary">
     <span class="interactive-demo-summary-title">
-      <span>Interactive Benchmark: VLM Accuracy Across Human Feedback Modalities</span>
+      <span>Interactive Mechanism &amp; Benchmark: Human-in-the-Loop Feedback for VLMs</span>
       <span class="interactive-demo-summary-badge">ACM TiiS 2026</span>
     </span>
     <span class="interactive-demo-summary-chevron">&#9656;</span>
@@ -13,7 +13,7 @@
     <div class="demo-card-header">
       <div class="demo-title-group">
         <h4>VLM Accuracy Across Human-in-the-Loop Feedback Modalities</h4>
-        <p>Empirical findings from ACM TiiS 2026 evaluating video understanding accuracy across feedback granularities, post-processing strategies, and VLM architectures</p>
+        <p>Empirical findings from ACM TiiS 2026 evaluating video-description verification accuracy across feedback granularities, post-processing strategies, and fine-tuned VLM architectures</p>
       </div>
       <div class="demo-badges">
         <span class="demo-badge demo-badge-oral">ACM TiiS 2026</span>
@@ -26,26 +26,26 @@
       <div class="demo-metric-card highlight-green">
         <div class="metric-name">
           <span>Peak VLM Accuracy</span>
-          <span class="badge badge-success" style="font-size: 0.72rem;">Free Text</span>
+          <span class="badge badge-success" style="font-size: 0.72rem;">Free-Text</span>
         </div>
         <div class="metric-speedup speedup-ssmp" id="metric-tiis-gain">90.0% Accuracy</div>
         <div class="metric-stats">
-          <strong>Baseline (No Feedback):</strong> 40.0% &rarr; 90.0% (+50% gain)<br>
+          <strong>No Feedback Model:</strong> 40.0% &rarr; 90.0% (+50 percentage points)<br>
           <strong>Architecture:</strong> LLaVA-NeXT-Video<br>
-          <strong>Condition:</strong> Unconstrained natural-language commentary
+          <strong>Condition:</strong> Free-text human feedback
         </div>
       </div>
 
       <div class="demo-metric-card highlight-blue">
         <div class="metric-name">
           <span>Targeted Error Correction</span>
-          <span class="badge badge-info" style="font-size: 0.72rem;">LLM Refinement</span>
+          <span class="badge badge-info" style="font-size: 0.72rem;">LLM Conversion</span>
         </div>
-        <div class="metric-speedup speedup-itself">82.0% – 85.0%</div>
+        <div class="metric-speedup speedup-itself">81.7% – 84.6%</div>
         <div class="metric-stats">
-          <strong>Video-LLaVA Peak:</strong> 82.0% (surpasses 75% Free Text)<br>
-          <strong>LLaVA-NeXT-Video:</strong> 85.0% accuracy<br>
-          <strong>Strategy:</strong> Human error localization + LLM rewriting
+          <strong>Video-LLaVA Peak:</strong> 81.7% (+13.3 percentage points over raw 68.4%)<br>
+          <strong>LLaVA-NeXT-Video:</strong> 84.6% accuracy (vs. 83.6% raw)<br>
+          <strong>Strategy:</strong> Human word-level correction + LLM conversion to text
         </div>
       </div>
 
@@ -56,17 +56,143 @@
         </div>
         <div class="metric-speedup speedup-baseline">Up to 80.0%</div>
         <div class="metric-stats">
-          <strong>Binary Feedback:</strong> 80.0% (LLaVA-NeXT-Video)<br>
-          <strong>Error Selection:</strong> 80.0% (LLaVA-NeXT-Video)<br>
-          <strong>Zero-Shot Baseline:</strong> 40.0% across both models
+          <strong>Yes/No Binary:</strong> 80.0% (LLaVA-NeXT-Video raw)<br>
+          <strong>Error Selection:</strong> 80.0% (LLaVA-NeXT-Video raw)<br>
+          <strong>No Feedback Model:</strong> 40.0% (fine-tuned without corrective human feedback)
         </div>
       </div>
     </div>
 
-    <!-- Interactive Selector & Live Comparison Graph -->
+    <!-- 1. Concrete Mechanism: Human Feedback Modalities from Paper Figure 1 -->
+    <div class="demo-workload-box" style="margin-bottom: 1.25rem;">
+      <div class="workload-header" style="flex-wrap: wrap; gap: 0.6rem; align-items: center;">
+        <div>
+          <h5 style="margin-bottom: 0.2rem;">1. Human Feedback Modalities &amp; Semantic Expressiveness (Paper Figure 1):</h5>
+          <span class="badge badge-info" style="font-size: 0.72rem; font-weight: normal;">
+            Increasing Spectrum of Detail &amp; Expressiveness
+          </span>
+        </div>
+        <div class="workload-controls" role="group" aria-label="Feedback Modality Selector">
+          <button type="button" class="workload-btn tiis-mode-btn active" data-mode="binary">Yes / No Binary</button>
+          <button type="button" class="workload-btn tiis-mode-btn" data-mode="selection">Error Selection</button>
+          <button type="button" class="workload-btn tiis-mode-btn" data-mode="correction">Error Correction</button>
+          <button type="button" class="workload-btn tiis-mode-btn" data-mode="freetext">Free-Text</button>
+        </div>
+      </div>
+
+      <!-- Video & Interactive Feedback Workspace Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1rem; margin-top: 0.75rem; align-items: stretch;">
+        <!-- Left Column: Video Context from Figure 1 -->
+        <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+          <div style="padding: 0.45rem 0.75rem; background: rgba(0,0,0,0.03); border-bottom: 1px solid var(--global-divider-color, rgba(0,0,0,0.08)); font-size: 0.8rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center;">
+            <span>Evaluated Video Demonstration</span>
+            <span class="badge badge-secondary" style="font-size: 0.68rem; font-weight: normal;">Paper Figure 1 Video</span>
+          </div>
+          <div style="position: relative; width: 100%; aspect-ratio: 4/3; background: #000; overflow: hidden;">
+            <img
+              src="{{ '/assets/img/publication_preview/tiis_video_frame.jpg' | relative_url }}"
+              alt="Participant tying running shoes on stone steps (Paper Figure 1)"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+            />
+          </div>
+          <div style="padding: 0.55rem 0.75rem; font-size: 0.78rem; line-height: 1.45; color: var(--global-text-color-light, #6b7280); background: rgba(0,0,0,0.01); border-top: 1px solid var(--global-divider-color, rgba(0,0,0,0.06)); flex-grow: 1;">
+            <strong style="color: var(--global-text-color, #111827);">Actual Video Activity:</strong> The person is sitting on outdoor steps putting on and tying his athletic shoes.
+          </div>
+        </div>
+
+        <!-- Right Column: Participant Study Interface -->
+        <div style="background: var(--global-card-bg-color, #ffffff); border: 1.5px solid var(--global-divider-color, rgba(0,0,0,0.12)); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+          <div style="padding: 0.45rem 0.75rem; background: rgba(37,99,235,0.06); border-bottom: 1px solid rgba(37,99,235,0.15); font-size: 0.8rem; font-weight: 700; color: #1d4ed8; display: flex; justify-content: space-between; align-items: center;">
+            <span id="tiis-mode-title">Human Interface: Yes / No Binary</span>
+            <span class="badge badge-primary" id="tiis-mode-badge" style="font-size: 0.68rem; font-weight: normal;">1-Bit Verification</span>
+          </div>
+
+          <div style="padding: 0.75rem 0.85rem; flex-grow: 1; display: flex; flex-direction: column; gap: 0.65rem;">
+            <!-- AI Generated Statement -->
+            <div>
+              <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--global-text-color-light, #6b7280); font-weight: 600; margin-bottom: 0.2rem;">
+                Model-Generated Statement:
+              </div>
+              <div style="font-size: 0.92rem; font-weight: 600; color: var(--global-text-color, #111827); padding: 0.45rem 0.65rem; background: rgba(0,0,0,0.02); border-radius: 6px; border: 1px solid var(--global-divider-color, rgba(0,0,0,0.06));" id="tiis-sentence-display">
+                The person is cleaning his shoes.
+              </div>
+            </div>
+
+            <!-- Participant Input Rendering -->
+            <div>
+              <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--global-text-color-light, #6b7280); font-weight: 600; margin-bottom: 0.2rem;">
+                Participant Study Input:
+              </div>
+              <div id="tiis-ui-snippet" style="min-height: 48px;">
+                <!-- Injected dynamically based on selected mode -->
+              </div>
+            </div>
+
+            <!-- Description & Semantic Expressiveness Callout -->
+            <div style="padding: 0.5rem 0.65rem; background: rgba(0,0,0,0.02); border-left: 3px solid #2563eb; border-radius: 0 4px 4px 0; font-size: 0.8rem; line-height: 1.45;">
+              <div><strong>Interface Protocol:</strong> <span id="tiis-mode-desc">Respond by Yes / No.</span></div>
+              <div style="margin-top: 0.25rem;"><strong>Semantic Information:</strong> <span id="tiis-mode-semantic">Tells the system only that something is wrong. Provides only a correctness judgment without localizing the error or supplying a fix.</span></div>
+            </div>
+          </div>
+
+          <!-- Semantic Spectrum Progression Footer -->
+          <div style="padding: 0.45rem 0.75rem; background: rgba(0,0,0,0.02); border-top: 1px solid var(--global-divider-color, rgba(0,0,0,0.08)); font-size: 0.72rem; color: var(--global-text-color-light, #6b7280); display: flex; align-items: center; justify-content: space-between;">
+            <span>Semantic Granularity:</span>
+            <span id="tiis-spectrum-indicator" style="font-weight: 700; color: #2563eb;">1/4: Binary Judgment (Low Effort, Sparse)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Training Pipeline & Figure 5 VLM Prompt Framing Bridge -->
+      <div style="margin-top: 0.85rem; padding: 0.65rem 0.85rem; background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px;">
+        <div style="font-size: 0.78rem; font-weight: 700; color: var(--global-text-color, #111827); margin-bottom: 0.4rem; display: flex; align-items: center; justify-content: space-between;">
+          <span>Fine-Tuning Experimental Pipeline</span>
+          <span style="font-size: 0.72rem; font-weight: normal; color: var(--global-text-color-light, #6b7280);">
+            Supervised QLoRA Fine-Tuning (Offline Training, Not Test-Time Feedback)
+          </span>
+        </div>
+
+        <!-- 4-step pipeline bar -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.45rem; margin-bottom: 0.6rem;">
+          <div style="padding: 0.4rem 0.5rem; background: rgba(37,99,235,0.05); border: 1px solid rgba(37,99,235,0.15); border-radius: 6px; text-align: center;">
+            <div style="font-size: 0.7rem; color: #2563eb; font-weight: 700;">1. Human Feedback</div>
+            <div style="font-size: 0.68rem; color: var(--global-text-color-light, #6b7280); margin-top: 2px;">Study interface input</div>
+          </div>
+          <div style="padding: 0.4rem 0.5rem; background: rgba(16,185,129,0.05); border: 1px solid rgba(16,185,129,0.15); border-radius: 6px; text-align: center;">
+            <div style="font-size: 0.7rem; color: #059669; font-weight: 700;">2. Prompt Formatting</div>
+            <div style="font-size: 0.68rem; color: var(--global-text-color-light, #6b7280); margin-top: 2px;">Training template (Fig. 5)</div>
+          </div>
+          <div style="padding: 0.4rem 0.5rem; background: rgba(245,158,11,0.05); border: 1px solid rgba(245,158,11,0.15); border-radius: 6px; text-align: center;">
+            <div style="font-size: 0.7rem; color: #d97706; font-weight: 700;">3. QLoRA Fine-Tuning</div>
+            <div style="font-size: 0.68rem; color: var(--global-text-color-light, #6b7280); margin-top: 2px;">VLM parameter updates</div>
+          </div>
+          <div style="padding: 0.4rem 0.5rem; background: rgba(139,92,246,0.05); border: 1px solid rgba(139,92,246,0.15); border-radius: 6px; text-align: center;">
+            <div style="font-size: 0.7rem; color: #7c3aed; font-weight: 700;">4. Verification Acc.</div>
+            <div style="font-size: 0.68rem; color: var(--global-text-color-light, #6b7280); margin-top: 2px;">Yes/No accuracy test</div>
+          </div>
+        </div>
+
+        <!-- Collapsible Figure 5 VLM Prompt View -->
+        <details style="margin-top: 0.4rem; background: rgba(0,0,0,0.02); border-radius: 6px; border: 1px solid var(--global-divider-color, rgba(0,0,0,0.08)); padding: 0.45rem 0.65rem;">
+          <summary style="cursor: pointer; font-size: 0.78rem; font-weight: 600; color: var(--global-theme-color, #2563eb); user-select: none;">
+            <span>&#9662; How the feedback is formatted for VLM training (Paper Figure 5)</span>
+          </summary>
+          <div style="margin-top: 0.5rem; font-family: monospace; font-size: 0.78rem; line-height: 1.5; background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 4px; padding: 0.6rem 0.75rem;">
+            <div><span style="color: #6b7280;">Video Description:</span> "The person is cleaning his shoes."</div>
+            <div style="font-weight: 700; color: #2563eb;" id="tiis-prompt-feedback">User Feedback: No</div>
+            <div style="margin-top: 0.25rem;"><span style="color: #6b7280;">System Question:</span> "Does the above information accurately describe the video? Answer Yes or No."</div>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280); margin-top: 0.4rem; line-height: 1.4;" id="tiis-prompt-note">
+            <em>Important distinction:</em> Participants in the user study interface did <strong>NOT</strong> submit corrections using arrow notation (<code>cleaning -&gt; wearing</code>); that syntax was introduced during VLM training prompt construction to condition the model.
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- 2. Interactive Selector & Live Comparison Graph -->
     <div class="demo-workload-box">
       <div class="workload-header">
-        <h5>Select Evaluated Evaluation View (ACM TiiS 2026):</h5>
+        <h5>2. Select Evaluation View (ACM TiiS 2026):</h5>
         <div class="workload-controls">
           <button type="button" class="workload-btn tiis-btn active" data-view="next_video">LLaVA-NeXT-Video</button>
           <button type="button" class="workload-btn tiis-btn" data-view="video_llava">Video-LLaVA</button>
@@ -78,7 +204,7 @@
       <div class="demo-progress-group" id="tiis-progress-group">
         <div class="demo-progress-row" id="tiis-row-1">
           <div class="demo-progress-meta">
-            <span class="demo-progress-name" id="tiis-row1-label">Free Text</span>
+            <span class="demo-progress-name" id="tiis-row1-label">Free-Text (Natural Language Feedback)</span>
             <span class="demo-progress-val speedup-ssmp" id="tiis-row1-val">90.0% Accuracy</span>
           </div>
           <div class="demo-progress-track">
@@ -88,27 +214,27 @@
 
         <div class="demo-progress-row" id="tiis-row-2">
           <div class="demo-progress-meta">
-            <span class="demo-progress-name" id="tiis-row2-label">Error Correction – LLM Post Processing</span>
-            <span class="demo-progress-val speedup-itself" id="tiis-row2-val">85.0% Accuracy</span>
+            <span class="demo-progress-name" id="tiis-row2-label">Error Correction – LLM Conversion</span>
+            <span class="demo-progress-val speedup-itself" id="tiis-row2-val">84.6% Accuracy</span>
           </div>
           <div class="demo-progress-track">
-            <div class="demo-progress-fill fill-blue" id="tiis-row2-bar" style="width: 85%;"></div>
+            <div class="demo-progress-fill fill-blue" id="tiis-row2-bar" style="width: 84.6%;"></div>
           </div>
         </div>
 
         <div class="demo-progress-row" id="tiis-row-3">
           <div class="demo-progress-meta">
             <span class="demo-progress-name" id="tiis-row3-label">Error Correction – Raw Human Feedback</span>
-            <span class="demo-progress-val speedup-itself" id="tiis-row3-val">84.0% Accuracy</span>
+            <span class="demo-progress-val speedup-itself" id="tiis-row3-val">83.6% Accuracy</span>
           </div>
           <div class="demo-progress-track">
-            <div class="demo-progress-fill fill-blue" id="tiis-row2-bar" style="width: 84%;"></div>
+            <div class="demo-progress-fill fill-blue" id="tiis-row3-bar" style="width: 83.6%;"></div>
           </div>
         </div>
 
         <div class="demo-progress-row" id="tiis-row-4">
           <div class="demo-progress-meta">
-            <span class="demo-progress-name" id="tiis-row4-label">Binary – Raw Human Feedback</span>
+            <span class="demo-progress-name" id="tiis-row4-label">Yes/No Binary – Raw Human Feedback</span>
             <span class="demo-progress-val speedup-baseline" id="tiis-row4-val">80.0% Accuracy</span>
           </div>
           <div class="demo-progress-track">
@@ -128,37 +254,37 @@
 
         <div class="demo-progress-row" id="tiis-row-6">
           <div class="demo-progress-meta">
-            <span class="demo-progress-name" id="tiis-row6-label">Binary – LLM Post Processing</span>
-            <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="tiis-row6-val">78.0% Accuracy</span>
+            <span class="demo-progress-name" id="tiis-row6-label">Yes/No Binary – LLM Conversion</span>
+            <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="tiis-row6-val">77.9% Accuracy</span>
           </div>
           <div class="demo-progress-track">
-            <div class="demo-progress-fill" style="background: #9ca3af;" id="tiis-row6-bar" style="width: 78%;"></div>
+            <div class="demo-progress-fill" style="background: #9ca3af; width: 77.9%;" id="tiis-row6-bar"></div>
           </div>
         </div>
 
         <div class="demo-progress-row" id="tiis-row-7">
           <div class="demo-progress-meta">
-            <span class="demo-progress-name" id="tiis-row7-label">Error Selection – LLM Post Processing</span>
-            <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="tiis-row7-val">76.0% Accuracy</span>
+            <span class="demo-progress-name" id="tiis-row7-label">Error Selection – LLM Conversion</span>
+            <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="tiis-row7-val">75.8% Accuracy</span>
           </div>
           <div class="demo-progress-track">
-            <div class="demo-progress-fill" style="background: #9ca3af;" id="tiis-row7-bar" style="width: 76%;"></div>
+            <div class="demo-progress-fill" style="background: #9ca3af; width: 75.8%;" id="tiis-row7-bar"></div>
           </div>
         </div>
 
         <div class="demo-progress-row" id="tiis-row-8">
           <div class="demo-progress-meta">
-            <span class="demo-progress-name" id="tiis-row8-label">No Feedback (Zero-Shot Baseline)</span>
+            <span class="demo-progress-name" id="tiis-row8-label">No Feedback Model</span>
             <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="tiis-row8-val">40.0% Accuracy</span>
           </div>
           <div class="demo-progress-track">
-            <div class="demo-progress-fill" style="background: #d1d5db;" id="tiis-row8-bar" style="width: 40%;"></div>
+            <div class="demo-progress-fill" style="background: #d1d5db; width: 40%;" id="tiis-row8-bar"></div>
           </div>
         </div>
       </div>
 
       <p class="demo-video-caption" id="tiis-takeaway" style="margin-top: 0.85rem; margin-bottom: 0;">
-        <strong>Paper Finding (LLaVA-NeXT-Video):</strong> Human feedback delivers massive gains over the unassisted baseline, surging from 40.0% up to <strong>90.0%</strong> with Free Text commentary. Even lightweight binary feedback doubles model accuracy to <strong>80.0%</strong>, demonstrating that modern video-language models effectively ground corrective human signals across all interaction granularities.
+        <strong>Paper Finding (LLaVA-NeXT-Video):</strong> Human feedback substantially improves verification accuracy over the No Feedback Model, surging from 40.0% up to <strong>90.0%</strong> (+50 percentage points) with Free-Text feedback. Even lightweight binary feedback elevates model accuracy to <strong>80.0%</strong> (+40 percentage points), demonstrating that modern video-language models effectively ground corrective human signals across interaction granularities.
       </p>
     </div>
 
@@ -168,6 +294,101 @@
 <script>
 (function() {
   function initTiisSimulation() {
+    var detailsWrapper = document.getElementById("tiis-details-wrapper");
+
+    // 1. Feedback Modality Explorer Controls & Elements
+    var modeBtns = document.querySelectorAll(".tiis-mode-btn");
+    var modeTitleEl = document.getElementById("tiis-mode-title");
+    var modeBadgeEl = document.getElementById("tiis-mode-badge");
+    var sentenceDisplayEl = document.getElementById("tiis-sentence-display");
+    var uiSnippetEl = document.getElementById("tiis-ui-snippet");
+    var modeDescEl = document.getElementById("tiis-mode-desc");
+    var modeSemanticEl = document.getElementById("tiis-mode-semantic");
+    var spectrumIndicatorEl = document.getElementById("tiis-spectrum-indicator");
+    var promptFeedbackEl = document.getElementById("tiis-prompt-feedback");
+    var promptNoteEl = document.getElementById("tiis-prompt-note");
+
+    var FEEDBACK_MODES = {
+      "binary": {
+        title: "Human Interface: Yes / No Binary",
+        badge: "1-Bit Verification",
+        badgeClass: "badge-primary",
+        spectrum: "1/4: Binary Judgment (Low Effort, Sparse)",
+        desc: "Respond by Yes / No.",
+        semantic: "Tells the system only that something is wrong. Provides only a correctness judgment without localizing the error or supplying a fix.",
+        renderedSentence: 'The person is cleaning his shoes.',
+        uiHtml: '<div style="display: flex; gap: 0.5rem; margin-top: 0.35rem; align-items: center;"><span style="padding: 0.3rem 0.85rem; background: #2563eb; color: #fff; border-radius: 4px; font-size: 0.82rem; font-weight: 600; opacity: 0.6; cursor: default;">YES</span><span style="padding: 0.3rem 0.85rem; background: #dc2626; color: #fff; border-radius: 4px; font-size: 0.82rem; font-weight: 700; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #dc2626; cursor: default;">NO [Selected]</span></div>',
+        vlmFeedback: "User Feedback: No",
+        vlmNote: '<em>Protocol note:</em> Binary verification indicates whether the statement is adherent or non-adherent. The model receives a concise binary indicator.'
+      },
+      "selection": {
+        title: "Human Interface: Error Selection",
+        badge: "Span Localization",
+        badgeClass: "badge-danger",
+        spectrum: "2/4: Error Span (Identifies Where)",
+        desc: "Select any words that are wrong in the statement.",
+        semantic: "Identifies the incorrect span but does not provide the correction. Points to where the error is located without specifying the true action.",
+        renderedSentence: 'The person <span style="color: #dc2626; text-decoration: underline wavy #dc2626; background: rgba(220,38,38,0.12); padding: 1px 4px; border-radius: 3px; font-weight: 700;">is cleaning</span> his shoes. <span class="badge badge-danger" style="font-size: 0.68rem; vertical-align: middle; margin-left: 4px;">Error Span Selected</span>',
+        uiHtml: '<div style="font-size: 0.78rem; color: #dc2626; margin-top: 0.35rem; display: flex; align-items: center; gap: 0.35rem; font-weight: 500;"><span>&#9888; Participant selected erroneous token span:</span> <strong>"is cleaning"</strong></div>',
+        vlmFeedback: "User Feedback: Error words: is cleaning",
+        vlmNote: '<em>Protocol note:</em> The identified error span is formatted directly into the fine-tuning prompt to direct the model attention to the flawed tokens.'
+      },
+      "correction": {
+        title: "Human Interface: Error Correction",
+        badge: "Targeted Replacement",
+        badgeClass: "badge-info",
+        spectrum: "3/4: Word Replacement (What + Fix)",
+        desc: "Correct any words that are wrong in the statement.",
+        semantic: "Provides targeted word-level corrective supervision. Identifies what is wrong and provides the specific replacement word.",
+        renderedSentence: 'The person is <span style="display: inline-block; border: 2px solid #2563eb; background: rgba(37,99,235,0.08); color: #1d4ed8; font-weight: 700; padding: 1px 6px; border-radius: 4px;">wearing</span> his shoes. <span class="badge badge-primary" style="font-size: 0.68rem; vertical-align: middle; margin-left: 4px;">Replacement: "cleaning" &rarr; "wearing"</span>',
+        uiHtml: '<div style="font-size: 0.78rem; color: #1d4ed8; margin-top: 0.35rem; display: flex; align-items: center; gap: 0.35rem; font-weight: 500;"><span>&#10003; Target replacement entered:</span> <strong>"cleaning" &rarr; "wearing"</strong></div>',
+        vlmFeedback: "User Feedback: cleaning -> wearing",
+        vlmNote: '<em>Important distinction:</em> Participants in the study interface entered the correction into an inline input box (replacing "cleaning" with "wearing"). They did <strong>NOT</strong> submit corrections using arrow notation; that syntax (<code>cleaning -&gt; wearing</code>) was constructed during prompt formatting for VLM training.'
+      },
+      "freetext": {
+        title: "Human Interface: Free-Text",
+        badge: "Natural Language",
+        badgeClass: "badge-success",
+        spectrum: "4/4: Full Natural Language (Context & Syntax)",
+        desc: "Write your feedback in natural language.",
+        semantic: "Allows unconstrained natural-language feedback, including corrections and additional details. Provides full sentence-level contextual supervision.",
+        renderedSentence: 'The person is cleaning his shoes.',
+        uiHtml: '<div style="margin-top: 0.3rem;"><div style="background: var(--global-card-bg-color, #ffffff); border: 1.5px solid var(--global-divider-color, rgba(0,0,0,0.18)); border-radius: 6px; padding: 0.4rem 0.65rem; font-size: 0.86rem; color: var(--global-text-color, #111827); font-style: italic; box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);">"The person is wearing his shoes."</div></div>',
+        vlmFeedback: "User Feedback: The person is wearing his shoes.",
+        vlmNote: '<em>Protocol note:</em> Unconstrained natural-language commentary provides high expressive richness, allowing the fine-tuned model to learn sentence structure, action dynamics, and contextual justification.'
+      }
+    };
+
+    function applyFeedbackMode(modeKey) {
+      var d = FEEDBACK_MODES[modeKey];
+      if (!d) return;
+
+      modeBtns.forEach(function(b) {
+        b.classList.toggle("active", b.getAttribute("data-mode") === modeKey);
+      });
+
+      if (modeTitleEl) modeTitleEl.textContent = d.title;
+      if (modeBadgeEl) {
+        modeBadgeEl.textContent = d.badge;
+        modeBadgeEl.className = "badge " + d.badgeClass;
+      }
+      if (sentenceDisplayEl) sentenceDisplayEl.innerHTML = d.renderedSentence;
+      if (uiSnippetEl) uiSnippetEl.innerHTML = d.uiHtml;
+      if (modeDescEl) modeDescEl.textContent = d.desc;
+      if (modeSemanticEl) modeSemanticEl.textContent = d.semantic;
+      if (spectrumIndicatorEl) spectrumIndicatorEl.textContent = d.spectrum;
+      if (promptFeedbackEl) promptFeedbackEl.textContent = d.vlmFeedback;
+      if (promptNoteEl) promptNoteEl.innerHTML = d.vlmNote;
+    }
+
+    modeBtns.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var m = btn.getAttribute("data-mode");
+        applyFeedbackMode(m);
+      });
+    });
+
+    // 2. Empirical Benchmark Explorer Controls & Elements
     var buttons = document.querySelectorAll(".tiis-btn");
     var rowElements = [];
     for (var i = 1; i <= 8; i++) {
@@ -181,97 +402,114 @@
     var metricGain = document.getElementById("metric-tiis-gain");
     var takeaway = document.getElementById("tiis-takeaway");
 
-    if (!buttons.length || !rowElements[0].row) return;
-
     var viewData = {
       "next_video": {
         gain: "90.0% Peak (LLaVA-NeXT)",
-        takeaway: "<strong>Paper Finding (LLaVA-NeXT-Video):</strong> Human feedback delivers massive gains over the unassisted baseline, surging from 40.0% up to <strong>90.0%</strong> with Free Text commentary. Even lightweight binary feedback doubles model accuracy to <strong>80.0%</strong>, demonstrating that modern video-language models effectively ground corrective human signals across all interaction granularities.",
+        takeaway: "<strong>Paper Finding (LLaVA-NeXT-Video):</strong> Human feedback substantially improves verification accuracy over the No Feedback Model, surging from 40.0% up to <strong>90.0%</strong> (+50 percentage points) with Free-Text feedback. Even lightweight binary feedback elevates model accuracy to <strong>80.0%</strong> (+40 percentage points), demonstrating that modern video-language models effectively ground corrective human signals across interaction granularities.",
         rows: [
-          { show: true, label: "Free Text (Natural Language Commentary)", val: "90.0% Accuracy", pct: 90.0, cls: "fill-green", style: "" },
-          { show: true, label: "Error Correction – LLM Post Processing", val: "85.0% Accuracy", pct: 85.0, cls: "fill-blue", style: "" },
-          { show: true, label: "Error Correction – Raw Human Feedback", val: "84.0% Accuracy", pct: 84.0, cls: "fill-blue", style: "" },
-          { show: true, label: "Binary – Raw Human Feedback", val: "80.0% Accuracy", pct: 80.0, cls: "fill-gray", style: "" },
+          { show: true, label: "Free-Text (Natural Language Feedback)", val: "90.0% Accuracy", pct: 90.0, cls: "fill-green", style: "" },
+          { show: true, label: "Error Correction – LLM Conversion", val: "84.6% Accuracy", pct: 84.6, cls: "fill-blue", style: "" },
+          { show: true, label: "Error Correction – Raw Human Feedback", val: "83.6% Accuracy", pct: 83.6, cls: "fill-blue", style: "" },
+          { show: true, label: "Yes/No Binary – Raw Human Feedback", val: "80.0% Accuracy", pct: 80.0, cls: "fill-gray", style: "" },
           { show: true, label: "Error Selection – Raw Human Feedback", val: "80.0% Accuracy", pct: 80.0, cls: "fill-gray", style: "" },
-          { show: true, label: "Binary – LLM Post Processing", val: "78.0% Accuracy", pct: 78.0, cls: "", style: "background: #9ca3af;" },
-          { show: true, label: "Error Selection – LLM Post Processing", val: "76.0% Accuracy", pct: 76.0, cls: "", style: "background: #9ca3af;" },
-          { show: true, label: "No Feedback (Zero-Shot Baseline)", val: "40.0% Accuracy", pct: 40.0, cls: "", style: "background: #d1d5db;" }
+          { show: true, label: "Yes/No Binary – LLM Conversion", val: "77.9% Accuracy", pct: 77.9, cls: "", style: "background: #9ca3af;" },
+          { show: true, label: "Error Selection – LLM Conversion", val: "75.8% Accuracy", pct: 75.8, cls: "", style: "background: #9ca3af;" },
+          { show: true, label: "No Feedback Model (Fine-tuned without feedback)", val: "40.0% Accuracy", pct: 40.0, cls: "", style: "background: #d1d5db;" }
         ]
       },
       "video_llava": {
-        gain: "82.0% Peak (Video-LLaVA)",
-        takeaway: "<strong>Paper Finding (Video-LLaVA):</strong> On Video-LLaVA, Error Correction with LLM post-processing achieves the highest overall accuracy at <strong>82.0%</strong>, surpassing even Free Text (75.0%). Notably, simple LLM post-processing of ambiguous binary (26.0%) or error-selection (39.0%) signals degrades accuracy below the 40.0% baseline, whereas raw human feedback remains significantly more robust (65.0% and 57.0%).",
+        gain: "81.7% Peak (Video-LLaVA)",
+        takeaway: "<strong>Paper Finding (Video-LLaVA):</strong> On Video-LLaVA, Error Correction with LLM conversion achieves the highest overall accuracy at <strong>81.7%</strong> (+13.3 percentage points over raw 68.4%), surpassing Free-Text (75.0%). Notably, LLM post-processing degrades sparse binary (-38.9 percentage points, dropping from 65.0% to 26.1%) and error-selection (-18.3 percentage points, dropping from 57.2% to 38.9%) signals because insufficient context leads to incorrect justifications and semantically incoherent revisions, whereas raw human feedback remains significantly more robust.",
         rows: [
-          { show: true, label: "Error Correction – LLM Post Processing", val: "82.0% Accuracy", pct: 82.0, cls: "fill-green", style: "" },
-          { show: true, label: "Free Text (Natural Language Commentary)", val: "75.0% Accuracy", pct: 75.0, cls: "fill-blue", style: "" },
-          { show: true, label: "Error Correction – Raw Human Feedback", val: "68.0% Accuracy", pct: 68.0, cls: "fill-blue", style: "" },
-          { show: true, label: "Binary – Raw Human Feedback", val: "65.0% Accuracy", pct: 65.0, cls: "fill-gray", style: "" },
-          { show: true, label: "Error Selection – Raw Human Feedback", val: "57.0% Accuracy", pct: 57.0, cls: "fill-gray", style: "" },
-          { show: true, label: "No Feedback (Zero-Shot Baseline)", val: "40.0% Accuracy", pct: 40.0, cls: "", style: "background: #d1d5db;" },
-          { show: true, label: "Error Selection – LLM Post Processing", val: "39.0% Accuracy", pct: 39.0, cls: "", style: "background: #f87171;" },
-          { show: true, label: "Binary – LLM Post Processing", val: "26.0% Accuracy", pct: 26.0, cls: "", style: "background: #f87171;" }
+          { show: true, label: "Error Correction – LLM Conversion", val: "81.7% Accuracy", pct: 81.7, cls: "fill-green", style: "" },
+          { show: true, label: "Free-Text (Natural Language Feedback)", val: "75.0% Accuracy", pct: 75.0, cls: "fill-blue", style: "" },
+          { show: true, label: "Error Correction – Raw Human Feedback", val: "68.4% Accuracy", pct: 68.4, cls: "fill-blue", style: "" },
+          { show: true, label: "Yes/No Binary – Raw Human Feedback", val: "65.0% Accuracy", pct: 65.0, cls: "fill-gray", style: "" },
+          { show: true, label: "Error Selection – Raw Human Feedback", val: "57.2% Accuracy", pct: 57.2, cls: "fill-gray", style: "" },
+          { show: true, label: "No Feedback Model (Fine-tuned without feedback)", val: "40.0% Accuracy", pct: 40.0, cls: "", style: "background: #d1d5db;" },
+          { show: true, label: "Error Selection – LLM Conversion", val: "38.9% Accuracy", pct: 38.9, cls: "", style: "background: #f87171;" },
+          { show: true, label: "Yes/No Binary – LLM Conversion", val: "26.1% Accuracy", pct: 26.1, cls: "", style: "background: #f87171;" }
         ]
       },
       "head_to_head": {
         gain: "LLaVA-NeXT vs. Video-LLaVA",
-        takeaway: "<strong>Paper Finding (Cross-Model Architecture Comparison):</strong> Both models begin at an identical <strong>40.0% zero-shot accuracy</strong> without feedback. LLaVA-NeXT-Video demonstrates broad resilience, maintaining 76%–90% accuracy across every feedback type. In contrast, Video-LLaVA is highly sensitive to feedback structure, peaking at 82.0% under structured error correction.",
+        takeaway: "<strong>Paper Finding (Cross-Model Architecture Comparison):</strong> Both models begin at an identical <strong>40.0% accuracy</strong> under the No Feedback Model. LLaVA-NeXT-Video demonstrates broad resilience, maintaining 75.8%–90.0% accuracy across every feedback type. In contrast, Video-LLaVA is highly sensitive to feedback structure, peaking at 81.7% under Error Correction with LLM conversion. Free-text produces the strongest raw-feedback performance overall, while Error Correction with LLM conversion performs best for Video-LLaVA.",
         rows: [
-          { show: true, label: "Free Text: LLaVA-NeXT-Video", val: "90.0% Accuracy", pct: 90.0, cls: "fill-green", style: "" },
-          { show: true, label: "Free Text: Video-LLaVA", val: "75.0% Accuracy", pct: 75.0, cls: "fill-blue", style: "" },
-          { show: true, label: "Error Correction (LLM): LLaVA-NeXT-Video", val: "85.0% Accuracy", pct: 85.0, cls: "fill-green", style: "" },
-          { show: true, label: "Error Correction (LLM): Video-LLaVA", val: "82.0% Accuracy", pct: 82.0, cls: "fill-blue", style: "" },
-          { show: true, label: "Binary (Raw Human): LLaVA-NeXT-Video", val: "80.0% Accuracy", pct: 80.0, cls: "fill-green", style: "" },
-          { show: true, label: "Binary (Raw Human): Video-LLaVA", val: "65.0% Accuracy", pct: 65.0, cls: "fill-blue", style: "" },
-          { show: true, label: "No Feedback Baseline: Both Models", val: "40.0% Accuracy (Zero-Shot)", pct: 40.0, cls: "", style: "background: #d1d5db;" },
+          { show: true, label: "Free-Text: LLaVA-NeXT-Video", val: "90.0% Accuracy", pct: 90.0, cls: "fill-green", style: "" },
+          { show: true, label: "Free-Text: Video-LLaVA", val: "75.0% Accuracy", pct: 75.0, cls: "fill-blue", style: "" },
+          { show: true, label: "Error Correction (LLM): LLaVA-NeXT-Video", val: "84.6% Accuracy", pct: 84.6, cls: "fill-green", style: "" },
+          { show: true, label: "Error Correction (LLM): Video-LLaVA", val: "81.7% Accuracy", pct: 81.7, cls: "fill-blue", style: "" },
+          { show: true, label: "Yes/No Binary (Raw Human): LLaVA-NeXT-Video", val: "80.0% Accuracy", pct: 80.0, cls: "fill-green", style: "" },
+          { show: true, label: "Yes/No Binary (Raw Human): Video-LLaVA", val: "65.0% Accuracy", pct: 65.0, cls: "fill-blue", style: "" },
+          { show: true, label: "No Feedback Model: Both Architectures", val: "40.0% Accuracy", pct: 40.0, cls: "", style: "background: #d1d5db;" },
           { show: false }
         ]
       },
       "processing": {
         gain: "Raw vs. LLM Post-Processing",
-        takeaway: "<strong>Paper Finding (Raw Feedback vs. LLM Post-Processing):</strong> For complex error correction, LLM post-processing substantially improves accuracy (+14.0% gain on Video-LLaVA from 68% &rarr; 82%). However, when post-processing underspecified binary or category selection inputs, the LLM hallucinates or over-generalizes, precipitating steep performance drops (Binary on Video-LLaVA collapses from 65% down to 26%).",
+        takeaway: "<strong>Paper Finding (Raw Feedback vs. LLM Post-Processing):</strong> LLM conversion improves information-rich error-correction feedback (+13.3 percentage points on Video-LLaVA from 68.4% &rarr; 81.7%, and +1.0 percentage point on LLaVA-NeXT-Video from 83.6% &rarr; 84.6%). However, LLM conversion degrades sparse binary and error-selection feedback because insufficient context causes the LLM to generate incorrect justifications (reducing Video-LLaVA binary by -38.9 percentage points) or semantically incoherent revisions (reducing Video-LLaVA error selection by -18.3 percentage points).",
         rows: [
-          { show: true, label: "Error Correction (LLM Post-Processed) – Video-LLaVA", val: "82.0% Accuracy (+14% over raw)", pct: 82.0, cls: "fill-green", style: "" },
-          { show: true, label: "Error Correction (Raw Human) – Video-LLaVA", val: "68.0% Accuracy", pct: 68.0, cls: "fill-blue", style: "" },
-          { show: true, label: "Error Correction (LLM Post-Processed) – LLaVA-NeXT", val: "85.0% Accuracy", pct: 85.0, cls: "fill-green", style: "" },
-          { show: true, label: "Error Correction (Raw Human) – LLaVA-NeXT", val: "84.0% Accuracy", pct: 84.0, cls: "fill-blue", style: "" },
-          { show: true, label: "Binary Feedback (Raw Human) – Video-LLaVA", val: "65.0% Accuracy", pct: 65.0, cls: "fill-gray", style: "" },
-          { show: true, label: "Binary Feedback (LLM Post-Processed) – Video-LLaVA", val: "26.0% Accuracy (-39% drop)", pct: 26.0, cls: "", style: "background: #f87171;" },
+          { show: true, label: "Error Correction (LLM Conversion) – Video-LLaVA", val: "81.7% Accuracy (+13.3 percentage points)", pct: 81.7, cls: "fill-green", style: "" },
+          { show: true, label: "Error Correction (Raw Human) – Video-LLaVA", val: "68.4% Accuracy", pct: 68.4, cls: "fill-blue", style: "" },
+          { show: true, label: "Error Correction (LLM Conversion) – LLaVA-NeXT", val: "84.6% Accuracy (+1.0 percentage point)", pct: 84.6, cls: "fill-green", style: "" },
+          { show: true, label: "Error Correction (Raw Human) – LLaVA-NeXT", val: "83.6% Accuracy", pct: 83.6, cls: "fill-blue", style: "" },
+          { show: true, label: "Yes/No Binary (Raw Human) – Video-LLaVA", val: "65.0% Accuracy", pct: 65.0, cls: "fill-gray", style: "" },
+          { show: true, label: "Yes/No Binary (LLM Conversion) – Video-LLaVA", val: "26.1% Accuracy (-38.9 percentage points)", pct: 26.1, cls: "", style: "background: #f87171;" },
           { show: false },
           { show: false }
         ]
       }
     };
 
+    function applyEvaluationView(viewKey) {
+      buttons.forEach(function(b) {
+        b.classList.toggle("active", b.getAttribute("data-view") === viewKey);
+      });
+      var d = viewData[viewKey];
+      if (!d) return;
+
+      if (metricGain) metricGain.innerHTML = d.gain;
+      if (takeaway) takeaway.innerHTML = d.takeaway;
+
+      d.rows.forEach(function(rData, idx) {
+        var el = rowElements[idx];
+        if (!el || !el.row) return;
+        if (!rData || !rData.show) {
+          el.row.style.display = "none";
+        } else {
+          el.row.style.display = "";
+          el.label.innerHTML = rData.label;
+          el.val.innerHTML = rData.val;
+          el.bar.className = "demo-progress-fill" + (rData.cls ? " " + rData.cls : "");
+          if (rData.style) {
+            el.bar.setAttribute("style", "width: " + rData.pct + "%; " + rData.style);
+          } else {
+            el.bar.setAttribute("style", "width: " + rData.pct + "%;");
+          }
+        }
+      });
+    }
+
     buttons.forEach(function(btn) {
       btn.addEventListener("click", function() {
-        buttons.forEach(function(b) { b.classList.remove("active"); });
-        btn.classList.add("active");
         var view = btn.getAttribute("data-view");
-        var d = viewData[view];
-        if (!d) return;
-
-        if (metricGain) metricGain.innerHTML = d.gain;
-        takeaway.innerHTML = d.takeaway;
-
-        d.rows.forEach(function(rData, idx) {
-          var el = rowElements[idx];
-          if (!rData || !rData.show) {
-            el.row.style.display = "none";
-          } else {
-            el.row.style.display = "";
-            el.label.innerHTML = rData.label;
-            el.val.innerHTML = rData.val;
-            el.bar.style.width = rData.pct + "%";
-            el.bar.className = "demo-progress-fill" + (rData.cls ? " " + rData.cls : "");
-            if (rData.style) {
-              el.bar.setAttribute("style", "width: " + rData.pct + "%; " + rData.style);
-            } else {
-              el.bar.setAttribute("style", "width: " + rData.pct + "%;");
-            }
-          }
-        });
+        applyEvaluationView(view);
       });
     });
+
+    // Reset on details close / reopen
+    if (detailsWrapper) {
+      detailsWrapper.addEventListener("toggle", function() {
+        if (!detailsWrapper.open) {
+          applyFeedbackMode("binary");
+          applyEvaluationView("next_video");
+        }
+      });
+    }
+
+    // Initialize defaults
+    applyFeedbackMode("binary");
+    applyEvaluationView("next_video");
   }
 
   if (document.readyState === "loading") {
