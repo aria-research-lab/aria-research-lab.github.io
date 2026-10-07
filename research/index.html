@@ -1246,9 +1246,277 @@
     initDdnDemo();
   }
 })();
-</script> <hr> <h2 id="neural-combinatorial-optimization">Neural Combinatorial Optimization</h2> <p>We develop learning-based methods for solving large-scale combinatorial optimization problems over structured domains. Our research combines deep reinforcement learning, representation learning, and classical optimization to learn effective decision policies for problems with large discrete action spaces, complex dependencies, and domain-specific constraints. A particular focus is graph-structured optimization, where learned representations can exploit topology and problem structure to make efficient sequential decisions.</p> <figure class="figure"> <img src="/assets/img/publication_preview/RELINK.png" class="figure-img img-fluid" alt="RELINK deep reinforcement learning framework for edge activation"> </figure> <p>Our current work investigates neural combinatorial optimization for decision-making over complex networks, including problems in which solutions require sequentially selecting or modifying nodes, edges, or other discrete structures. These methods aim to amortize expensive optimization across problem instances by learning policies that capture reusable structural patterns while accommodating operational, privacy, and other application-specific constraints.</p> <ul> <li> <strong>RELINK: Edge Activation for Closed Network Influence Maximization via Deep Reinforcement Learning</strong> (<a href="https://dl.acm.org/doi/10.1145/3746252.3761006" rel="external nofollow noopener" target="_blank">CIKM 2025 Oral</a>) <ul> <li>Formulates edge-level influence maximization in privacy-constrained closed networks (IM-CSN) as a Markov Decision Process, introducing an edge-centric Double DQN framework with SVD node embeddings and edge-aware aggregation trained on true marginal influence gain rewards.</li> <li>Evaluated across 20 real-world social networks (including <em>FilmTrust</em>, <em>Email-Eu-core</em>, <em>Wiki-Vote</em>, <em>MUSAE Facebook</em>, <em>Math Overflow</em>, <em>Deezer</em>, and <em>Epinions</em>) using 100,000 Monte Carlo simulations under the Independent Cascade model.</li> <li>Consistently outperforms existing methods in over 90% of experimental settings, achieving up to 15% higher influence spread, a 95.0% win rate (456/480) against the specialized IM-CSN baseline PSNA, and superior scalability via GPU-accelerated sequential inference on large-scale graphs.</li> </ul> </li> </ul> <details class="interactive-demo-wrapper"> <summary class="interactive-demo-summary"> <span class="interactive-demo-summary-title"> <span>Interactive Demo: RELINK Edge Activation Budget &amp; Benchmark Explorer</span> <span class="interactive-demo-summary-badge">CIKM 2025 Oral</span> </span> <span class="interactive-demo-summary-chevron">▸</span> </summary> <div class="interactive-demo-card"> <div class="demo-card-header"> <div class="demo-title-group"> <h4>RELINK Edge Activation for Closed-Network Influence Maximization</h4> <p>Empirical edge activation budget regimes and comparative benchmark findings from our CIKM 2025 paper</p> </div> <div class="demo-badges"> <span class="demo-badge demo-badge-oral">CIKM 2025 Oral</span> <span class="demo-badge demo-badge-sim">Combinatorial Optmization over Graphs</span> </div> </div> <div class="demo-metrics-grid"> <div class="demo-metric-card highlight-green"> <div class="metric-name"> <span>RELINK (DRL Policy)</span> <span class="badge badge-success" style="font-size: 0.72rem;">Our Work</span> </div> <div class="metric-speedup speedup-ssmp" id="metric-relink-gain">Up to +15% Spread</div> <div class="metric-stats"> <strong>Formulation:</strong> Edge-centric <em>n</em>-step Double DQN with SVD embeddings<br> <strong>Training:</strong> True marginal influence gain rewards (IC model)<br> <strong>Win Rate:</strong> 456 / 480 wins (95.0%) across 20 real networks </div> </div> <div class="demo-metric-card highlight-blue"> <div class="metric-name"> <span>PSNA (Huang et al.)</span> <span class="badge badge-info" style="font-size: 0.72rem;">IM-CSN Baseline</span> </div> <div class="metric-speedup speedup-itself">95.0% RELINK Win</div> <div class="metric-stats"> <strong>Formulation:</strong> Practical Subnetwork Augmentation heuristic<br> <strong>Complexity:</strong> Ο(<em>I</em>(|<em>V</em>| + |<em>E</em>|) log |<em>V</em>| + |<em>V</em>|<em>d</em><sub><em>m</em></sub> log <em>d</em><sub><em>m</em></sub>)<br> <strong>Limitation:</strong> High overhead on large graphs; caught by budget saturation </div> </div> <div class="demo-metric-card highlight-gray"> <div class="metric-name"> <span>Traditional Baselines</span> <span class="badge badge-secondary" style="font-size: 0.72rem;">Degree &amp; Random</span> </div> <div class="metric-speedup speedup-baseline">&gt;96% RELINK Win</div> <div class="metric-stats"> <strong>Formulation:</strong> Static degree centrality &amp; uniform random selection<br> <strong>Win Rate:</strong> 464 / 480 vs. Degree, 462 / 480 vs. Random &amp; FoF<br> <strong>Limitation:</strong> Trapped in local dense hubs; misses boundary bridges </div> </div> </div> <div class="demo-workload-box"> <div class="workload-header"> <h5>Select Evaluated Baseline Comparison (Figure 3 Contingency Matrix, 480 Experiments):</h5> <div class="workload-controls"> <button type="button" class="workload-btn relink-btn active" data-view="all">All Baselines Overview</button> <button type="button" class="workload-btn relink-btn" data-view="psna">vs. PSNA (IM-CSN)</button> <button type="button" class="workload-btn relink-btn" data-view="degree">vs. Degree Centrality</button> <button type="button" class="workload-btn relink-btn" data-view="random_fof">vs. Random &amp; FoF</button> </div> </div> <div class="demo-progress-group" id="relink-progress-group"> <div class="demo-progress-row" id="relink-row-1"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="relink-row1-label">RELINK vs. Degree Centrality</span> <span class="demo-progress-val speedup-ssmp" id="relink-row1-val">96.7% (464 / 480 wins)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-green" id="relink-row1-bar" style="width: 96.7%;"></div> </div> </div> <div class="demo-progress-row" id="relink-row-2"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="relink-row2-label">RELINK vs. Random Selection</span> <span class="demo-progress-val speedup-itself" id="relink-row2-val">96.2% (462 / 480 wins)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-blue" id="relink-row2-bar" style="width: 96.2%;"></div> </div> </div> <div class="demo-progress-row" id="relink-row-3"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="relink-row3-label">RELINK vs. Friend-of-Friend (FoF)</span> <span class="demo-progress-val speedup-baseline" id="relink-row3-val">96.2% (462 / 480 wins)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-gray" id="relink-row3-bar" style="width: 96.2%;"></div> </div> </div> <div class="demo-progress-row" id="relink-row-4"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="relink-row4-label">RELINK vs. PSNA (Huang et al., IM-CSN Baseline)</span> <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="relink-row4-val">95.0% (456 / 480 wins)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill" style="width: 95.0%;" id="relink-row4-bar"></div> </div> </div> </div> <p class="demo-video-caption" id="relink-takeaway" style="margin-top: 0.85rem; margin-bottom: 0;"> <strong>Paper Finding (Figure 3 Contingency Matrix &amp; Section 6.2):</strong> Across 480 total experimental configurations spanning 20 real-world social networks (evaluated with 100,000 Monte Carlo runs under the IC model), RELINK outperforms all competing methods in at least 95% of experiments. In low edge budget regimes (<em>k</em> ≤ 10), Section 6.3 reports that RELINK frequently achieves influence spread improvements exceeding 15% over PSNA. </p> </div> </div> </details> <script>
+</script> <hr> <h2 id="neural-combinatorial-optimization">Neural Combinatorial Optimization</h2> <p>We develop learning-based methods for solving large-scale combinatorial optimization problems over structured domains. Our research combines deep reinforcement learning, representation learning, and classical optimization to learn effective decision policies for problems with large discrete action spaces, complex dependencies, and domain-specific constraints. A particular focus is graph-structured optimization, where learned representations can exploit topology and problem structure to make efficient sequential decisions.</p> <figure class="figure"> <img src="/assets/img/publication_preview/RELINK.png" class="figure-img img-fluid" alt="RELINK deep reinforcement learning framework for edge activation"> </figure> <p>Our current work investigates neural combinatorial optimization for decision-making over complex networks, including problems in which solutions require sequentially selecting or modifying nodes, edges, or other discrete structures. These methods aim to amortize expensive optimization across problem instances by learning policies that capture reusable structural patterns while accommodating operational, privacy, and other application-specific constraints.</p> <ul> <li> <strong>RELINK: Edge Activation for Closed Network Influence Maximization via Deep Reinforcement Learning</strong> (<a href="https://dl.acm.org/doi/10.1145/3746252.3761006" rel="external nofollow noopener" target="_blank">CIKM 2025 Oral</a>) <ul> <li>Formulates edge-level influence maximization in privacy-constrained closed networks (IM-CSN) as a Markov Decision Process, introducing an edge-centric Double DQN framework with SVD node embeddings and edge-aware aggregation trained on true marginal influence gain rewards.</li> <li>Evaluated across 20 real-world social networks (including <em>FilmTrust</em>, <em>Email-Eu-core</em>, <em>Wiki-Vote</em>, <em>MUSAE Facebook</em>, <em>Math Overflow</em>, <em>Deezer</em>, and <em>Epinions</em>) using 100,000 Monte Carlo simulations under the Independent Cascade model.</li> <li>Consistently outperforms existing methods in over 90% of experimental settings, achieving up to 15% higher influence spread, a 95.0% win rate (456/480) against the specialized IM-CSN baseline PSNA, and superior scalability via GPU-accelerated sequential inference on large-scale graphs.</li> </ul> </li> </ul> <details class="interactive-demo-wrapper" id="relink-details-wrapper"> <summary class="interactive-demo-summary"> <span class="interactive-demo-summary-title"> <span class="interactive-demo-summary-badge">Interactive Demo</span> <span>RELINK Edge Activation Problem &amp; Benchmark Explorer</span> </span> <span class="interactive-demo-summary-chevron">▸</span> </summary> <div class="interactive-demo-card" id="demo-relink-card"> <div class="demo-card-header"> <div class="demo-title-group"> <h4>RELINK: Edge Activation for Closed-Network Influence Maximization</h4> <p> Conceptual walk-through of the edge-activation problem formulation under budget <em>k</em>, followed by empirical benchmark results from CIKM 2025. </p> </div> <div class="demo-badges"> <span class="demo-badge demo-badge-oral">CIKM 2025 Oral</span> <span class="demo-badge demo-badge-sim">Combinatorial Optimization over Graphs</span> </div> </div> <div class="demo-workload-box" style="margin-top: 0.5rem; margin-bottom: 1.25rem;"> <div class="workload-header" style="flex-wrap: wrap; gap: 0.6rem; align-items: center;"> <div> <h5 style="margin-bottom: 0.2rem;"> 1. What is the Problem? Influence Maximization in Closed Social Networks (IM-CSN) </h5> <span class="badge badge-info" style="font-size: 0.72rem; font-weight: normal;"> Conceptual Problem Formulation • Paper Figure 1 (k = 2) </span> </div> </div> <p style="font-size: 0.83rem; color: var(--global-text-color-light, #6b7280); margin: 0 0 0.5rem; line-height: 1.5;"> <strong>Problem Formulation:</strong> In closed social networks, content propagation is restricted across privacy boundaries. Starting from a seed node, the goal is to choose closed candidate edges to activate subject to an edge activation budget <strong><em>k</em></strong> (where <em>k</em> is the maximum number of candidate edges that may be activated) to maximize total influence spread under the Independent Cascade (IC) diffusion model. </p> <div style="font-size: 0.78rem; color: #64748b; font-style: italic; margin-bottom: 0.75rem; padding: 0.45rem 0.65rem; background: rgba(0,0,0,0.02); border-radius: 4px; border-left: 2px solid #94a3b8; line-height: 1.45;"> <strong>Clarification:</strong> This example illustrates the sequential optimization problem (Example 1, Figure 1 from the CIKM 2025 paper). It does not represent RELINK’s learned edge-selection policy. </div> <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center; margin: 0.5rem 0 0.85rem; padding: 0.6rem 0.75rem; background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px;"> <div class="workload-controls" role="group" aria-label="Step selector"> <button type="button" class="workload-btn relink-step-btn active" data-step="0">Step 0: Initial State</button> <button type="button" class="workload-btn relink-step-btn" data-step="1">Step 1: Activate (a → h)</button> <button type="button" class="workload-btn relink-step-btn" data-step="2">Step 2: Activate (a → d) &amp; Prune</button> <button type="button" class="workload-btn relink-step-btn" data-step="3">Step 3: Cascade Result</button> </div> <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;"> <span style="font-size: 0.8rem; font-weight: 700; color: var(--global-text-color, #111827); background: rgba(0,0,0,0.04); padding: 0.25rem 0.55rem; border-radius: 4px; border: 1px solid var(--global-divider-color, rgba(0,0,0,0.08));"> Budget Used (Node a): <strong id="relink-budget-val" style="color: #ef4444;">0 / 2</strong> </span> <button type="button" class="workload-btn" id="relink-btn-prev" disabled style="padding: 0.25rem 0.65rem;">← Prev</button> <button type="button" class="workload-btn" id="relink-btn-next" style="padding: 0.25rem 0.65rem; font-weight: 700;">Next Step →</button> <button type="button" class="workload-btn" id="relink-btn-reset" style="padding: 0.25rem 0.65rem;">↺ Reset</button> </div> </div> <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.85rem 0.5rem; margin-bottom: 0.75rem;"> <svg viewbox="0 0 450 270" id="relink-mech-svg" preserveaspectratio="xMidYMid meet" style="width: 100%; height: auto; max-height: 270px; display: block;" aria-label="Conceptual closed network edge activation step-through inspired by Paper Figure 1"> <defs> <marker id="relink-arrow-red" viewbox="0 0 10 10" refx="7" refy="5" markerwidth="6" markerheight="6" orient="auto-start-reverse"> <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#ef4444"></path> </marker> <marker id="relink-arrow-green" viewbox="0 0 10 10" refx="7" refy="5" markerwidth="6" markerheight="6" orient="auto-start-reverse"> <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#10b981"></path> </marker> <marker id="relink-arrow-dormant" viewbox="0 0 10 10" refx="7" refy="5" markerwidth="6" markerheight="6" orient="auto-start-reverse"> <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#475569"></path> </marker> <marker id="relink-arrow-pruned" viewbox="0 0 10 10" refx="7" refy="5" markerwidth="6" markerheight="6" orient="auto-start-reverse"> <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#94a3b8"></path> </marker> </defs> <g id="relink-edges"> <line id="edge-a-b" x1="97.8" y1="100.4" x2="169.0" y2="47.0" stroke="#ef4444" stroke-width="2.2" marker-end="url(#relink-arrow-red)"></line> <line id="edge-a-h" x1="101.0" y1="109.4" x2="190.0" y2="105.8" stroke="#ef4444" stroke-width="2.2" marker-end="url(#relink-arrow-red)"></line> <line id="edge-a-d" x1="98.4" y1="118.7" x2="168.2" y2="164.1" stroke="#ef4444" stroke-width="2.2" marker-end="url(#relink-arrow-red)"></line> <line id="edge-a-c" x1="85.0" y1="126.0" x2="85.0" y2="185.0" stroke="#ef4444" stroke-width="2.2" marker-end="url(#relink-arrow-red)"></line> <line id="edge-h-i" x1="224.3" y1="97.8" x2="332.1" y2="43.9" stroke="#475569" stroke-width="1.8" marker-end="url(#relink-arrow-dormant)"></line> <line id="edge-h-j" x1="226.0" y1="105.0" x2="345.0" y2="105.0" stroke="#475569" stroke-width="1.8" marker-end="url(#relink-arrow-dormant)"></line> <line id="edge-d-g" x1="201.0" y1="174.0" x2="330.0" y2="166.2" stroke="#475569" stroke-width="1.8" marker-end="url(#relink-arrow-dormant)"></line> <line id="edge-d-e" x1="175.9" y1="188.2" x2="151.4" y2="223.6" stroke="#475569" stroke-width="1.8" marker-end="url(#relink-arrow-dormant)"></line> <line id="edge-d-f" x1="196.7" y1="185.9" x2="240.3" y2="226.4" stroke="#475569" stroke-width="1.8" marker-end="url(#relink-arrow-dormant)"></line> </g> <g id="relink-nodes"> <g id="node-a" transform="translate(85, 110)"> <circle class="relink-node-circle" r="18" fill="#fee2e2" stroke="#ef4444" stroke-width="2.5"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="12" font-weight="700" fill="#b91c1c">a</text> <rect x="-14" y="22" width="28" height="13" rx="3" fill="#ef4444"></rect> <text x="0" y="31.5" text-anchor="middle" font-size="7.5" font-weight="700" fill="#ffffff">Seed</text> </g> <g id="node-b" transform="translate(185, 35)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">b</text> </g> <g id="node-h" transform="translate(210, 105)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">h</text> </g> <g id="node-d" transform="translate(185, 175)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">d</text> </g> <g id="node-c" transform="translate(85, 205)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">c</text> </g> <g id="node-i" transform="translate(350, 35)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">i</text> </g> <g id="node-j" transform="translate(365, 105)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">j</text> </g> <g id="node-g" transform="translate(350, 165)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">g</text> </g> <g id="node-e" transform="translate(140, 240)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">e</text> </g> <g id="node-f" transform="translate(255, 240)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">f</text> </g> </g> </svg> <div style="display: flex; flex-wrap: wrap; gap: 0.85rem; justify-content: center; align-items: center; margin-top: 0.6rem; font-size: 0.76rem; color: var(--global-text-color-light, #6b7280);"> <span style="display: inline-flex; align-items: center; gap: 0.35rem;"> <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #fee2e2; border: 2px solid #ef4444;"></span> <span>Seed Node (a)</span> </span> <span style="display: inline-flex; align-items: center; gap: 0.35rem;"> <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #ecfdf5; border: 2px solid #10b981;"></span> <span>Influenced Node</span> </span> <span style="display: inline-flex; align-items: center; gap: 0.35rem;"> <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #ffffff; border: 2px solid #475569;"></span> <span>Inactive Node</span> </span> <span style="display: inline-flex; align-items: center; gap: 0.35rem;"> <span style="display: inline-block; width: 18px; height: 2px; background: #ef4444;"></span> <span>Candidate Edge</span> </span> <span style="display: inline-flex; align-items: center; gap: 0.35rem;"> <span style="display: inline-block; width: 18px; height: 2.5px; background: #10b981;"></span> <span>Activated Edge</span> </span> <span style="display: inline-flex; align-items: center; gap: 0.35rem;"> <span style="display: inline-block; width: 18px; height: 2px; border-top: 2px dashed #94a3b8;"></span> <span>Pruned Edge (Budget Exhausted)</span> </span> <span style="display: inline-flex; align-items: center; gap: 0.35rem;"> <span style="display: inline-block; width: 18px; height: 1.8px; background: #475569;"></span> <span>Network Link</span> </span> </div> </div> <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.65rem; margin-bottom: 0.75rem;"> <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.55rem 0.7rem; text-align: center;"> <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280);">Current Step</div> <div id="mech-step-label" style="font-size: 1.05rem; font-weight: 700; color: var(--global-text-color, #111827);">Step 0 of 3</div> <div style="font-size: 0.7rem; color: #64748b;">Walkthrough progress</div> </div> <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.55rem 0.7rem; text-align: center;"> <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280);">Activation Budget</div> <div style="font-size: 1.05rem; font-weight: 700; color: var(--global-text-color, #111827);">k = 2 edges</div> <div style="font-size: 0.7rem; color: #64748b;">Max out-degree limit</div> </div> <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.55rem 0.7rem; text-align: center;"> <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280);">Influenced Spread</div> <div id="mech-spread-val" style="font-size: 1.05rem; font-weight: 700; color: #ef4444;">1 / 10 nodes</div> <div id="mech-spread-sub" style="font-size: 0.7rem; color: #ef4444; font-weight: 600;">Seed active</div> </div> <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.55rem 0.7rem; text-align: center;"> <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280);">Budget Status</div> <div id="mech-budget-status" style="font-size: 0.88rem; font-weight: 700; color: var(--global-text-color, #111827); padding-top: 0.15rem;">0 / 2 used</div> <div style="font-size: 0.7rem; color: #64748b;">Remaining budget: 2</div> </div> </div> <div id="relink-mech-explanation" class="demo-video-caption" style="margin: 0; padding: 0.75rem 0.9rem; border-radius: 6px; background: rgba(0,0,0,0.03); border-left: 3px solid #ef4444; font-size: 0.84rem; line-height: 1.5;"> <strong>Step 0: Initial Closed Network &amp; Seed Node</strong><br> In a closed social network, content propagation is constrained. The process begins with seed node <strong>a</strong> (red). Its outgoing links <code>(a→b, a→h, a→d, a→c)</code> form the initial set of <strong>candidate edges</strong> (red arrows). Dormant links deeper in the network remain inactive (dark arrows). The edge activation budget <strong><em>k</em> = 2</strong> allows at most 2 candidate edges to be activated from node <em>a</em>. </div> </div> <div style="margin-top: 1.25rem;"> <h5 style="margin-bottom: 0.35rem; font-size: 1.05rem; font-weight: 700;"> 2. How Well Does RELINK Solve It? Empirical Benchmark Results from CIKM 2025 </h5> <p style="font-size: 0.83rem; color: var(--global-text-color-light, #6b7280); margin-bottom: 0.75rem;"> Empirical evaluation of RELINK (edge-centric <em>n</em>-step Double DQN) across 20 real-world social networks under the Independent Cascade (IC) model (100,000 Monte Carlo simulations per instance). </p> </div> <div class="demo-metrics-grid"> <div class="demo-metric-card highlight-green"> <div class="metric-name"> <span>RELINK (DRL Policy)</span> <span class="badge badge-success" style="font-size: 0.72rem;">Our Work</span> </div> <div class="metric-speedup speedup-ssmp" id="metric-relink-gain">Up to +15% Spread</div> <div class="metric-stats"> <strong>Formulation:</strong> Edge-centric <em>n</em>-step Double DQN with SVD embeddings<br> <strong>Training:</strong> True marginal influence gain rewards (IC model)<br> <strong>Win Rate:</strong> 456 / 480 wins (95.0%) across 20 real networks </div> </div> <div class="demo-metric-card highlight-blue"> <div class="metric-name"> <span>PSNA (Huang et al.)</span> <span class="badge badge-info" style="font-size: 0.72rem;">IM-CSN Baseline</span> </div> <div class="metric-speedup speedup-itself">95.0% RELINK Win</div> <div class="metric-stats"> <strong>Formulation:</strong> Practical Subnetwork Augmentation heuristic<br> <strong>Complexity:</strong> Ο(<em>I</em>(|<em>V</em>| + |<em>E</em>|) log |<em>V</em>| + |<em>V</em>|<em>d</em><sub><em>m</em></sub> log <em>d</em><sub><em>m</em></sub>)<br> <strong>Runtime:</strong> Deteriorates on large graphs; caught by budget saturation </div> </div> <div class="demo-metric-card highlight-gray"> <div class="metric-name"> <span>Traditional Baselines</span> <span class="badge badge-secondary" style="font-size: 0.72rem;">Degree &amp; Random</span> </div> <div class="metric-speedup speedup-baseline">&gt;96% RELINK Win</div> <div class="metric-stats"> <strong>Formulation:</strong> Static degree centrality &amp; uniform random selection<br> <strong>Win Rate:</strong> 464 / 480 vs. Degree, 462 / 480 vs. Random &amp; FoF<br> <strong>Limitation:</strong> Static local connectivity metrics overlook downstream influence dynamics </div> </div> </div> <div class="demo-workload-box"> <div class="workload-header"> <h5> Empirical Results from CIKM 2025: Baseline Comparisons (Figure 3, 480 Experiments) </h5> <div class="workload-controls"> <button type="button" class="workload-btn relink-btn active" data-view="all">All Baselines Overview</button> <button type="button" class="workload-btn relink-btn" data-view="psna">vs. PSNA (IM-CSN)</button> <button type="button" class="workload-btn relink-btn" data-view="degree">vs. Degree Centrality</button> <button type="button" class="workload-btn relink-btn" data-view="random_fof">vs. Random &amp; FoF</button> </div> </div> <div class="demo-progress-group" id="relink-progress-group"> <div class="demo-progress-row" id="relink-row-1"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="relink-row1-label">RELINK vs. Degree Centrality</span> <span class="demo-progress-val speedup-ssmp" id="relink-row1-val">96.7% (464 / 480 wins)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-green" id="relink-row1-bar" style="width: 96.7%;"></div> </div> </div> <div class="demo-progress-row" id="relink-row-2"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="relink-row2-label">RELINK vs. Random Selection</span> <span class="demo-progress-val speedup-itself" id="relink-row2-val">96.2% (462 / 480 wins)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-blue" id="relink-row2-bar" style="width: 96.2%;"></div> </div> </div> <div class="demo-progress-row" id="relink-row-3"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="relink-row3-label">RELINK vs. Friend-of-Friend (FoF)</span> <span class="demo-progress-val speedup-baseline" id="relink-row3-val">96.2% (462 / 480 wins)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-gray" id="relink-row3-bar" style="width: 96.2%;"></div> </div> </div> <div class="demo-progress-row" id="relink-row-4"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="relink-row4-label">RELINK vs. PSNA (Huang et al., IM-CSN Baseline)</span> <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="relink-row4-val">95.0% (456 / 480 wins)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill" id="relink-row4-bar" style="background: #10b981; width: 95.0%;"></div> </div> </div> </div> <p class="demo-video-caption" id="relink-takeaway" style="margin-top: 0.85rem; margin-bottom: 0;"> <strong>Paper Finding (Figure 3 Contingency Matrix &amp; Section 6.2):</strong> Across 480 total experimental configurations spanning 20 real-world social networks (evaluated with 100,000 Monte Carlo runs under the IC model), RELINK outperforms all competing methods in at least 95% of experiments. In low edge budget regimes (<em>k</em> ≤ 10), Section 6.3 reports that RELINK frequently achieves influence spread improvements exceeding 15% over PSNA. </p> </div> </div> </details> <script>
 (function() {
-  function initRelinkSimulation() {
+  function initRelinkDemo() {
+    /* ==========================================================================
+       1. Conceptual Problem Walkthrough (Paper Figure 1, k = 2)
+       ========================================================================== */
+    var currentStep = 0;
+
+    var stepButtons = document.querySelectorAll(".relink-step-btn");
+    var btnPrev = document.getElementById("relink-btn-prev");
+    var btnNext = document.getElementById("relink-btn-next");
+    var btnReset = document.getElementById("relink-btn-reset");
+    var detailsWrapper = document.getElementById("relink-details-wrapper");
+
+    var budgetPillVal = document.getElementById("relink-budget-val");
+    var stepLabelEl = document.getElementById("mech-step-label");
+    var spreadValEl = document.getElementById("mech-spread-val");
+    var spreadSubEl = document.getElementById("mech-spread-sub");
+    var budgetStatusEl = document.getElementById("mech-budget-status");
+    var explanationEl = document.getElementById("relink-mech-explanation");
+
+    var ALL_EDGES = ["a-b", "a-h", "a-d", "a-c", "h-i", "h-j", "d-g", "d-e", "d-f"];
+    var ALL_TARGET_NODES = ["b", "h", "d", "c", "i", "j", "g", "e", "f"];
+
+    var STEP_CONFIGS = [
+      {
+        step: 0,
+        budgetPill: "0 / 2",
+        pillColor: "#ef4444",
+        stepLabel: "Step 0 of 3",
+        spreadVal: "1 / 10 nodes",
+        spreadSub: "Seed node a active",
+        spreadColor: "#ef4444",
+        budgetStatus: "0 / 2 used",
+        budgetSub: "Remaining budget: 2",
+        borderColor: "#ef4444",
+        edges: {
+          "a-b": "candidate",
+          "a-h": "candidate",
+          "a-d": "candidate",
+          "a-c": "candidate",
+          "h-i": "dormant",
+          "h-j": "dormant",
+          "d-g": "dormant",
+          "d-e": "dormant",
+          "d-f": "dormant"
+        },
+        influenced: [],
+        explanation: "<strong>Step 0: Initial Network &amp; Seed Node</strong><br>In a closed social network, content propagation is restricted. The process begins with seed node <strong>a</strong> (red). Its outgoing links <code>(a&rarr;b, a&rarr;h, a&rarr;d, a&rarr;c)</code> form the initial set of <strong>candidate edges</strong> (red arrows). Dormant links deeper in the network remain inactive (dark arrows). The edge activation budget <strong><em>k</em> = 2</strong> allows at most 2 candidate edges to be activated from node <em>a</em>."
+      },
+      {
+        step: 1,
+        budgetPill: "1 / 2",
+        pillColor: "#d97706",
+        stepLabel: "Step 1 of 3",
+        spreadVal: "2 / 10 nodes",
+        spreadSub: "Propagated to node h",
+        spreadColor: "#d97706",
+        budgetStatus: "1 / 2 used",
+        budgetSub: "Remaining budget: 1",
+        borderColor: "#10b981",
+        edges: {
+          "a-b": "candidate",
+          "a-h": "activated",
+          "a-d": "candidate",
+          "a-c": "candidate",
+          "h-i": "candidate",
+          "h-j": "candidate",
+          "d-g": "dormant",
+          "d-e": "dormant",
+          "d-f": "dormant"
+        },
+        influenced: ["h"],
+        explanation: "<strong>Step 1: First Edge Activation (a &rarr; h)</strong><br>An illustrative candidate edge <strong>(a &rarr; h)</strong> is selected and activated (green arrow). Influence propagates to node <strong>h</strong> (green circle). Because node <em>h</em> is now activated, its outgoing connections <code>(h&rarr;i, h&rarr;j)</code> become newly reachable candidate edges (red arrows). Seed node <em>a</em> has used <strong>1 of its 2</strong> permitted activations."
+      },
+      {
+        step: 2,
+        budgetPill: "2 / 2 (Exhausted)",
+        pillColor: "#059669",
+        stepLabel: "Step 2 of 3",
+        spreadVal: "3 / 10 nodes",
+        spreadSub: "Propagated to node d",
+        spreadColor: "#059669",
+        budgetStatus: "2 / 2 used",
+        budgetSub: "Budget limit reached",
+        borderColor: "#10b981",
+        edges: {
+          "a-b": "pruned",
+          "a-h": "activated",
+          "a-d": "activated",
+          "a-c": "pruned",
+          "h-i": "candidate",
+          "h-j": "candidate",
+          "d-g": "candidate",
+          "d-e": "candidate",
+          "d-f": "candidate"
+        },
+        influenced: ["h", "d"],
+        explanation: "<strong>Step 2: Second Activation (a &rarr; d) &amp; Budget Limit Reached</strong><br>Next, candidate edge <strong>(a &rarr; d)</strong> is activated (green), propagating influence to node <strong>d</strong> (green). Because seed <em>a</em> has now reached its out-degree budget limit of <strong><em>k</em> = 2</strong>, its remaining unselected candidate links <code>(a&rarr;b, a&rarr;c)</code> are <strong>pruned</strong> (dashed gray arrows) and can no longer be activated. Node <em>d</em>'s outgoing links <code>(d&rarr;g, d&rarr;e, d&rarr;f)</code> become candidate edges."
+      },
+      {
+        step: 3,
+        budgetPill: "k = 2 Enforced",
+        pillColor: "#059669",
+        stepLabel: "Step 3 of 3",
+        spreadVal: "7 / 10 nodes",
+        spreadSub: "Full cascade reach",
+        spreadColor: "#059669",
+        budgetStatus: "Enforced",
+        budgetSub: "k = 2 per node limit",
+        borderColor: "#10b981",
+        edges: {
+          "a-b": "pruned",
+          "a-h": "activated",
+          "a-d": "activated",
+          "a-c": "pruned",
+          "h-i": "activated",
+          "h-j": "activated",
+          "d-g": "activated",
+          "d-e": "activated",
+          "d-f": "pruned"
+        },
+        influenced: ["h", "d", "i", "j", "g", "e"],
+        explanation: "<strong>Step 3: Downstream Cascade &amp; Final Influence Spread</strong><br>Downstream active nodes continue propagating influence subject to their own out-degree budget limit <em>k</em> = 2. From node <em>h</em>, candidate edges <code>(h&rarr;i, h&rarr;j)</code> are activated. From node <em>d</em>, edges <code>(d&rarr;g, d&rarr;e)</code> are activated, while link <code>(d&rarr;f)</code> is pruned (dashed) as node <em>d</em> reaches its budget limit. Influence successfully spreads to 7 total nodes <code>{a, h, d, i, j, g, e}</code>."
+      }
+    ];
+
+    function applyEdgeStyle(edgeEl, state) {
+      if (!edgeEl) return;
+      if (state === "candidate") {
+        edgeEl.setAttribute("stroke", "#ef4444");
+        edgeEl.setAttribute("stroke-width", "2.2");
+        edgeEl.setAttribute("marker-end", "url(#relink-arrow-red)");
+        edgeEl.removeAttribute("stroke-dasharray");
+      } else if (state === "activated") {
+        edgeEl.setAttribute("stroke", "#10b981");
+        edgeEl.setAttribute("stroke-width", "2.8");
+        edgeEl.setAttribute("marker-end", "url(#relink-arrow-green)");
+        edgeEl.removeAttribute("stroke-dasharray");
+      } else if (state === "pruned") {
+        edgeEl.setAttribute("stroke", "#94a3b8");
+        edgeEl.setAttribute("stroke-width", "1.8");
+        edgeEl.setAttribute("stroke-dasharray", "4 3");
+        edgeEl.setAttribute("marker-end", "url(#relink-arrow-pruned)");
+      } else {
+        // dormant network link
+        edgeEl.setAttribute("stroke", "#475569");
+        edgeEl.setAttribute("stroke-width", "1.8");
+        edgeEl.setAttribute("marker-end", "url(#relink-arrow-dormant)");
+        edgeEl.removeAttribute("stroke-dasharray");
+      }
+    }
+
+    function updateStepVisualization() {
+      var cfg = STEP_CONFIGS[currentStep];
+      if (!cfg) return;
+
+      // 1. Update edge appearances
+      ALL_EDGES.forEach(function(edgeId) {
+        var el = document.getElementById("edge-" + edgeId);
+        var st = cfg.edges[edgeId] || "dormant";
+        applyEdgeStyle(el, st);
+      });
+
+      // 2. Update target node appearances
+      ALL_TARGET_NODES.forEach(function(nodeId) {
+        var g = document.getElementById("node-" + nodeId);
+        if (!g) return;
+        var circle = g.querySelector(".relink-node-circle");
+        var text = g.querySelector(".relink-node-text");
+        if (!circle || !text) return;
+
+        var isInf = cfg.influenced.indexOf(nodeId) !== -1;
+        if (isInf) {
+          circle.setAttribute("fill", "#ecfdf5");
+          circle.setAttribute("stroke", "#10b981");
+          circle.setAttribute("stroke-width", "2.2");
+          text.setAttribute("fill", "#065f46");
+        } else {
+          circle.setAttribute("fill", "#ffffff");
+          circle.setAttribute("stroke", "#475569");
+          circle.setAttribute("stroke-width", "1.8");
+          text.setAttribute("fill", "#1e293b");
+        }
+      });
+
+      // 3. Update step buttons active class
+      stepButtons.forEach(function(btn) {
+        var s = parseInt(btn.getAttribute("data-step"), 10);
+        btn.classList.toggle("active", s === currentStep);
+      });
+
+      // 4. Update Prev / Next button states
+      if (btnPrev) btnPrev.disabled = currentStep === 0;
+      if (btnNext) btnNext.textContent = currentStep === 3 ? "Reset to Step 0" : "Next Step →";
+
+      // 5. Update summary chips
+      if (budgetPillVal) {
+        budgetPillVal.textContent = cfg.budgetPill;
+        budgetPillVal.style.color = cfg.pillColor;
+      }
+      if (stepLabelEl) stepLabelEl.textContent = cfg.stepLabel;
+      if (spreadValEl) {
+        spreadValEl.textContent = cfg.spreadVal;
+        spreadValEl.style.color = cfg.spreadColor;
+      }
+      if (spreadSubEl) {
+        spreadSubEl.textContent = cfg.spreadSub;
+        spreadSubEl.style.color = cfg.spreadColor;
+      }
+      if (budgetStatusEl) budgetStatusEl.textContent = cfg.budgetStatus;
+
+      // 6. Update explanation text & border
+      if (explanationEl) {
+        explanationEl.style.borderLeftColor = cfg.borderColor;
+        explanationEl.innerHTML = cfg.explanation;
+      }
+    }
+
+    // Step pill listeners
+    stepButtons.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        currentStep = parseInt(btn.getAttribute("data-step"), 10);
+        updateStepVisualization();
+      });
+    });
+
+    // Prev / Next / Reset listeners
+    if (btnPrev) {
+      btnPrev.addEventListener("click", function() {
+        if (currentStep > 0) {
+          currentStep--;
+          updateStepVisualization();
+        }
+      });
+    }
+
+    if (btnNext) {
+      btnNext.addEventListener("click", function() {
+        if (currentStep < 3) {
+          currentStep++;
+        } else {
+          currentStep = 0;
+        }
+        updateStepVisualization();
+      });
+    }
+
+    if (btnReset) {
+      btnReset.addEventListener("click", function() {
+        currentStep = 0;
+        updateStepVisualization();
+      });
+    }
+
+    // Reset walkthrough on details toggle close
+    if (detailsWrapper) {
+      detailsWrapper.addEventListener("toggle", function() {
+        if (!detailsWrapper.open) {
+          currentStep = 0;
+          updateStepVisualization();
+        }
+      });
+    }
+
+    // Initialize walkthrough
+    updateStepVisualization();
+
+    /* ==========================================================================
+       2. Empirical Benchmark Explorer (CIKM 2025 Contingency Matrix)
+       ========================================================================== */
     var buttons = document.querySelectorAll(".relink-btn");
     var row1 = document.getElementById("relink-row-1");
     var row2 = document.getElementById("relink-row-2");
@@ -1284,7 +1552,7 @@
       },
       "psna": {
         gain: "456 / 480 Wins (95.0%)",
-        takeaway: "<strong>Paper Finding (Section 6.2 Q2 &amp; Section 6.3):</strong> RELINK outperforms PSNA in <strong>456 out of 480</strong> experiments (95.0%), while PSNA performs better in only 24 cases. Under low edge budgets (<em>k</em> &le; 10), RELINK significantly outperforms PSNA (Figure 6 heatmap, frequently exceeding 15% spread improvements) by prioritizing high-impact boundary bridges early; PSNA partially closes the gap under higher budgets as redundant edges are activated.",
+        takeaway: "<strong>Paper Finding (Section 6.3 &amp; Figure 6):</strong> RELINK outperforms PSNA in <strong>456 out of 480</strong> configurations (95.0% win rate). The advantage is especially pronounced in low-budget regimes (<em>k</em> &le; 10), where RELINK consistently achieves higher influence spread by identifying high-leverage boundary bridges early.",
         rows: [
           { show: true, label: "RELINK (Deep Reinforcement Learning Policy)", val: "95.0% Win Rate (456 / 480 wins)", pct: 95.0, cls: "fill-green", style: "" },
           { show: true, label: "PSNA (Huang et al., IM-CSN Baseline)", val: "5.0% Win Rate (24 / 480 wins)", pct: 5.0, cls: "fill-blue", style: "" },
@@ -1294,7 +1562,7 @@
       },
       "degree": {
         gain: "464 / 480 Wins (96.7%)",
-        takeaway: "<strong>Paper Finding (Section 6.2 Q1):</strong> RELINK outperforms Degree Centrality in <strong>464 out of 480</strong> experiments (96.7%). Degree centrality performs worst on the IM-CSN task because it greedily activates edges connecting already dense internal hubs, failing to bridge privacy-shielded cluster boundaries.",
+        takeaway: "<strong>Paper Finding (Section 6.2 Q1):</strong> RELINK outperforms Degree Centrality in <strong>464 out of 480</strong> experiments (96.7%). As reported in Section 6.2, traditional heuristics like Degree perform worst on IM-CSN, consistent with prior findings from Huang et al. [46], because degree-based selection prioritizes locally prominent structure rather than optimizing activation decisions with learned influence-aware policies.",
         rows: [
           { show: true, label: "RELINK (Deep Reinforcement Learning Policy)", val: "96.7% Win Rate (464 / 480 wins)", pct: 96.7, cls: "fill-green", style: "" },
           { show: true, label: "Degree Centrality Heuristic", val: "3.3% Win Rate (16 / 480 wins)", pct: 3.3, cls: "fill-gray", style: "" },
@@ -1354,198 +1622,758 @@
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initRelinkSimulation);
+    document.addEventListener("DOMContentLoaded", initRelinkDemo);
   } else {
-    initRelinkSimulation();
+    initRelinkDemo();
   }
 })();
-</script> <hr> <h2 id="structured-and-multimodal-intelligence">Structured and Multimodal Intelligence</h2> <p>We develop learning methods for reasoning over complex perceptual and multimodal data by combining high-dimensional representations with explicit structure. Our research studies how temporal dependencies, task structure, relational representations, and human feedback can improve the reliability, interpretability, and adaptability of models operating across visual, linguistic, and multimodal domains. More broadly, we investigate how structured reasoning can bridge low-level perception and higher-level understanding, prediction, and decision-making.</p> <h3 id="structured-video-understanding-and-activity-reasoning">Structured Video Understanding and Activity Reasoning</h3> <figure class="figure" style="position: relative; display: block; width: 100%;"> <img src="/assets/img/publication_preview/CaptainCook4D.gif" class="figure-img img-fluid gif-replayable" alt="CaptainCook4D egocentric 4D cooking dataset" style="cursor: pointer; width: 100%; border-radius: 6px;" title="Click to replay animation"> <button type="button" class="gif-replay-badge" title="Replay animation" style="position: absolute; bottom: 12px; right: 12px; z-index: 2; margin: 0;"> ↻ Replay </button> </figure> <p>Our work in video understanding focuses on modeling the temporal and procedural structure of complex activities. Rather than treating videos as collections of isolated frames or short clips, we study representations that capture multi-step workflows, dependencies among actions, deviations from expected procedures, and the context needed for explanation and prediction. These structured models support tasks such as activity recognition, procedural error detection, temporal localization, explanation, and predictive task guidance.</p> <ul> <li> <strong>CaptainCook4D: a dataset for understanding errors in procedural activities</strong> (<a href="https://neurips.cc/virtual/2024/poster/97640" rel="external nofollow noopener" target="_blank">NeurIPS D&amp;B Track 2024</a>; DMLR 2023) <ul> <li>Introduces a 94.5-hour egocentric 4D dataset of recipe execution containing both normal and errorful trials, with fine-grained annotations supporting error recognition, multi-step temporal localization, and procedure learning.</li> </ul> </li> </ul> <details class="interactive-demo-wrapper"> <summary class="interactive-demo-summary"> <span class="interactive-demo-summary-title"> <span>Interactive Demo: CaptainCook4D Procedural Error Taxonomy Explorer</span> <span class="interactive-demo-summary-badge">NeurIPS 2024 D&amp;B</span> </span> <span class="interactive-demo-summary-chevron">▸</span> </summary> <div class="interactive-demo-card"> <div class="demo-card-header"> <div class="demo-title-group"> <h4>CaptainCook4D Procedural Activity &amp; Error Taxonomy Explorer</h4> <p>Explore genuine error categories, recipe tasks, and multimodal sensory capture from the CaptainCook4D benchmark</p> </div> <div class="demo-badges"> <span class="demo-badge demo-badge-oral">NeurIPS 2024 D&amp;B</span> <span class="demo-badge demo-badge-sim">Egocentric 4D Benchmark</span> </div> </div> <div class="demo-metrics-grid"> <div class="demo-metric-card highlight-green"> <div class="metric-name"> <span>Dataset Scale</span> <span class="badge badge-success" style="font-size: 0.72rem">Benchmark</span> </div> <div class="metric-speedup speedup-ssmp">94.5 Hours</div> <div class="metric-stats"> <strong>Recordings:</strong> 384 sessions across 10 real kitchens<br> <strong>Tasks:</strong> 24 complex WikiHow recipes (≤30 min)<br> <strong>Annotations:</strong> 5.3K steps, 10K fine-grained actions </div> </div> <div class="demo-metric-card highlight-blue"> <div class="metric-name"> <span>Error Taxonomy</span> <span class="badge badge-info" style="font-size: 0.72rem">7 Categories</span> </div> <div class="metric-speedup speedup-itself">Real Deviations</div> <div class="metric-stats"> <strong>Categories:</strong> Technique, Measurement, Order, Prep, Timing, Temp, Missing<br> <strong>Protocols:</strong> Adherent normal steps vs. induced error deviations<br> <strong>Ground truth:</strong> Frame-accurate temporal boundaries </div> </div> <div class="demo-metric-card highlight-gray"> <div class="metric-name"> <span>Sensory Modalities</span> <span class="badge badge-secondary" style="font-size: 0.72rem">Hardware</span> </div> <div class="metric-speedup speedup-baseline">Egocentric 4D</div> <div class="metric-stats"> <strong>Dual-view:</strong> GoPro Hero 11 (4K @ 30 fps), HoloLens 2 RGB<br> <strong>Depth &amp; Poses:</strong> HoloLens 2 AHAT depth, 3D hand/head poses<br> <strong>IMU &amp; Spatial:</strong> 3-stream IMU, audio, 3D spatial mesh </div> </div> </div> <div class="demo-workload-box"> <div class="workload-header"> <h5>Select Demonstration from Project Benchmark:</h5> <div class="workload-controls"> <button type="button" class="workload-btn cc-tax-btn active" data-cat="technique_spill">Technique (Spillage)</button> <button type="button" class="workload-btn cc-tax-btn" data-cat="measurement">Measurement (Quantity)</button> <button type="button" class="workload-btn cc-tax-btn" data-cat="order">Order (Sequence)</button> <button type="button" class="workload-btn cc-tax-btn" data-cat="prep">Preparation (Utensil)</button> <button type="button" class="workload-btn cc-tax-btn" data-cat="technique_cut">Technique (Cutting)</button> <button type="button" class="workload-btn cc-tax-btn" data-cat="spatial_4d">4D Point Cloud</button> <button type="button" class="workload-btn cc-tax-btn" data-cat="task_graph">Task Graph</button> </div> </div> <div class="demo-video-wrapper" style="margin-top: 0.75rem; margin-bottom: 0.5rem; text-align: center"> <video id="cc-video-player" class="demo-video-player" controls="" playsinline="" muted="" loop="" style="max-height: 320px; width: 100%; border-radius: 6px; background-color: #000"> <source id="cc-video-source" src="https://captaincook4d.github.io/captain-cook/static/videos/error_categories/technique_error_1.mp4" type="video/mp4"></source> Your browser does not support the video tag. </video> <p class="demo-video-caption" id="cc-video-caption" style="margin-top: 0.4rem; font-size: 0.82rem; color: var(--global-text-color-light, #6b7280)"> Butter corn cup: First 2 snippets exhibit correct execution without spillage; next 3 exhibit induced corn spillage while mixing. </p> </div> <div class="demo-inspector-card" id="cc-inspector-display" style="margin-top: 0.75rem"> <div class="demo-inspector-status"> <div> <div class="demo-inspector-step-title" id="cc-tax-recipe">Recipe: Butter Corn Cup</div> <span style="font-size: 0.85rem; color: var(--global-text-color-light, #6b7280)" id="cc-tax-step">Instruction: "Mix the contents of the bowl well"</span> </div> <span class="badge badge-danger" id="cc-tax-badge" style="font-size: 0.78rem">Technique Error</span> </div> <div style="font-size: 0.88rem; line-height: 1.5; margin: 0.5rem 0"> <p style="margin: 0.25rem 0"> <strong>Normal Execution:</strong> <span id="cc-tax-normal">Contents of the bowl are mixed thoroughly without spillage.</span> </p> <p style="margin: 0.25rem 0"> <strong>Recorded Error:</strong> <span id="cc-tax-error" style="color: #ef4444">Participant mixes too aggressively, spilling corn kernels out of the bowl while mixing.</span> </p> </div> <div class="demo-inspector-streams"> <div class="demo-stream-pill"> <strong>Sensory Capture:</strong> <span id="cc-tax-streams">GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU &amp; Audio</span> </div> <div class="demo-stream-pill"> <strong>Benchmark Tasks:</strong> <span id="cc-tax-task">Error Recognition (Supervised &amp; Zero-Shot), Multi-Step Localization (MSL), Procedure Learning</span> </div> </div> </div> <div style=" display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center; margin-top: 0.85rem; font-size: 0.82rem; border-top: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.08)); padding-top: 0.65rem; "> <span style="color: var(--global-text-color-light, #6b7280)"> <strong>Official Resources:</strong> <a href="https://captaincook4d.github.io/captain-cook/" target="_blank" rel="noopener">Project Website</a> • <a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/f4a04396c2ed1342a5d8d05e94cb6101-Paper-Datasets_and_Benchmarks_Track.pdf" target="_blank" rel="noopener">NeurIPS 2024 Paper</a> • <a href="https://github.com/CaptainCook4D/downloader" target="_blank" rel="noopener">Downloader</a> • <a href="https://github.com/CaptainCook4D/annotations" target="_blank" rel="noopener">Annotations</a> </span> <span style="color: var(--global-text-color-light, #6b7280)"> IRB Approved (UF) • Apache 2.0 License </span> </div> </div> </div> </details> <script>
-  (function () {
-    function initCaptainCookTaxonomy() {
-      var taxBtns = document.querySelectorAll(".cc-tax-btn");
-      var recipeEl = document.getElementById("cc-tax-recipe");
-      var stepEl = document.getElementById("cc-tax-step");
-      var badgeEl = document.getElementById("cc-tax-badge");
-      var normalEl = document.getElementById("cc-tax-normal");
-      var errorEl = document.getElementById("cc-tax-error");
-      var streamsEl = document.getElementById("cc-tax-streams");
-      var taskEl = document.getElementById("cc-tax-task");
-      var videoPlayer = document.getElementById("cc-video-player");
-      var videoSource = document.getElementById("cc-video-source");
-      var videoCaption = document.getElementById("cc-video-caption");
+</script> <hr> <h2 id="structured-and-multimodal-intelligence">Structured and Multimodal Intelligence</h2> <p>We develop learning methods for reasoning over complex perceptual and multimodal data by combining high-dimensional representations with explicit structure. Our research studies how temporal dependencies, task structure, relational representations, and human feedback can improve the reliability, interpretability, and adaptability of models operating across visual, linguistic, and multimodal domains. More broadly, we investigate how structured reasoning can bridge low-level perception and higher-level understanding, prediction, and decision-making.</p> <h3 id="structured-video-understanding-and-activity-reasoning">Structured Video Understanding and Activity Reasoning</h3> <figure class="figure" style="position: relative; display: block; width: 100%;"> <img src="/assets/img/publication_preview/CaptainCook4D.gif" class="figure-img img-fluid gif-replayable" alt="CaptainCook4D egocentric 4D cooking dataset" style="cursor: pointer; width: 100%; border-radius: 6px;" title="Click to replay animation"> <button type="button" class="gif-replay-badge" title="Replay animation" style="position: absolute; bottom: 12px; right: 12px; z-index: 2; margin: 0;"> ↻ Replay </button> </figure> <p>Our work in video understanding focuses on modeling the temporal and procedural structure of complex activities. Rather than treating videos as collections of isolated frames or short clips, we study representations that capture multi-step workflows, dependencies among actions, deviations from expected procedures, and the context needed for explanation and prediction. These structured models support tasks such as activity recognition, procedural error detection, temporal localization, explanation, and predictive task guidance.</p> <ul> <li> <strong>CaptainCook4D: a dataset for understanding errors in procedural activities</strong> (<a href="https://neurips.cc/virtual/2024/poster/97640" rel="external nofollow noopener" target="_blank">NeurIPS D&amp;B Track 2024</a>; DMLR 2023) <ul> <li>Introduces a 94.5-hour egocentric 4D dataset of recipe execution containing both normal and errorful trials, with fine-grained annotations supporting error recognition, multi-step temporal localization, and procedure learning.</li> </ul> </li> </ul> <details class="interactive-demo-wrapper" id="captaincook-details-wrapper"> <summary class="interactive-demo-summary"> <span class="interactive-demo-summary-title"> <span class="interactive-demo-summary-badge">Interactive Demo</span> <span>CaptainCook4D: Normal vs. Error Execution Explorer</span> </span> <span class="interactive-demo-summary-chevron">▸</span> </summary> <div class="interactive-demo-card" id="demo-captaincook-card"> <div class="demo-card-header"> <div class="demo-title-group"> <h4>CaptainCook4D: Normal vs. Error Procedural Execution &amp; Taxonomy Explorer</h4> <p>Compare genuine normal executions against recorded procedural errors, and inspect egocentric 4D sensory capture and task graphs.</p> </div> <div class="demo-badges"> <span class="demo-badge demo-badge-oral">NeurIPS 2024 D&amp;B</span> <span class="demo-badge demo-badge-sim">Egocentric 4D Benchmark</span> </div> </div> <div class="demo-metrics-grid"> <div class="demo-metric-card highlight-green"> <div class="metric-name"> <span>Dataset Scale</span> <span class="badge badge-success" style="font-size: 0.72rem">Benchmark</span> </div> <div class="metric-speedup speedup-ssmp">94.5 Hours</div> <div class="metric-stats"> <strong>Recordings:</strong> 384 sessions across 10 real kitchens<br> <strong>Tasks:</strong> 24 complex WikiHow recipes (≤30 min)<br> <strong>Annotations:</strong> 5.3K steps, 10K fine-grained actions </div> </div> <div class="demo-metric-card highlight-blue"> <div class="metric-name"> <span>Error Taxonomy</span> <span class="badge badge-info" style="font-size: 0.72rem">7 Categories</span> </div> <div class="metric-speedup speedup-itself">Real Deviations</div> <div class="metric-stats"> <strong>Categories:</strong> Technique, Measurement, Order, Prep, Timing, Temp, Missing<br> <strong>Protocols:</strong> Adherent normal steps vs. induced error deviations<br> <strong>Ground truth:</strong> Annotated step start/end times </div> </div> <div class="demo-metric-card highlight-gray"> <div class="metric-name"> <span>Sensory Modalities</span> <span class="badge badge-secondary" style="font-size: 0.72rem">Hardware</span> </div> <div class="metric-speedup speedup-baseline">Egocentric 4D</div> <div class="metric-stats"> <strong>Dual-view:</strong> GoPro Hero 11 (4K @ 30 fps), HoloLens 2 RGB<br> <strong>Depth &amp; Poses:</strong> HoloLens 2 AHAT depth, 3D hand/head poses<br> <strong>IMU &amp; Spatial:</strong> 3-stream IMU, audio, 3D spatial mesh </div> </div> </div> <div class="demo-workload-box"> <div class="workload-header" style="flex-wrap: wrap; gap: 0.6rem; align-items: center;"> <div> <h5 style="margin-bottom: 0.2rem;">1. Select Procedural Demonstration from Benchmark:</h5> <span class="badge badge-info" style="font-size: 0.72rem; font-weight: normal;"> Authentic CaptainCook4D Benchmark Recordings </span> </div> <div class="workload-controls" role="group" aria-label="Error Category Selector"> <button type="button" class="workload-btn cc-tax-btn active" data-cat="technique_spill">Technique (Spillage)</button> <button type="button" class="workload-btn cc-tax-btn" data-cat="measurement">Measurement (Quantity)</button> <button type="button" class="workload-btn cc-tax-btn" data-cat="order">Order (Sequence)</button> <button type="button" class="workload-btn cc-tax-btn" data-cat="prep">Preparation (Utensil)</button> <button type="button" class="workload-btn cc-tax-btn" data-cat="technique_cut">Technique (Cutting)</button> <button type="button" class="workload-btn cc-tax-btn" data-cat="spatial_4d">4D Point Cloud</button> <button type="button" class="workload-btn cc-tax-btn" data-cat="task_graph">Task Graph</button> </div> </div> <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center; margin: 0.65rem 0 0.85rem; padding: 0.55rem 0.8rem; background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px;"> <div> <span style="font-size: 0.92rem; font-weight: 700; color: var(--global-text-color, #111827);" id="cc-tax-recipe">Recipe: Butter Corn Cup</span> <span style="font-size: 0.82rem; color: var(--global-text-color-light, #6b7280); display: block; margin-top: 0.15rem;" id="cc-tax-step">Instruction: "Mix the contents of the bowl well"</span> </div> <div style="display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap;"> <span class="badge badge-danger" id="cc-tax-badge" style="font-size: 0.78rem; font-weight: 700;">Error Type: Technique</span> <span class="badge badge-secondary" id="cc-source-label" style="font-size: 0.72rem; font-weight: normal;">Recorded CaptainCook4D Session</span> </div> </div> <div id="cc-view-controls-bar" style="display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; padding: 0.45rem 0.75rem; background: rgba(0,0,0,0.02); border-radius: 6px; border: 1px solid var(--global-divider-color, rgba(0,0,0,0.06));"> <div style="display: flex; align-items: center; gap: 0.45rem; font-size: 0.82rem; font-weight: 700; color: var(--global-text-color, #111827);"> <span>Execution Comparison:</span> </div> <div class="workload-controls" id="cc-view-mode-group" role="group" aria-label="Execution View Mode"> <button type="button" class="workload-btn cc-view-btn active" data-view="side_by_side">Side-by-Side (Normal vs. Error)</button> <button type="button" class="workload-btn cc-view-btn" data-view="normal_only">Normal Execution</button> <button type="button" class="workload-btn cc-view-btn" data-view="error_only">Error Execution</button> <button type="button" class="workload-btn cc-view-btn" data-view="full_strip">All 5 Multi-View Sessions</button> </div> </div> <div id="cc-comparison-container" class="cc-comparison-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-bottom: 0.6rem;"> <div id="cc-panel-normal" class="cc-execution-panel" style="background: var(--global-card-bg-color, #ffffff); border: 1.5px solid #10b981; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;"> <div style="padding: 0.45rem 0.75rem; background: rgba(16, 185, 129, 0.08); border-bottom: 1px solid rgba(16, 185, 129, 0.2); display: flex; justify-content: space-between; align-items: center;"> <span style="font-weight: 700; font-size: 0.82rem; color: #047857; display: flex; align-items: center; gap: 0.35rem;"> <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981;"></span> Normal Execution (Adherent Step) </span> <span class="badge badge-success" style="font-size: 0.68rem; font-weight: normal;">Recorded Dataset Session</span> </div> <div class="cc-video-viewport" id="cc-viewport-normal" style="position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #000; cursor: pointer;"> <video id="cc-video-normal" class="cc-crop-video" style="position: absolute; top: 0; left: 0; width: 500%; height: 100%; object-fit: fill; transform: translateX(0%); pointer-events: none;" playsinline="" muted="" preload="metadata" poster="/assets/img/publication_preview/captaincook4d_poster.jpg"> <source id="cc-source-normal" src="https://captaincook4d.github.io/captain-cook/static/videos/error_categories/technique_error_1.mp4" type="video/mp4"></source> </video> <div class="cc-error-overlay" id="cc-overlay-normal" style="display: none; position: absolute; inset: 0; background: rgba(0,0,0,0.85); color: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.8rem; text-align: center; z-index: 10;"> <span style="font-size: 0.8rem; color: #fca5a5;">Recording snippet could not be loaded from source repository.</span> <button type="button" class="workload-btn cc-retry-btn" style="padding: 0.2rem 0.6rem; font-size: 0.74rem;">↺ Retry Loading</button> </div> <div class="cc-play-overlay-badge" id="cc-play-overlay-normal" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; background: rgba(0,0,0,0.15);"> <span style="background: rgba(0,0,0,0.65); color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">▶</span> </div> </div> <div style="padding: 0.55rem 0.75rem; font-size: 0.8rem; line-height: 1.45; color: var(--global-text-color, #111827); border-top: 1px solid var(--global-divider-color, rgba(0,0,0,0.06)); background: rgba(0,0,0,0.01); flex-grow: 1;"> <strong style="color: #047857;">Expected Execution:</strong> <span id="cc-card-normal-text">Contents of the bowl are mixed thoroughly without spillage.</span> </div> </div> <div id="cc-panel-error" class="cc-execution-panel" style="background: var(--global-card-bg-color, #ffffff); border: 1.5px solid #ef4444; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;"> <div style="padding: 0.45rem 0.75rem; background: rgba(239, 68, 68, 0.08); border-bottom: 1px solid rgba(239, 68, 68, 0.2); display: flex; justify-content: space-between; align-items: center;"> <span style="font-weight: 700; font-size: 0.82rem; color: #b91c1c; display: flex; align-items: center; gap: 0.35rem;"> <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ef4444;"></span> Error Execution (Procedural Deviation) </span> <span class="badge badge-danger" id="cc-card-error-badge" style="font-size: 0.68rem; font-weight: normal;">Technique Error</span> </div> <div class="cc-video-viewport" id="cc-viewport-error" style="position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #000; cursor: pointer;"> <video id="cc-video-error" class="cc-crop-video" style="position: absolute; top: 0; left: 0; width: 500%; height: 100%; object-fit: fill; transform: translateX(-40%); pointer-events: none;" playsinline="" muted="" preload="metadata" poster="/assets/img/publication_preview/captaincook4d_poster.jpg"> <source id="cc-source-error" src="https://captaincook4d.github.io/captain-cook/static/videos/error_categories/technique_error_1.mp4" type="video/mp4"></source> </video> <div class="cc-error-overlay" id="cc-overlay-error" style="display: none; position: absolute; inset: 0; background: rgba(0,0,0,0.85); color: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.8rem; text-align: center; z-index: 10;"> <span style="font-size: 0.8rem; color: #fca5a5;">Recording snippet could not be loaded from source repository.</span> <button type="button" class="workload-btn cc-retry-btn" style="padding: 0.2rem 0.6rem; font-size: 0.74rem;">↺ Retry Loading</button> </div> <div class="cc-play-overlay-badge" id="cc-play-overlay-error" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; background: rgba(0,0,0,0.15);"> <span style="background: rgba(0,0,0,0.65); color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">▶</span> </div> </div> <div style="padding: 0.55rem 0.75rem; font-size: 0.8rem; line-height: 1.45; color: var(--global-text-color, #111827); border-top: 1px solid var(--global-divider-color, rgba(0,0,0,0.06)); background: rgba(0,0,0,0.01); flex-grow: 1;"> <strong style="color: #b91c1c;">Recorded Deviation:</strong> <span id="cc-card-error-text">Participant mixes too aggressively, spilling corn kernels out of the bowl while mixing.</span> </div> </div> </div> <div id="cc-strip-container" style="display: none; margin-bottom: 0.6rem;"> <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; overflow: hidden; padding: 0.6rem;"> <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; font-size: 0.8rem;"> <span style="font-weight: 700; color: var(--global-text-color, #111827);">Full 5-Session Benchmark Recording Strip (3200 × 360 px)</span> <span style="color: #64748b; font-size: 0.72rem;">Snippets 1-2: Normal | Snippets 3-5: Error Deviations</span> </div> <div style="position: relative; width: 100%; overflow-x: auto; background: #000; border-radius: 6px;"> <video id="cc-video-strip" style="width: 100%; height: auto; max-height: 220px; display: block; margin: 0 auto; cursor: pointer;" playsinline="" muted="" preload="metadata" poster="/assets/img/publication_preview/captaincook4d_poster.jpg"> <source id="cc-source-strip" src="https://captaincook4d.github.io/captain-cook/static/videos/error_categories/technique_error_1.mp4" type="video/mp4"></source> </video> <div class="cc-error-overlay" id="cc-overlay-strip" style="display: none; position: absolute; inset: 0; background: rgba(0,0,0,0.85); color: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.8rem; text-align: center; z-index: 10;"> <span style="font-size: 0.8rem; color: #fca5a5;">Panoramic video stream could not be loaded from source repository.</span> <button type="button" class="workload-btn cc-retry-btn" style="padding: 0.2rem 0.6rem; font-size: 0.74rem;">↺ Retry Loading</button> </div> </div> </div> </div> <div id="cc-multimodal-container" style="display: none; margin-bottom: 0.6rem;"> <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; overflow: hidden;"> <div style="padding: 0.45rem 0.75rem; background: rgba(0,0,0,0.03); border-bottom: 1px solid var(--global-divider-color, rgba(0,0,0,0.08)); display: flex; justify-content: space-between; align-items: center;"> <span id="cc-multimodal-title" style="font-weight: 700; font-size: 0.84rem; color: var(--global-text-color, #111827);"> Egocentric 4D Point Cloud &amp; Spatial Mesh </span> <span class="badge badge-success" id="cc-multimodal-badge" style="font-size: 0.7rem; font-weight: normal;">4D Reconstruction</span> </div> <div style="position: relative; width: 100%; background: #000; text-align: center;"> <video id="cc-video-multimodal" style="max-height: 340px; width: 100%; display: block; cursor: pointer;" playsinline="" muted="" preload="metadata" poster="/assets/img/publication_preview/captaincook4d_poster.jpg"> <source id="cc-source-multimodal" src="https://captaincook4d.github.io/captain-cook/static/videos/4D/4D_SHIVVRAT_HOUSE.mp4" type="video/mp4"></source> </video> <div class="cc-error-overlay" id="cc-overlay-multimodal" style="display: none; position: absolute; inset: 0; background: rgba(0,0,0,0.85); color: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.8rem; text-align: center; z-index: 10;"> <span style="font-size: 0.8rem; color: #fca5a5;">Multimodal stream could not be loaded from source repository.</span> <button type="button" class="workload-btn cc-retry-btn" style="padding: 0.2rem 0.6rem; font-size: 0.74rem;">↺ Retry Loading</button> </div> </div> </div> </div> <div class="cc-player-controls" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem; padding: 0.5rem 0.8rem; background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px;"> <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;"> <button type="button" id="cc-play-btn" class="workload-btn" style="min-width: 80px; font-weight: 700; padding: 0.25rem 0.65rem;"> ▶ Play </button> <button type="button" id="cc-restart-btn" class="workload-btn" style="padding: 0.25rem 0.55rem;" title="Replay from start"> ↺ Replay </button> <button type="button" id="cc-mute-btn" class="workload-btn" style="padding: 0.25rem 0.55rem;" title="Toggle Mute"> 🔇 Muted </button> <span id="cc-time-display" style="font-size: 0.78rem; font-family: monospace; color: var(--global-text-color-light, #6b7280);"> 0:00 / --:-- </span> </div> <div style="flex-grow: 1; min-width: 160px; max-width: 320px; display: flex; align-items: center; gap: 0.5rem;"> <input type="range" id="cc-time-scrubber" min="0" max="100" value="0" step="0.2" style="width: 100%; cursor: pointer;" aria-label="Playback scrubber"> </div> <div style="font-size: 0.74rem; color: #64748b; display: flex; align-items: center; gap: 0.35rem;"> <span id="cc-sync-dot" style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #10b981;"></span> <span id="cc-sync-label">Linked Normal/Error Playback</span> </div> </div> <p class="demo-video-caption" id="cc-video-caption" style="margin-top: 0.5rem; margin-bottom: 0.75rem; font-size: 0.82rem; color: var(--global-text-color-light, #6b7280);"> Recorded CaptainCook4D session: Butter corn cup. First 2 snippets exhibit correct execution without spillage; next 3 exhibit induced corn spillage while mixing. </p> <div class="demo-inspector-card" id="cc-inspector-display" style="margin-top: 0.65rem;"> <div class="demo-inspector-status"> <div> <div class="demo-inspector-step-title" id="cc-card-recipe-title">Recipe: Butter Corn Cup</div> <span style="font-size: 0.85rem; color: var(--global-text-color-light, #6b7280)" id="cc-card-step-title">Instruction: "Mix the contents of the bowl well"</span> </div> <span class="badge badge-danger" id="cc-card-status-badge" style="font-size: 0.78rem">Technique Error</span> </div> <div style="font-size: 0.88rem; line-height: 1.5; margin: 0.5rem 0;"> <p style="margin: 0.3rem 0;"> <strong style="color: #047857;">Normal Execution:</strong> <span id="cc-card-normal-desc">Contents of the bowl are mixed thoroughly without spillage.</span> </p> <p style="margin: 0.3rem 0;"> <strong style="color: #b91c1c;">Recorded Deviation:</strong> <span id="cc-card-error-desc">Participant mixes too aggressively, spilling corn kernels out of the bowl while mixing.</span> </p> </div> <div class="demo-inspector-streams"> <div class="demo-stream-pill"> <strong>Sensory Capture:</strong> <span id="cc-tax-streams">GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU &amp; Audio</span> </div> <div class="demo-stream-pill"> <strong>Benchmark Tasks:</strong> <span id="cc-tax-task">Error Recognition (Supervised &amp; Zero-Shot), Multi-Step Localization (MSL), Procedure Learning</span> </div> </div> </div> <div style=" display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center; margin-top: 0.85rem; font-size: 0.82rem; border-top: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.08)); padding-top: 0.65rem; "> <span style="color: var(--global-text-color-light, #6b7280)"> <strong>Official Resources:</strong> <a href="https://captaincook4d.github.io/captain-cook/" target="_blank" rel="noopener">Project Website</a> • <a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/f4a04396c2ed1342a5d8d05e94cb6101-Paper-Datasets_and_Benchmarks_Track.pdf" target="_blank" rel="noopener">NeurIPS 2024 Paper</a> • <a href="https://github.com/CaptainCook4D/downloader" target="_blank" rel="noopener">Downloader</a> • <a href="https://github.com/CaptainCook4D/annotations" target="_blank" rel="noopener">Annotations</a> </span> <span style="color: var(--global-text-color-light, #6b7280)"> IRB Approved (UF) • Apache 2.0 License </span> </div> </div> </div> </details> <script>
+(function() {
+  function initCaptainCookDemo() {
+    var detailsWrapper = document.getElementById("captaincook-details-wrapper");
 
-      if (!taxBtns.length || !recipeEl) return;
+    // Category Buttons
+    var taxBtns = document.querySelectorAll(".cc-tax-btn");
 
-      var taxData = {
-        technique_spill: {
-          recipe: "Recipe: Butter Corn Cup",
-          step: 'Instruction: "Mix the contents of the bowl well"',
-          badge: "Technique Error",
-          badgeClass: "badge-danger",
-          normal: "Contents of the bowl are mixed thoroughly without any spillage.",
-          error: "Participant induces error by spilling out corn from the bowl while mixing.",
-          streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
-          task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
-          videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/technique_error_1.mp4",
-          caption: "Butter corn cup: First 2 snippets exhibit correct execution without spillage; next 3 exhibit induced corn spillage while mixing.",
-        },
-        measurement: {
-          recipe: "Recipe: Scrambled Eggs",
-          step: 'Instruction: "Peel 2 garlic cloves"',
-          badge: "Measurement Error",
-          badgeClass: "badge-warning",
-          normal: "Participant counts and peels exactly 2 garlic cloves as specified in the recipe.",
-          error: "Incorrect quantity peeled (4 garlic cloves, 1 clove, and 1 clove respectively peeled instead of 2).",
-          streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
-          task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
-          videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/measurement_error.mp4",
-          caption: "Scrambled eggs: First 2 snippets show correct 2-clove peeling; next 3 snippets show incorrect quantities (4, 1, and 1 cloves).",
-        },
-        order: {
-          recipe: "Recipe: Spicy Tuna Avocado Wraps",
-          step: 'Instruction: "Top lettuce leaves with tuna mixture"',
-          badge: "Order Error",
-          badgeClass: "badge-info",
-          normal: "Steps executed in valid topological dependency order defined by the recipe task graph.",
-          error: "Incorrect sequence followed: avocado is added after topping lettuce leaves with tuna mixture instead of before.",
-          streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
-          task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
-          videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/order_error.mp4",
-          caption: "Spicy tuna avocado wraps: First 2 snippets show correct step order; next 3 show avocado added out of sequence.",
-        },
-        prep: {
-          recipe: "Recipe: Mug Cake",
-          step: 'Instruction: "Whisk batter"',
-          badge: "Preparation Error",
-          badgeClass: "badge-danger",
-          normal: "Proper whisk utensil used to blend batter ingredients uniformly.",
-          error: "Incorrect utensil or implement utilized: participant uses a spoon, tablespoon, or hand to perform whisking.",
-          streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
-          task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
-          videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/preparation_error.mp4",
-          caption:
-            "Mug cake: First 2 snippets show proper whisk utensil usage; remaining snippets show incorrect utensils (spoon, tablespoon, hand).",
-        },
-        technique_cut: {
-          recipe: "Recipe: Cucumber Raita",
-          step: 'Instruction: "Chop or grate the cucumber"',
-          badge: "Technique Error",
-          badgeClass: "badge-danger",
-          normal: "Cucumber is chopped or grated evenly according to culinary technique.",
-          error: "Improper knife execution: cucumber cut incorrectly, sliced vertically, or sliced horizontally.",
-          streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
-          task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
-          videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/technique_error_2.mp4",
-          caption: "Cucumber raita: First 2 snippets show correct chopping/grating; next 3 show vertical and horizontal slicing errors.",
-        },
-        spatial_4d: {
-          recipe: "Kitchen Environment: Real-World 4D Reconstructions",
-          step: "Modality: HoloLens 2 AHAT Depth & Egocentric Spatial Meshing",
-          badge: "4D Point Cloud & Mesh",
-          badgeClass: "badge-success",
-          normal: "Continuous 3D spatial surfaces and egocentric point clouds reconstructed across 10 real kitchen environments.",
-          error: "Captures 3D spatial relations, object-hand interactions, and metric scene depth for 384 recording sessions.",
-          streams: "HoloLens 2 AHAT (Short-Throw) Depth, 3D Hand/Head Poses, 3D Spatial Surface Mesh",
-          task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
-          videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/4D/4D_SHIVVRAT_HOUSE.mp4",
-          caption: "4D egocentric point cloud and spatial mesh reconstructed from HoloLens 2 depth and sensor poses in a real kitchen environment.",
-        },
-        task_graph: {
-          recipe: "Recipe: Blender Banana Pancakes",
-          step: "Structure: Hierarchical Directed Acyclic Task Graph (DAG)",
-          badge: "Task Graph Representation",
-          badgeClass: "badge-secondary",
-          normal: "Formulates recipes as directed acyclic graphs encoding step prerequisites, parallel paths, and optional sub-activities.",
-          error: "Enables grounding execution paths against procedural constraints to detect missing, skipped, or misordered actions.",
-          streams: "WikiHow Recipe Dependency Graph, Step Annotations & Temporal Alignments",
-          task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
-          videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/task_graph_blender_banana_pancakes.mp4",
-          caption: "Task graph animation: Procedural workflow representation modeling step execution order and dependency constraints.",
-        },
-      };
+    // Header Elements
+    var recipeEl = document.getElementById("cc-tax-recipe");
+    var stepEl = document.getElementById("cc-tax-step");
+    var badgeEl = document.getElementById("cc-tax-badge");
+    var sourceLabelEl = document.getElementById("cc-source-label");
 
-      taxBtns.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          taxBtns.forEach(function (b) {
-            b.classList.remove("active");
-          });
-          btn.classList.add("active");
-          var cat = btn.getAttribute("data-cat");
-          var d = taxData[cat];
-          if (!d) return;
+    // View Mode Buttons & Bar
+    var viewControlsBar = document.getElementById("cc-view-controls-bar");
+    var viewBtns = document.querySelectorAll(".cc-view-btn");
 
-          recipeEl.textContent = d.recipe;
-          stepEl.textContent = d.step;
-          badgeEl.textContent = d.badge;
-          badgeEl.className = "badge " + d.badgeClass;
-          normalEl.textContent = d.normal;
-          errorEl.textContent = d.error;
-          streamsEl.textContent = d.streams;
-          taskEl.textContent = d.task;
+    // Video Containers
+    var comparisonContainer = document.getElementById("cc-comparison-container");
+    var panelNormal = document.getElementById("cc-panel-normal");
+    var panelError = document.getElementById("cc-panel-error");
+    var stripContainer = document.getElementById("cc-strip-container");
+    var multimodalContainer = document.getElementById("cc-multimodal-container");
 
-          if (videoPlayer && videoSource && d.videoUrl) {
-            videoSource.src = d.videoUrl;
-            videoPlayer.load();
-          }
-          if (videoCaption && d.caption) {
-            videoCaption.textContent = d.caption;
-          }
-        });
-      });
+    // Video Elements & Sources
+    var videoNormal = document.getElementById("cc-video-normal");
+    var sourceNormal = document.getElementById("cc-source-normal");
+    var videoError = document.getElementById("cc-video-error");
+    var sourceError = document.getElementById("cc-source-error");
+    var videoStrip = document.getElementById("cc-video-strip");
+    var sourceStrip = document.getElementById("cc-source-strip");
+    var videoMultimodal = document.getElementById("cc-video-multimodal");
+    var sourceMultimodal = document.getElementById("cc-source-multimodal");
 
-      /* Replay GIF Handler: click to replay */
-      document.addEventListener("click", function (e) {
-        var replayBtn = e.target.closest(".gif-replay-badge");
-        if (replayBtn) {
-          var container = replayBtn.closest("figure, .demo-video-wrapper, div");
-          var img = container ? container.querySelector("img") : null;
-          if (img && img.src.indexOf(".gif") !== -1) {
-            var base = img.src.split("?")[0];
-            img.src = base + "?t=" + Date.now();
-          }
-          return;
+    // Viewports (for click-to-play)
+    var viewportNormal = document.getElementById("cc-viewport-normal");
+    var viewportError = document.getElementById("cc-viewport-error");
+    var playOverlayNormal = document.getElementById("cc-play-overlay-normal");
+    var playOverlayError = document.getElementById("cc-play-overlay-error");
+
+    // Overlays for error states
+    var overlayNormal = document.getElementById("cc-overlay-normal");
+    var overlayError = document.getElementById("cc-overlay-error");
+    var overlayStrip = document.getElementById("cc-overlay-strip");
+    var overlayMultimodal = document.getElementById("cc-overlay-multimodal");
+
+    // Multimodal header texts
+    var multimodalTitleEl = document.getElementById("cc-multimodal-title");
+    var multimodalBadgeEl = document.getElementById("cc-multimodal-badge");
+
+    // Cards Callouts
+    var cardNormalText = document.getElementById("cc-card-normal-text");
+    var cardErrorText = document.getElementById("cc-card-error-text");
+    var cardErrorBadge = document.getElementById("cc-card-error-badge");
+    var videoCaption = document.getElementById("cc-video-caption");
+
+    // Bottom Inspector Display
+    var cardRecipeTitle = document.getElementById("cc-card-recipe-title");
+    var cardStepTitle = document.getElementById("cc-card-step-title");
+    var cardStatusBadge = document.getElementById("cc-card-status-badge");
+    var cardNormalDesc = document.getElementById("cc-card-normal-desc");
+    var cardErrorDesc = document.getElementById("cc-card-error-desc");
+    var streamsEl = document.getElementById("cc-tax-streams");
+    var taskEl = document.getElementById("cc-tax-task");
+
+    // Master Controls
+    var playBtn = document.getElementById("cc-play-btn");
+    var restartBtn = document.getElementById("cc-restart-btn");
+    var muteBtn = document.getElementById("cc-mute-btn");
+    var timeDisplay = document.getElementById("cc-time-display");
+    var timeScrubber = document.getElementById("cc-time-scrubber");
+    var syncDot = document.getElementById("cc-sync-dot");
+    var syncLabel = document.getElementById("cc-sync-label");
+
+    if (!taxBtns.length || !videoNormal) return;
+
+    var currentCat = "technique_spill";
+    var currentViewMode = "side_by_side"; // side_by_side, normal_only, error_only, full_strip
+    var isMuted = true;
+    var isUserScrubbing = false;
+
+    var CATEGORY_DATA = {
+      technique_spill: {
+        type: "procedural",
+        recipe: "Recipe: Butter Corn Cup",
+        step: 'Instruction: "Mix the contents of the bowl well"',
+        badge: "Technique Error: Spillage",
+        badgeClass: "badge-danger",
+        isRecorded: true,
+        normal: "Contents of the bowl are mixed thoroughly without spillage.",
+        error: "Participant mixes too aggressively, spilling corn kernels out of the bowl while mixing.",
+        streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
+        task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
+        videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/technique_error_1.mp4",
+        caption: "Recorded CaptainCook4D session: Butter corn cup. Normal execution exhibits careful mixing without spillage; Error execution captures corn kernel spillage from aggressive mixing.",
+        normalCrop: "translateX(0%)",
+        errorCrop: "translateX(-40%)"
+      },
+      measurement: {
+        type: "procedural",
+        recipe: "Recipe: Scrambled Eggs",
+        step: 'Instruction: "Peel 2 garlic cloves"',
+        badge: "Measurement Error: Quantity",
+        badgeClass: "badge-warning",
+        isRecorded: true,
+        normal: "Participant counts and peels exactly 2 garlic cloves as specified in the recipe.",
+        error: "Incorrect quantity peeled: participant peels 4 garlic cloves (or 1 clove) instead of the intended 2 cloves.",
+        streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
+        task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
+        videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/measurement_error.mp4",
+        caption: "Recorded CaptainCook4D session: Scrambled eggs. Normal execution shows peeling exactly 2 garlic cloves; Error execution captures peeling an incorrect quantity (4 cloves).",
+        normalCrop: "translateX(0%)",
+        errorCrop: "translateX(-40%)"
+      },
+      order: {
+        type: "procedural",
+        recipe: "Recipe: Spicy Tuna Avocado Wraps",
+        step: 'Instruction: "Top lettuce leaves with tuna mixture"',
+        badge: "Order Error: Sequence Deviation",
+        badgeClass: "badge-info",
+        isRecorded: true,
+        normal: "Steps executed in valid topological dependency order defined by the recipe task graph.",
+        error: "Incorrect sequence followed: avocado is added after topping lettuce leaves with tuna mixture instead of before.",
+        streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
+        task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
+        videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/order_error.mp4",
+        caption: "Recorded CaptainCook4D session: Spicy tuna avocado wraps. Normal execution follows step precedence; Error execution captures avocado added out of sequence.",
+        normalCrop: "translateX(0%)",
+        errorCrop: "translateX(-40%)"
+      },
+      prep: {
+        type: "procedural",
+        recipe: "Recipe: Mug Cake",
+        step: 'Instruction: "Whisk batter"',
+        badge: "Preparation Error: Utensil Misuse",
+        badgeClass: "badge-danger",
+        isRecorded: true,
+        normal: "Proper whisk utensil used to blend batter ingredients uniformly.",
+        error: "Incorrect utensil utilized: participant uses a spoon, tablespoon, or hand instead of a whisk.",
+        streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
+        task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
+        videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/preparation_error.mp4",
+        caption: "Recorded CaptainCook4D session: Mug cake. Normal execution shows proper whisk utensil usage; Error execution captures substitution of improper implements (spoon/hand).",
+        normalCrop: "translateX(0%)",
+        errorCrop: "translateX(-40%)"
+      },
+      technique_cut: {
+        type: "procedural",
+        recipe: "Recipe: Cucumber Raita",
+        step: 'Instruction: "Chop or grate the cucumber"',
+        badge: "Technique Error: Improper Cutting",
+        badgeClass: "badge-danger",
+        isRecorded: true,
+        normal: "Cucumber is chopped or grated evenly according to culinary technique.",
+        error: "Improper knife execution: cucumber is sliced vertically or horizontally rather than chopped or grated.",
+        streams: "GoPro Hero 11 (4K @ 30 fps), HoloLens 2 AHAT Depth, 3D Hand/Head Poses, IMU & Audio",
+        task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
+        videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/error_categories/technique_error_2.mp4",
+        caption: "Recorded CaptainCook4D session: Cucumber raita. Normal execution exhibits proper chopping/grating; Error execution captures improper knife stroke orientation.",
+        normalCrop: "translateX(0%)",
+        errorCrop: "translateX(-40%)"
+      },
+      spatial_4d: {
+        type: "multimodal",
+        recipe: "Kitchen Environment: Metric 4D Reconstructions",
+        step: "Modality: HoloLens 2 AHAT Depth & Egocentric Spatial Meshing",
+        badge: "4D Point Cloud & Mesh",
+        badgeClass: "badge-success",
+        isRecorded: true,
+        normal: "Continuous 3D spatial surfaces and egocentric point clouds reconstructed across 10 real kitchen environments.",
+        error: "Captures 3D spatial relations, object-hand interactions, and metric scene depth for 384 recording sessions.",
+        streams: "HoloLens 2 AHAT (Short-Throw) Depth, 3D Hand/Head Poses, 3D Spatial Surface Mesh",
+        task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
+        videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/4D/4D_SHIVVRAT_HOUSE.mp4",
+        caption: "Recorded CaptainCook4D sensory stream: 4D egocentric point cloud and spatial mesh reconstructed from HoloLens 2 depth and sensor poses in a real kitchen environment."
+      },
+      task_graph: {
+        type: "multimodal",
+        recipe: "Recipe: Blender Banana Pancakes",
+        step: "Structure: Hierarchical Directed Acyclic Task Graph (DAG)",
+        badge: "Structured Task Representation (DAG)",
+        badgeClass: "badge-secondary",
+        isRecorded: false, // Schematic representation
+        normal: "Formulates recipes as directed acyclic graphs encoding step prerequisites, parallel paths, and optional sub-activities.",
+        error: "Enables grounding execution paths against procedural constraints to detect missing, skipped, or misordered actions.",
+        streams: "WikiHow Recipe Dependency Graph, Step Annotations & Temporal Alignments",
+        task: "Error Recognition (Supervised & Zero-Shot), Multi-Step Localization (MSL), Procedure Learning",
+        videoUrl: "https://captaincook4d.github.io/captain-cook/static/videos/task_graph_blender_banana_pancakes.mp4",
+        caption: "Schematic task representation: Procedural workflow graph modeling step execution order and dependency constraints."
+      }
+    };
+
+    function formatTime(sec) {
+      if (!Number.isFinite(sec) || sec < 0) return "0:00";
+      var m = Math.floor(sec / 60);
+      var s = Math.floor(sec % 60);
+      return m + ":" + (s < 10 ? "0" : "") + s;
+    }
+
+    function updateTimeUI(currTime, duration) {
+      var c = (Number.isFinite(currTime) && currTime >= 0) ? currTime : 0;
+      var d = (Number.isFinite(duration) && duration > 0) ? duration : 0;
+      if (timeDisplay) {
+        if (d > 0) {
+          timeDisplay.textContent = formatTime(c) + " / " + formatTime(d);
+        } else {
+          timeDisplay.textContent = formatTime(c) + " / --:--";
         }
-        var gifImg = e.target.closest("img.gif-replayable");
-        if (gifImg && gifImg.src.indexOf(".gif") !== -1) {
-          var base = gifImg.src.split("?")[0];
-          gifImg.src = base + "?t=" + Date.now();
+      }
+      if (timeScrubber && !isUserScrubbing) {
+        if (d > 0) {
+          timeScrubber.value = (c / d) * 100;
+        } else {
+          timeScrubber.value = 0;
         }
-      });
+      }
+    }
 
-      /* Scroll Observer: restart GIF when scrolled into view so visitor sees full animation */
-      if ("IntersectionObserver" in window) {
-        var gifObserver = new IntersectionObserver(
-          function (entries, observer) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                var img = entry.target;
-                if (img.src && img.src.indexOf(".gif") !== -1 && !img.dataset.hasPlayed) {
-                  img.dataset.hasPlayed = "true";
-                  var base = img.src.split("?")[0];
-                  img.src = base + "?t=" + Date.now();
-                }
-                observer.unobserve(img);
-              }
-            });
-          },
-          { threshold: 0.2 }
-        );
+    function getActiveVideo() {
+      var d = CATEGORY_DATA[currentCat];
+      if (d && d.type === "multimodal") {
+        return videoMultimodal;
+      }
+      if (currentViewMode === "full_strip") {
+        return videoStrip;
+      }
+      if (currentViewMode === "error_only") {
+        return videoError;
+      }
+      return videoNormal;
+    }
 
-        document.querySelectorAll("figure img.gif-replayable").forEach(function (img) {
-          gifObserver.observe(img);
+    function pauseAll() {
+      if (videoNormal) videoNormal.pause();
+      if (videoError) videoError.pause();
+      if (videoStrip) videoStrip.pause();
+      if (videoMultimodal) videoMultimodal.pause();
+      if (playBtn) playBtn.textContent = "▶ Play";
+      if (playOverlayNormal) playOverlayNormal.style.display = "flex";
+      if (playOverlayError) playOverlayError.style.display = "flex";
+    }
+
+    function safePlay(videoEl, overlayEl) {
+      if (!videoEl) return;
+      var p = videoEl.play();
+      if (p && typeof p.catch === "function") {
+        p.catch(function(err) {
+          if (err && err.name === "AbortError") {
+            return;
+          }
+          pauseAll();
+          if (videoEl.error && overlayEl) {
+            overlayEl.style.display = "flex";
+          }
         });
       }
     }
 
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initCaptainCookTaxonomy);
-    } else {
-      initCaptainCookTaxonomy();
+    function playActive() {
+      var d = CATEGORY_DATA[currentCat];
+      if (d.type === "multimodal") {
+        safePlay(videoMultimodal, overlayMultimodal);
+      } else if (currentViewMode === "full_strip") {
+        safePlay(videoStrip, overlayStrip);
+      } else if (currentViewMode === "normal_only") {
+        safePlay(videoNormal, overlayNormal);
+      } else if (currentViewMode === "error_only") {
+        safePlay(videoError, overlayError);
+      } else {
+        // side_by_side
+        safePlay(videoNormal, overlayNormal);
+        safePlay(videoError, overlayError);
+      }
+      if (playBtn) playBtn.textContent = "⏸ Pause";
+      if (playOverlayNormal) playOverlayNormal.style.display = "none";
+      if (playOverlayError) playOverlayError.style.display = "none";
     }
-  })();
-</script> <ul> <li> <strong>Explainable Activity Recognition in Videos Using Deep Learning and Tractable Probabilistic Models</strong> (<a href="https://dl.acm.org/doi/full/10.1145/3626961" rel="external nofollow noopener" target="_blank">ACM TiiS 2023</a>) <ul> <li>Integrates deep video representations with dynamic cutset networks to construct tractable temporal models that support probabilistic explanation queries while maintaining competitive activity-recognition performance.</li> </ul> </li> <li> <strong>Predictive Task Guidance with Artificial Intelligence in Augmented Reality</strong> (IEEE VR 2024 Workshop / Poster) <ul> <li>Investigates structured predictive models for augmented-reality task guidance that anticipate user actions and provide proactive assistance during complex procedural activities.</li> </ul> </li> </ul> <h3 id="human-guided-vision-language-and-multimodal-ai">Human-Guided Vision-Language and Multimodal AI</h3> <figure class="figure"> <img src="/assets/img/publication_preview/TiiS_FACOLE.png" class="figure-img img-fluid" alt="Vision-language model feedback interface"> </figure> <p>We study multimodal systems that integrate visual and linguistic representations with structured human feedback. This work investigates how different forms of human guidance, from detailed natural-language feedback to lightweight corrective signals, can improve model reliability, task adaptation, and downstream multimodal understanding. More broadly, we are interested in interactive learning frameworks in which human feedback becomes an explicit component of model reasoning and adaptation.</p> <ul> <li> <strong>Comparison of Text-Based Inputs for Human-in-the-Loop Feedback in Vision-Language Models</strong> (<a href="https://doi.org/10.1145/3816700" rel="external nofollow noopener" target="_blank">ACM TiiS 2026</a>) <ul> <li>Studies different forms of human-in-the-loop feedback for video understanding, comparing detailed natural-language commentary, word-level corrections, and lower-cost scalar judgments for improving model reliability.</li> </ul> </li> </ul> <details class="interactive-demo-wrapper"> <summary class="interactive-demo-summary"> <span class="interactive-demo-summary-title"> <span>Interactive Benchmark: VLM Accuracy Across Human Feedback Modalities</span> <span class="interactive-demo-summary-badge">ACM TiiS 2026</span> </span> <span class="interactive-demo-summary-chevron">▸</span> </summary> <div class="interactive-demo-card" id="demo-tiis-card"> <div class="demo-card-header"> <div class="demo-title-group"> <h4>VLM Accuracy Across Human-in-the-Loop Feedback Modalities</h4> <p>Empirical findings from ACM TiiS 2026 evaluating video understanding accuracy across feedback granularities, post-processing strategies, and VLM architectures</p> </div> <div class="demo-badges"> <span class="demo-badge demo-badge-oral">ACM TiiS 2026</span> <span class="demo-badge demo-badge-sim">Multimodal Benchmark</span> </div> </div> <div class="demo-metrics-grid"> <div class="demo-metric-card highlight-green"> <div class="metric-name"> <span>Peak VLM Accuracy</span> <span class="badge badge-success" style="font-size: 0.72rem;">Free Text</span> </div> <div class="metric-speedup speedup-ssmp" id="metric-tiis-gain">90.0% Accuracy</div> <div class="metric-stats"> <strong>Baseline (No Feedback):</strong> 40.0% → 90.0% (+50% gain)<br> <strong>Architecture:</strong> LLaVA-NeXT-Video<br> <strong>Condition:</strong> Unconstrained natural-language commentary </div> </div> <div class="demo-metric-card highlight-blue"> <div class="metric-name"> <span>Targeted Error Correction</span> <span class="badge badge-info" style="font-size: 0.72rem;">LLM Refinement</span> </div> <div class="metric-speedup speedup-itself">82.0% – 85.0%</div> <div class="metric-stats"> <strong>Video-LLaVA Peak:</strong> 82.0% (surpasses 75% Free Text)<br> <strong>LLaVA-NeXT-Video:</strong> 85.0% accuracy<br> <strong>Strategy:</strong> Human error localization + LLM rewriting </div> </div> <div class="demo-metric-card highlight-gray"> <div class="metric-name"> <span>Lightweight Feedback</span> <span class="badge badge-secondary" style="font-size: 0.72rem;">Low-Cost</span> </div> <div class="metric-speedup speedup-baseline">Up to 80.0%</div> <div class="metric-stats"> <strong>Binary Feedback:</strong> 80.0% (LLaVA-NeXT-Video)<br> <strong>Error Selection:</strong> 80.0% (LLaVA-NeXT-Video)<br> <strong>Zero-Shot Baseline:</strong> 40.0% across both models </div> </div> </div> <div class="demo-workload-box"> <div class="workload-header"> <h5>Select Evaluated Evaluation View (ACM TiiS 2026):</h5> <div class="workload-controls"> <button type="button" class="workload-btn tiis-btn active" data-view="next_video">LLaVA-NeXT-Video</button> <button type="button" class="workload-btn tiis-btn" data-view="video_llava">Video-LLaVA</button> <button type="button" class="workload-btn tiis-btn" data-view="head_to_head">Head-to-Head Comparison</button> <button type="button" class="workload-btn tiis-btn" data-view="processing">Raw Human vs. LLM Post-Processing</button> </div> </div> <div class="demo-progress-group" id="tiis-progress-group"> <div class="demo-progress-row" id="tiis-row-1"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="tiis-row1-label">Free Text</span> <span class="demo-progress-val speedup-ssmp" id="tiis-row1-val">90.0% Accuracy</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-green" id="tiis-row1-bar" style="width: 90%;"></div> </div> </div> <div class="demo-progress-row" id="tiis-row-2"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="tiis-row2-label">Error Correction – LLM Post Processing</span> <span class="demo-progress-val speedup-itself" id="tiis-row2-val">85.0% Accuracy</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-blue" id="tiis-row2-bar" style="width: 85%;"></div> </div> </div> <div class="demo-progress-row" id="tiis-row-3"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="tiis-row3-label">Error Correction – Raw Human Feedback</span> <span class="demo-progress-val speedup-itself" id="tiis-row3-val">84.0% Accuracy</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-blue" id="tiis-row2-bar" style="width: 84%;"></div> </div> </div> <div class="demo-progress-row" id="tiis-row-4"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="tiis-row4-label">Binary – Raw Human Feedback</span> <span class="demo-progress-val speedup-baseline" id="tiis-row4-val">80.0% Accuracy</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-gray" id="tiis-row4-bar" style="width: 80%;"></div> </div> </div> <div class="demo-progress-row" id="tiis-row-5"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="tiis-row5-label">Error Selection – Raw Human Feedback</span> <span class="demo-progress-val speedup-baseline" id="tiis-row5-val">80.0% Accuracy</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-gray" id="tiis-row5-bar" style="width: 80%;"></div> </div> </div> <div class="demo-progress-row" id="tiis-row-6"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="tiis-row6-label">Binary – LLM Post Processing</span> <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="tiis-row6-val">78.0% Accuracy</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill" style="width: 78%;" id="tiis-row6-bar"></div> </div> </div> <div class="demo-progress-row" id="tiis-row-7"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="tiis-row7-label">Error Selection – LLM Post Processing</span> <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="tiis-row7-val">76.0% Accuracy</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill" style="width: 76%;" id="tiis-row7-bar"></div> </div> </div> <div class="demo-progress-row" id="tiis-row-8"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="tiis-row8-label">No Feedback (Zero-Shot Baseline)</span> <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="tiis-row8-val">40.0% Accuracy</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill" style="width: 40%;" id="tiis-row8-bar"></div> </div> </div> </div> <p class="demo-video-caption" id="tiis-takeaway" style="margin-top: 0.85rem; margin-bottom: 0;"> <strong>Paper Finding (LLaVA-NeXT-Video):</strong> Human feedback delivers massive gains over the unassisted baseline, surging from 40.0% up to <strong>90.0%</strong> with Free Text commentary. Even lightweight binary feedback doubles model accuracy to <strong>80.0%</strong>, demonstrating that modern video-language models effectively ground corrective human signals across all interaction granularities. </p> </div> </div> </details> <script>
+
+    function togglePlay() {
+      var active = getActiveVideo();
+      if (!active) return;
+      if (active.paused || active.ended) {
+        playActive();
+      } else {
+        pauseAll();
+      }
+    }
+
+    function syncMuteState() {
+      if (currentViewMode === "error_only") {
+        if (videoError) videoError.muted = isMuted;
+        if (videoNormal) videoNormal.muted = true;
+      } else {
+        if (videoNormal) videoNormal.muted = isMuted;
+        if (videoError) videoError.muted = true; // Avoid dual-stream echo in side-by-side
+      }
+      if (videoStrip) videoStrip.muted = isMuted;
+      if (videoMultimodal) videoMultimodal.muted = isMuted;
+      if (muteBtn) muteBtn.textContent = isMuted ? "🔇 Muted" : "🔊 Audio";
+    }
+
+    function applyViewMode() {
+      var d = CATEGORY_DATA[currentCat];
+      if (d.type === "multimodal") {
+        if (viewControlsBar) viewControlsBar.style.display = "none";
+        if (comparisonContainer) comparisonContainer.style.display = "none";
+        if (stripContainer) stripContainer.style.display = "none";
+        if (multimodalContainer) multimodalContainer.style.display = "block";
+        if (syncDot) syncDot.style.background = "#3b82f6";
+        if (syncLabel) syncLabel.textContent = "Multimodal Benchmark Stream";
+        return;
+      }
+
+      // Procedural category:
+      if (viewControlsBar) viewControlsBar.style.display = "flex";
+      if (multimodalContainer) multimodalContainer.style.display = "none";
+
+      viewBtns.forEach(function(btn) {
+        btn.classList.toggle("active", btn.getAttribute("data-view") === currentViewMode);
+      });
+
+      if (currentViewMode === "full_strip") {
+        if (comparisonContainer) comparisonContainer.style.display = "none";
+        if (stripContainer) stripContainer.style.display = "block";
+        if (syncDot) syncDot.style.background = "#64748b";
+        if (syncLabel) syncLabel.textContent = "5-Session Panoramic Stream";
+      } else if (currentViewMode === "normal_only") {
+        if (stripContainer) stripContainer.style.display = "none";
+        if (comparisonContainer) {
+          comparisonContainer.style.display = "grid";
+          comparisonContainer.style.gridTemplateColumns = "1fr";
+        }
+        if (panelNormal) panelNormal.style.display = "flex";
+        if (panelError) panelError.style.display = "none";
+        if (syncDot) syncDot.style.background = "#10b981";
+        if (syncLabel) syncLabel.textContent = "Normal Execution View";
+      } else if (currentViewMode === "error_only") {
+        if (stripContainer) stripContainer.style.display = "none";
+        if (comparisonContainer) {
+          comparisonContainer.style.display = "grid";
+          comparisonContainer.style.gridTemplateColumns = "1fr";
+        }
+        if (panelNormal) panelNormal.style.display = "none";
+        if (panelError) panelError.style.display = "flex";
+        if (syncDot) syncDot.style.background = "#ef4444";
+        if (syncLabel) syncLabel.textContent = "Error Execution View";
+      } else {
+        // side_by_side
+        if (stripContainer) stripContainer.style.display = "none";
+        if (comparisonContainer) {
+          comparisonContainer.style.display = "grid";
+          comparisonContainer.style.gridTemplateColumns = "repeat(auto-fit, minmax(280px, 1fr))";
+        }
+        if (panelNormal) panelNormal.style.display = "flex";
+        if (panelError) panelError.style.display = "flex";
+        if (syncDot) syncDot.style.background = "#10b981";
+        if (syncLabel) syncLabel.textContent = "Linked Normal/Error Playback";
+      }
+    }
+
+    function loadCategory(catKey) {
+      currentCat = catKey;
+      var d = CATEGORY_DATA[catKey];
+      if (!d) return;
+
+      pauseAll();
+
+      // Update text & badges
+      if (recipeEl) recipeEl.textContent = d.recipe;
+      if (stepEl) stepEl.textContent = d.step;
+      if (badgeEl) {
+        badgeEl.textContent = d.badge;
+        badgeEl.className = "badge " + d.badgeClass;
+      }
+      if (sourceLabelEl) {
+        sourceLabelEl.textContent = d.isRecorded ? "Recorded CaptainCook4D Session" : "Schematic Task Graph Representation";
+      }
+
+      if (cardNormalText) cardNormalText.textContent = d.normal;
+      if (cardErrorText) cardErrorText.textContent = d.error;
+      if (cardErrorBadge) {
+        cardErrorBadge.textContent = d.badge;
+        cardErrorBadge.className = "badge " + d.badgeClass;
+      }
+      if (videoCaption) videoCaption.textContent = d.caption;
+
+      if (cardRecipeTitle) cardRecipeTitle.textContent = d.recipe;
+      if (cardStepTitle) cardStepTitle.textContent = d.step;
+      if (cardStatusBadge) {
+        cardStatusBadge.textContent = d.badge;
+        cardStatusBadge.className = "badge " + d.badgeClass;
+      }
+      if (cardNormalDesc) cardNormalDesc.textContent = d.normal;
+      if (cardErrorDesc) cardErrorDesc.textContent = d.error;
+      if (streamsEl) streamsEl.textContent = d.streams;
+      if (taskEl) taskEl.textContent = d.task;
+
+      // Reset overlays
+      if (overlayNormal) overlayNormal.style.display = "none";
+      if (overlayError) overlayError.style.display = "none";
+      if (overlayStrip) overlayStrip.style.display = "none";
+      if (overlayMultimodal) overlayMultimodal.style.display = "none";
+
+      if (d.type === "multimodal") {
+        if (multimodalTitleEl) multimodalTitleEl.textContent = d.recipe;
+        if (multimodalBadgeEl) {
+          multimodalBadgeEl.textContent = d.badge;
+          multimodalBadgeEl.className = "badge " + d.badgeClass;
+        }
+        if (sourceMultimodal && d.videoUrl) {
+          sourceMultimodal.src = d.videoUrl;
+          videoMultimodal.load();
+        }
+      } else {
+        // Procedural
+        if (sourceNormal && d.videoUrl) {
+          sourceNormal.src = d.videoUrl;
+          videoNormal.load();
+        }
+        if (sourceError && d.videoUrl) {
+          sourceError.src = d.videoUrl;
+          videoError.load();
+        }
+        if (sourceStrip && d.videoUrl) {
+          sourceStrip.src = d.videoUrl;
+          videoStrip.load();
+        }
+      }
+
+      applyViewMode();
+      syncMuteState();
+      var active = getActiveVideo();
+      updateTimeUI(0, active ? active.duration : 0);
+    }
+
+    // Category button events
+    taxBtns.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        taxBtns.forEach(function(b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+        var cat = btn.getAttribute("data-cat");
+        loadCategory(cat);
+      });
+    });
+
+    // View Mode button events
+    viewBtns.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var targetMode = btn.getAttribute("data-view");
+        if (targetMode === currentViewMode) return;
+
+        var previousActive = getActiveVideo();
+        var wasPlaying = previousActive && !previousActive.paused && !previousActive.ended;
+        var previousTime = previousActive && Number.isFinite(previousActive.currentTime)
+          ? previousActive.currentTime
+          : 0;
+
+        pauseAll();
+
+        currentViewMode = targetMode;
+        applyViewMode();
+        syncMuteState();
+
+        var nextActive = getActiveVideo();
+        if (nextActive && Number.isFinite(nextActive.duration) && nextActive.duration > 0 && previousTime >= 0) {
+          var targetTime = Math.min(previousTime, nextActive.duration);
+          if (currentViewMode === "side_by_side") {
+            if (videoNormal) videoNormal.currentTime = targetTime;
+            if (videoError) videoError.currentTime = targetTime;
+          } else {
+            nextActive.currentTime = targetTime;
+          }
+          updateTimeUI(targetTime, nextActive.duration);
+        } else if (nextActive) {
+          updateTimeUI(nextActive.currentTime, nextActive.duration);
+        }
+
+        if (wasPlaying) {
+          playActive();
+        }
+      });
+    });
+
+    // Master Controls Events
+    if (playBtn) playBtn.addEventListener("click", togglePlay);
+    if (viewportNormal) viewportNormal.addEventListener("click", togglePlay);
+    if (viewportError) viewportError.addEventListener("click", togglePlay);
+    if (videoStrip) videoStrip.addEventListener("click", togglePlay);
+    if (videoMultimodal) videoMultimodal.addEventListener("click", togglePlay);
+
+    if (restartBtn) {
+      restartBtn.addEventListener("click", function() {
+        var d = CATEGORY_DATA[currentCat];
+        if (d.type === "multimodal") {
+          if (videoMultimodal) videoMultimodal.currentTime = 0;
+        } else if (currentViewMode === "error_only") {
+          if (videoError) videoError.currentTime = 0;
+        } else if (currentViewMode === "normal_only") {
+          if (videoNormal) videoNormal.currentTime = 0;
+        } else if (currentViewMode === "full_strip") {
+          if (videoStrip) videoStrip.currentTime = 0;
+        } else {
+          // side_by_side
+          if (videoNormal) videoNormal.currentTime = 0;
+          if (videoError) videoError.currentTime = 0;
+        }
+        var active = getActiveVideo();
+        if (active) updateTimeUI(0, active.duration);
+        playActive();
+      });
+    }
+
+    if (muteBtn) {
+      muteBtn.addEventListener("click", function() {
+        isMuted = !isMuted;
+        syncMuteState();
+      });
+    }
+
+    if (timeScrubber) {
+      timeScrubber.addEventListener("input", function() {
+        isUserScrubbing = true;
+        var active = getActiveVideo();
+        if (active && Number.isFinite(active.duration) && active.duration > 0) {
+          var t = (timeScrubber.value / 100) * active.duration;
+          updateTimeUI(t, active.duration);
+        }
+      });
+
+      timeScrubber.addEventListener("change", function() {
+        isUserScrubbing = false;
+        var active = getActiveVideo();
+        if (active && Number.isFinite(active.duration) && active.duration > 0) {
+          var t = (timeScrubber.value / 100) * active.duration;
+          var d = CATEGORY_DATA[currentCat];
+          if (d.type === "multimodal") {
+            if (videoMultimodal) videoMultimodal.currentTime = t;
+          } else if (currentViewMode === "error_only") {
+            if (videoError) videoError.currentTime = t;
+          } else if (currentViewMode === "normal_only") {
+            if (videoNormal) videoNormal.currentTime = t;
+          } else if (currentViewMode === "full_strip") {
+            if (videoStrip) videoStrip.currentTime = t;
+          } else {
+            // side_by_side
+            if (videoNormal) videoNormal.currentTime = t;
+            if (videoError) videoError.currentTime = t;
+          }
+          updateTimeUI(t, active.duration);
+        }
+      });
+    }
+
+    // Time update listener on primary active stream
+    function onStreamTimeUpdate(vid) {
+      if (isUserScrubbing) return;
+      var active = getActiveVideo();
+      if (currentViewMode === "side_by_side") {
+        if (vid !== videoNormal) return;
+      } else {
+        if (vid !== active) return;
+      }
+      if (vid && Number.isFinite(vid.duration) && vid.duration > 0) {
+        updateTimeUI(vid.currentTime, vid.duration);
+
+        // Keep videoError in tight sync in side-by-side mode
+        if (currentViewMode === "side_by_side" && vid === videoNormal && videoError) {
+          if (Math.abs(videoError.currentTime - videoNormal.currentTime) > 0.15) {
+            videoError.currentTime = videoNormal.currentTime;
+          }
+        }
+      }
+    }
+
+    videoNormal.addEventListener("timeupdate", function() { onStreamTimeUpdate(videoNormal); });
+    videoError.addEventListener("timeupdate", function() { onStreamTimeUpdate(videoError); });
+    videoStrip.addEventListener("timeupdate", function() { onStreamTimeUpdate(videoStrip); });
+    videoMultimodal.addEventListener("timeupdate", function() { onStreamTimeUpdate(videoMultimodal); });
+
+    function onStreamEnded(e) {
+      var active = getActiveVideo();
+      if (currentViewMode === "side_by_side") {
+        if (e && e.target !== videoNormal) return;
+      } else {
+        if (e && e.target !== active) return;
+      }
+      pauseAll();
+      if (playBtn) playBtn.textContent = "↺ Replay";
+    }
+
+    videoNormal.addEventListener("ended", onStreamEnded);
+    videoError.addEventListener("ended", onStreamEnded);
+    videoStrip.addEventListener("ended", onStreamEnded);
+    videoMultimodal.addEventListener("ended", onStreamEnded);
+
+    function onLoadedMetadata(vid) {
+      var active = getActiveVideo();
+      if (vid === active || (currentViewMode === "side_by_side" && vid === videoNormal)) {
+        updateTimeUI(vid.currentTime, vid.duration);
+      }
+    }
+
+    videoNormal.addEventListener("loadedmetadata", function() { onLoadedMetadata(videoNormal); });
+    videoError.addEventListener("loadedmetadata", function() { onLoadedMetadata(videoError); });
+    videoStrip.addEventListener("loadedmetadata", function() { onLoadedMetadata(videoStrip); });
+    videoMultimodal.addEventListener("loadedmetadata", function() { onLoadedMetadata(videoMultimodal); });
+
+    // Media error handlers with graceful UI fallbacks
+    function handleVideoError(overlayEl, videoEl) {
+      if (overlayEl) overlayEl.style.display = "flex";
+      var retryBtn = overlayEl ? overlayEl.querySelector(".cc-retry-btn") : null;
+      if (retryBtn) {
+        retryBtn.onclick = function() {
+          overlayEl.style.display = "none";
+          videoEl.load();
+        };
+      }
+    }
+
+    videoNormal.addEventListener("error", function() { handleVideoError(overlayNormal, videoNormal); });
+    videoError.addEventListener("error", function() { handleVideoError(overlayError, videoError); });
+    videoStrip.addEventListener("error", function() { handleVideoError(overlayStrip, videoStrip); });
+    videoMultimodal.addEventListener("error", function() { handleVideoError(overlayMultimodal, videoMultimodal); });
+
+    // Details wrapper lifecycle: pause on close to avoid playing hidden media
+    if (detailsWrapper) {
+      detailsWrapper.addEventListener("toggle", function() {
+        if (!detailsWrapper.open) {
+          pauseAll();
+        } else {
+          var active = getActiveVideo();
+          if (active && Number.isFinite(active.duration) && active.duration > 0) {
+            updateTimeUI(active.currentTime, active.duration);
+          }
+        }
+      });
+    }
+
+    // Initialize initial state
+    loadCategory("technique_spill");
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCaptainCookDemo);
+  } else {
+    initCaptainCookDemo();
+  }
+})();
+</script> <ul> <li> <strong>Explainable Activity Recognition in Videos Using Deep Learning and Tractable Probabilistic Models</strong> (<a href="https://dl.acm.org/doi/full/10.1145/3626961" rel="external nofollow noopener" target="_blank">ACM TiiS 2023</a>) <ul> <li>Integrates deep video representations with dynamic cutset networks to construct tractable temporal models that support probabilistic explanation queries while maintaining competitive activity-recognition performance.</li> </ul> </li> <li> <strong>Predictive Task Guidance with Artificial Intelligence in Augmented Reality</strong> (IEEE VR 2024 Workshop / Poster) <ul> <li>Investigates structured predictive models for augmented-reality task guidance that anticipate user actions and provide proactive assistance during complex procedural activities.</li> </ul> </li> </ul> <h3 id="human-guided-vision-language-and-multimodal-ai">Human-Guided Vision-Language and Multimodal AI</h3> <figure class="figure"> <img src="/assets/img/publication_preview/TiiS_FACOLE.png" class="figure-img img-fluid" alt="Vision-language model feedback interface"> </figure> <p>We study multimodal systems that integrate visual and linguistic representations with structured human feedback. This work investigates how different forms of human guidance, from detailed natural-language feedback to lightweight corrective signals, can improve model reliability, task adaptation, and downstream multimodal understanding. More broadly, we are interested in interactive learning frameworks in which human feedback becomes an explicit component of model reasoning and adaptation.</p> <ul> <li> <strong>Comparison of Text-Based Inputs for Human-in-the-Loop Feedback in Vision-Language Models</strong> (<a href="https://doi.org/10.1145/3816700" rel="external nofollow noopener" target="_blank">ACM TiiS 2026</a>) <ul> <li>Studies different forms of human-in-the-loop feedback for video understanding, comparing detailed natural-language commentary, word-level corrections, and lower-cost scalar judgments for improving model reliability.</li> </ul> </li> </ul> <details class="interactive-demo-wrapper" id="tiis-details-wrapper"> <summary class="interactive-demo-summary"> <span class="interactive-demo-summary-title"> <span>Interactive Mechanism &amp; Benchmark: Human-in-the-Loop Feedback for VLMs</span> <span class="interactive-demo-summary-badge">ACM TiiS 2026</span> </span> <span class="interactive-demo-summary-chevron">▸</span> </summary> <div class="interactive-demo-card" id="demo-tiis-card"> <div class="demo-card-header"> <div class="demo-title-group"> <h4>VLM Accuracy Across Human-in-the-Loop Feedback Modalities</h4> <p>Empirical findings from ACM TiiS 2026 evaluating video-description verification accuracy across feedback granularities, post-processing strategies, and fine-tuned VLM architectures</p> </div> <div class="demo-badges"> <span class="demo-badge demo-badge-oral">ACM TiiS 2026</span> <span class="demo-badge demo-badge-sim">Multimodal Benchmark</span> </div> </div> <div class="demo-metrics-grid"> <div class="demo-metric-card highlight-green"> <div class="metric-name"> <span>Peak VLM Accuracy</span> <span class="badge badge-success" style="font-size: 0.72rem;">Free-Text</span> </div> <div class="metric-speedup speedup-ssmp" id="metric-tiis-gain">90.0% Accuracy</div> <div class="metric-stats"> <strong>No Feedback Model:</strong> 40.0% → 90.0% (+50 percentage points)<br> <strong>Architecture:</strong> LLaVA-NeXT-Video<br> <strong>Condition:</strong> Free-text human feedback </div> </div> <div class="demo-metric-card highlight-blue"> <div class="metric-name"> <span>Targeted Error Correction</span> <span class="badge badge-info" style="font-size: 0.72rem;">LLM Conversion</span> </div> <div class="metric-speedup speedup-itself">81.7% – 84.6%</div> <div class="metric-stats"> <strong>Video-LLaVA Peak:</strong> 81.7% (+13.3 percentage points over raw 68.4%)<br> <strong>LLaVA-NeXT-Video:</strong> 84.6% accuracy (vs. 83.6% raw)<br> <strong>Strategy:</strong> Human word-level correction + LLM conversion to text </div> </div> <div class="demo-metric-card highlight-gray"> <div class="metric-name"> <span>Lightweight Feedback</span> <span class="badge badge-secondary" style="font-size: 0.72rem;">Low-Cost</span> </div> <div class="metric-speedup speedup-baseline">Up to 80.0%</div> <div class="metric-stats"> <strong>Yes/No Binary:</strong> 80.0% (LLaVA-NeXT-Video raw)<br> <strong>Error Selection:</strong> 80.0% (LLaVA-NeXT-Video raw)<br> <strong>No Feedback Model:</strong> 40.0% (fine-tuned without corrective human feedback) </div> </div> </div> <div class="demo-workload-box" style="margin-bottom: 1.25rem;"> <div class="workload-header" style="flex-wrap: wrap; gap: 0.6rem; align-items: center;"> <div> <h5 style="margin-bottom: 0.2rem;">1. Human Feedback Modalities &amp; Semantic Expressiveness (Paper Figure 1):</h5> <span class="badge badge-info" style="font-size: 0.72rem; font-weight: normal;"> Increasing Spectrum of Detail &amp; Expressiveness </span> </div> <div class="workload-controls" role="group" aria-label="Feedback Modality Selector"> <button type="button" class="workload-btn tiis-mode-btn active" data-mode="binary">Yes / No Binary</button> <button type="button" class="workload-btn tiis-mode-btn" data-mode="selection">Error Selection</button> <button type="button" class="workload-btn tiis-mode-btn" data-mode="correction">Error Correction</button> <button type="button" class="workload-btn tiis-mode-btn" data-mode="freetext">Free-Text</button> </div> </div> <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1rem; margin-top: 0.75rem; align-items: stretch;"> <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;"> <div style="padding: 0.45rem 0.75rem; background: rgba(0,0,0,0.03); border-bottom: 1px solid var(--global-divider-color, rgba(0,0,0,0.08)); font-size: 0.8rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center;"> <span>Evaluated Video Demonstration</span> <span class="badge badge-secondary" style="font-size: 0.68rem; font-weight: normal;">Paper Figure 1 Video</span> </div> <div style="position: relative; width: 100%; aspect-ratio: 4/3; background: #000; overflow: hidden;"> <img src="/assets/img/publication_preview/tiis_video_frame.jpg" alt="Participant tying running shoes on stone steps (Paper Figure 1)" style="width: 100%; height: 100%; object-fit: cover; display: block;"> </div> <div style="padding: 0.55rem 0.75rem; font-size: 0.78rem; line-height: 1.45; color: var(--global-text-color-light, #6b7280); background: rgba(0,0,0,0.01); border-top: 1px solid var(--global-divider-color, rgba(0,0,0,0.06)); flex-grow: 1;"> <strong style="color: var(--global-text-color, #111827);">Actual Video Activity:</strong> The person is sitting on outdoor steps putting on and tying his athletic shoes. </div> </div> <div style="background: var(--global-card-bg-color, #ffffff); border: 1.5px solid var(--global-divider-color, rgba(0,0,0,0.12)); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;"> <div style="padding: 0.45rem 0.75rem; background: rgba(37,99,235,0.06); border-bottom: 1px solid rgba(37,99,235,0.15); font-size: 0.8rem; font-weight: 700; color: #1d4ed8; display: flex; justify-content: space-between; align-items: center;"> <span id="tiis-mode-title">Human Interface: Yes / No Binary</span> <span class="badge badge-primary" id="tiis-mode-badge" style="font-size: 0.68rem; font-weight: normal;">1-Bit Verification</span> </div> <div style="padding: 0.75rem 0.85rem; flex-grow: 1; display: flex; flex-direction: column; gap: 0.65rem;"> <div> <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--global-text-color-light, #6b7280); font-weight: 600; margin-bottom: 0.2rem;"> Model-Generated Statement: </div> <div style="font-size: 0.92rem; font-weight: 600; color: var(--global-text-color, #111827); padding: 0.45rem 0.65rem; background: rgba(0,0,0,0.02); border-radius: 6px; border: 1px solid var(--global-divider-color, rgba(0,0,0,0.06));" id="tiis-sentence-display"> The person is cleaning his shoes. </div> </div> <div> <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--global-text-color-light, #6b7280); font-weight: 600; margin-bottom: 0.2rem;"> Participant Study Input: </div> <div id="tiis-ui-snippet" style="min-height: 48px;"> </div> </div> <div style="padding: 0.5rem 0.65rem; background: rgba(0,0,0,0.02); border-left: 3px solid #2563eb; border-radius: 0 4px 4px 0; font-size: 0.8rem; line-height: 1.45;"> <div> <strong>Interface Protocol:</strong> <span id="tiis-mode-desc">Respond by Yes / No.</span> </div> <div style="margin-top: 0.25rem;"> <strong>Semantic Information:</strong> <span id="tiis-mode-semantic">Tells the system only that something is wrong. Provides only a correctness judgment without localizing the error or supplying a fix.</span> </div> </div> </div> <div style="padding: 0.45rem 0.75rem; background: rgba(0,0,0,0.02); border-top: 1px solid var(--global-divider-color, rgba(0,0,0,0.08)); font-size: 0.72rem; color: var(--global-text-color-light, #6b7280); display: flex; align-items: center; justify-content: space-between;"> <span>Semantic Granularity:</span> <span id="tiis-spectrum-indicator" style="font-weight: 700; color: #2563eb;">1/4: Binary Judgment (Low Effort, Sparse)</span> </div> </div> </div> <div style="margin-top: 0.85rem; padding: 0.65rem 0.85rem; background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px;"> <div style="font-size: 0.78rem; font-weight: 700; color: var(--global-text-color, #111827); margin-bottom: 0.4rem; display: flex; align-items: center; justify-content: space-between;"> <span>Fine-Tuning Experimental Pipeline</span> <span style="font-size: 0.72rem; font-weight: normal; color: var(--global-text-color-light, #6b7280);"> Supervised QLoRA Fine-Tuning (Offline Training, Not Test-Time Feedback) </span> </div> <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.45rem; margin-bottom: 0.6rem;"> <div style="padding: 0.4rem 0.5rem; background: rgba(37,99,235,0.05); border: 1px solid rgba(37,99,235,0.15); border-radius: 6px; text-align: center;"> <div style="font-size: 0.7rem; color: #2563eb; font-weight: 700;">1. Human Feedback</div> <div style="font-size: 0.68rem; color: var(--global-text-color-light, #6b7280); margin-top: 2px;">Study interface input</div> </div> <div style="padding: 0.4rem 0.5rem; background: rgba(16,185,129,0.05); border: 1px solid rgba(16,185,129,0.15); border-radius: 6px; text-align: center;"> <div style="font-size: 0.7rem; color: #059669; font-weight: 700;">2. Prompt Formatting</div> <div style="font-size: 0.68rem; color: var(--global-text-color-light, #6b7280); margin-top: 2px;">Training template (Fig. 5)</div> </div> <div style="padding: 0.4rem 0.5rem; background: rgba(245,158,11,0.05); border: 1px solid rgba(245,158,11,0.15); border-radius: 6px; text-align: center;"> <div style="font-size: 0.7rem; color: #d97706; font-weight: 700;">3. QLoRA Fine-Tuning</div> <div style="font-size: 0.68rem; color: var(--global-text-color-light, #6b7280); margin-top: 2px;">VLM parameter updates</div> </div> <div style="padding: 0.4rem 0.5rem; background: rgba(139,92,246,0.05); border: 1px solid rgba(139,92,246,0.15); border-radius: 6px; text-align: center;"> <div style="font-size: 0.7rem; color: #7c3aed; font-weight: 700;">4. Verification Acc.</div> <div style="font-size: 0.68rem; color: var(--global-text-color-light, #6b7280); margin-top: 2px;">Yes/No accuracy test</div> </div> </div> <details style="margin-top: 0.4rem; background: rgba(0,0,0,0.02); border-radius: 6px; border: 1px solid var(--global-divider-color, rgba(0,0,0,0.08)); padding: 0.45rem 0.65rem;"> <summary style="cursor: pointer; font-size: 0.78rem; font-weight: 600; color: var(--global-theme-color, #2563eb); user-select: none;"> <span>▾ How the feedback is formatted for VLM training (Paper Figure 5)</span> </summary> <div style="margin-top: 0.5rem; font-family: monospace; font-size: 0.78rem; line-height: 1.5; background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 4px; padding: 0.6rem 0.75rem;"> <div> <span style="color: #6b7280;">Video Description:</span> "The person is cleaning his shoes."</div> <div style="font-weight: 700; color: #2563eb;" id="tiis-prompt-feedback">User Feedback: No</div> <div style="margin-top: 0.25rem;"> <span style="color: #6b7280;">System Question:</span> "Does the above information accurately describe the video? Answer Yes or No."</div> </div> <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280); margin-top: 0.4rem; line-height: 1.4;" id="tiis-prompt-note"> <em>Important distinction:</em> Participants in the user study interface did <strong>NOT</strong> submit corrections using arrow notation (<code>cleaning -&gt; wearing</code>); that syntax was introduced during VLM training prompt construction to condition the model. </div> </details> </div> </div> <div class="demo-workload-box"> <div class="workload-header"> <h5>2. Select Evaluation View (ACM TiiS 2026):</h5> <div class="workload-controls"> <button type="button" class="workload-btn tiis-btn active" data-view="next_video">LLaVA-NeXT-Video</button> <button type="button" class="workload-btn tiis-btn" data-view="video_llava">Video-LLaVA</button> <button type="button" class="workload-btn tiis-btn" data-view="head_to_head">Head-to-Head Comparison</button> <button type="button" class="workload-btn tiis-btn" data-view="processing">Raw Human vs. LLM Post-Processing</button> </div> </div> <div class="demo-progress-group" id="tiis-progress-group"> <div class="demo-progress-row" id="tiis-row-1"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="tiis-row1-label">Free-Text (Natural Language Feedback)</span> <span class="demo-progress-val speedup-ssmp" id="tiis-row1-val">90.0% Accuracy</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-green" id="tiis-row1-bar" style="width: 90%;"></div> </div> </div> <div class="demo-progress-row" id="tiis-row-2"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="tiis-row2-label">Error Correction – LLM Conversion</span> <span class="demo-progress-val speedup-itself" id="tiis-row2-val">84.6% Accuracy</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-blue" id="tiis-row2-bar" style="width: 84.6%;"></div> </div> </div> <div class="demo-progress-row" id="tiis-row-3"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="tiis-row3-label">Error Correction – Raw Human Feedback</span> <span class="demo-progress-val speedup-itself" id="tiis-row3-val">83.6% Accuracy</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-blue" id="tiis-row3-bar" style="width: 83.6%;"></div> </div> </div> <div class="demo-progress-row" id="tiis-row-4"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="tiis-row4-label">Yes/No Binary – Raw Human Feedback</span> <span class="demo-progress-val speedup-baseline" id="tiis-row4-val">80.0% Accuracy</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-gray" id="tiis-row4-bar" style="width: 80%;"></div> </div> </div> <div class="demo-progress-row" id="tiis-row-5"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="tiis-row5-label">Error Selection – Raw Human Feedback</span> <span class="demo-progress-val speedup-baseline" id="tiis-row5-val">80.0% Accuracy</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-gray" id="tiis-row5-bar" style="width: 80%;"></div> </div> </div> <div class="demo-progress-row" id="tiis-row-6"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="tiis-row6-label">Yes/No Binary – LLM Conversion</span> <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="tiis-row6-val">77.9% Accuracy</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill" style="background: #9ca3af; width: 77.9%;" id="tiis-row6-bar"></div> </div> </div> <div class="demo-progress-row" id="tiis-row-7"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="tiis-row7-label">Error Selection – LLM Conversion</span> <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="tiis-row7-val">75.8% Accuracy</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill" style="background: #9ca3af; width: 75.8%;" id="tiis-row7-bar"></div> </div> </div> <div class="demo-progress-row" id="tiis-row-8"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="tiis-row8-label">No Feedback Model</span> <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="tiis-row8-val">40.0% Accuracy</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill" style="background: #d1d5db; width: 40%;" id="tiis-row8-bar"></div> </div> </div> </div> <p class="demo-video-caption" id="tiis-takeaway" style="margin-top: 0.85rem; margin-bottom: 0;"> <strong>Paper Finding (LLaVA-NeXT-Video):</strong> Human feedback substantially improves verification accuracy over the No Feedback Model, surging from 40.0% up to <strong>90.0%</strong> (+50 percentage points) with Free-Text feedback. Even lightweight binary feedback elevates model accuracy to <strong>80.0%</strong> (+40 percentage points), demonstrating that modern video-language models effectively ground corrective human signals across interaction granularities. </p> </div> </div> </details> <script>
 (function() {
   function initTiisSimulation() {
+    var detailsWrapper = document.getElementById("tiis-details-wrapper");
+
+    // 1. Feedback Modality Explorer Controls & Elements
+    var modeBtns = document.querySelectorAll(".tiis-mode-btn");
+    var modeTitleEl = document.getElementById("tiis-mode-title");
+    var modeBadgeEl = document.getElementById("tiis-mode-badge");
+    var sentenceDisplayEl = document.getElementById("tiis-sentence-display");
+    var uiSnippetEl = document.getElementById("tiis-ui-snippet");
+    var modeDescEl = document.getElementById("tiis-mode-desc");
+    var modeSemanticEl = document.getElementById("tiis-mode-semantic");
+    var spectrumIndicatorEl = document.getElementById("tiis-spectrum-indicator");
+    var promptFeedbackEl = document.getElementById("tiis-prompt-feedback");
+    var promptNoteEl = document.getElementById("tiis-prompt-note");
+
+    var FEEDBACK_MODES = {
+      "binary": {
+        title: "Human Interface: Yes / No Binary",
+        badge: "1-Bit Verification",
+        badgeClass: "badge-primary",
+        spectrum: "1/4: Binary Judgment (Low Effort, Sparse)",
+        desc: "Respond by Yes / No.",
+        semantic: "Tells the system only that something is wrong. Provides only a correctness judgment without localizing the error or supplying a fix.",
+        renderedSentence: 'The person is cleaning his shoes.',
+        uiHtml: '<div style="display: flex; gap: 0.5rem; margin-top: 0.35rem; align-items: center;"><span style="padding: 0.3rem 0.85rem; background: #2563eb; color: #fff; border-radius: 4px; font-size: 0.82rem; font-weight: 600; opacity: 0.6; cursor: default;">YES</span><span style="padding: 0.3rem 0.85rem; background: #dc2626; color: #fff; border-radius: 4px; font-size: 0.82rem; font-weight: 700; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #dc2626; cursor: default;">NO [Selected]</span></div>',
+        vlmFeedback: "User Feedback: No",
+        vlmNote: '<em>Protocol note:</em> Binary verification indicates whether the statement is adherent or non-adherent. The model receives a concise binary indicator.'
+      },
+      "selection": {
+        title: "Human Interface: Error Selection",
+        badge: "Span Localization",
+        badgeClass: "badge-danger",
+        spectrum: "2/4: Error Span (Identifies Where)",
+        desc: "Select any words that are wrong in the statement.",
+        semantic: "Identifies the incorrect span but does not provide the correction. Points to where the error is located without specifying the true action.",
+        renderedSentence: 'The person <span style="color: #dc2626; text-decoration: underline wavy #dc2626; background: rgba(220,38,38,0.12); padding: 1px 4px; border-radius: 3px; font-weight: 700;">is cleaning</span> his shoes. <span class="badge badge-danger" style="font-size: 0.68rem; vertical-align: middle; margin-left: 4px;">Error Span Selected</span>',
+        uiHtml: '<div style="font-size: 0.78rem; color: #dc2626; margin-top: 0.35rem; display: flex; align-items: center; gap: 0.35rem; font-weight: 500;"><span>&#9888; Participant selected erroneous token span:</span> <strong>"is cleaning"</strong></div>',
+        vlmFeedback: "User Feedback: Error words: is cleaning",
+        vlmNote: '<em>Protocol note:</em> The identified error span is formatted directly into the fine-tuning prompt to direct the model attention to the flawed tokens.'
+      },
+      "correction": {
+        title: "Human Interface: Error Correction",
+        badge: "Targeted Replacement",
+        badgeClass: "badge-info",
+        spectrum: "3/4: Word Replacement (What + Fix)",
+        desc: "Correct any words that are wrong in the statement.",
+        semantic: "Provides targeted word-level corrective supervision. Identifies what is wrong and provides the specific replacement word.",
+        renderedSentence: 'The person is <span style="display: inline-block; border: 2px solid #2563eb; background: rgba(37,99,235,0.08); color: #1d4ed8; font-weight: 700; padding: 1px 6px; border-radius: 4px;">wearing</span> his shoes. <span class="badge badge-primary" style="font-size: 0.68rem; vertical-align: middle; margin-left: 4px;">Replacement: "cleaning" &rarr; "wearing"</span>',
+        uiHtml: '<div style="font-size: 0.78rem; color: #1d4ed8; margin-top: 0.35rem; display: flex; align-items: center; gap: 0.35rem; font-weight: 500;"><span>&#10003; Target replacement entered:</span> <strong>"cleaning" &rarr; "wearing"</strong></div>',
+        vlmFeedback: "User Feedback: cleaning -> wearing",
+        vlmNote: '<em>Important distinction:</em> Participants in the study interface entered the correction into an inline input box (replacing "cleaning" with "wearing"). They did <strong>NOT</strong> submit corrections using arrow notation; that syntax (<code>cleaning -&gt; wearing</code>) was constructed during prompt formatting for VLM training.'
+      },
+      "freetext": {
+        title: "Human Interface: Free-Text",
+        badge: "Natural Language",
+        badgeClass: "badge-success",
+        spectrum: "4/4: Full Natural Language (Context & Syntax)",
+        desc: "Write your feedback in natural language.",
+        semantic: "Allows unconstrained natural-language feedback, including corrections and additional details. Provides full sentence-level contextual supervision.",
+        renderedSentence: 'The person is cleaning his shoes.',
+        uiHtml: '<div style="margin-top: 0.3rem;"><div style="background: var(--global-card-bg-color, #ffffff); border: 1.5px solid var(--global-divider-color, rgba(0,0,0,0.18)); border-radius: 6px; padding: 0.4rem 0.65rem; font-size: 0.86rem; color: var(--global-text-color, #111827); font-style: italic; box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);">"The person is wearing his shoes."</div></div>',
+        vlmFeedback: "User Feedback: The person is wearing his shoes.",
+        vlmNote: '<em>Protocol note:</em> Unconstrained natural-language commentary provides high expressive richness, allowing the fine-tuned model to learn sentence structure, action dynamics, and contextual justification.'
+      }
+    };
+
+    function applyFeedbackMode(modeKey) {
+      var d = FEEDBACK_MODES[modeKey];
+      if (!d) return;
+
+      modeBtns.forEach(function(b) {
+        b.classList.toggle("active", b.getAttribute("data-mode") === modeKey);
+      });
+
+      if (modeTitleEl) modeTitleEl.textContent = d.title;
+      if (modeBadgeEl) {
+        modeBadgeEl.textContent = d.badge;
+        modeBadgeEl.className = "badge " + d.badgeClass;
+      }
+      if (sentenceDisplayEl) sentenceDisplayEl.innerHTML = d.renderedSentence;
+      if (uiSnippetEl) uiSnippetEl.innerHTML = d.uiHtml;
+      if (modeDescEl) modeDescEl.textContent = d.desc;
+      if (modeSemanticEl) modeSemanticEl.textContent = d.semantic;
+      if (spectrumIndicatorEl) spectrumIndicatorEl.textContent = d.spectrum;
+      if (promptFeedbackEl) promptFeedbackEl.textContent = d.vlmFeedback;
+      if (promptNoteEl) promptNoteEl.innerHTML = d.vlmNote;
+    }
+
+    modeBtns.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var m = btn.getAttribute("data-mode");
+        applyFeedbackMode(m);
+      });
+    });
+
+    // 2. Empirical Benchmark Explorer Controls & Elements
     var buttons = document.querySelectorAll(".tiis-btn");
     var rowElements = [];
     for (var i = 1; i <= 8; i++) {
@@ -1559,97 +2387,114 @@
     var metricGain = document.getElementById("metric-tiis-gain");
     var takeaway = document.getElementById("tiis-takeaway");
 
-    if (!buttons.length || !rowElements[0].row) return;
-
     var viewData = {
       "next_video": {
         gain: "90.0% Peak (LLaVA-NeXT)",
-        takeaway: "<strong>Paper Finding (LLaVA-NeXT-Video):</strong> Human feedback delivers massive gains over the unassisted baseline, surging from 40.0% up to <strong>90.0%</strong> with Free Text commentary. Even lightweight binary feedback doubles model accuracy to <strong>80.0%</strong>, demonstrating that modern video-language models effectively ground corrective human signals across all interaction granularities.",
+        takeaway: "<strong>Paper Finding (LLaVA-NeXT-Video):</strong> Human feedback substantially improves verification accuracy over the No Feedback Model, surging from 40.0% up to <strong>90.0%</strong> (+50 percentage points) with Free-Text feedback. Even lightweight binary feedback elevates model accuracy to <strong>80.0%</strong> (+40 percentage points), demonstrating that modern video-language models effectively ground corrective human signals across interaction granularities.",
         rows: [
-          { show: true, label: "Free Text (Natural Language Commentary)", val: "90.0% Accuracy", pct: 90.0, cls: "fill-green", style: "" },
-          { show: true, label: "Error Correction – LLM Post Processing", val: "85.0% Accuracy", pct: 85.0, cls: "fill-blue", style: "" },
-          { show: true, label: "Error Correction – Raw Human Feedback", val: "84.0% Accuracy", pct: 84.0, cls: "fill-blue", style: "" },
-          { show: true, label: "Binary – Raw Human Feedback", val: "80.0% Accuracy", pct: 80.0, cls: "fill-gray", style: "" },
+          { show: true, label: "Free-Text (Natural Language Feedback)", val: "90.0% Accuracy", pct: 90.0, cls: "fill-green", style: "" },
+          { show: true, label: "Error Correction – LLM Conversion", val: "84.6% Accuracy", pct: 84.6, cls: "fill-blue", style: "" },
+          { show: true, label: "Error Correction – Raw Human Feedback", val: "83.6% Accuracy", pct: 83.6, cls: "fill-blue", style: "" },
+          { show: true, label: "Yes/No Binary – Raw Human Feedback", val: "80.0% Accuracy", pct: 80.0, cls: "fill-gray", style: "" },
           { show: true, label: "Error Selection – Raw Human Feedback", val: "80.0% Accuracy", pct: 80.0, cls: "fill-gray", style: "" },
-          { show: true, label: "Binary – LLM Post Processing", val: "78.0% Accuracy", pct: 78.0, cls: "", style: "background: #9ca3af;" },
-          { show: true, label: "Error Selection – LLM Post Processing", val: "76.0% Accuracy", pct: 76.0, cls: "", style: "background: #9ca3af;" },
-          { show: true, label: "No Feedback (Zero-Shot Baseline)", val: "40.0% Accuracy", pct: 40.0, cls: "", style: "background: #d1d5db;" }
+          { show: true, label: "Yes/No Binary – LLM Conversion", val: "77.9% Accuracy", pct: 77.9, cls: "", style: "background: #9ca3af;" },
+          { show: true, label: "Error Selection – LLM Conversion", val: "75.8% Accuracy", pct: 75.8, cls: "", style: "background: #9ca3af;" },
+          { show: true, label: "No Feedback Model (Fine-tuned without feedback)", val: "40.0% Accuracy", pct: 40.0, cls: "", style: "background: #d1d5db;" }
         ]
       },
       "video_llava": {
-        gain: "82.0% Peak (Video-LLaVA)",
-        takeaway: "<strong>Paper Finding (Video-LLaVA):</strong> On Video-LLaVA, Error Correction with LLM post-processing achieves the highest overall accuracy at <strong>82.0%</strong>, surpassing even Free Text (75.0%). Notably, simple LLM post-processing of ambiguous binary (26.0%) or error-selection (39.0%) signals degrades accuracy below the 40.0% baseline, whereas raw human feedback remains significantly more robust (65.0% and 57.0%).",
+        gain: "81.7% Peak (Video-LLaVA)",
+        takeaway: "<strong>Paper Finding (Video-LLaVA):</strong> On Video-LLaVA, Error Correction with LLM conversion achieves the highest overall accuracy at <strong>81.7%</strong> (+13.3 percentage points over raw 68.4%), surpassing Free-Text (75.0%). Notably, LLM post-processing degrades sparse binary (-38.9 percentage points, dropping from 65.0% to 26.1%) and error-selection (-18.3 percentage points, dropping from 57.2% to 38.9%) signals because insufficient context leads to incorrect justifications and semantically incoherent revisions, whereas raw human feedback remains significantly more robust.",
         rows: [
-          { show: true, label: "Error Correction – LLM Post Processing", val: "82.0% Accuracy", pct: 82.0, cls: "fill-green", style: "" },
-          { show: true, label: "Free Text (Natural Language Commentary)", val: "75.0% Accuracy", pct: 75.0, cls: "fill-blue", style: "" },
-          { show: true, label: "Error Correction – Raw Human Feedback", val: "68.0% Accuracy", pct: 68.0, cls: "fill-blue", style: "" },
-          { show: true, label: "Binary – Raw Human Feedback", val: "65.0% Accuracy", pct: 65.0, cls: "fill-gray", style: "" },
-          { show: true, label: "Error Selection – Raw Human Feedback", val: "57.0% Accuracy", pct: 57.0, cls: "fill-gray", style: "" },
-          { show: true, label: "No Feedback (Zero-Shot Baseline)", val: "40.0% Accuracy", pct: 40.0, cls: "", style: "background: #d1d5db;" },
-          { show: true, label: "Error Selection – LLM Post Processing", val: "39.0% Accuracy", pct: 39.0, cls: "", style: "background: #f87171;" },
-          { show: true, label: "Binary – LLM Post Processing", val: "26.0% Accuracy", pct: 26.0, cls: "", style: "background: #f87171;" }
+          { show: true, label: "Error Correction – LLM Conversion", val: "81.7% Accuracy", pct: 81.7, cls: "fill-green", style: "" },
+          { show: true, label: "Free-Text (Natural Language Feedback)", val: "75.0% Accuracy", pct: 75.0, cls: "fill-blue", style: "" },
+          { show: true, label: "Error Correction – Raw Human Feedback", val: "68.4% Accuracy", pct: 68.4, cls: "fill-blue", style: "" },
+          { show: true, label: "Yes/No Binary – Raw Human Feedback", val: "65.0% Accuracy", pct: 65.0, cls: "fill-gray", style: "" },
+          { show: true, label: "Error Selection – Raw Human Feedback", val: "57.2% Accuracy", pct: 57.2, cls: "fill-gray", style: "" },
+          { show: true, label: "No Feedback Model (Fine-tuned without feedback)", val: "40.0% Accuracy", pct: 40.0, cls: "", style: "background: #d1d5db;" },
+          { show: true, label: "Error Selection – LLM Conversion", val: "38.9% Accuracy", pct: 38.9, cls: "", style: "background: #f87171;" },
+          { show: true, label: "Yes/No Binary – LLM Conversion", val: "26.1% Accuracy", pct: 26.1, cls: "", style: "background: #f87171;" }
         ]
       },
       "head_to_head": {
         gain: "LLaVA-NeXT vs. Video-LLaVA",
-        takeaway: "<strong>Paper Finding (Cross-Model Architecture Comparison):</strong> Both models begin at an identical <strong>40.0% zero-shot accuracy</strong> without feedback. LLaVA-NeXT-Video demonstrates broad resilience, maintaining 76%–90% accuracy across every feedback type. In contrast, Video-LLaVA is highly sensitive to feedback structure, peaking at 82.0% under structured error correction.",
+        takeaway: "<strong>Paper Finding (Cross-Model Architecture Comparison):</strong> Both models begin at an identical <strong>40.0% accuracy</strong> under the No Feedback Model. LLaVA-NeXT-Video demonstrates broad resilience, maintaining 75.8%–90.0% accuracy across every feedback type. In contrast, Video-LLaVA is highly sensitive to feedback structure, peaking at 81.7% under Error Correction with LLM conversion. Free-text produces the strongest raw-feedback performance overall, while Error Correction with LLM conversion performs best for Video-LLaVA.",
         rows: [
-          { show: true, label: "Free Text: LLaVA-NeXT-Video", val: "90.0% Accuracy", pct: 90.0, cls: "fill-green", style: "" },
-          { show: true, label: "Free Text: Video-LLaVA", val: "75.0% Accuracy", pct: 75.0, cls: "fill-blue", style: "" },
-          { show: true, label: "Error Correction (LLM): LLaVA-NeXT-Video", val: "85.0% Accuracy", pct: 85.0, cls: "fill-green", style: "" },
-          { show: true, label: "Error Correction (LLM): Video-LLaVA", val: "82.0% Accuracy", pct: 82.0, cls: "fill-blue", style: "" },
-          { show: true, label: "Binary (Raw Human): LLaVA-NeXT-Video", val: "80.0% Accuracy", pct: 80.0, cls: "fill-green", style: "" },
-          { show: true, label: "Binary (Raw Human): Video-LLaVA", val: "65.0% Accuracy", pct: 65.0, cls: "fill-blue", style: "" },
-          { show: true, label: "No Feedback Baseline: Both Models", val: "40.0% Accuracy (Zero-Shot)", pct: 40.0, cls: "", style: "background: #d1d5db;" },
+          { show: true, label: "Free-Text: LLaVA-NeXT-Video", val: "90.0% Accuracy", pct: 90.0, cls: "fill-green", style: "" },
+          { show: true, label: "Free-Text: Video-LLaVA", val: "75.0% Accuracy", pct: 75.0, cls: "fill-blue", style: "" },
+          { show: true, label: "Error Correction (LLM): LLaVA-NeXT-Video", val: "84.6% Accuracy", pct: 84.6, cls: "fill-green", style: "" },
+          { show: true, label: "Error Correction (LLM): Video-LLaVA", val: "81.7% Accuracy", pct: 81.7, cls: "fill-blue", style: "" },
+          { show: true, label: "Yes/No Binary (Raw Human): LLaVA-NeXT-Video", val: "80.0% Accuracy", pct: 80.0, cls: "fill-green", style: "" },
+          { show: true, label: "Yes/No Binary (Raw Human): Video-LLaVA", val: "65.0% Accuracy", pct: 65.0, cls: "fill-blue", style: "" },
+          { show: true, label: "No Feedback Model: Both Architectures", val: "40.0% Accuracy", pct: 40.0, cls: "", style: "background: #d1d5db;" },
           { show: false }
         ]
       },
       "processing": {
         gain: "Raw vs. LLM Post-Processing",
-        takeaway: "<strong>Paper Finding (Raw Feedback vs. LLM Post-Processing):</strong> For complex error correction, LLM post-processing substantially improves accuracy (+14.0% gain on Video-LLaVA from 68% &rarr; 82%). However, when post-processing underspecified binary or category selection inputs, the LLM hallucinates or over-generalizes, precipitating steep performance drops (Binary on Video-LLaVA collapses from 65% down to 26%).",
+        takeaway: "<strong>Paper Finding (Raw Feedback vs. LLM Post-Processing):</strong> LLM conversion improves information-rich error-correction feedback (+13.3 percentage points on Video-LLaVA from 68.4% &rarr; 81.7%, and +1.0 percentage point on LLaVA-NeXT-Video from 83.6% &rarr; 84.6%). However, LLM conversion degrades sparse binary and error-selection feedback because insufficient context causes the LLM to generate incorrect justifications (reducing Video-LLaVA binary by -38.9 percentage points) or semantically incoherent revisions (reducing Video-LLaVA error selection by -18.3 percentage points).",
         rows: [
-          { show: true, label: "Error Correction (LLM Post-Processed) – Video-LLaVA", val: "82.0% Accuracy (+14% over raw)", pct: 82.0, cls: "fill-green", style: "" },
-          { show: true, label: "Error Correction (Raw Human) – Video-LLaVA", val: "68.0% Accuracy", pct: 68.0, cls: "fill-blue", style: "" },
-          { show: true, label: "Error Correction (LLM Post-Processed) – LLaVA-NeXT", val: "85.0% Accuracy", pct: 85.0, cls: "fill-green", style: "" },
-          { show: true, label: "Error Correction (Raw Human) – LLaVA-NeXT", val: "84.0% Accuracy", pct: 84.0, cls: "fill-blue", style: "" },
-          { show: true, label: "Binary Feedback (Raw Human) – Video-LLaVA", val: "65.0% Accuracy", pct: 65.0, cls: "fill-gray", style: "" },
-          { show: true, label: "Binary Feedback (LLM Post-Processed) – Video-LLaVA", val: "26.0% Accuracy (-39% drop)", pct: 26.0, cls: "", style: "background: #f87171;" },
+          { show: true, label: "Error Correction (LLM Conversion) – Video-LLaVA", val: "81.7% Accuracy (+13.3 percentage points)", pct: 81.7, cls: "fill-green", style: "" },
+          { show: true, label: "Error Correction (Raw Human) – Video-LLaVA", val: "68.4% Accuracy", pct: 68.4, cls: "fill-blue", style: "" },
+          { show: true, label: "Error Correction (LLM Conversion) – LLaVA-NeXT", val: "84.6% Accuracy (+1.0 percentage point)", pct: 84.6, cls: "fill-green", style: "" },
+          { show: true, label: "Error Correction (Raw Human) – LLaVA-NeXT", val: "83.6% Accuracy", pct: 83.6, cls: "fill-blue", style: "" },
+          { show: true, label: "Yes/No Binary (Raw Human) – Video-LLaVA", val: "65.0% Accuracy", pct: 65.0, cls: "fill-gray", style: "" },
+          { show: true, label: "Yes/No Binary (LLM Conversion) – Video-LLaVA", val: "26.1% Accuracy (-38.9 percentage points)", pct: 26.1, cls: "", style: "background: #f87171;" },
           { show: false },
           { show: false }
         ]
       }
     };
 
+    function applyEvaluationView(viewKey) {
+      buttons.forEach(function(b) {
+        b.classList.toggle("active", b.getAttribute("data-view") === viewKey);
+      });
+      var d = viewData[viewKey];
+      if (!d) return;
+
+      if (metricGain) metricGain.innerHTML = d.gain;
+      if (takeaway) takeaway.innerHTML = d.takeaway;
+
+      d.rows.forEach(function(rData, idx) {
+        var el = rowElements[idx];
+        if (!el || !el.row) return;
+        if (!rData || !rData.show) {
+          el.row.style.display = "none";
+        } else {
+          el.row.style.display = "";
+          el.label.innerHTML = rData.label;
+          el.val.innerHTML = rData.val;
+          el.bar.className = "demo-progress-fill" + (rData.cls ? " " + rData.cls : "");
+          if (rData.style) {
+            el.bar.setAttribute("style", "width: " + rData.pct + "%; " + rData.style);
+          } else {
+            el.bar.setAttribute("style", "width: " + rData.pct + "%;");
+          }
+        }
+      });
+    }
+
     buttons.forEach(function(btn) {
       btn.addEventListener("click", function() {
-        buttons.forEach(function(b) { b.classList.remove("active"); });
-        btn.classList.add("active");
         var view = btn.getAttribute("data-view");
-        var d = viewData[view];
-        if (!d) return;
-
-        if (metricGain) metricGain.innerHTML = d.gain;
-        takeaway.innerHTML = d.takeaway;
-
-        d.rows.forEach(function(rData, idx) {
-          var el = rowElements[idx];
-          if (!rData || !rData.show) {
-            el.row.style.display = "none";
-          } else {
-            el.row.style.display = "";
-            el.label.innerHTML = rData.label;
-            el.val.innerHTML = rData.val;
-            el.bar.style.width = rData.pct + "%";
-            el.bar.className = "demo-progress-fill" + (rData.cls ? " " + rData.cls : "");
-            if (rData.style) {
-              el.bar.setAttribute("style", "width: " + rData.pct + "%; " + rData.style);
-            } else {
-              el.bar.setAttribute("style", "width: " + rData.pct + "%;");
-            }
-          }
-        });
+        applyEvaluationView(view);
       });
     });
+
+    // Reset on details close / reopen
+    if (detailsWrapper) {
+      detailsWrapper.addEventListener("toggle", function() {
+        if (!detailsWrapper.open) {
+          applyFeedbackMode("binary");
+          applyEvaluationView("next_video");
+        }
+      });
+    }
+
+    // Initialize defaults
+    applyFeedbackMode("binary");
+    applyEvaluationView("next_video");
   }
 
   if (document.readyState === "loading") {
