@@ -55,7 +55,7 @@ Our work currently spans three complementary directions:
 
 Neural approximation treats probabilistic inference itself as a learnable mapping. Given a probabilistic model and evidence, a neural network predicts high-quality solutions to inference queries in one or a few forward passes. These predictions can also be refined through inference-time or test-time self-supervised optimization when additional accuracy is required.
 
-<details class="interactive-demo-wrapper">
+<details class="interactive-demo-wrapper" markdown="0">
   <summary class="interactive-demo-summary">
     <span class="interactive-demo-summary-title">
       <span class="interactive-demo-summary-badge">Interactive Demo</span>
@@ -242,7 +242,7 @@ Neural approximation treats probabilistic inference itself as a learnable mappin
 
 Neural augmentation preserves the structure of classical inference algorithms while introducing learned components that improve their computational behavior. Neural models can provide warm starts, conditioning decisions, branching and node-selection heuristics, or guidance for local search. This approach uses learning to reduce search and accelerate convergence while retaining the structure, guarantees, or certificates provided by the underlying solver when applicable.
 
-<details class="interactive-demo-wrapper">
+<details class="interactive-demo-wrapper" markdown="0">
   <summary class="interactive-demo-summary">
     <span class="interactive-demo-summary-title">
       <span class="interactive-demo-summary-badge">Interactive Demo</span>
@@ -450,7 +450,7 @@ We develop optimization-based structured inference methods that explicitly reaso
   - Formulates multi-label prediction in images and videos by coupling deep dependency networks with local search and integer linear programming (ILP) inference, capturing complex label dependencies without sacrificing training simplicity.
 
 <!-- Interactive Demo: DDN-ILP Structured Inference vs Neural Baselines -->
-<details class="interactive-demo-wrapper">
+<details class="interactive-demo-wrapper" markdown="0">
   <summary class="interactive-demo-summary">
     <span class="interactive-demo-summary-title">
       <span>Interactive Benchmark: DDN-ILP Structured Inference vs. Neural Baselines</span>
@@ -713,7 +713,7 @@ We develop learning-based methods for solving large-scale combinatorial optimiza
 </figure>
 
 <!-- Interactive Demo: RELINK Edge Activation Budget Explorer -->
-<details class="interactive-demo-wrapper">
+<details class="interactive-demo-wrapper" markdown="0">
   <summary class="interactive-demo-summary">
     <span class="interactive-demo-summary-title">
       <span>Interactive Demo: RELINK Edge Activation Budget &amp; Benchmark Explorer</span>
@@ -975,7 +975,7 @@ We develop learning methods for reasoning over complex perceptual and multimodal
 </figure>
 
 <!-- Interactive Demo: CaptainCook4D Procedural Error Taxonomy Explorer -->
-<details class="interactive-demo-wrapper">
+<details class="interactive-demo-wrapper" markdown="0">
   <summary class="interactive-demo-summary">
     <span class="interactive-demo-summary-title">
       <span>Interactive Demo: CaptainCook4D Procedural Error Taxonomy Explorer</span>
@@ -1270,7 +1270,7 @@ We study multimodal systems that integrate visual and linguistic representations
   - Studies different forms of human-in-the-loop feedback for video understanding, comparing detailed natural-language commentary, word-level corrections, and lower-cost scalar judgments for improving model reliability.
 
 <!-- Interactive Demo: VLM Accuracy Across Human Feedback Modalities -->
-<details class="interactive-demo-wrapper">
+<details class="interactive-demo-wrapper" markdown="0">
   <summary class="interactive-demo-summary">
     <span class="interactive-demo-summary-title">
       <span>Interactive Benchmark: VLM Accuracy Across Human Feedback Modalities</span>
