@@ -927,325 +927,325 @@
       initL2CDemo();
     }
   })();
-</script> <ul> <li> <strong>BEACON: Learning to Guide Local Search for MPE Inference in Probabilistic Graphical Models</strong> (<a href="https://arxiv.org/abs/2602.01475" rel="external nofollow noopener" target="_blank">ArXiv</a>) <ul> <li>Amortizes repeated MPE inference in fixed-structure graphical models using an attention-based architecture that scores local-search moves according to estimated Hamming-distance reduction, guiding neighbor selection to improve convergence and solution quality in high-treewidth models.</li> </ul> </li> </ul> <h3 id="optimization-based-structured-inference">Optimization-Based Structured Inference</h3> <div class="row"> <div class="col-md-6"> <figure class="figure"> <img src="/assets/img/publication_preview/ddn.png" class="figure-img img-fluid" alt="Illustrating improvements from our new inference schemes for DDNs. The DDN learns relationships between labels, and the inference schemes reason over them to accurately identify concealed objects, such as sports ball."> </figure> </div> <div class="col-md-6"> <figure class="figure"> <img src="/assets/img/publication_preview/ddn_main_figure.png" class="figure-img img-fluid" alt="Illustration of Dependency Network for multi-label video classification. The NN takes video clips (frames) as input and outputs the features $e_1,e_2,...,e_n$ (denoted by red colored nodes). These features are then used by the sigmoid output ($\sigma_1$, $\ldots$, $\sigma_n$) of the dependency layer to model the local conditional distributions."> </figure> </div> </div> <p>We develop optimization-based structured inference methods that explicitly reason over structured dependencies and combinatorial constraints.</p> <ul> <li> <strong>Deep Dependency Networks and Advanced Inference Schemes for Multi-Label Classification</strong> (<a href="https://proceedings.mlr.press/v238/arya24a.html" rel="external nofollow noopener" target="_blank">AISTATS 2024</a>) <ul> <li>Formulates multi-label prediction in images and videos by coupling deep dependency networks with local search and integer linear programming (ILP) inference, capturing complex label dependencies without sacrificing training simplicity.</li> </ul> </li> </ul> <details class="interactive-demo-wrapper" id="ddn-details-wrapper"> <summary class="interactive-demo-summary"> <span class="interactive-demo-summary-title"> <span class="interactive-demo-summary-badge">Interactive Demo</span> <span>Structured MPE Inference vs. Neural Baselines (DDN-ILP)</span> </span> <span class="interactive-demo-summary-chevron">▸</span> </summary> <div class="interactive-demo-card" id="demo-ddn-card"> <div class="demo-card-header"> <div class="demo-title-group"> <h4>Deep Dependency Networks &amp; Structured MPE Inference (DDN-ILP)</h4> <p> Interactive demonstration showing how structured dependency reasoning recovers missed labels, followed by empirical benchmark results from AISTATS 2024 (Tables 1 &amp; 2). </p> </div> <div class="demo-badges"> <span class="demo-badge demo-badge-oral">AISTATS 2024</span> <span class="demo-badge demo-badge-sim">Structured Inference</span> </div> </div> <div class="demo-workload-box" style="margin-top: 0.5rem; margin-bottom: 1.25rem;"> <div class="workload-header" style="flex-wrap: wrap; gap: 0.6rem; align-items: center;"> <div> <h5 style="margin-bottom: 0.2rem;"> Inference Mechanism: Independent Predictions vs. Structured DDN-ILP </h5> <span class="badge badge-info" style="font-size: 0.72rem; font-weight: normal;"> Paper Figure 1 Example </span> </div> <div class="workload-controls" role="group" aria-label="Inference mode toggle"> <button type="button" class="workload-btn ddn-mech-btn active" id="btn-ddn-indep" data-mode="indep"> Independent Predictions </button> <button type="button" class="workload-btn ddn-mech-btn" id="btn-ddn-struct" data-mode="struct"> Structured DDN-ILP </button> </div> </div> <p style="font-size: 0.83rem; color: var(--global-text-color-light, #6b7280); margin: 0.4rem 0 0.75rem; line-height: 1.45;"> <strong>Visual Context (Figure 1):</strong> Pitcher throwing on the mound. The sports ball is small, fast-moving, or occluded. For the neural baseline, each label is selected independently using a threshold of τ = 0.50. </p> <div style="display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: stretch; margin-bottom: 0.85rem;"> <div style="flex: 0 0 170px; min-width: 150px; max-width: 200px; display: flex; flex-direction: column; background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.65rem; text-align: center;"> <div style="font-size: 0.74rem; font-weight: 700; color: var(--global-text-color-light, #6b7280); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.35rem;"> Input Image </div> <div style="position: relative; border-radius: 6px; overflow: hidden; border: 1px solid var(--global-divider-color, rgba(0,0,0,0.12)); margin-bottom: 0.4rem; flex: 1; display: flex; align-items: center; justify-content: center; background: #000;"> <img src="/assets/img/publication_preview/baseball_pitcher.jpg" alt="Input Image: Baseball pitcher throwing on the mound" style="width: 100%; height: 100%; max-height: 180px; object-fit: cover; display: block;"> <span style="position: absolute; bottom: 4px; right: 5px; background: rgba(0,0,0,0.72); color: #ffffff; padding: 1px 5px; border-radius: 3px; font-size: 0.68rem; font-weight: 600;"> Figure 1 </span> </div> <div style="font-size: 0.74rem; color: var(--global-text-color-light, #6b7280); line-height: 1.35;"> Concealed/fast-moving sports ball during pitch motion </div> </div> <div style="flex: 1 1 340px; min-width: 280px; background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.75rem 0.5rem; display: flex; align-items: center; justify-content: center;"> <svg viewbox="0 0 620 180" id="ddn-mech-svg" preserveaspectratio="xMidYMid meet" style="width: 100%; height: auto; max-height: 200px; display: block;" aria-label="Label dependency and inference diagram"> <defs> <filter id="ddn-glow-green" x="-20%" y="-20%" width="140%" height="140%"> <fegaussianblur stddeviation="3" result="blur"></fegaussianblur> <fecomposite in="SourceGraphic" in2="blur" operator="over"></fecomposite> </filter> </defs> <g id="ddn-features-layer"> <line x1="120" y1="18" x2="120" y2="60" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="3 3"></line> <line x1="310" y1="18" x2="310" y2="60" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="3 3"></line> <line x1="500" y1="18" x2="500" y2="60" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="3 3"></line> <text x="120" y="14" text-anchor="middle" font-size="10.5" fill="#64748b" font-weight="600">Feature e₁</text> <text x="310" y="14" text-anchor="middle" font-size="10.5" fill="#64748b" font-weight="600">Feature e₂</text> <text x="500" y="14" text-anchor="middle" font-size="10.5" fill="#64748b" font-weight="600">Feature e₃</text> </g> <g id="ddn-edges-layer"> <path id="ddn-edge-p-g" d="M 160 85 L 270 85" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 3"></path> <path id="ddn-edge-g-b" d="M 350 85 L 460 85" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 3"></path> <path id="ddn-edge-p-b" d="M 120 115 Q 310 165 500 115" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 3"></path> <text id="ddn-edge-lbl-top" x="310" y="75" text-anchor="middle" font-size="9.5" fill="#94a3b8">No label dependencies modeled</text> <text id="ddn-edge-lbl-bot" x="310" y="156" text-anchor="middle" font-size="9" fill="#94a3b8">Independent neural decisions</text> </g> <g id="ddn-node-person" transform="translate(120, 85)"> <circle id="ddn-circle-person" r="30" fill="#ecfdf5" stroke="#10b981" stroke-width="2.4"></circle> <text text-anchor="middle" y="-4" font-size="11" font-weight="700" fill="#065f46">person</text> <text id="ddn-score-person" text-anchor="middle" y="12" font-size="9.5" font-weight="600" fill="#047857">0.99</text> <rect x="-35" y="36" width="70" height="18" rx="4" fill="#d1fae5" stroke="#10b981" stroke-width="0.8"></rect> <text id="ddn-badge-person" x="0" y="49" text-anchor="middle" font-size="9" font-weight="700" fill="#065f46">Predicted</text> </g> <g id="ddn-node-glove" transform="translate(310, 85)"> <circle id="ddn-circle-glove" r="30" fill="#ecfdf5" stroke="#10b981" stroke-width="2.4"></circle> <text text-anchor="middle" y="-8" font-size="10.5" font-weight="700" fill="#065f46">baseball</text> <text text-anchor="middle" y="4" font-size="10.5" font-weight="700" fill="#065f46">glove</text> <text id="ddn-score-glove" text-anchor="middle" y="18" font-size="9.5" font-weight="600" fill="#047857">0.99</text> <rect x="-35" y="36" width="70" height="18" rx="4" fill="#d1fae5" stroke="#10b981" stroke-width="0.8"></rect> <text id="ddn-badge-glove" x="0" y="49" text-anchor="middle" font-size="9" font-weight="700" fill="#065f46">Predicted</text> </g> <g id="ddn-node-ball" transform="translate(500, 85)"> <circle id="ddn-halo-ball" r="38" fill="none" stroke="transparent" stroke-width="3"></circle> <circle id="ddn-circle-ball" r="30" fill="#fef2f2" stroke="#ef4444" stroke-width="2.2"></circle> <text text-anchor="middle" y="-8" font-size="10.5" font-weight="700" id="ddn-txt1-ball" fill="#991b1b">sports</text> <text text-anchor="middle" y="4" font-size="10.5" font-weight="700" id="ddn-txt2-ball" fill="#991b1b">ball</text> <text id="ddn-score-ball" text-anchor="middle" y="18" font-size="9.5" font-weight="600" fill="#dc2626">0.24</text> <rect id="ddn-badgerect-ball" x="-44" y="36" width="88" height="18" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="0.8"></rect> <text id="ddn-badge-ball" x="0" y="49" text-anchor="middle" font-size="9" font-weight="700" fill="#991b1b">Missed (&lt; 0.5)</text> </g> </svg> </div> </div> <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0.65rem; margin-bottom: 0.75rem;"> <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.6rem 0.75rem;"> <div style="font-size: 0.74rem; color: var(--global-text-color-light, #6b7280);">Label 1</div> <div style="font-size: 0.95rem; font-weight: 700; color: var(--global-text-color, #111827);">person</div> <div style="font-size: 0.8rem; margin: 0.2rem 0;">Neural score: <strong>0.99</strong> (≥ 0.50)</div> <div id="card-status-person" style="font-size: 0.78rem; font-weight: 600; color: #059669;"> <i class="fa-solid fa-check"></i> Predicted (Active)</div> </div> <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.6rem 0.75rem;"> <div style="font-size: 0.74rem; color: var(--global-text-color-light, #6b7280);">Label 2</div> <div style="font-size: 0.95rem; font-weight: 700; color: var(--global-text-color, #111827);">baseball glove</div> <div style="font-size: 0.8rem; margin: 0.2rem 0;">Neural score: <strong>0.99</strong> (≥ 0.50)</div> <div id="card-status-glove" style="font-size: 0.78rem; font-weight: 600; color: #059669;"> <i class="fa-solid fa-check"></i> Predicted (Active)</div> </div> <div id="card-ball-box" style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.6rem 0.75rem; transition: border-color 0.25s ease, background 0.25s ease;"> <div style="font-size: 0.74rem; color: var(--global-text-color-light, #6b7280);">Label 3 (Concealed/Small)</div> <div style="font-size: 0.95rem; font-weight: 700; color: var(--global-text-color, #111827);">sports ball</div> <div style="font-size: 0.8rem; margin: 0.2rem 0;">Neural score: <strong>0.24</strong> (&lt; 0.50)</div> <div id="card-status-ball" style="font-size: 0.78rem; font-weight: 600; color: #dc2626;"> <i class="fa-solid fa-xmark"></i> Missed by baseline</div> </div> </div> <div id="ddn-mech-explanation" class="demo-video-caption" style="margin: 0; padding: 0.75rem 0.9rem; border-radius: 6px; background: rgba(0,0,0,0.03); border-left: 3px solid #94a3b8; font-size: 0.84rem; line-height: 1.5;"> <strong>Independent Neural Baseline:</strong> For the neural baseline, each label is selected independently using a threshold of τ = 0.50 on individual neural outputs. Because the sports ball is partially occluded in the pitching motion, its neural score (0.24) falls below the threshold. Independent baseline prediction cannot use learned dependencies among labels to recover it. </div> </div> <div class="demo-metrics-grid"> <div class="demo-metric-card highlight-green"> <div class="metric-name"> <span>Subset Accuracy (SA) Gains</span> <span class="badge badge-success" style="font-size: 0.72rem;">Tables 1 &amp; 2</span> </div> <div class="metric-speedup speedup-ssmp" id="metric-ddn-gain">+23 percentage points SA</div> <div class="metric-stats"> <strong>Wetlab Actions:</strong> 0.35 → 0.65 (+30 percentage points)<br> <strong>TACoS Cooking:</strong> 0.40 → 0.63 (+23 percentage points)<br> <strong>PASCAL-VOC:</strong> 0.71 → 0.89 (+18 percentage points) </div> </div> <div class="demo-metric-card highlight-blue"> <div class="metric-name"> <span>DDN-ILP Formulation</span> <span class="badge badge-info" style="font-size: 0.72rem;">Our Method</span> </div> <div class="metric-speedup speedup-itself" style="font-size: 1.15rem; font-weight: 700; margin: 0.35rem 0;">Structured MPE via ILP</div> <div class="metric-stats"> <strong>Inference Task:</strong> Most Probable Explanation (MPE)<br> <strong>Solver:</strong> Integer Linear Programming (ILP)<br> <strong>Approximation:</strong> Piecewise-linear approximation of nonlinear DDN terms </div> </div> <div class="demo-metric-card highlight-gray"> <div class="metric-name"> <span>Jaccard Index &amp; Error</span> <span class="badge badge-secondary" style="font-size: 0.72rem;">Hamming Loss</span> </div> <div class="metric-speedup speedup-baseline">Up to 0.95 JI</div> <div class="metric-stats"> <strong>PASCAL-VOC:</strong> 0.95 JI (0.006 Hamming loss)<br> <strong>TACoS Actions:</strong> 0.72 JI (0.040 Hamming loss)<br> <strong>MS-COCO:</strong> 0.83 JI (0.88 F1 score) </div> </div> </div> <div class="demo-workload-box"> <div class="workload-header"> <h5>Select Evaluated Benchmark Dataset (Tables 1 &amp; 2, AISTATS 2024):</h5> <div class="workload-controls"> <button type="button" class="workload-btn ddn-btn active" data-dataset="tacos">TACoS (Cooking Actions)</button> <button type="button" class="workload-btn ddn-btn" data-dataset="wetlab">Wetlab (Bio Protocols)</button> <button type="button" class="workload-btn ddn-btn" data-dataset="pascal">PASCAL-VOC (Images)</button> <button type="button" class="workload-btn ddn-btn" data-dataset="coco">MS-COCO (80 Classes)</button> <button type="button" class="workload-btn ddn-btn" data-dataset="charades">Charades (157 Actions)</button> </div> </div> <div class="demo-progress-group" id="ddn-progress-group"> <div class="demo-progress-row" id="ddn-row-1"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="ddn-row1-label">DDN-ILP (Ours, Structured MPE via ILP)</span> <span class="demo-progress-val speedup-ssmp" id="ddn-row1-val">63.0% Subset Accuracy (0.72 JI, 0.040 HL)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-green" id="ddn-row1-bar" style="width: 63%;"></div> </div> </div> <div class="demo-progress-row" id="ddn-row-2"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="ddn-row2-label">DDN-Greedy (Ours, Greedy Local Search)</span> <span class="demo-progress-val speedup-itself" id="ddn-row2-val">56.0% Subset Accuracy (0.69 JI, 0.040 HL)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-blue" id="ddn-row2-bar" style="width: 56%;"></div> </div> </div> <div class="demo-progress-row" id="ddn-row-3"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="ddn-row3-label">DRF-ILP (Discriminative Random Field)</span> <span class="demo-progress-val speedup-baseline" id="ddn-row3-val">51.0% Subset Accuracy (0.65 JI, 0.030 HL)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-gray" id="ddn-row3-bar" style="width: 51%;"></div> </div> </div> <div class="demo-progress-row" id="ddn-row-4"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="ddn-row4-label">InceptionV3 Feature Extractor Baseline</span> <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="ddn-row4-val">40.0% Subset Accuracy (0.61 JI, 0.082 HL)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill" style="width: 40%;" id="ddn-row4-bar"></div> </div> </div> </div> <p class="demo-video-caption" id="ddn-takeaway" style="margin-top: 0.85rem; margin-bottom: 0;"> <strong>Paper Finding (TACoS Cooking Actions, Table 1):</strong> DDN-ILP achieves a <strong>+23 percentage point increase in Subset Accuracy</strong> (from 0.40 to 0.63) over the InceptionV3 baseline and reduces Hamming error by more than half (0.082 → 0.040). Joint MPE inference reasons over learned dependencies among concurrent actions rather than making label decisions independently. </p> </div> </div> </details> <script>
-(function() {
-  function initDdnDemo() {
-    /* ==========================================================================
-       1. Mechanism: Independent vs. Structured Predictions
-       ========================================================================== */
-    var btnIndep = document.getElementById("btn-ddn-indep");
-    var btnStruct = document.getElementById("btn-ddn-struct");
-    var edgeTop = document.getElementById("ddn-edge-p-g");
-    var edgeMid = document.getElementById("ddn-edge-g-b");
-    var edgeBot = document.getElementById("ddn-edge-p-b");
-    var edgeLblTop = document.getElementById("ddn-edge-lbl-top");
-    var edgeLblBot = document.getElementById("ddn-edge-lbl-bot");
-    var circleBall = document.getElementById("ddn-circle-ball");
-    var haloBall = document.getElementById("ddn-halo-ball");
-    var txt1Ball = document.getElementById("ddn-txt1-ball");
-    var txt2Ball = document.getElementById("ddn-txt2-ball");
-    var scoreBall = document.getElementById("ddn-score-ball");
-    var badgeRectBall = document.getElementById("ddn-badgerect-ball");
-    var badgeBall = document.getElementById("ddn-badge-ball");
-    var cardBallBox = document.getElementById("card-ball-box");
-    var cardStatusBall = document.getElementById("card-status-ball");
-    var explanationEl = document.getElementById("ddn-mech-explanation");
-    var detailsWrapper = document.getElementById("ddn-details-wrapper");
+</script> <ul> <li> <strong>BEACON: Learning to Guide Local Search for MPE Inference in Probabilistic Graphical Models</strong> (<a href="https://arxiv.org/abs/2602.01475" rel="external nofollow noopener" target="_blank">ArXiv</a>) <ul> <li>Amortizes repeated MPE inference in fixed-structure graphical models using an attention-based architecture that scores local-search moves according to estimated Hamming-distance reduction, guiding neighbor selection to improve convergence and solution quality in high-treewidth models.</li> </ul> </li> </ul> <h3 id="optimization-based-structured-inference">Optimization-Based Structured Inference</h3> <div class="row"> <div class="col-md-6"> <figure class="figure"> <img src="/assets/img/publication_preview/ddn.png" class="figure-img img-fluid" alt="Illustrating improvements from our new inference schemes for DDNs. The DDN learns relationships between labels, and the inference schemes reason over them to accurately identify concealed objects, such as sports ball."> </figure> </div> <div class="col-md-6"> <figure class="figure"> <img src="/assets/img/publication_preview/ddn_main_figure.png" class="figure-img img-fluid" alt="Illustration of Dependency Network for multi-label video classification. The NN takes video clips (frames) as input and outputs the features $e_1,e_2,...,e_n$ (denoted by red colored nodes). These features are then used by the sigmoid output ($\sigma_1$, $\ldots$, $\sigma_n$) of the dependency layer to model the local conditional distributions."> </figure> </div> </div> <p>We develop optimization-based structured inference methods that explicitly reason over structured dependencies and combinatorial constraints.</p> <ul> <li> <strong>Deep Dependency Networks and Advanced Inference Schemes for Multi-Label Classification</strong> (<a href="https://proceedings.mlr.press/v238/arya24a.html" rel="external nofollow noopener" target="_blank">AISTATS 2024</a>) <ul> <li>Formulates multi-label prediction in images and videos by coupling deep dependency networks with local search and integer linear programming (ILP) inference, capturing complex label dependencies without sacrificing training simplicity.</li> </ul> </li> </ul> <details class="interactive-demo-wrapper" id="ddn-details-wrapper"> <summary class="interactive-demo-summary"> <span class="interactive-demo-summary-title"> <span class="interactive-demo-summary-badge">Interactive Demo</span> <span>Structured MPE Inference vs. Neural Baselines (DDN-ILP)</span> </span> <span class="interactive-demo-summary-chevron">▸</span> </summary> <div class="interactive-demo-card" id="demo-ddn-card"> <div class="demo-card-header"> <div class="demo-title-group"> <h4>Deep Dependency Networks &amp; Structured MPE Inference (DDN-ILP)</h4> <p> Interactive demonstration showing how structured dependency reasoning recovers missed labels, followed by empirical benchmark results from AISTATS 2024 (Tables 1 &amp; 2). </p> </div> <div class="demo-badges"> <span class="demo-badge demo-badge-oral">AISTATS 2024</span> <span class="demo-badge demo-badge-sim">Structured Inference</span> </div> </div> <div class="demo-workload-box" style="margin-top: 0.5rem; margin-bottom: 1.25rem;"> <div class="workload-header" style="flex-wrap: wrap; gap: 0.6rem; align-items: center;"> <div> <h5 style="margin-bottom: 0.2rem;"> Inference Mechanism: Neural vs. Neurosymbolic </h5> <span class="badge badge-info" style="font-size: 0.72rem; font-weight: normal;"> Paper Figure 1 Example </span> </div> <div class="workload-controls" role="group" aria-label="Inference mode toggle"> <button type="button" class="workload-btn ddn-mech-btn active" id="btn-ddn-indep" data-mode="indep"> Neural Network Only </button> <button type="button" class="workload-btn ddn-mech-btn" id="btn-ddn-struct" data-mode="struct"> Structured DDN-ILP (Neurosymbolic reasoning) </button> </div> </div> <p style="font-size: 0.83rem; color: var(--global-text-color-light, #6b7280); margin: 0.4rem 0 0.75rem; line-height: 1.45;"> <strong>Visual Context (Figure 1):</strong> Pitcher throwing on the mound. The sports ball is small, fast-moving, or occluded. For the neural baseline, each label is selected independently using a threshold of τ = 0.50. </p> <div style="display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: stretch; margin-bottom: 0.85rem;"> <div style="flex: 0 0 170px; min-width: 150px; max-width: 200px; display: flex; flex-direction: column; background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.65rem; text-align: center;"> <div style="font-size: 0.74rem; font-weight: 700; color: var(--global-text-color-light, #6b7280); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.35rem;"> Input Image </div> <div style="position: relative; border-radius: 6px; overflow: hidden; border: 1px solid var(--global-divider-color, rgba(0,0,0,0.12)); margin-bottom: 0.4rem; flex: 1; display: flex; align-items: center; justify-content: center; background: #000;"> <img src="/assets/img/publication_preview/baseball_pitcher.jpg" alt="Input Image: Baseball pitcher throwing on the mound" style="width: 100%; height: 100%; max-height: 180px; object-fit: cover; display: block;"> <span style="position: absolute; bottom: 4px; right: 5px; background: rgba(0,0,0,0.72); color: #ffffff; padding: 1px 5px; border-radius: 3px; font-size: 0.68rem; font-weight: 600;"> Figure 1 </span> </div> <div style="font-size: 0.74rem; color: var(--global-text-color-light, #6b7280); line-height: 1.35;"> Concealed/fast-moving sports ball during pitch motion </div> </div> <div style="flex: 1 1 340px; min-width: 280px; background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.75rem 0.5rem; display: flex; align-items: center; justify-content: center;"> <svg viewbox="0 0 620 180" id="ddn-mech-svg" preserveaspectratio="xMidYMid meet" style="width: 100%; height: auto; max-height: 200px; display: block;" aria-label="Label dependency and inference diagram"> <defs> <filter id="ddn-glow-green" x="-20%" y="-20%" width="140%" height="140%"> <fegaussianblur stddeviation="3" result="blur"></fegaussianblur> <fecomposite in="SourceGraphic" in2="blur" operator="over"></fecomposite> </filter> </defs> <g id="ddn-features-layer"> <line x1="120" y1="18" x2="120" y2="60" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="3 3"></line> <line x1="310" y1="18" x2="310" y2="60" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="3 3"></line> <line x1="500" y1="18" x2="500" y2="60" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="3 3"></line> <text x="120" y="14" text-anchor="middle" font-size="10.5" fill="#64748b" font-weight="600">Feature e₁</text> <text x="310" y="14" text-anchor="middle" font-size="10.5" fill="#64748b" font-weight="600">Feature e₂</text> <text x="500" y="14" text-anchor="middle" font-size="10.5" fill="#64748b" font-weight="600">Feature e₃</text> </g> <g id="ddn-edges-layer"> <path id="ddn-edge-p-g" d="M 160 85 L 270 85" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 3"></path> <path id="ddn-edge-g-b" d="M 350 85 L 460 85" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 3"></path> <path id="ddn-edge-p-b" d="M 120 115 Q 310 165 500 115" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 3"></path> <text id="ddn-edge-lbl-top" x="310" y="75" text-anchor="middle" font-size="9.5" fill="#94a3b8">No label dependencies modeled</text> <text id="ddn-edge-lbl-bot" x="310" y="156" text-anchor="middle" font-size="9" fill="#94a3b8">Independent neural decisions</text> </g> <g id="ddn-node-person" transform="translate(120, 85)"> <circle id="ddn-circle-person" r="30" fill="#ecfdf5" stroke="#10b981" stroke-width="2.4"></circle> <text text-anchor="middle" y="-4" font-size="11" font-weight="700" fill="#065f46">person</text> <text id="ddn-score-person" text-anchor="middle" y="12" font-size="9.5" font-weight="600" fill="#047857">0.99</text> <rect x="-35" y="36" width="70" height="18" rx="4" fill="#d1fae5" stroke="#10b981" stroke-width="0.8"></rect> <text id="ddn-badge-person" x="0" y="49" text-anchor="middle" font-size="9" font-weight="700" fill="#065f46">Predicted</text> </g> <g id="ddn-node-glove" transform="translate(310, 85)"> <circle id="ddn-circle-glove" r="30" fill="#ecfdf5" stroke="#10b981" stroke-width="2.4"></circle> <text text-anchor="middle" y="-8" font-size="10.5" font-weight="700" fill="#065f46">baseball</text> <text text-anchor="middle" y="4" font-size="10.5" font-weight="700" fill="#065f46">glove</text> <text id="ddn-score-glove" text-anchor="middle" y="18" font-size="9.5" font-weight="600" fill="#047857">0.99</text> <rect x="-35" y="36" width="70" height="18" rx="4" fill="#d1fae5" stroke="#10b981" stroke-width="0.8"></rect> <text id="ddn-badge-glove" x="0" y="49" text-anchor="middle" font-size="9" font-weight="700" fill="#065f46">Predicted</text> </g> <g id="ddn-node-ball" transform="translate(500, 85)"> <circle id="ddn-halo-ball" r="38" fill="none" stroke="transparent" stroke-width="3"></circle> <circle id="ddn-circle-ball" r="30" fill="#fef2f2" stroke="#ef4444" stroke-width="2.2"></circle> <text text-anchor="middle" y="-8" font-size="10.5" font-weight="700" id="ddn-txt1-ball" fill="#991b1b">sports</text> <text text-anchor="middle" y="4" font-size="10.5" font-weight="700" id="ddn-txt2-ball" fill="#991b1b">ball</text> <text id="ddn-score-ball" text-anchor="middle" y="18" font-size="9.5" font-weight="600" fill="#dc2626">0.24</text> <rect id="ddn-badgerect-ball" x="-44" y="36" width="88" height="18" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="0.8"></rect> <text id="ddn-badge-ball" x="0" y="49" text-anchor="middle" font-size="9" font-weight="700" fill="#991b1b">Missed (&lt; 0.5)</text> </g> </svg> </div> </div> <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0.65rem; margin-bottom: 0.75rem;"> <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.6rem 0.75rem;"> <div style="font-size: 0.74rem; color: var(--global-text-color-light, #6b7280);">Label 1</div> <div style="font-size: 0.95rem; font-weight: 700; color: var(--global-text-color, #111827);">person</div> <div style="font-size: 0.8rem; margin: 0.2rem 0;">Neural score: <strong>0.99</strong> (≥ 0.50)</div> <div id="card-status-person" style="font-size: 0.78rem; font-weight: 600; color: #059669;"> <i class="fa-solid fa-check"></i> Predicted (Active)</div> </div> <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.6rem 0.75rem;"> <div style="font-size: 0.74rem; color: var(--global-text-color-light, #6b7280);">Label 2</div> <div style="font-size: 0.95rem; font-weight: 700; color: var(--global-text-color, #111827);">baseball glove </div> <div style="font-size: 0.8rem; margin: 0.2rem 0;">Neural score: <strong>0.99</strong> (≥ 0.50)</div> <div id="card-status-glove" style="font-size: 0.78rem; font-weight: 600; color: #059669;"> <i class="fa-solid fa-check"></i> Predicted (Active)</div> </div> <div id="card-ball-box" style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.6rem 0.75rem; transition: border-color 0.25s ease, background 0.25s ease;"> <div style="font-size: 0.74rem; color: var(--global-text-color-light, #6b7280);">Label 3 (Concealed/Small) </div> <div style="font-size: 0.95rem; font-weight: 700; color: var(--global-text-color, #111827);">sports ball</div> <div style="font-size: 0.8rem; margin: 0.2rem 0;">Neural score: <strong>0.24</strong> (&lt; 0.50)</div> <div id="card-status-ball" style="font-size: 0.78rem; font-weight: 600; color: #dc2626;"> <i class="fa-solid fa-xmark"></i> Missed by baseline</div> </div> </div> <div id="ddn-mech-explanation" class="demo-video-caption" style="margin: 0; padding: 0.75rem 0.9rem; border-radius: 6px; background: rgba(0,0,0,0.03); border-left: 3px solid #94a3b8; font-size: 0.84rem; line-height: 1.5;"> <strong>Independent Neural Baseline:</strong> For the neural baseline, each label is selected independently using a threshold of τ = 0.50 on individual neural outputs. Because the sports ball is partially occluded in the pitching motion, its neural score (0.24) falls below the threshold. Independent baseline prediction cannot use learned dependencies among labels to recover it. </div> </div> <div class="demo-metrics-grid"> <div class="demo-metric-card highlight-green"> <div class="metric-name"> <span>Subset Accuracy (SA) Gains</span> <span class="badge badge-success" style="font-size: 0.72rem;">Tables 1 &amp; 2</span> </div> <div class="metric-speedup speedup-ssmp" id="metric-ddn-gain">+23 percentage points SA</div> <div class="metric-stats"> <strong>Wetlab Actions:</strong> 0.35 → 0.65 (+30 percentage points)<br> <strong>TACoS Cooking:</strong> 0.40 → 0.63 (+23 percentage points)<br> <strong>PASCAL-VOC:</strong> 0.71 → 0.89 (+18 percentage points) </div> </div> <div class="demo-metric-card highlight-blue"> <div class="metric-name"> <span>DDN-ILP Formulation</span> <span class="badge badge-info" style="font-size: 0.72rem;">Our Method</span> </div> <div class="metric-speedup speedup-itself" style="font-size: 1.15rem; font-weight: 700; margin: 0.35rem 0;"> Structured MPE via ILP</div> <div class="metric-stats"> <strong>Inference Task:</strong> Most Probable Explanation (MPE)<br> <strong>Solver:</strong> Integer Linear Programming (ILP)<br> <strong>Approximation:</strong> Piecewise-linear approximation of nonlinear DDN terms </div> </div> <div class="demo-metric-card highlight-gray"> <div class="metric-name"> <span>Jaccard Index &amp; Error</span> <span class="badge badge-secondary" style="font-size: 0.72rem;">Hamming Loss</span> </div> <div class="metric-speedup speedup-baseline">Up to 0.95 JI</div> <div class="metric-stats"> <strong>PASCAL-VOC:</strong> 0.95 JI (0.006 Hamming loss)<br> <strong>TACoS Actions:</strong> 0.72 JI (0.040 Hamming loss)<br> <strong>MS-COCO:</strong> 0.83 JI (0.88 F1 score) </div> </div> </div> <div class="demo-workload-box"> <div class="workload-header"> <h5>Select Evaluated Benchmark Dataset (Tables 1 &amp; 2, AISTATS 2024):</h5> <div class="workload-controls"> <button type="button" class="workload-btn ddn-btn active" data-dataset="tacos">TACoS (Cooking Actions)</button> <button type="button" class="workload-btn ddn-btn" data-dataset="wetlab">Wetlab (Bio Protocols)</button> <button type="button" class="workload-btn ddn-btn" data-dataset="pascal">PASCAL-VOC (Images)</button> <button type="button" class="workload-btn ddn-btn" data-dataset="coco">MS-COCO (80 Classes)</button> <button type="button" class="workload-btn ddn-btn" data-dataset="charades">Charades (157 Actions)</button> </div> </div> <div class="demo-progress-group" id="ddn-progress-group"> <div class="demo-progress-row" id="ddn-row-1"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="ddn-row1-label">DDN-ILP (Ours, Structured MPE via ILP)</span> <span class="demo-progress-val speedup-ssmp" id="ddn-row1-val">63.0% Subset Accuracy (0.72 JI, 0.040 HL)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-green" id="ddn-row1-bar" style="width: 63%;"></div> </div> </div> <div class="demo-progress-row" id="ddn-row-2"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="ddn-row2-label">DDN-Greedy (Ours, Greedy Local Search)</span> <span class="demo-progress-val speedup-itself" id="ddn-row2-val">56.0% Subset Accuracy (0.69 JI, 0.040 HL)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-blue" id="ddn-row2-bar" style="width: 56%;"></div> </div> </div> <div class="demo-progress-row" id="ddn-row-3"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="ddn-row3-label">DRF-ILP (Discriminative Random Field)</span> <span class="demo-progress-val speedup-baseline" id="ddn-row3-val">51.0% Subset Accuracy (0.65 JI, 0.030 HL)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-gray" id="ddn-row3-bar" style="width: 51%;"></div> </div> </div> <div class="demo-progress-row" id="ddn-row-4"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="ddn-row4-label">InceptionV3 Feature Extractor Baseline</span> <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="ddn-row4-val">40.0% Subset Accuracy (0.61 JI, 0.082 HL)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill" style="width: 40%;" id="ddn-row4-bar"></div> </div> </div> </div> <p class="demo-video-caption" id="ddn-takeaway" style="margin-top: 0.85rem; margin-bottom: 0;"> <strong>Paper Finding (TACoS Cooking Actions, Table 1):</strong> DDN-ILP achieves a <strong>+23 percentage point increase in Subset Accuracy</strong> (from 0.40 to 0.63) over the InceptionV3 baseline and reduces Hamming error by more than half (0.082 → 0.040). Joint MPE inference reasons over learned dependencies among concurrent actions rather than making label decisions independently. </p> </div> </div> </details> <script>
+  (function () {
+    function initDdnDemo() {
+      /* ==========================================================================
+         1. Mechanism: Independent vs. Structured Predictions
+         ========================================================================== */
+      var btnIndep = document.getElementById("btn-ddn-indep");
+      var btnStruct = document.getElementById("btn-ddn-struct");
+      var edgeTop = document.getElementById("ddn-edge-p-g");
+      var edgeMid = document.getElementById("ddn-edge-g-b");
+      var edgeBot = document.getElementById("ddn-edge-p-b");
+      var edgeLblTop = document.getElementById("ddn-edge-lbl-top");
+      var edgeLblBot = document.getElementById("ddn-edge-lbl-bot");
+      var circleBall = document.getElementById("ddn-circle-ball");
+      var haloBall = document.getElementById("ddn-halo-ball");
+      var txt1Ball = document.getElementById("ddn-txt1-ball");
+      var txt2Ball = document.getElementById("ddn-txt2-ball");
+      var scoreBall = document.getElementById("ddn-score-ball");
+      var badgeRectBall = document.getElementById("ddn-badgerect-ball");
+      var badgeBall = document.getElementById("ddn-badge-ball");
+      var cardBallBox = document.getElementById("card-ball-box");
+      var cardStatusBall = document.getElementById("card-status-ball");
+      var explanationEl = document.getElementById("ddn-mech-explanation");
+      var detailsWrapper = document.getElementById("ddn-details-wrapper");
 
-    function setMechanismMode(mode) {
-      var isStruct = mode === "struct";
+      function setMechanismMode(mode) {
+        var isStruct = mode === "struct";
 
-      if (btnIndep) btnIndep.classList.toggle("active", !isStruct);
-      if (btnStruct) btnStruct.classList.toggle("active", isStruct);
+        if (btnIndep) btnIndep.classList.toggle("active", !isStruct);
+        if (btnStruct) btnStruct.classList.toggle("active", isStruct);
 
-      if (isStruct) {
-        // Structured DDN-ILP active state
-        if (edgeTop) {
-          edgeTop.setAttribute("stroke", "#10b981");
-          edgeTop.setAttribute("stroke-width", "2.8");
-          edgeTop.removeAttribute("stroke-dasharray");
-        }
-        if (edgeMid) {
-          edgeMid.setAttribute("stroke", "#10b981");
-          edgeMid.setAttribute("stroke-width", "2.8");
-          edgeMid.removeAttribute("stroke-dasharray");
-        }
-        if (edgeBot) {
-          edgeBot.setAttribute("stroke", "#10b981");
-          edgeBot.setAttribute("stroke-width", "2.8");
-          edgeBot.removeAttribute("stroke-dasharray");
-        }
-        if (edgeLblTop) {
-          edgeLblTop.textContent = "Learned Label Dependencies Active (DDN)";
-          edgeLblTop.setAttribute("fill", "#059669");
-        }
-        if (edgeLblBot) {
-          edgeLblBot.textContent = "Joint MPE inference over the label configuration";
-          edgeLblBot.setAttribute("fill", "#059669");
-        }
+        if (isStruct) {
+          // Structured DDN-ILP active state
+          if (edgeTop) {
+            edgeTop.setAttribute("stroke", "#10b981");
+            edgeTop.setAttribute("stroke-width", "2.8");
+            edgeTop.removeAttribute("stroke-dasharray");
+          }
+          if (edgeMid) {
+            edgeMid.setAttribute("stroke", "#10b981");
+            edgeMid.setAttribute("stroke-width", "2.8");
+            edgeMid.removeAttribute("stroke-dasharray");
+          }
+          if (edgeBot) {
+            edgeBot.setAttribute("stroke", "#10b981");
+            edgeBot.setAttribute("stroke-width", "2.8");
+            edgeBot.removeAttribute("stroke-dasharray");
+          }
+          if (edgeLblTop) {
+            edgeLblTop.textContent = "Learned Label Dependencies Active (DDN)";
+            edgeLblTop.setAttribute("fill", "#059669");
+          }
+          if (edgeLblBot) {
+            edgeLblBot.textContent = "Joint MPE inference over the label configuration";
+            edgeLblBot.setAttribute("fill", "#059669");
+          }
 
-        // Sports ball recovered state
-        if (circleBall) {
-          circleBall.setAttribute("fill", "#ecfdf5");
-          circleBall.setAttribute("stroke", "#059669");
-          circleBall.setAttribute("stroke-width", "3");
-        }
-        if (haloBall) {
-          haloBall.setAttribute("stroke", "#10b981");
-          haloBall.setAttribute("stroke-dasharray", "4 3");
-          haloBall.setAttribute("filter", "url(#ddn-glow-green)");
-        }
-        if (txt1Ball) txt1Ball.setAttribute("fill", "#065f46");
-        if (txt2Ball) txt2Ball.setAttribute("fill", "#065f46");
-        if (scoreBall) {
-          scoreBall.textContent = "0.24";
-          scoreBall.setAttribute("fill", "#047857");
-        }
-        if (badgeRectBall) {
-          badgeRectBall.setAttribute("fill", "#d1fae5");
-          badgeRectBall.setAttribute("stroke", "#10b981");
-          badgeRectBall.setAttribute("x", "-52");
-          badgeRectBall.setAttribute("width", "104");
-        }
-        if (badgeBall) {
-          badgeBall.textContent = "Recovered by ILP";
-          badgeBall.setAttribute("fill", "#065f46");
-        }
+          // Sports ball recovered state
+          if (circleBall) {
+            circleBall.setAttribute("fill", "#ecfdf5");
+            circleBall.setAttribute("stroke", "#059669");
+            circleBall.setAttribute("stroke-width", "3");
+          }
+          if (haloBall) {
+            haloBall.setAttribute("stroke", "#10b981");
+            haloBall.setAttribute("stroke-dasharray", "4 3");
+            haloBall.setAttribute("filter", "url(#ddn-glow-green)");
+          }
+          if (txt1Ball) txt1Ball.setAttribute("fill", "#065f46");
+          if (txt2Ball) txt2Ball.setAttribute("fill", "#065f46");
+          if (scoreBall) {
+            scoreBall.textContent = "0.24";
+            scoreBall.setAttribute("fill", "#047857");
+          }
+          if (badgeRectBall) {
+            badgeRectBall.setAttribute("fill", "#d1fae5");
+            badgeRectBall.setAttribute("stroke", "#10b981");
+            badgeRectBall.setAttribute("x", "-52");
+            badgeRectBall.setAttribute("width", "104");
+          }
+          if (badgeBall) {
+            badgeBall.textContent = "Recovered by ILP";
+            badgeBall.setAttribute("fill", "#065f46");
+          }
 
-        if (cardBallBox) {
-          cardBallBox.style.borderColor = "#10b981";
-          cardBallBox.style.background = "rgba(16, 185, 129, 0.07)";
-        }
-        if (cardStatusBall) {
-          cardStatusBall.innerHTML = '<i class="fa-solid fa-check"></i> <strong>Recovered by DDN-ILP</strong>';
-          cardStatusBall.style.color = "#059669";
-        }
+          if (cardBallBox) {
+            cardBallBox.style.borderColor = "#10b981";
+            cardBallBox.style.background = "rgba(16, 185, 129, 0.07)";
+          }
+          if (cardStatusBall) {
+            cardStatusBall.innerHTML = '<i class="fa-solid fa-check"></i> <strong>Recovered by DDN-ILP</strong>';
+            cardStatusBall.style.color = "#059669";
+          }
 
-        if (explanationEl) {
-          explanationEl.style.borderLeftColor = "#10b981";
-          explanationEl.innerHTML =
-            "<strong>Structured MPE Inference via ILP:</strong> The Deep Dependency Network models learned dependencies among labels. " +
-            "DDN-ILP jointly searches over the label configuration using an ILP derived from a piecewise-linear approximation of the DDN MPE objective. " +
-            "In the Figure 1 example, the neural model assigns <em>sports ball</em> a low score of 0.24, while structured inference recovers the label by reasoning jointly over learned label dependencies.";
-        }
-      } else {
-        // Independent predictions baseline state
-        if (edgeTop) {
-          edgeTop.setAttribute("stroke", "#cbd5e1");
-          edgeTop.setAttribute("stroke-width", "2");
-          edgeTop.setAttribute("stroke-dasharray", "4 3");
-        }
-        if (edgeMid) {
-          edgeMid.setAttribute("stroke", "#cbd5e1");
-          edgeMid.setAttribute("stroke-width", "2");
-          edgeMid.setAttribute("stroke-dasharray", "4 3");
-        }
-        if (edgeBot) {
-          edgeBot.setAttribute("stroke", "#cbd5e1");
-          edgeBot.setAttribute("stroke-width", "2");
-          edgeBot.setAttribute("stroke-dasharray", "4 3");
-        }
-        if (edgeLblTop) {
-          edgeLblTop.textContent = "No label dependencies modeled";
-          edgeLblTop.setAttribute("fill", "#94a3b8");
-        }
-        if (edgeLblBot) {
-          edgeLblBot.textContent = "Independent neural decisions";
-          edgeLblBot.setAttribute("fill", "#94a3b8");
-        }
+          if (explanationEl) {
+            explanationEl.style.borderLeftColor = "#10b981";
+            explanationEl.innerHTML =
+              "<strong>Structured MPE Inference via ILP:</strong> The Deep Dependency Network models learned dependencies among labels. " +
+              "DDN-ILP jointly searches over the label configuration using an ILP derived from a piecewise-linear approximation of the DDN MPE objective. " +
+              "In the Figure 1 example, the neural model assigns <em>sports ball</em> a low score of 0.24, while structured inference recovers the label by reasoning jointly over learned label dependencies.";
+          }
+        } else {
+          // Independent predictions baseline state
+          if (edgeTop) {
+            edgeTop.setAttribute("stroke", "#cbd5e1");
+            edgeTop.setAttribute("stroke-width", "2");
+            edgeTop.setAttribute("stroke-dasharray", "4 3");
+          }
+          if (edgeMid) {
+            edgeMid.setAttribute("stroke", "#cbd5e1");
+            edgeMid.setAttribute("stroke-width", "2");
+            edgeMid.setAttribute("stroke-dasharray", "4 3");
+          }
+          if (edgeBot) {
+            edgeBot.setAttribute("stroke", "#cbd5e1");
+            edgeBot.setAttribute("stroke-width", "2");
+            edgeBot.setAttribute("stroke-dasharray", "4 3");
+          }
+          if (edgeLblTop) {
+            edgeLblTop.textContent = "No label dependencies modeled";
+            edgeLblTop.setAttribute("fill", "#94a3b8");
+          }
+          if (edgeLblBot) {
+            edgeLblBot.textContent = "Independent neural decisions";
+            edgeLblBot.setAttribute("fill", "#94a3b8");
+          }
 
-        // Sports ball missed state
-        if (circleBall) {
-          circleBall.setAttribute("fill", "#fef2f2");
-          circleBall.setAttribute("stroke", "#ef4444");
-          circleBall.setAttribute("stroke-width", "2.2");
-        }
-        if (haloBall) {
-          haloBall.setAttribute("stroke", "transparent");
-          haloBall.removeAttribute("filter");
-        }
-        if (txt1Ball) txt1Ball.setAttribute("fill", "#991b1b");
-        if (txt2Ball) txt2Ball.setAttribute("fill", "#991b1b");
-        if (scoreBall) {
-          scoreBall.textContent = "0.24";
-          scoreBall.setAttribute("fill", "#dc2626");
-        }
-        if (badgeRectBall) {
-          badgeRectBall.setAttribute("fill", "#fee2e2");
-          badgeRectBall.setAttribute("stroke", "#ef4444");
-          badgeRectBall.setAttribute("x", "-44");
-          badgeRectBall.setAttribute("width", "88");
-        }
-        if (badgeBall) {
-          badgeBall.textContent = "Missed (< 0.5)";
-          badgeBall.setAttribute("fill", "#991b1b");
-        }
+          // Sports ball missed state
+          if (circleBall) {
+            circleBall.setAttribute("fill", "#fef2f2");
+            circleBall.setAttribute("stroke", "#ef4444");
+            circleBall.setAttribute("stroke-width", "2.2");
+          }
+          if (haloBall) {
+            haloBall.setAttribute("stroke", "transparent");
+            haloBall.removeAttribute("filter");
+          }
+          if (txt1Ball) txt1Ball.setAttribute("fill", "#991b1b");
+          if (txt2Ball) txt2Ball.setAttribute("fill", "#991b1b");
+          if (scoreBall) {
+            scoreBall.textContent = "0.24";
+            scoreBall.setAttribute("fill", "#dc2626");
+          }
+          if (badgeRectBall) {
+            badgeRectBall.setAttribute("fill", "#fee2e2");
+            badgeRectBall.setAttribute("stroke", "#ef4444");
+            badgeRectBall.setAttribute("x", "-44");
+            badgeRectBall.setAttribute("width", "88");
+          }
+          if (badgeBall) {
+            badgeBall.textContent = "Missed (< 0.5)";
+            badgeBall.setAttribute("fill", "#991b1b");
+          }
 
-        if (cardBallBox) {
-          cardBallBox.style.borderColor = "var(--global-divider-color, rgba(0,0,0,0.1))";
-          cardBallBox.style.background = "var(--global-card-bg-color, #ffffff)";
-        }
-        if (cardStatusBall) {
-          cardStatusBall.innerHTML = '<i class="fa-solid fa-xmark"></i> Missed by baseline (&lt; 0.50)';
-          cardStatusBall.style.color = "#dc2626";
-        }
+          if (cardBallBox) {
+            cardBallBox.style.borderColor = "var(--global-divider-color, rgba(0,0,0,0.1))";
+            cardBallBox.style.background = "var(--global-card-bg-color, #ffffff)";
+          }
+          if (cardStatusBall) {
+            cardStatusBall.innerHTML = '<i class="fa-solid fa-xmark"></i> Missed by baseline (&lt; 0.50)';
+            cardStatusBall.style.color = "#dc2626";
+          }
 
-        if (explanationEl) {
-          explanationEl.style.borderLeftColor = "#94a3b8";
-          explanationEl.innerHTML =
-            "<strong>Independent Neural Baseline:</strong> For the neural baseline, each label is selected independently using a threshold of &tau; = 0.50 on individual neural outputs. " +
-            "Because the sports ball is partially occluded in the pitching motion, its neural score (0.24) falls below the threshold. " +
-            "Independent baseline prediction cannot use learned dependencies among labels to recover it.";
+          if (explanationEl) {
+            explanationEl.style.borderLeftColor = "#94a3b8";
+            explanationEl.innerHTML =
+              "<strong>Independent Neural Baseline:</strong> For the neural baseline, each label is selected independently using a threshold of &tau; = 0.50 on individual neural outputs. " +
+              "Because the sports ball is partially occluded in the pitching motion, its neural score (0.24) falls below the threshold. " +
+              "Independent baseline prediction cannot use learned dependencies among labels to recover it.";
+          }
         }
       }
-    }
 
-    if (btnIndep) {
-      btnIndep.addEventListener("click", function() {
-        setMechanismMode("indep");
-      });
-    }
-    if (btnStruct) {
-      btnStruct.addEventListener("click", function() {
-        setMechanismMode("struct");
-      });
-    }
-
-    // Explicitly initialize mechanism in default independent mode
-    setMechanismMode("indep");
-
-    // Reset mechanism to default independent mode on close/reopen
-    if (detailsWrapper) {
-      detailsWrapper.addEventListener("toggle", function() {
-        if (!detailsWrapper.open) {
+      if (btnIndep) {
+        btnIndep.addEventListener("click", function () {
           setMechanismMode("indep");
-        }
-      });
-    }
-
-    /* ==========================================================================
-       2. Empirical Benchmark Explorer (Tables 1 & 2, AISTATS 2024)
-       ========================================================================== */
-    var buttons = document.querySelectorAll(".ddn-btn");
-    var row1 = document.getElementById("ddn-row-1");
-    var row2 = document.getElementById("ddn-row-2");
-    var row3 = document.getElementById("ddn-row-3");
-    var row4 = document.getElementById("ddn-row-4");
-    var row1Label = document.getElementById("ddn-row1-label");
-    var row1Val = document.getElementById("ddn-row1-val");
-    var row1Bar = document.getElementById("ddn-row1-bar");
-    var row2Label = document.getElementById("ddn-row2-label");
-    var row2Val = document.getElementById("ddn-row2-val");
-    var row2Bar = document.getElementById("ddn-row2-bar");
-    var row3Label = document.getElementById("ddn-row3-label");
-    var row3Val = document.getElementById("ddn-row3-val");
-    var row3Bar = document.getElementById("ddn-row3-bar");
-    var row4Label = document.getElementById("ddn-row4-label");
-    var row4Val = document.getElementById("ddn-row4-val");
-    var row4Bar = document.getElementById("ddn-row4-bar");
-    var metricGain = document.getElementById("metric-ddn-gain");
-    var takeaway = document.getElementById("ddn-takeaway");
-
-    if (!buttons.length || !row1 || !row2 || !row3 || !row4) return;
-
-    var datasetData = {
-      "tacos": {
-        gain: "+23 percentage points SA",
-        takeaway: "<strong>Paper Finding (TACoS Cooking Actions, Table 1):</strong> DDN-ILP achieves a <strong>+23 percentage point increase in Subset Accuracy</strong> (from 0.40 to 0.63) over the InceptionV3 baseline and reduces Hamming error by more than half (0.082 &rarr; 0.040). Joint MPE inference reasons over learned dependencies among concurrent actions rather than making label decisions independently.",
-        rows: [
-          { show: true, label: "DDN-ILP (Ours, Structured MPE via ILP)", val: "63.0% Subset Accuracy (0.72 JI, 0.040 HL)", pct: 63.0, cls: "fill-green", style: "" },
-          { show: true, label: "DDN-Greedy (Ours, Greedy Local Search)", val: "56.0% Subset Accuracy (0.69 JI, 0.040 HL)", pct: 56.0, cls: "fill-blue", style: "" },
-          { show: true, label: "DRF-ILP (Discriminative Random Field)", val: "51.0% Subset Accuracy (0.65 JI, 0.030 HL)", pct: 51.0, cls: "fill-gray", style: "" },
-          { show: true, label: "InceptionV3 Feature Extractor Baseline", val: "40.0% Subset Accuracy (0.61 JI, 0.082 HL)", pct: 40.0, cls: "", style: "background: #9ca3af;" }
-        ]
-      },
-      "wetlab": {
-        gain: "+30 percentage points SA",
-        takeaway: "<strong>Paper Finding (Wetlab Protocol Actions, Table 1):</strong> DDN-ILP delivers a <strong>+30 percentage point gain in Subset Accuracy</strong> (from 0.35 to 0.65) and improves Jaccard Index from 0.64 to 0.76. In multi-step biology experiments, joint MPE inference allows predictions to account for learned dependencies among actions in multi-step procedures.",
-        rows: [
-          { show: true, label: "DDN-ILP (Ours, Structured MPE via ILP)", val: "65.0% Subset Accuracy (0.76 JI, 0.014 HL)", pct: 65.0, cls: "fill-green", style: "" },
-          { show: true, label: "DRF-ILP (Discriminative Random Field)", val: "60.0% Subset Accuracy (0.73 JI, 0.014 HL)", pct: 60.0, cls: "fill-gray", style: "" },
-          { show: true, label: "DDN-Greedy (Ours, Greedy Local Search)", val: "55.0% Subset Accuracy (0.68 JI, 0.014 HL)", pct: 55.0, cls: "fill-blue", style: "" },
-          { show: true, label: "InceptionV3 Feature Extractor Baseline", val: "35.0% Subset Accuracy (0.64 JI, 0.017 HL)", pct: 35.0, cls: "", style: "background: #9ca3af;" }
-        ]
-      },
-      "pascal": {
-        gain: "+18 percentage points SA",
-        takeaway: "<strong>Paper Finding (PASCAL-VOC Image Classification, Table 2):</strong> DDN-ILP achieves an <strong>+18 percentage point improvement in Subset Accuracy</strong> (from 0.71 to 0.89), reaches <strong>0.95 Jaccard Index</strong>, and slashes Hamming loss from 0.015 down to 0.006 compared to the MSRN baseline.",
-        rows: [
-          { show: true, label: "DDN-ILP (Ours, Structured MPE via ILP)", val: "89.0% Subset Accuracy (0.95 JI, 0.006 HL)", pct: 89.0, cls: "fill-green", style: "" },
-          { show: true, label: "DDN-Greedy (Ours, Greedy Local Search)", val: "86.0% Subset Accuracy (0.91 JI, 0.007 HL)", pct: 86.0, cls: "fill-blue", style: "" },
-          { show: true, label: "DRF-ILP (Discriminative Random Field)", val: "76.0% Subset Accuracy (0.88 JI, 0.019 HL)", pct: 76.0, cls: "fill-gray", style: "" },
-          { show: true, label: "MSRN Feature Extractor Baseline", val: "71.0% Subset Accuracy (0.85 JI, 0.015 HL)", pct: 71.0, cls: "", style: "background: #9ca3af;" }
-        ]
-      },
-      "coco": {
-        gain: "0.55 SA / 0.83 JI",
-        takeaway: "<strong>Paper Finding (MS-COCO 80 Categories, Table 2):</strong> Over 80 complex object categories, DDN-ILP outperforms Query2Label (Q2L) transformer in Subset Accuracy (0.51 &rarr; 0.55) and Jaccard Index (0.80 &rarr; 0.83). As illustrated in Figure 3, DDN-ILP recovers missed contextual objects (e.g. dining table, sports ball) and suppresses false positive detections.",
-        rows: [
-          { show: true, label: "DDN-ILP (Ours, Structured MPE via ILP)", val: "55.0% Subset Accuracy (0.83 JI, 0.88 F1)", pct: 55.0, cls: "fill-green", style: "" },
-          { show: true, label: "DDN-Greedy (Ours, Greedy Local Search)", val: "55.0% Subset Accuracy (0.82 JI, 0.87 F1)", pct: 55.0, cls: "fill-blue", style: "" },
-          { show: true, label: "DRF-ILP (Discriminative Random Field)", val: "54.0% Subset Accuracy (0.82 JI, 0.82 F1)", pct: 54.0, cls: "fill-gray", style: "" },
-          { show: true, label: "Q2L Transformer Baseline (Liu et al., 2021)", val: "51.0% Subset Accuracy (0.80 JI, 0.88 F1)", pct: 51.0, cls: "", style: "background: #9ca3af;" }
-        ]
-      },
-      "charades": {
-        gain: "0.33 JI / 0.36 Macro F1",
-        takeaway: "<strong>Paper Finding (Charades 157 Action Classes, Table 1):</strong> Across 157 fine-grained video action classes, DDN-ILP improves Jaccard Index from 0.29 to 0.33 and Macro F1 from 0.32 to 0.36 over the SlowFast 3D-CNN backbone, demonstrating effective structured inference even under extreme label diversity.",
-        rows: [
-          { show: true, label: "DDN-ILP (Ours, Structured MPE via ILP)", val: "33.0% Jaccard Index (0.36 Macro F1, 0.47 Micro F1)", pct: 33.0, cls: "fill-green", style: "" },
-          { show: true, label: "DDN-Greedy (Ours, Greedy Local Search)", val: "31.0% Jaccard Index (0.33 Macro F1, 0.44 Micro F1)", pct: 31.0, cls: "fill-blue", style: "" },
-          { show: true, label: "DRF-ILP (Discriminative Random Field)", val: "31.0% Jaccard Index (0.18 Macro F1, 0.21 Micro F1)", pct: 31.0, cls: "fill-gray", style: "" },
-          { show: true, label: "SlowFast 3D-CNN Baseline (Feichtenhofer et al.)", val: "29.0% Jaccard Index (0.32 Macro F1, 0.45 Micro F1)", pct: 29.0, cls: "", style: "background: #9ca3af;" }
-        ]
+        });
       }
-    };
+      if (btnStruct) {
+        btnStruct.addEventListener("click", function () {
+          setMechanismMode("struct");
+        });
+      }
 
-    var rowElements = [
-      { row: row1, label: row1Label, val: row1Val, bar: row1Bar },
-      { row: row2, label: row2Label, val: row2Val, bar: row2Bar },
-      { row: row3, label: row3Label, val: row3Val, bar: row3Bar },
-      { row: row4, label: row4Label, val: row4Val, bar: row4Bar }
-    ];
+      // Explicitly initialize mechanism in default independent mode
+      setMechanismMode("indep");
 
-    buttons.forEach(function(btn) {
-      btn.addEventListener("click", function() {
-        buttons.forEach(function(b) { b.classList.remove("active"); });
-        btn.classList.add("active");
-        var ds = btn.getAttribute("data-dataset");
-        var d = datasetData[ds];
-        if (!d) return;
-
-        if (metricGain) metricGain.innerHTML = d.gain;
-        takeaway.innerHTML = d.takeaway;
-
-        d.rows.forEach(function(rData, idx) {
-          var el = rowElements[idx];
-          if (!rData.show) {
-            el.row.style.display = "none";
-          } else {
-            el.row.style.display = "";
-            el.label.innerHTML = rData.label;
-            el.val.innerHTML = rData.val;
-            el.bar.style.width = rData.pct + "%";
-            el.bar.className = "demo-progress-fill" + (rData.cls ? " " + rData.cls : "");
-            if (rData.style) {
-              el.bar.setAttribute("style", "width: " + rData.pct + "%; " + rData.style);
-            } else {
-              el.bar.setAttribute("style", "width: " + rData.pct + "%;");
-            }
+      // Reset mechanism to default independent mode on close/reopen
+      if (detailsWrapper) {
+        detailsWrapper.addEventListener("toggle", function () {
+          if (!detailsWrapper.open) {
+            setMechanismMode("indep");
           }
         });
-      });
-    });
-  }
+      }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initDdnDemo);
-  } else {
-    initDdnDemo();
-  }
-})();
+      /* ==========================================================================
+         2. Empirical Benchmark Explorer (Tables 1 & 2, AISTATS 2024)
+         ========================================================================== */
+      var buttons = document.querySelectorAll(".ddn-btn");
+      var row1 = document.getElementById("ddn-row-1");
+      var row2 = document.getElementById("ddn-row-2");
+      var row3 = document.getElementById("ddn-row-3");
+      var row4 = document.getElementById("ddn-row-4");
+      var row1Label = document.getElementById("ddn-row1-label");
+      var row1Val = document.getElementById("ddn-row1-val");
+      var row1Bar = document.getElementById("ddn-row1-bar");
+      var row2Label = document.getElementById("ddn-row2-label");
+      var row2Val = document.getElementById("ddn-row2-val");
+      var row2Bar = document.getElementById("ddn-row2-bar");
+      var row3Label = document.getElementById("ddn-row3-label");
+      var row3Val = document.getElementById("ddn-row3-val");
+      var row3Bar = document.getElementById("ddn-row3-bar");
+      var row4Label = document.getElementById("ddn-row4-label");
+      var row4Val = document.getElementById("ddn-row4-val");
+      var row4Bar = document.getElementById("ddn-row4-bar");
+      var metricGain = document.getElementById("metric-ddn-gain");
+      var takeaway = document.getElementById("ddn-takeaway");
+
+      if (!buttons.length || !row1 || !row2 || !row3 || !row4) return;
+
+      var datasetData = {
+        "tacos": {
+          gain: "+23 percentage points SA",
+          takeaway: "<strong>Paper Finding (TACoS Cooking Actions, Table 1):</strong> DDN-ILP achieves a <strong>+23 percentage point increase in Subset Accuracy</strong> (from 0.40 to 0.63) over the InceptionV3 baseline and reduces Hamming error by more than half (0.082 &rarr; 0.040). Joint MPE inference reasons over learned dependencies among concurrent actions rather than making label decisions independently.",
+          rows: [
+            { show: true, label: "DDN-ILP (Ours, Structured MPE via ILP)", val: "63.0% Subset Accuracy (0.72 JI, 0.040 HL)", pct: 63.0, cls: "fill-green", style: "" },
+            { show: true, label: "DDN-Greedy (Ours, Greedy Local Search)", val: "56.0% Subset Accuracy (0.69 JI, 0.040 HL)", pct: 56.0, cls: "fill-blue", style: "" },
+            { show: true, label: "DRF-ILP (Discriminative Random Field)", val: "51.0% Subset Accuracy (0.65 JI, 0.030 HL)", pct: 51.0, cls: "fill-gray", style: "" },
+            { show: true, label: "InceptionV3 Feature Extractor Baseline", val: "40.0% Subset Accuracy (0.61 JI, 0.082 HL)", pct: 40.0, cls: "", style: "background: #9ca3af;" }
+          ]
+        },
+        "wetlab": {
+          gain: "+30 percentage points SA",
+          takeaway: "<strong>Paper Finding (Wetlab Protocol Actions, Table 1):</strong> DDN-ILP delivers a <strong>+30 percentage point gain in Subset Accuracy</strong> (from 0.35 to 0.65) and improves Jaccard Index from 0.64 to 0.76. In multi-step biology experiments, joint MPE inference allows predictions to account for learned dependencies among actions in multi-step procedures.",
+          rows: [
+            { show: true, label: "DDN-ILP (Ours, Structured MPE via ILP)", val: "65.0% Subset Accuracy (0.76 JI, 0.014 HL)", pct: 65.0, cls: "fill-green", style: "" },
+            { show: true, label: "DRF-ILP (Discriminative Random Field)", val: "60.0% Subset Accuracy (0.73 JI, 0.014 HL)", pct: 60.0, cls: "fill-gray", style: "" },
+            { show: true, label: "DDN-Greedy (Ours, Greedy Local Search)", val: "55.0% Subset Accuracy (0.68 JI, 0.014 HL)", pct: 55.0, cls: "fill-blue", style: "" },
+            { show: true, label: "InceptionV3 Feature Extractor Baseline", val: "35.0% Subset Accuracy (0.64 JI, 0.017 HL)", pct: 35.0, cls: "", style: "background: #9ca3af;" }
+          ]
+        },
+        "pascal": {
+          gain: "+18 percentage points SA",
+          takeaway: "<strong>Paper Finding (PASCAL-VOC Image Classification, Table 2):</strong> DDN-ILP achieves an <strong>+18 percentage point improvement in Subset Accuracy</strong> (from 0.71 to 0.89), reaches <strong>0.95 Jaccard Index</strong>, and slashes Hamming loss from 0.015 down to 0.006 compared to the MSRN baseline.",
+          rows: [
+            { show: true, label: "DDN-ILP (Ours, Structured MPE via ILP)", val: "89.0% Subset Accuracy (0.95 JI, 0.006 HL)", pct: 89.0, cls: "fill-green", style: "" },
+            { show: true, label: "DDN-Greedy (Ours, Greedy Local Search)", val: "86.0% Subset Accuracy (0.91 JI, 0.007 HL)", pct: 86.0, cls: "fill-blue", style: "" },
+            { show: true, label: "DRF-ILP (Discriminative Random Field)", val: "76.0% Subset Accuracy (0.88 JI, 0.019 HL)", pct: 76.0, cls: "fill-gray", style: "" },
+            { show: true, label: "MSRN Feature Extractor Baseline", val: "71.0% Subset Accuracy (0.85 JI, 0.015 HL)", pct: 71.0, cls: "", style: "background: #9ca3af;" }
+          ]
+        },
+        "coco": {
+          gain: "0.55 SA / 0.83 JI",
+          takeaway: "<strong>Paper Finding (MS-COCO 80 Categories, Table 2):</strong> Over 80 complex object categories, DDN-ILP outperforms Query2Label (Q2L) transformer in Subset Accuracy (0.51 &rarr; 0.55) and Jaccard Index (0.80 &rarr; 0.83). As illustrated in Figure 3, DDN-ILP recovers missed contextual objects (e.g. dining table, sports ball) and suppresses false positive detections.",
+          rows: [
+            { show: true, label: "DDN-ILP (Ours, Structured MPE via ILP)", val: "55.0% Subset Accuracy (0.83 JI, 0.88 F1)", pct: 55.0, cls: "fill-green", style: "" },
+            { show: true, label: "DDN-Greedy (Ours, Greedy Local Search)", val: "55.0% Subset Accuracy (0.82 JI, 0.87 F1)", pct: 55.0, cls: "fill-blue", style: "" },
+            { show: true, label: "DRF-ILP (Discriminative Random Field)", val: "54.0% Subset Accuracy (0.82 JI, 0.82 F1)", pct: 54.0, cls: "fill-gray", style: "" },
+            { show: true, label: "Q2L Transformer Baseline (Liu et al., 2021)", val: "51.0% Subset Accuracy (0.80 JI, 0.88 F1)", pct: 51.0, cls: "", style: "background: #9ca3af;" }
+          ]
+        },
+        "charades": {
+          gain: "0.33 JI / 0.36 Macro F1",
+          takeaway: "<strong>Paper Finding (Charades 157 Action Classes, Table 1):</strong> Across 157 fine-grained video action classes, DDN-ILP improves Jaccard Index from 0.29 to 0.33 and Macro F1 from 0.32 to 0.36 over the SlowFast 3D-CNN backbone, demonstrating effective structured inference even under extreme label diversity.",
+          rows: [
+            { show: true, label: "DDN-ILP (Ours, Structured MPE via ILP)", val: "33.0% Jaccard Index (0.36 Macro F1, 0.47 Micro F1)", pct: 33.0, cls: "fill-green", style: "" },
+            { show: true, label: "DDN-Greedy (Ours, Greedy Local Search)", val: "31.0% Jaccard Index (0.33 Macro F1, 0.44 Micro F1)", pct: 31.0, cls: "fill-blue", style: "" },
+            { show: true, label: "DRF-ILP (Discriminative Random Field)", val: "31.0% Jaccard Index (0.18 Macro F1, 0.21 Micro F1)", pct: 31.0, cls: "fill-gray", style: "" },
+            { show: true, label: "SlowFast 3D-CNN Baseline (Feichtenhofer et al.)", val: "29.0% Jaccard Index (0.32 Macro F1, 0.45 Micro F1)", pct: 29.0, cls: "", style: "background: #9ca3af;" }
+          ]
+        }
+      };
+
+      var rowElements = [
+        { row: row1, label: row1Label, val: row1Val, bar: row1Bar },
+        { row: row2, label: row2Label, val: row2Val, bar: row2Bar },
+        { row: row3, label: row3Label, val: row3Val, bar: row3Bar },
+        { row: row4, label: row4Label, val: row4Val, bar: row4Bar }
+      ];
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          buttons.forEach(function (b) { b.classList.remove("active"); });
+          btn.classList.add("active");
+          var ds = btn.getAttribute("data-dataset");
+          var d = datasetData[ds];
+          if (!d) return;
+
+          if (metricGain) metricGain.innerHTML = d.gain;
+          takeaway.innerHTML = d.takeaway;
+
+          d.rows.forEach(function (rData, idx) {
+            var el = rowElements[idx];
+            if (!rData.show) {
+              el.row.style.display = "none";
+            } else {
+              el.row.style.display = "";
+              el.label.innerHTML = rData.label;
+              el.val.innerHTML = rData.val;
+              el.bar.style.width = rData.pct + "%";
+              el.bar.className = "demo-progress-fill" + (rData.cls ? " " + rData.cls : "");
+              if (rData.style) {
+                el.bar.setAttribute("style", "width: " + rData.pct + "%; " + rData.style);
+              } else {
+                el.bar.setAttribute("style", "width: " + rData.pct + "%;");
+              }
+            }
+          });
+        });
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initDdnDemo);
+    } else {
+      initDdnDemo();
+    }
+  })();
 </script> <hr> <h2 id="neural-combinatorial-optimization">Neural Combinatorial Optimization</h2> <p>We develop learning-based methods for solving large-scale combinatorial optimization problems over structured domains. Our research combines deep reinforcement learning, representation learning, and classical optimization to learn effective decision policies for problems with large discrete action spaces, complex dependencies, and domain-specific constraints. A particular focus is graph-structured optimization, where learned representations can exploit topology and problem structure to make efficient sequential decisions.</p> <figure class="figure"> <img src="/assets/img/publication_preview/RELINK.png" class="figure-img img-fluid" alt="RELINK deep reinforcement learning framework for edge activation"> </figure> <p>Our current work investigates neural combinatorial optimization for decision-making over complex networks, including problems in which solutions require sequentially selecting or modifying nodes, edges, or other discrete structures. These methods aim to amortize expensive optimization across problem instances by learning policies that capture reusable structural patterns while accommodating operational, privacy, and other application-specific constraints.</p> <ul> <li> <strong>RELINK: Edge Activation for Closed Network Influence Maximization via Deep Reinforcement Learning</strong> (<a href="https://dl.acm.org/doi/10.1145/3746252.3761006" rel="external nofollow noopener" target="_blank">CIKM 2025 Oral</a>) <ul> <li>Formulates edge-level influence maximization in privacy-constrained closed networks (IM-CSN) as a Markov Decision Process, introducing an edge-centric Double DQN framework with SVD node embeddings and edge-aware aggregation trained on true marginal influence gain rewards.</li> <li>Evaluated across 20 real-world social networks (including <em>FilmTrust</em>, <em>Email-Eu-core</em>, <em>Wiki-Vote</em>, <em>MUSAE Facebook</em>, <em>Math Overflow</em>, <em>Deezer</em>, and <em>Epinions</em>) using 100,000 Monte Carlo simulations under the Independent Cascade model.</li> <li>Consistently outperforms existing methods in over 90% of experimental settings, achieving up to 15% higher influence spread, a 95.0% win rate (456/480) against the specialized IM-CSN baseline PSNA, and superior scalability via GPU-accelerated sequential inference on large-scale graphs.</li> </ul> </li> </ul> <details class="interactive-demo-wrapper" id="relink-details-wrapper"> <summary class="interactive-demo-summary"> <span class="interactive-demo-summary-title"> <span class="interactive-demo-summary-badge">Interactive Demo</span> <span>RELINK Edge Activation Problem &amp; Benchmark Explorer</span> </span> <span class="interactive-demo-summary-chevron">▸</span> </summary> <div class="interactive-demo-card" id="demo-relink-card"> <div class="demo-card-header"> <div class="demo-title-group"> <h4>RELINK: Edge Activation for Closed-Network Influence Maximization</h4> <p> Conceptual walk-through of the edge-activation problem formulation under budget <em>k</em>, followed by empirical benchmark results from CIKM 2025. </p> </div> <div class="demo-badges"> <span class="demo-badge demo-badge-oral">CIKM 2025 Oral</span> <span class="demo-badge demo-badge-sim">Combinatorial Optimization over Graphs</span> </div> </div> <div class="demo-workload-box" style="margin-top: 0.5rem; margin-bottom: 1.25rem;"> <div class="workload-header" style="flex-wrap: wrap; gap: 0.6rem; align-items: center;"> <div> <h5 style="margin-bottom: 0.2rem;"> 1. What is the Problem? Influence Maximization in Closed Social Networks (IM-CSN) </h5> <span class="badge badge-info" style="font-size: 0.72rem; font-weight: normal;"> Conceptual Problem Formulation • Paper Figure 1 (k = 2) </span> </div> </div> <p style="font-size: 0.83rem; color: var(--global-text-color-light, #6b7280); margin: 0 0 0.5rem; line-height: 1.5;"> <strong>Problem Formulation:</strong> In closed social networks, content propagation is restricted across privacy boundaries. Starting from a seed node, the goal is to choose closed candidate edges to activate subject to an edge activation budget <strong><em>k</em></strong> (where <em>k</em> is the maximum number of candidate edges that may be activated) to maximize total influence spread under the Independent Cascade (IC) diffusion model. </p> <div style="font-size: 0.78rem; color: #64748b; font-style: italic; margin-bottom: 0.75rem; padding: 0.45rem 0.65rem; background: rgba(0,0,0,0.02); border-radius: 4px; border-left: 2px solid #94a3b8; line-height: 1.45;"> <strong>Clarification:</strong> This example illustrates the sequential optimization problem (Example 1, Figure 1 from the CIKM 2025 paper). It does not represent RELINK’s learned edge-selection policy. </div> <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center; margin: 0.5rem 0 0.85rem; padding: 0.6rem 0.75rem; background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px;"> <div class="workload-controls" role="group" aria-label="Step selector"> <button type="button" class="workload-btn relink-step-btn active" data-step="0">Step 0: Initial State</button> <button type="button" class="workload-btn relink-step-btn" data-step="1">Step 1: Activate (a → h)</button> <button type="button" class="workload-btn relink-step-btn" data-step="2">Step 2: Activate (a → d) &amp; Prune</button> <button type="button" class="workload-btn relink-step-btn" data-step="3">Step 3: Cascade Result</button> </div> <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;"> <span style="font-size: 0.8rem; font-weight: 700; color: var(--global-text-color, #111827); background: rgba(0,0,0,0.04); padding: 0.25rem 0.55rem; border-radius: 4px; border: 1px solid var(--global-divider-color, rgba(0,0,0,0.08));"> Budget Used (Node a): <strong id="relink-budget-val" style="color: #ef4444;">0 / 2</strong> </span> <button type="button" class="workload-btn" id="relink-btn-prev" disabled style="padding: 0.25rem 0.65rem;">← Prev</button> <button type="button" class="workload-btn" id="relink-btn-next" style="padding: 0.25rem 0.65rem; font-weight: 700;">Next Step →</button> <button type="button" class="workload-btn" id="relink-btn-reset" style="padding: 0.25rem 0.65rem;">↺ Reset</button> </div> </div> <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.85rem 0.5rem; margin-bottom: 0.75rem;"> <svg viewbox="0 0 450 270" id="relink-mech-svg" preserveaspectratio="xMidYMid meet" style="width: 100%; height: auto; max-height: 270px; display: block;" aria-label="Conceptual closed network edge activation step-through inspired by Paper Figure 1"> <defs> <marker id="relink-arrow-red" viewbox="0 0 10 10" refx="7" refy="5" markerwidth="6" markerheight="6" orient="auto-start-reverse"> <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#ef4444"></path> </marker> <marker id="relink-arrow-green" viewbox="0 0 10 10" refx="7" refy="5" markerwidth="6" markerheight="6" orient="auto-start-reverse"> <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#10b981"></path> </marker> <marker id="relink-arrow-dormant" viewbox="0 0 10 10" refx="7" refy="5" markerwidth="6" markerheight="6" orient="auto-start-reverse"> <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#475569"></path> </marker> <marker id="relink-arrow-pruned" viewbox="0 0 10 10" refx="7" refy="5" markerwidth="6" markerheight="6" orient="auto-start-reverse"> <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#94a3b8"></path> </marker> </defs> <g id="relink-edges"> <line id="edge-a-b" x1="97.8" y1="100.4" x2="169.0" y2="47.0" stroke="#ef4444" stroke-width="2.2" marker-end="url(#relink-arrow-red)"></line> <line id="edge-a-h" x1="101.0" y1="109.4" x2="190.0" y2="105.8" stroke="#ef4444" stroke-width="2.2" marker-end="url(#relink-arrow-red)"></line> <line id="edge-a-d" x1="98.4" y1="118.7" x2="168.2" y2="164.1" stroke="#ef4444" stroke-width="2.2" marker-end="url(#relink-arrow-red)"></line> <line id="edge-a-c" x1="85.0" y1="126.0" x2="85.0" y2="185.0" stroke="#ef4444" stroke-width="2.2" marker-end="url(#relink-arrow-red)"></line> <line id="edge-h-i" x1="224.3" y1="97.8" x2="332.1" y2="43.9" stroke="#475569" stroke-width="1.8" marker-end="url(#relink-arrow-dormant)"></line> <line id="edge-h-j" x1="226.0" y1="105.0" x2="345.0" y2="105.0" stroke="#475569" stroke-width="1.8" marker-end="url(#relink-arrow-dormant)"></line> <line id="edge-d-g" x1="201.0" y1="174.0" x2="330.0" y2="166.2" stroke="#475569" stroke-width="1.8" marker-end="url(#relink-arrow-dormant)"></line> <line id="edge-d-e" x1="175.9" y1="188.2" x2="151.4" y2="223.6" stroke="#475569" stroke-width="1.8" marker-end="url(#relink-arrow-dormant)"></line> <line id="edge-d-f" x1="196.7" y1="185.9" x2="240.3" y2="226.4" stroke="#475569" stroke-width="1.8" marker-end="url(#relink-arrow-dormant)"></line> </g> <g id="relink-nodes"> <g id="node-a" transform="translate(85, 110)"> <circle class="relink-node-circle" r="18" fill="#fee2e2" stroke="#ef4444" stroke-width="2.5"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="12" font-weight="700" fill="#b91c1c">a</text> <rect x="-14" y="22" width="28" height="13" rx="3" fill="#ef4444"></rect> <text x="0" y="31.5" text-anchor="middle" font-size="7.5" font-weight="700" fill="#ffffff">Seed</text> </g> <g id="node-b" transform="translate(185, 35)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">b</text> </g> <g id="node-h" transform="translate(210, 105)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">h</text> </g> <g id="node-d" transform="translate(185, 175)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">d</text> </g> <g id="node-c" transform="translate(85, 205)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">c</text> </g> <g id="node-i" transform="translate(350, 35)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">i</text> </g> <g id="node-j" transform="translate(365, 105)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">j</text> </g> <g id="node-g" transform="translate(350, 165)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">g</text> </g> <g id="node-e" transform="translate(140, 240)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">e</text> </g> <g id="node-f" transform="translate(255, 240)"> <circle class="relink-node-circle" r="16" fill="#ffffff" stroke="#475569" stroke-width="1.8"></circle> <text class="relink-node-text" text-anchor="middle" y="4" font-size="11" font-weight="700" fill="#1e293b">f</text> </g> </g> </svg> <div style="display: flex; flex-wrap: wrap; gap: 0.85rem; justify-content: center; align-items: center; margin-top: 0.6rem; font-size: 0.76rem; color: var(--global-text-color-light, #6b7280);"> <span style="display: inline-flex; align-items: center; gap: 0.35rem;"> <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #fee2e2; border: 2px solid #ef4444;"></span> <span>Seed Node (a)</span> </span> <span style="display: inline-flex; align-items: center; gap: 0.35rem;"> <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #ecfdf5; border: 2px solid #10b981;"></span> <span>Influenced Node</span> </span> <span style="display: inline-flex; align-items: center; gap: 0.35rem;"> <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #ffffff; border: 2px solid #475569;"></span> <span>Inactive Node</span> </span> <span style="display: inline-flex; align-items: center; gap: 0.35rem;"> <span style="display: inline-block; width: 18px; height: 2px; background: #ef4444;"></span> <span>Candidate Edge</span> </span> <span style="display: inline-flex; align-items: center; gap: 0.35rem;"> <span style="display: inline-block; width: 18px; height: 2.5px; background: #10b981;"></span> <span>Activated Edge</span> </span> <span style="display: inline-flex; align-items: center; gap: 0.35rem;"> <span style="display: inline-block; width: 18px; height: 2px; border-top: 2px dashed #94a3b8;"></span> <span>Pruned Edge (Budget Exhausted)</span> </span> <span style="display: inline-flex; align-items: center; gap: 0.35rem;"> <span style="display: inline-block; width: 18px; height: 1.8px; background: #475569;"></span> <span>Network Link</span> </span> </div> </div> <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.65rem; margin-bottom: 0.75rem;"> <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.55rem 0.7rem; text-align: center;"> <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280);">Current Step</div> <div id="mech-step-label" style="font-size: 1.05rem; font-weight: 700; color: var(--global-text-color, #111827);">Step 0 of 3</div> <div style="font-size: 0.7rem; color: #64748b;">Walkthrough progress</div> </div> <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.55rem 0.7rem; text-align: center;"> <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280);">Activation Budget</div> <div style="font-size: 1.05rem; font-weight: 700; color: var(--global-text-color, #111827);">k = 2 edges</div> <div style="font-size: 0.7rem; color: #64748b;">Max out-degree limit</div> </div> <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.55rem 0.7rem; text-align: center;"> <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280);">Influenced Spread</div> <div id="mech-spread-val" style="font-size: 1.05rem; font-weight: 700; color: #ef4444;">1 / 10 nodes</div> <div id="mech-spread-sub" style="font-size: 0.7rem; color: #ef4444; font-weight: 600;">Seed active</div> </div> <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.55rem 0.7rem; text-align: center;"> <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280);">Budget Status</div> <div id="mech-budget-status" style="font-size: 0.88rem; font-weight: 700; color: var(--global-text-color, #111827); padding-top: 0.15rem;">0 / 2 used</div> <div style="font-size: 0.7rem; color: #64748b;">Remaining budget: 2</div> </div> </div> <div id="relink-mech-explanation" class="demo-video-caption" style="margin: 0; padding: 0.75rem 0.9rem; border-radius: 6px; background: rgba(0,0,0,0.03); border-left: 3px solid #ef4444; font-size: 0.84rem; line-height: 1.5;"> <strong>Step 0: Initial Closed Network &amp; Seed Node</strong><br> In a closed social network, content propagation is constrained. The process begins with seed node <strong>a</strong> (red). Its outgoing links <code>(a→b, a→h, a→d, a→c)</code> form the initial set of <strong>candidate edges</strong> (red arrows). Dormant links deeper in the network remain inactive (dark arrows). The edge activation budget <strong><em>k</em> = 2</strong> allows at most 2 candidate edges to be activated from node <em>a</em>. </div> </div> <div style="margin-top: 1.25rem;"> <h5 style="margin-bottom: 0.35rem; font-size: 1.05rem; font-weight: 700;"> 2. How Well Does RELINK Solve It? Empirical Benchmark Results from CIKM 2025 </h5> <p style="font-size: 0.83rem; color: var(--global-text-color-light, #6b7280); margin-bottom: 0.75rem;"> Empirical evaluation of RELINK (edge-centric <em>n</em>-step Double DQN) across 20 real-world social networks under the Independent Cascade (IC) model (100,000 Monte Carlo simulations per instance). </p> </div> <div class="demo-metrics-grid"> <div class="demo-metric-card highlight-green"> <div class="metric-name"> <span>RELINK (DRL Policy)</span> <span class="badge badge-success" style="font-size: 0.72rem;">Our Work</span> </div> <div class="metric-speedup speedup-ssmp" id="metric-relink-gain">Up to +15% Spread</div> <div class="metric-stats"> <strong>Formulation:</strong> Edge-centric <em>n</em>-step Double DQN with SVD embeddings<br> <strong>Training:</strong> True marginal influence gain rewards (IC model)<br> <strong>Win Rate:</strong> 456 / 480 wins (95.0%) across 20 real networks </div> </div> <div class="demo-metric-card highlight-blue"> <div class="metric-name"> <span>PSNA (Huang et al.)</span> <span class="badge badge-info" style="font-size: 0.72rem;">IM-CSN Baseline</span> </div> <div class="metric-speedup speedup-itself">95.0% RELINK Win</div> <div class="metric-stats"> <strong>Formulation:</strong> Practical Subnetwork Augmentation heuristic<br> <strong>Complexity:</strong> Ο(<em>I</em>(|<em>V</em>| + |<em>E</em>|) log |<em>V</em>| + |<em>V</em>|<em>d</em><sub><em>m</em></sub> log <em>d</em><sub><em>m</em></sub>)<br> <strong>Runtime:</strong> Deteriorates on large graphs; caught by budget saturation </div> </div> <div class="demo-metric-card highlight-gray"> <div class="metric-name"> <span>Traditional Baselines</span> <span class="badge badge-secondary" style="font-size: 0.72rem;">Degree &amp; Random</span> </div> <div class="metric-speedup speedup-baseline">&gt;96% RELINK Win</div> <div class="metric-stats"> <strong>Formulation:</strong> Static degree centrality &amp; uniform random selection<br> <strong>Win Rate:</strong> 464 / 480 vs. Degree, 462 / 480 vs. Random &amp; FoF<br> <strong>Limitation:</strong> Static local connectivity metrics overlook downstream influence dynamics </div> </div> </div> <div class="demo-workload-box"> <div class="workload-header"> <h5> Empirical Results from CIKM 2025: Baseline Comparisons (Figure 3, 480 Experiments) </h5> <div class="workload-controls"> <button type="button" class="workload-btn relink-btn active" data-view="all">All Baselines Overview</button> <button type="button" class="workload-btn relink-btn" data-view="psna">vs. PSNA (IM-CSN)</button> <button type="button" class="workload-btn relink-btn" data-view="degree">vs. Degree Centrality</button> <button type="button" class="workload-btn relink-btn" data-view="random_fof">vs. Random &amp; FoF</button> </div> </div> <div class="demo-progress-group" id="relink-progress-group"> <div class="demo-progress-row" id="relink-row-1"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="relink-row1-label">RELINK vs. Degree Centrality</span> <span class="demo-progress-val speedup-ssmp" id="relink-row1-val">96.7% (464 / 480 wins)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-green" id="relink-row1-bar" style="width: 96.7%;"></div> </div> </div> <div class="demo-progress-row" id="relink-row-2"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="relink-row2-label">RELINK vs. Random Selection</span> <span class="demo-progress-val speedup-itself" id="relink-row2-val">96.2% (462 / 480 wins)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-blue" id="relink-row2-bar" style="width: 96.2%;"></div> </div> </div> <div class="demo-progress-row" id="relink-row-3"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="relink-row3-label">RELINK vs. Friend-of-Friend (FoF)</span> <span class="demo-progress-val speedup-baseline" id="relink-row3-val">96.2% (462 / 480 wins)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill fill-gray" id="relink-row3-bar" style="width: 96.2%;"></div> </div> </div> <div class="demo-progress-row" id="relink-row-4"> <div class="demo-progress-meta"> <span class="demo-progress-name" id="relink-row4-label">RELINK vs. PSNA (Huang et al., IM-CSN Baseline)</span> <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="relink-row4-val">95.0% (456 / 480 wins)</span> </div> <div class="demo-progress-track"> <div class="demo-progress-fill" id="relink-row4-bar" style="background: #10b981; width: 95.0%;"></div> </div> </div> </div> <p class="demo-video-caption" id="relink-takeaway" style="margin-top: 0.85rem; margin-bottom: 0;"> <strong>Paper Finding (Figure 3 Contingency Matrix &amp; Section 6.2):</strong> Across 480 total experimental configurations spanning 20 real-world social networks (evaluated with 100,000 Monte Carlo runs under the IC model), RELINK outperforms all competing methods in at least 95% of experiments. In low edge budget regimes (<em>k</em> ≤ 10), Section 6.3 reports that RELINK frequently achieves influence spread improvements exceeding 15% over PSNA. </p> </div> </div> </details> <script>
 (function() {
   function initRelinkDemo() {
