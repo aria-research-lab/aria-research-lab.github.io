@@ -7,199 +7,256 @@
     <span class="interactive-demo-summary-chevron">&#9654;</span>
   </summary>
   <div class="interactive-demo-card" id="neural-inference-demo">
-  <div class="demo-card-header">
-    <div class="demo-title-group">
-      <h4>Interactive Benchmark: Neural Inference Latency & Speedup</h4>
-      <p>Empirical latency and throughput comparison of our methods (<strong>SSMP</strong>, <strong>ITSELF</strong>) against traditional combinatorial baselines.</p>
-    </div>
-    <div class="demo-badges">
-      <span class="demo-badge demo-badge-oral">AAAI Oral</span>
-      <span class="demo-badge demo-badge-spotlight">NeurIPS Spotlight</span>
-      <span class="demo-badge demo-badge-sim">Interactive Demo</span>
-    </div>
-  </div>
-
-  <div class="demo-video-wrapper" id="benchmark-video-wrapper" style="text-align: center;">
-    <img src="{{ '/assets/img/publication_preview/itself_comparison.gif' | relative_url }}"
-         class="figure-img img-fluid"
-         style="width: 100%; border-radius: 6px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);"
-         alt="Neural inference latency and speedup benchmark comparison: SSMP vs ITSELF vs Baseline">
-  </div>
-  <p class="demo-video-caption" id="benchmark-caption">
-    <strong>Benchmark Visualization:</strong> One Left&rarr;Right traverse represents 1 inference query. In the time the classical baseline takes to complete 1 inference query (2.703 s/inf), <strong>ITSELF</strong> completes an iterative test-time optimization pass (784 ms/inf, 3.4&times; faster, 3 traverses), while <strong>SSMP</strong> processes over 273,000 queries via amortized continuous relaxation (9.87 &micro;s/inf, &gt;273,000&times; faster, 273,860 traverses).
-  </p>
-
-  <div class="demo-metrics-grid">
-    <div class="demo-metric-card highlight-green">
-      <div class="metric-name">
-        <span>SSMP</span>
-        <span class="badge badge-success" style="font-size: 0.72rem;">AAAI Oral</span>
+    <div class="demo-card-header">
+      <div class="demo-title-group">
+        <h4>Interactive Benchmark: Neural Inference Latency & Speedup</h4>
+        <p>
+          Empirical latency and throughput comparison of our methods (<strong>SSMP</strong>, <strong>ITSELF</strong>) against traditional
+          combinatorial baselines.
+        </p>
       </div>
-      <div class="metric-speedup speedup-ssmp" id="card-speedup-ssmp">&times;273,860.2</div>
-      <div class="metric-stats" id="card-stats-ssmp">
-        <strong>1 inference:</strong> 9.870 &micro;s<br>
-        <strong>Throughput:</strong> 101,317.12 /s<br>
-        <strong>Traverses:</strong> 273,860 one-way (136,930 round-trips)
+      <div class="demo-badges">
+        <span class="demo-badge demo-badge-oral">AAAI Oral</span>
+        <span class="demo-badge demo-badge-spotlight">NeurIPS Spotlight</span>
+        <span class="demo-badge demo-badge-sim">Interactive Demo</span>
       </div>
     </div>
 
-    <div class="demo-metric-card highlight-blue">
-      <div class="metric-name">
-        <span>ITSELF</span>
-        <span class="badge badge-info" style="font-size: 0.72rem;">NeurIPS Spotlight</span>
-      </div>
-      <div class="metric-speedup speedup-itself" id="card-speedup-itself">&times;3.4</div>
-      <div class="metric-stats" id="card-stats-itself">
-        <strong>1 inference:</strong> 784.000 ms<br>
-        <strong>Throughput:</strong> 1.28 /s<br>
-        <strong>Traverses:</strong> 3 one-way (1 round-trip)
-      </div>
+    <div class="demo-video-wrapper" id="benchmark-video-wrapper" style="text-align: center; position: relative">
+      <img
+        id="ssmp-benchmark-gif"
+        src="{{ '/assets/img/publication_preview/itself_comparison.gif' | relative_url }}"
+        class="figure-img img-fluid gif-replayable"
+        style="width: 100%; border-radius: 6px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); cursor: pointer"
+        title="Click to replay animation"
+        alt="Neural inference latency and speedup benchmark comparison: SSMP vs ITSELF vs Baseline"
+      />
+      <button
+        type="button"
+        class="gif-replay-badge"
+        id="btn-replay-ssmp-gif"
+        title="Replay animation"
+        style="position: absolute; bottom: 12px; right: 12px; z-index: 2; margin: 0"
+      >
+        &#8635; Replay
+      </button>
     </div>
-
-    <div class="demo-metric-card highlight-gray">
-      <div class="metric-name">
-        <span>Traditional Baseline</span>
-        <span class="badge badge-secondary" style="font-size: 0.72rem;">Exact Solver</span>
-      </div>
-      <div class="metric-speedup speedup-baseline" id="card-speedup-baseline">&times;1.0</div>
-      <div class="metric-stats" id="card-stats-baseline">
-        <strong>1 inference:</strong> 2.703 s<br>
-        <strong>Throughput:</strong> 0.37 /s<br>
-        <strong>Traverses:</strong> 1 completed in window
-      </div>
-    </div>
-
-  </div>
-
-  <div class="demo-workload-box">
-    <div class="workload-header">
-      <h5>Interactive Workload Simulator</h5>
-      <div class="workload-controls" role="group" aria-label="Query workload selector">
-        <button type="button" class="workload-btn" data-count="1000">1,000 queries</button>
-        <button type="button" class="workload-btn active" data-count="10000">10,000 queries</button>
-        <button type="button" class="workload-btn" data-count="100000">100,000 queries</button>
-        <button type="button" class="workload-btn" data-count="1000000">1,000,000 queries</button>
-      </div>
-    </div>
-    <div class="workload-results-grid">
-      <div class="workload-result-item">
-        <div class="item-label">SSMP Execution Time</div>
-        <div class="item-val speedup-ssmp" id="time-ssmp">98.7 ms</div>
-      </div>
-      <div class="workload-result-item">
-        <div class="item-label">ITSELF Execution Time</div>
-        <div class="item-val speedup-itself" id="time-itself">2.18 hours</div>
-      </div>
-      <div class="workload-result-item">
-        <div class="item-label">Baseline Execution Time</div>
-        <div class="item-val speedup-baseline" id="time-baseline">7.51 hours</div>
-      </div>
-    </div>
-    <p class="demo-video-caption" id="calc-speedup-highlight" style="margin-top: 0.65rem; margin-bottom: 0;">
-      <strong>Key Takeaway:</strong> For 10,000 queries, SSMP finishes in <strong>98.7 ms</strong>, whereas the traditional baseline stalls for <strong>7.51 hours</strong> (over 273,000&times; speedup), unlocking real-time probabilistic reasoning.
+    <p class="demo-video-caption" id="benchmark-caption">
+      <strong>Benchmark Visualization:</strong> One Left&rarr;Right traverse represents 1 inference query. In the time the classical baseline takes to
+      complete 1 inference query (2.703 s/inf), <strong>ITSELF</strong> completes an iterative test-time optimization pass (784 ms/inf, 3.4&times;
+      faster, 3 traverses), while <strong>SSMP</strong> processes over 273,000 queries via amortized continuous relaxation (9.87 &micro;s/inf,
+      &gt;273,000&times; faster, 273,860 traverses).
     </p>
+
+    <div class="demo-metrics-grid">
+      <div class="demo-metric-card highlight-green">
+        <div class="metric-name">
+          <span>SSMP</span>
+          <span class="badge badge-success" style="font-size: 0.72rem">AAAI Oral</span>
+        </div>
+        <div class="metric-speedup speedup-ssmp" id="card-speedup-ssmp">&times;273,860.2</div>
+        <div class="metric-stats" id="card-stats-ssmp">
+          <strong>1 inference:</strong> 9.870 &micro;s<br />
+          <strong>Throughput:</strong> 101,317.12 /s<br />
+          <strong>Traverses:</strong> 273,860 one-way (136,930 round-trips)
+        </div>
+      </div>
+
+      <div class="demo-metric-card highlight-blue">
+        <div class="metric-name">
+          <span>ITSELF</span>
+          <span class="badge badge-info" style="font-size: 0.72rem">NeurIPS Spotlight</span>
+        </div>
+        <div class="metric-speedup speedup-itself" id="card-speedup-itself">&times;3.4</div>
+        <div class="metric-stats" id="card-stats-itself">
+          <strong>1 inference:</strong> 784.000 ms<br />
+          <strong>Throughput:</strong> 1.28 /s<br />
+          <strong>Traverses:</strong> 3 one-way (1 round-trip)
+        </div>
+      </div>
+
+      <div class="demo-metric-card highlight-gray">
+        <div class="metric-name">
+          <span>Traditional Baseline</span>
+          <span class="badge badge-secondary" style="font-size: 0.72rem">Exact Solver</span>
+        </div>
+        <div class="metric-speedup speedup-baseline" id="card-speedup-baseline">&times;1.0</div>
+        <div class="metric-stats" id="card-stats-baseline">
+          <strong>1 inference:</strong> 2.703 s<br />
+          <strong>Throughput:</strong> 0.37 /s<br />
+          <strong>Traverses:</strong> 1 completed in window
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-workload-box">
+      <div class="workload-header">
+        <h5>Interactive Workload Simulator</h5>
+        <div class="workload-controls" role="group" aria-label="Query workload selector">
+          <button type="button" class="workload-btn" data-count="1000">1,000 queries</button>
+          <button type="button" class="workload-btn active" data-count="10000">10,000 queries</button>
+          <button type="button" class="workload-btn" data-count="100000">100,000 queries</button>
+          <button type="button" class="workload-btn" data-count="1000000">1,000,000 queries</button>
+        </div>
+      </div>
+      <div class="workload-results-grid">
+        <div class="workload-result-item">
+          <div class="item-label">SSMP Execution Time</div>
+          <div class="item-val speedup-ssmp" id="time-ssmp">98.7 ms</div>
+        </div>
+        <div class="workload-result-item">
+          <div class="item-label">ITSELF Execution Time</div>
+          <div class="item-val speedup-itself" id="time-itself">2.18 hours</div>
+        </div>
+        <div class="workload-result-item">
+          <div class="item-label">Baseline Execution Time</div>
+          <div class="item-val speedup-baseline" id="time-baseline">7.51 hours</div>
+        </div>
+      </div>
+      <p class="demo-video-caption" id="calc-speedup-highlight" style="margin-top: 0.65rem; margin-bottom: 0">
+        <strong>Key Takeaway:</strong> For 10,000 queries, SSMP finishes in <strong>98.7 ms</strong>, whereas the traditional baseline stalls for
+        <strong>7.51 hours</strong> (over 273,000&times; speedup), unlocking real-time probabilistic reasoning.
+      </p>
+    </div>
   </div>
-</div>
 </details>
 
 <script>
-(function() {
-  var BENCHMARK_CONFIG = {
-    // Ground-truth latencies per single inference query in seconds
-    baselineLatency: 2.703,
-    itselfLatency: 0.784,
-    ssmpLatency: 0.00000987, // 9.870 µs
+  (function () {
+    var BENCHMARK_CONFIG = {
+      // Ground-truth latencies per single inference query in seconds
+      baselineLatency: 2.703,
+      itselfLatency: 0.784,
+      ssmpLatency: 0.00000987, // 9.870 µs
 
-    // Comparison interval represents 1 full baseline query duration (2.703 s)
-    get comparisonWindow() {
-      return this.baselineLatency;
-    },
+      // Comparison interval represents 1 full baseline query duration (2.703 s)
+      get comparisonWindow() {
+        return this.baselineLatency;
+      },
 
-    // Derived throughputs (inferences / second)
-    get baselineThroughput() {
-      return 1 / this.baselineLatency;
-    },
-    get itselfThroughput() {
-      return 1 / this.itselfLatency;
-    },
-    get ssmpThroughput() {
-      return 1 / this.ssmpLatency;
-    },
+      // Derived throughputs (inferences / second)
+      get baselineThroughput() {
+        return 1 / this.baselineLatency;
+      },
+      get itselfThroughput() {
+        return 1 / this.itselfLatency;
+      },
+      get ssmpThroughput() {
+        return 1 / this.ssmpLatency;
+      },
 
-    // Derived speedups relative to baseline
-    get itselfSpeedup() {
-      return this.baselineLatency / this.itselfLatency;
-    },
-    get ssmpSpeedup() {
-      return this.baselineLatency / this.ssmpLatency;
-    },
+      // Derived speedups relative to baseline
+      get itselfSpeedup() {
+        return this.baselineLatency / this.itselfLatency;
+      },
+      get ssmpSpeedup() {
+        return this.baselineLatency / this.ssmpLatency;
+      },
 
-    // Traverses completed during the comparison interval
-    get baselineTraverses() {
-      return Math.floor(this.comparisonWindow * this.baselineThroughput);
-    },
-    get itselfTraverses() {
-      return Math.floor(this.comparisonWindow * this.itselfThroughput);
-    },
-    get ssmpTraverses() {
-      return Math.round(this.comparisonWindow * this.ssmpThroughput);
+      // Traverses completed during the comparison interval
+      get baselineTraverses() {
+        return Math.floor(this.comparisonWindow * this.baselineThroughput);
+      },
+      get itselfTraverses() {
+        return Math.floor(this.comparisonWindow * this.itselfThroughput);
+      },
+      get ssmpTraverses() {
+        return Math.round(this.comparisonWindow * this.ssmpThroughput);
+      },
+    };
+
+    function formatTime(seconds) {
+      if (seconds < 0.001) return (seconds * 1000000).toFixed(1) + " µs";
+      if (seconds < 1) return (seconds * 1000).toFixed(1) + " ms";
+      if (seconds < 60) return seconds.toFixed(2) + " sec";
+      if (seconds < 3600) return (seconds / 60).toFixed(2) + " min";
+      var hours = seconds / 3600;
+      if (hours < 24) return hours.toFixed(2) + " hours";
+      return (hours / 24).toFixed(1) + " days";
     }
-  };
 
-  function formatTime(seconds) {
-    if (seconds < 0.001) return (seconds * 1000000).toFixed(1) + " µs";
-    if (seconds < 1) return (seconds * 1000).toFixed(1) + " ms";
-    if (seconds < 60) return seconds.toFixed(2) + " sec";
-    if (seconds < 3600) return (seconds / 60).toFixed(2) + " min";
-    var hours = seconds / 3600;
-    if (hours < 24) return hours.toFixed(2) + " hours";
-    return (hours / 24).toFixed(1) + " days";
-  }
+    function initBenchmarkCalculator() {
+      var buttons = document.querySelectorAll("#neural-inference-demo .workload-btn");
+      var resSSMP = document.getElementById("time-ssmp");
+      var resITSELF = document.getElementById("time-itself");
+      var resBase = document.getElementById("time-baseline");
+      var resSpeedup = document.getElementById("calc-speedup-highlight");
 
-  function initBenchmarkCalculator() {
-    var buttons = document.querySelectorAll("#neural-inference-demo .workload-btn");
-    var resSSMP = document.getElementById("time-ssmp");
-    var resITSELF = document.getElementById("time-itself");
-    var resBase = document.getElementById("time-baseline");
-    var resSpeedup = document.getElementById("calc-speedup-highlight");
+      if (!buttons.length || !resSSMP || !resITSELF || !resBase) return;
 
-    if (!buttons.length || !resSSMP || !resITSELF || !resBase) return;
+      function updateWorkload(count) {
+        var tSSMP = count * BENCHMARK_CONFIG.ssmpLatency;
+        var tITSELF = count * BENCHMARK_CONFIG.itselfLatency;
+        var tBase = count * BENCHMARK_CONFIG.baselineLatency;
 
-    function updateWorkload(count) {
-      var tSSMP = count * BENCHMARK_CONFIG.ssmpLatency;
-      var tITSELF = count * BENCHMARK_CONFIG.itselfLatency;
-      var tBase = count * BENCHMARK_CONFIG.baselineLatency;
+        resSSMP.textContent = formatTime(tSSMP);
+        resITSELF.textContent = formatTime(tITSELF);
+        resBase.textContent = formatTime(tBase);
 
-      resSSMP.textContent = formatTime(tSSMP);
-      resITSELF.textContent = formatTime(tITSELF);
-      resBase.textContent = formatTime(tBase);
-
-      if (resSpeedup) {
-        var speedupRatio = tBase / tSSMP;
-        if (count >= 10000) {
-          resSpeedup.innerHTML = "<strong>Key Takeaway:</strong> For " + count.toLocaleString("en-US") + " queries, SSMP finishes in <strong>" + formatTime(tSSMP) + "</strong>, whereas the traditional baseline stalls for <strong>" + formatTime(tBase) + "</strong> (over " + Math.floor(speedupRatio / 1000).toLocaleString("en-US") + ",000&times; speedup), unlocking real-time probabilistic reasoning.";
-        } else {
-          resSpeedup.innerHTML = "<strong>Key Takeaway:</strong> SSMP processes queries in real time (&lt;10 &micro;s per query), delivering over " + Math.floor(BENCHMARK_CONFIG.ssmpSpeedup / 1000).toLocaleString("en-US") + ",000&times; speedup over the combinatorial baseline.";
+        if (resSpeedup) {
+          var speedupRatio = tBase / tSSMP;
+          if (count >= 10000) {
+            resSpeedup.innerHTML =
+              "<strong>Key Takeaway:</strong> For " +
+              count.toLocaleString("en-US") +
+              " queries, SSMP finishes in <strong>" +
+              formatTime(tSSMP) +
+              "</strong>, whereas the traditional baseline stalls for <strong>" +
+              formatTime(tBase) +
+              "</strong> (over " +
+              Math.floor(speedupRatio / 1000).toLocaleString("en-US") +
+              ",000&times; speedup), unlocking real-time probabilistic reasoning.";
+          } else {
+            resSpeedup.innerHTML =
+              "<strong>Key Takeaway:</strong> SSMP processes queries in real time (&lt;10 &micro;s per query), delivering over " +
+              Math.floor(BENCHMARK_CONFIG.ssmpSpeedup / 1000).toLocaleString("en-US") +
+              ",000&times; speedup over the combinatorial baseline.";
+          }
         }
+      }
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          buttons.forEach(function (b) {
+            b.classList.remove("active");
+          });
+          btn.classList.add("active");
+          var count = parseInt(btn.getAttribute("data-count"), 10);
+          if (!isNaN(count)) {
+            updateWorkload(count);
+          }
+        });
+      });
+
+      /* Replay GIF handler: resets the animation from frame 0 */
+      var gifImg = document.getElementById("ssmp-benchmark-gif");
+      var btnReplay = document.getElementById("btn-replay-ssmp-gif");
+      var detailsWrapper = document.getElementById("neural-inference-details");
+
+      function replayGif() {
+        if (gifImg) {
+          var baseSrc = gifImg.src.split("?")[0];
+          gifImg.src = baseSrc + "?t=" + Date.now();
+        }
+      }
+
+      if (btnReplay) btnReplay.addEventListener("click", replayGif);
+      if (gifImg) gifImg.addEventListener("click", replayGif);
+
+      // When details container is opened, restart GIF from frame 0
+      if (detailsWrapper) {
+        detailsWrapper.addEventListener("toggle", function () {
+          if (detailsWrapper.open) {
+            replayGif();
+          }
+        });
       }
     }
 
-    buttons.forEach(function(btn) {
-      btn.addEventListener("click", function() {
-        buttons.forEach(function(b) { b.classList.remove("active"); });
-        btn.classList.add("active");
-        var count = parseInt(btn.getAttribute("data-count"), 10);
-        if (!isNaN(count)) {
-          updateWorkload(count);
-        }
-      });
-    });
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initBenchmarkCalculator);
-  } else {
-    initBenchmarkCalculator();
-  }
-})();
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initBenchmarkCalculator);
+    } else {
+      initBenchmarkCalculator();
+    }
+  })();
 </script>

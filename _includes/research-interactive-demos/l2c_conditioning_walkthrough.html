@@ -1,0 +1,830 @@
+<details class="interactive-demo-wrapper" id="l2c-details-wrapper" markdown="0">
+  <summary class="interactive-demo-summary">
+    <span class="interactive-demo-summary-title">
+      <span class="interactive-demo-summary-badge">Interactive Demo</span>
+      <span>Neural Conditioning Mechanism Walkthrough (Learning to Condition &ndash; L2C)</span>
+    </span>
+    <span class="interactive-demo-summary-chevron">&#9654;</span>
+  </summary>
+  <div class="interactive-demo-card" id="l2c-demo-card">
+    <div class="demo-card-header">
+      <div class="demo-title-group">
+        <h4>Learning to Condition (L2C): Neural Conditioning Mechanism</h4>
+        <p>
+          Interactive walkthrough demonstrating how L2C learns to select variable-value assignments based on optimality confidence and inference simplification to accelerate downstream MPE solvers.
+        </p>
+      </div>
+      <div class="demo-badges">
+        <span class="demo-badge demo-badge-oral">NeurIPS 2025</span>
+        <span class="demo-badge demo-badge-sim">Interactive Walkthrough</span>
+      </div>
+    </div>
+
+    <div class="l2c-walkthrough-panel">
+      <!-- Stage Header & Controls -->
+      <div class="l2c-stage-header">
+        <div class="l2c-stage-title-wrap">
+          <h5 id="l2c-stage-title">Stage 1 of 5: Original MPE Problem</h5>
+          <p id="l2c-stage-desc">Solving MPE requires finding the joint assignment maximizing P(Q=q, E=e) over all query variables Q in the graphical model.</p>
+          <div class="l2c-step-pills" role="navigation" aria-label="Walkthrough stages">
+            <button type="button" class="l2c-step-pill active" data-stage="1">1. Original Problem</button>
+            <button type="button" class="l2c-step-pill" data-stage="2">2. L2C Scoring</button>
+            <button type="button" class="l2c-step-pill" data-stage="3">3. Conditioning (Q_d = q_d)</button>
+            <button type="button" class="l2c-step-pill" data-stage="4">4. Structural Simplification</button>
+            <button type="button" class="l2c-step-pill" data-stage="5">5. Solver Comparison</button>
+          </div>
+        </div>
+        <div class="l2c-controls-group">
+          <button type="button" class="l2c-ctrl-btn primary" id="btn-l2c-play">
+            <span id="l2c-play-icon">&#9658;</span> <span id="l2c-play-text">Run L2C Conditioning</span>
+          </button>
+          <button type="button" class="l2c-ctrl-btn" id="btn-l2c-prev" disabled title="Previous stage">&larr; Prev</button>
+          <button type="button" class="l2c-ctrl-btn" id="btn-l2c-next" title="Next stage">Next &rarr;</button>
+          <button type="button" class="l2c-ctrl-btn" id="btn-l2c-reset" title="Reset to Stage 1">&#8635; Reset</button>
+        </div>
+      </div>
+
+      <!-- SVG Graph Display Box -->
+      <div class="l2c-graph-stage-box">
+        <div class="l2c-graph-svg-wrapper">
+          <svg
+            viewBox="0 0 680 320"
+            class="l2c-svg-graph"
+            id="l2c-svg"
+            preserveAspectRatio="xMidYMid meet"
+            aria-label="Toy Probabilistic Graphical Model Primal Graph"
+          >
+            <defs>
+              <filter id="glow-amber" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="3.5" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+
+            <!-- Residual Joint MPE Boundary (Stage 4+) -->
+            <g id="l2c-residual-boundary" style="transition: opacity 0.35s ease; opacity: 0">
+              <rect
+                x="100"
+                y="48"
+                width="470"
+                height="230"
+                rx="16"
+                fill="rgba(16, 185, 129, 0.05)"
+                stroke="#10b981"
+                stroke-width="1.8"
+                stroke-dasharray="6 4"
+              />
+              <text x="335" y="38" text-anchor="middle" font-size="12" font-weight="700" fill="#059669">
+                Residual MPE Problem: Q₀ = Q \ Q_d (7 query variables)
+              </text>
+              <rect x="306" y="146" width="108" height="28" rx="6" fill="#fffbeb" stroke="#fde68a" stroke-width="1" class="l2c-cutset-label-bg" />
+              <text x="360" y="158" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">
+                Conditioning Set Q_d = q_d
+              </text>
+              <text x="360" y="169" text-anchor="middle" font-size="8.5" fill="#92400e">
+                Fixed: {X4=1, X7=0} (9 dependencies restricted)
+              </text>
+            </g>
+
+            <!-- Graph Edges Container -->
+            <g id="l2c-edges-group"></g>
+
+            <!-- Graph Nodes Container -->
+            <g id="l2c-nodes-group"></g>
+          </svg>
+        </div>
+
+        <!-- Legend -->
+        <div class="l2c-graph-legend">
+          <span class="l2c-legend-item">
+            <span class="l2c-legend-swatch" style="background: #eff6ff; border: 2px solid #3b82f6"></span>
+            <span>Query Variable (<em>Q</em>)</span>
+          </span>
+          <span class="l2c-legend-item">
+            <span class="l2c-legend-swatch" style="background: #f3f4f6; border: 2px solid #6b7280"></span>
+            <span>Observed Evidence (<em>E</em>)</span>
+          </span>
+          <span class="l2c-legend-item">
+            <span class="l2c-legend-swatch" style="background: #fef3c7; border: 2px solid #d97706"></span>
+            <span
+              >Conditioning Set (<em>Q<sub>d</sub> = q<sub>d</sub></em
+              >)</span
+            >
+          </span>
+          <span class="l2c-legend-item">
+            <span class="l2c-legend-swatch" style="background: #ecfdf5; border: 2px solid #10b981"></span>
+            <span>Residual Query Variable (<em>Q</em><sub>0</sub>)</span>
+          </span>
+          <span class="l2c-legend-item">
+            <span class="l2c-legend-line" style="background: #94a3b8"></span>
+            <span>Active Primal Dependency</span>
+          </span>
+          <span class="l2c-legend-item">
+            <span class="l2c-legend-line" style="background: #cbd5e1; border-top: 2px dashed #94a3b8"></span>
+            <span>Restricted Incident Edge</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Dynamic Stage Detail Card -->
+      <div class="l2c-detail-card" id="l2c-detail-container">
+        <!-- Rendered dynamically by updateStageDetails() -->
+      </div>
+    </div>
+
+    <!-- Metric Cards Grid: Paper Context & Methodology -->
+    <div class="demo-metrics-grid">
+      <div class="demo-metric-card highlight-blue">
+        <div class="metric-name">
+          <span>Learning to Condition (L2C)</span>
+          <span class="badge badge-success" style="font-size: 0.72rem">NeurIPS 2025</span>
+        </div>
+        <div class="metric-stats" style="margin-top: 0.5rem">
+          <strong>Conditioning:</strong> Learned variable-value selection<br />
+          <strong>Training signal:</strong> Solver runtime, search nodes, and solution quality<br />
+          <strong>Integration:</strong> Pre-solver conditioning or internal B&amp;B guidance<br />
+          <strong>Evaluated with:</strong> SCIP and AOBB
+        </div>
+      </div>
+
+      <div class="demo-metric-card highlight-gray">
+        <div class="metric-name">
+          <span>Standard Exact Solvers</span>
+          <span class="badge badge-secondary" style="font-size: 0.72rem">Baseline</span>
+        </div>
+        <div class="metric-stats" style="margin-top: 0.5rem">
+          <strong>Methods:</strong> SCIP / AND-OR Branch-and-Bound<br />
+          <strong>Goal:</strong> Exact or anytime MPE inference<br />
+          <strong>Challenge:</strong> Search effort grows rapidly on difficult structured instances<br />
+          <strong>Benefit of conditioning:</strong> Smaller and less coupled residual problem
+        </div>
+      </div>
+    </div>
+  </div>
+</details>
+
+<script>
+  (function () {
+    /* ==========================================================================
+     Toy PGM Graph Specification
+     Primal graph with 10 variables: 1 evidence (E1), 9 query variables.
+     Conditioning variables {X4, X7} bridge Cluster A {X1, X2, X3, X5} and Cluster B {X6, X8, X9}.
+     ========================================================================== */
+    var TOY_NODES = [
+      { id: "E1", label: "E1=0", type: "evidence", cluster: "evidence", x: 60, y: 160 },
+      { id: "X1", label: "X1", type: "query", cluster: "A", x: 135, y: 160 },
+      { id: "X2", label: "X2", type: "query", cluster: "A", x: 215, y: 95 },
+      { id: "X5", label: "X5", type: "query", cluster: "A", x: 215, y: 225 },
+      { id: "X3", label: "X3", type: "query", cluster: "A", x: 280, y: 160 },
+      { id: "X4", label: "X4", type: "query", cluster: "cutset", assignVal: "1", x: 360, y: 95 },
+      { id: "X7", label: "X7", type: "query", cluster: "cutset", assignVal: "0", x: 360, y: 225 },
+      { id: "X6", label: "X6", type: "query", cluster: "B", x: 445, y: 110 },
+      { id: "X8", label: "X8", type: "query", cluster: "B", x: 445, y: 210 },
+      { id: "X9", label: "X9", type: "query", cluster: "B", x: 535, y: 160 },
+    ];
+
+    var TOY_EDGES = [
+      { u: "E1", v: "X1", type: "evidence" },
+      { u: "X1", v: "X2", type: "clusterA" },
+      { u: "X1", v: "X5", type: "clusterA" },
+      { u: "X2", v: "X3", type: "clusterA" },
+      { u: "X3", v: "X5", type: "clusterA" },
+      { u: "X2", v: "X4", type: "bridge" },
+      { u: "X3", v: "X4", type: "bridge" },
+      { u: "X5", v: "X4", type: "bridge" },
+      { u: "X4", v: "X7", type: "cutset_internal" },
+      { u: "X3", v: "X7", type: "bridge" },
+      { u: "X5", v: "X7", type: "bridge" },
+      { u: "X4", v: "X6", type: "bridge" },
+      { u: "X7", v: "X6", type: "bridge" },
+      { u: "X7", v: "X8", type: "bridge" },
+      { u: "X6", v: "X8", type: "clusterB" },
+      { u: "X6", v: "X9", type: "clusterB" },
+      { u: "X8", v: "X9", type: "clusterB" },
+    ];
+
+    /* Dynamic Graph Metrics Calculator */
+    function computeGraphComplexity(conditionedIds) {
+      var queryNodes = TOY_NODES.filter(function (n) {
+        return n.type === "query";
+      });
+      var remainingQueryNodes = queryNodes.filter(function (n) {
+        return conditionedIds.indexOf(n.id) === -1;
+      });
+
+      var activeNodeMap = {};
+      remainingQueryNodes.forEach(function (n) {
+        activeNodeMap[n.id] = true;
+      });
+
+      // Active query-query edges between remaining query variables
+      var activeEdges = TOY_EDGES.filter(function (e) {
+        return activeNodeMap[e.u] && activeNodeMap[e.v];
+      });
+
+      // Raw combinatorial assignment space: 2^|Q|
+      var rawSpace = Math.pow(2, remainingQueryNodes.length);
+      var isConditioned = conditionedIds.length > 0;
+
+      return {
+        queryCount: remainingQueryNodes.length,
+        edgeCount: activeEdges.length,
+        rawSpace: rawSpace,
+        structuralComplexity: isConditioned ? "Lower" : "Higher",
+      };
+    }
+
+    /* Candidate Scoring Data (Illustrative L2C Scores) */
+    var CANDIDATES = [
+      { varId: "X4", val: "1", optScore: "0.96", simScore: "0.94", decision: "Selected", isSelected: true },
+      { varId: "X7", val: "0", optScore: "0.93", simScore: "0.91", decision: "Selected", isSelected: true },
+      { varId: "X2", val: "1", optScore: "0.74", simScore: "0.62", decision: "Not selected", isSelected: false },
+      { varId: "X6", val: "0", optScore: "0.68", simScore: "0.51", decision: "Not selected", isSelected: false },
+      { varId: "X9", val: "1", optScore: "0.55", simScore: "0.38", decision: "Not selected", isSelected: false },
+    ];
+
+    function initL2CDemo() {
+      var detailsWrapper = document.getElementById("l2c-details-wrapper");
+      var svgEdgesGroup = document.getElementById("l2c-edges-group");
+      var svgNodesGroup = document.getElementById("l2c-nodes-group");
+      var residualBoundary = document.getElementById("l2c-residual-boundary");
+
+      var stageTitle = document.getElementById("l2c-stage-title");
+      var stageDesc = document.getElementById("l2c-stage-desc");
+      var detailContainer = document.getElementById("l2c-detail-container");
+
+      var btnPlay = document.getElementById("btn-l2c-play");
+      var btnPrev = document.getElementById("btn-l2c-prev");
+      var btnNext = document.getElementById("btn-l2c-next");
+      var btnReset = document.getElementById("btn-l2c-reset");
+      var playText = document.getElementById("l2c-play-text");
+      var playIcon = document.getElementById("l2c-play-icon");
+
+      var stepPills = document.querySelectorAll("#l2c-demo-card .l2c-step-pill");
+
+      if (!detailsWrapper || !svgEdgesGroup || !svgNodesGroup) return;
+
+      var currentStage = 1;
+      var isPlaying = false;
+      var playTimer = null;
+
+      /* Stop timers when details wrapper is closed */
+      detailsWrapper.addEventListener("toggle", function () {
+        if (!detailsWrapper.open) {
+          pauseWalkthrough();
+        }
+      });
+
+      /* Build SVG Elements */
+      function renderStaticSVG() {
+        svgEdgesGroup.innerHTML = "";
+        svgNodesGroup.innerHTML = "";
+
+        // Edges
+        TOY_EDGES.forEach(function (edge) {
+          var uNode = TOY_NODES.find(function (n) {
+            return n.id === edge.u;
+          });
+          var vNode = TOY_NODES.find(function (n) {
+            return n.id === edge.v;
+          });
+          if (!uNode || !vNode) return;
+
+          var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          line.setAttribute("x1", uNode.x);
+          line.setAttribute("y1", uNode.y);
+          line.setAttribute("x2", vNode.x);
+          line.setAttribute("y2", vNode.y);
+          line.setAttribute("id", "edge-" + edge.u + "-" + edge.v);
+          line.setAttribute("class", "l2c-edge");
+          line.setAttribute("stroke", edge.type === "evidence" ? "#9ca3af" : "#94a3b8");
+          line.setAttribute("stroke-width", edge.type === "evidence" ? "1.8" : "2.2");
+          if (edge.type === "evidence") {
+            line.setAttribute("stroke-dasharray", "3 3");
+          }
+          line.setAttribute("data-u", edge.u);
+          line.setAttribute("data-v", edge.v);
+          line.setAttribute("data-type", edge.type);
+          svgEdgesGroup.appendChild(line);
+        });
+
+        // Nodes
+        TOY_NODES.forEach(function (node) {
+          var g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+          g.setAttribute("id", "node-" + node.id);
+          g.setAttribute("class", "l2c-node");
+          g.setAttribute("transform", "translate(" + node.x + "," + node.y + ")");
+
+          // Outer ring for high scoring selection
+          var halo = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+          halo.setAttribute("r", "28");
+          halo.setAttribute("class", "l2c-halo");
+          halo.setAttribute("fill", "none");
+          halo.setAttribute("stroke", "transparent");
+          halo.setAttribute("stroke-width", "3");
+          g.appendChild(halo);
+
+          // Core circle
+          var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+          circle.setAttribute("r", "20");
+          circle.setAttribute("class", "l2c-circle");
+
+          if (node.type === "evidence") {
+            circle.setAttribute("fill", "#f3f4f6");
+            circle.setAttribute("stroke", "#6b7280");
+            circle.setAttribute("stroke-width", "2.2");
+          } else {
+            circle.setAttribute("fill", "#eff6ff");
+            circle.setAttribute("stroke", "#3b82f6");
+            circle.setAttribute("stroke-width", "2.2");
+          }
+          g.appendChild(circle);
+
+          // Label text
+          var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          text.setAttribute("text-anchor", "middle");
+          text.setAttribute("dominant-baseline", "central");
+          text.setAttribute("font-size", node.type === "evidence" ? "11.5" : "13");
+          text.setAttribute("font-weight", "700");
+          text.setAttribute("fill", node.type === "evidence" ? "#374151" : "#1d4ed8");
+          text.textContent = node.label;
+          g.appendChild(text);
+
+          // Conditioning badge pill (Stage 3+)
+          var badge = document.createElementNS("http://www.w3.org/2000/svg", "g");
+          badge.setAttribute("class", "l2c-fixed-badge");
+          badge.setAttribute("transform", "translate(0, 29)");
+          badge.style.display = "none";
+
+          var badgeRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+          badgeRect.setAttribute("x", "-24");
+          badgeRect.setAttribute("y", "-8");
+          badgeRect.setAttribute("width", "48");
+          badgeRect.setAttribute("height", "16");
+          badgeRect.setAttribute("rx", "5");
+          badgeRect.setAttribute("fill", "#d97706");
+          badge.appendChild(badgeRect);
+
+          var badgeText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          badgeText.setAttribute("text-anchor", "middle");
+          badgeText.setAttribute("dominant-baseline", "central");
+          badgeText.setAttribute("font-size", "10");
+          badgeText.setAttribute("font-weight", "700");
+          badgeText.setAttribute("fill", "#ffffff");
+          badgeText.textContent = node.id + "=" + (node.assignVal || "0");
+          badge.appendChild(badgeText);
+
+          g.appendChild(badge);
+          svgNodesGroup.appendChild(g);
+        });
+      }
+
+      renderStaticSVG();
+
+      /* Stage Transition Engine */
+      function setStage(stageNum) {
+        currentStage = stageNum;
+
+        // Update Navigation Buttons & Pills
+        btnPrev.disabled = currentStage === 1;
+        btnNext.disabled = currentStage === 5;
+
+        stepPills.forEach(function (pill) {
+          var st = parseInt(pill.getAttribute("data-stage"), 10);
+          if (st === currentStage) pill.classList.add("active");
+          else pill.classList.remove("active");
+        });
+
+        // Update Header Text
+        if (currentStage === 1) {
+          stageTitle.innerHTML = "Stage 1 of 5: Original MPE Problem";
+          stageDesc.textContent =
+            "For query variables Q and evidence e, MPE seeks the joint assignment maximizing P(Q=q, E=e) over all variables simultaneously.";
+        } else if (currentStage === 2) {
+          stageTitle.innerHTML = "Stage 2 of 5: Neural Ranking of Variable-Value Assignments";
+          stageDesc.textContent =
+            "L2C scores candidate assignments by optimality confidence and estimated utility for reducing downstream inference effort.";
+        } else if (currentStage === 3) {
+          stageTitle.innerHTML = "Stage 3 of 5: Selecting Conditioning Set Q_d and Assigning Values q_d";
+          stageDesc.textContent =
+            "Conditioning fixes selected variables to values q_d, restricting incident factor scopes and simplifying the residual graph.";
+        } else if (currentStage === 4) {
+          stageTitle.innerHTML = "Stage 4 of 5: Structural Simplification (Original vs. Residual MPE)";
+          stageDesc.textContent =
+            "Conditioning fixes {X4, X7}, removing 9 active dependencies and breaking tightly coupled structure into simpler components.";
+        } else if (currentStage === 5) {
+          stageTitle.innerHTML = "Stage 5 of 5: Downstream Solver Search Comparison";
+          stageDesc.textContent =
+            "Solving MPE on Q₀ given evidence e ∪ q_d operates on a structurally simpler problem, reducing search effort.";
+        }
+
+        // Update Visual Graph State
+        updateGraphVisuals(currentStage);
+
+        // Update Detail Container
+        updateStageDetails(currentStage);
+      }
+
+      /* Update Visual Attributes in SVG */
+      function updateGraphVisuals(stage) {
+        var isConditioned = stage >= 3;
+        var isScored = stage === 2;
+        var isSimplified = stage >= 4;
+
+        // Residual MPE boundary
+        if (residualBoundary) {
+          residualBoundary.style.opacity = isSimplified ? "1" : "0";
+        }
+
+        // Nodes State
+        TOY_NODES.forEach(function (node) {
+          var nodeG = document.getElementById("node-" + node.id);
+          if (!nodeG) return;
+
+          var halo = nodeG.querySelector(".l2c-halo");
+          var circle = nodeG.querySelector(".l2c-circle");
+          var text = nodeG.querySelector("text");
+          var badge = nodeG.querySelector(".l2c-fixed-badge");
+
+          if (node.type === "evidence") {
+            circle.setAttribute("fill", "#f3f4f6");
+            circle.setAttribute("stroke", "#6b7280");
+            text.setAttribute("fill", "#374151");
+            if (badge) badge.style.display = "none";
+            if (halo) halo.setAttribute("stroke", "transparent");
+            return;
+          }
+
+          if (node.cluster === "cutset") {
+            if (isConditioned) {
+              // Fixed Conditioned State
+              circle.setAttribute("fill", "#fef3c7");
+              circle.setAttribute("stroke", "#d97706");
+              circle.setAttribute("stroke-width", "3");
+              text.setAttribute("fill", "#b45309");
+              if (badge) badge.style.display = "block";
+              if (halo) halo.setAttribute("stroke", "transparent");
+            } else if (isScored) {
+              // Candidate High-Score Highlight
+              circle.setAttribute("fill", "#fffbeb");
+              circle.setAttribute("stroke", "#f59e0b");
+              circle.setAttribute("stroke-width", "3");
+              text.setAttribute("fill", "#b45309");
+              if (badge) badge.style.display = "none";
+              if (halo) {
+                halo.setAttribute("stroke", "#f59e0b");
+                halo.setAttribute("stroke-dasharray", "4 3");
+              }
+            } else {
+              // Normal Query State
+              circle.setAttribute("fill", "#eff6ff");
+              circle.setAttribute("stroke", "#3b82f6");
+              circle.setAttribute("stroke-width", "2.2");
+              text.setAttribute("fill", "#1d4ed8");
+              if (badge) badge.style.display = "none";
+              if (halo) halo.setAttribute("stroke", "transparent");
+            }
+          } else {
+            // Residual variables in Cluster A or Cluster B
+            if (isConditioned) {
+              circle.setAttribute("fill", "#ecfdf5");
+              circle.setAttribute("stroke", "#10b981");
+              circle.setAttribute("stroke-width", "2.4");
+              text.setAttribute("fill", "#047857");
+            } else {
+              circle.setAttribute("fill", "#eff6ff");
+              circle.setAttribute("stroke", "#3b82f6");
+              circle.setAttribute("stroke-width", "2.2");
+              text.setAttribute("fill", "#1d4ed8");
+            }
+            if (badge) badge.style.display = "none";
+            if (halo) halo.setAttribute("stroke", "transparent");
+          }
+        });
+
+        // Edges State
+        TOY_EDGES.forEach(function (edge) {
+          var edgeEl = document.getElementById("edge-" + edge.u + "-" + edge.v);
+          if (!edgeEl) return;
+
+          if (edge.type === "evidence") {
+            edgeEl.setAttribute("stroke", "#9ca3af");
+            edgeEl.setAttribute("stroke-width", "1.8");
+            edgeEl.setAttribute("stroke-dasharray", "3 3");
+            edgeEl.setAttribute("opacity", "0.75");
+            return;
+          }
+
+          var isIncidentToCutset = edge.u === "X4" || edge.v === "X4" || edge.u === "X7" || edge.v === "X7";
+
+          if (isConditioned && isIncidentToCutset) {
+            // 9 restricted incident edges removed from residual primal graph
+            edgeEl.setAttribute("stroke", "#cbd5e1");
+            edgeEl.setAttribute("stroke-width", "1.5");
+            edgeEl.setAttribute("stroke-dasharray", "4 3");
+            edgeEl.setAttribute("opacity", "0.4");
+          } else if (isConditioned) {
+            // 7 active residual dependencies
+            edgeEl.setAttribute("stroke", "#10b981");
+            edgeEl.setAttribute("stroke-width", "2.4");
+            edgeEl.removeAttribute("stroke-dasharray");
+            edgeEl.setAttribute("opacity", "1");
+          } else {
+            // 16 original active primal dependencies
+            edgeEl.setAttribute("stroke", "#94a3b8");
+            edgeEl.setAttribute("stroke-width", "2.2");
+            edgeEl.removeAttribute("stroke-dasharray");
+            edgeEl.setAttribute("opacity", "1");
+          }
+        });
+      }
+
+      /* Render Content in Detail Container Based on Stage */
+      function updateStageDetails(stage) {
+        var conditioned = stage >= 3 ? ["X4", "X7"] : [];
+        var metrics = computeGraphComplexity(conditioned);
+
+        if (stage === 1) {
+          detailContainer.innerHTML =
+            "<h6>Original MPE Problem Formulation</h6>" +
+            "<p style='font-size: 0.84rem; color: var(--global-text-color-light, #6b7280); margin-bottom: 0.6rem;'>" +
+            "Given observed evidence <em>e</em> and query variables <em>Q</em>, Most Probable Explanation (MPE) finds the assignment " +
+            "<em>q</em><sup>*</sup> = argmax<sub><em>q</em></sub> <em>P</em>(<em>Q</em> = <em>q</em>, <em>E</em> = <em>e</em>). " +
+            "Without conditioning, exact solvers (e.g. Branch and Bound / AOBB) operate on the original coupled problem over all 9 query variables." +
+            "</p>" +
+            "<div class='l2c-struct-grid'>" +
+            "<div class='l2c-struct-chip'>" +
+            "<div class='l2c-struct-label'>Query Variables |Q|</div>" +
+            "<div class='l2c-struct-val'>" +
+            metrics.queryCount +
+            "</div>" +
+            "</div>" +
+            "<div class='l2c-struct-chip'>" +
+            "<div class='l2c-struct-label'>Active Primal Edges</div>" +
+            "<div class='l2c-struct-val'>" +
+            metrics.edgeCount +
+            "</div>" +
+            "</div>" +
+            "<div class='l2c-struct-chip'>" +
+            "<div class='l2c-struct-label'>Structural Complexity</div>" +
+            "<div class='l2c-struct-val'>Higher</div>" +
+            "<div class='l2c-struct-delta' style='color: var(--global-text-color-light, #6b7280); font-weight: normal;'>Tightly coupled structure</div>" +
+            "</div>" +
+            "<div class='l2c-struct-chip'>" +
+            "<div class='l2c-struct-label'>Raw Assignment Space</div>" +
+            "<div class='l2c-struct-val'>2<sup>" +
+            metrics.queryCount +
+            "</sup> = " +
+            metrics.rawSpace +
+            "</div>" +
+            "<div class='l2c-struct-delta' style='color: var(--global-text-color-light, #6b7280); font-weight: normal;'>Complete binary assignments</div>" +
+            "</div>" +
+            "</div>";
+        } else if (stage === 2) {
+          var tableRows = CANDIDATES.map(function (c) {
+            var rowClass = c.isSelected ? " class='highlight-selected'" : "";
+            var badgeSpan = c.isSelected
+              ? "<span class='badge badge-success' style='font-size: 0.72rem;'>" + c.decision + "</span>"
+              : "<span class='badge badge-secondary' style='font-size: 0.72rem;'>" + c.decision + "</span>";
+
+            return (
+              "<tr" +
+              rowClass +
+              ">" +
+              "<td><strong>" +
+              c.varId +
+              " = " +
+              c.val +
+              "</strong></td>" +
+              "<td>" +
+              c.optScore +
+              "</td>" +
+              "<td>" +
+              c.simScore +
+              "</td>" +
+              "<td>" +
+              badgeSpan +
+              "</td>" +
+              "</tr>"
+            );
+          }).join("");
+
+          detailContainer.innerHTML =
+            "<h6>L2C Candidate Ranking: Optimality Confidence &amp; Simplification Score <span class='badge badge-secondary' style='font-size: 0.72rem; font-weight: normal; margin-left: 0.4rem;'>Illustrative L2C Scores</span></h6>" +
+            "<p style='font-size: 0.84rem; color: var(--global-text-color-light, #6b7280); margin-bottom: 0.45rem;'>" +
+            "L2C uses two neural heads to evaluate candidate variable-value assignments:" +
+            "</p>" +
+            "<ul style='font-size: 0.84rem; color: var(--global-text-color-light, #6b7280); margin: 0 0 0.55rem 1.2rem; padding: 0;'>" +
+            "<li><strong>Optimality confidence:</strong> confidence that a variable-value assignment is consistent with a good/optimal MPE solution.</li>" +
+            "<li><strong>Simplification score:</strong> estimated utility for reducing downstream inference effort (trained on solver search statistics such as runtime, nodes explored, and objective progress).</li>" +
+            "</ul>" +
+            "<p style='font-size: 0.84rem; color: var(--global-text-color-light, #6b7280); margin-bottom: 0.6rem;'>" +
+            "<strong>Selection Rule:</strong> L2C first filters candidate assignments using an optimality-confidence threshold, then prioritizes the highest simplification scores among the remaining candidates." +
+            "</p>" +
+            "<div class='l2c-candidate-table-wrap'>" +
+            "<table class='l2c-candidate-table'>" +
+            "<thead>" +
+            "<tr>" +
+            "<th>Candidate</th>" +
+            "<th>Optimality Confidence</th>" +
+            "<th>Simplification Score</th>" +
+            "<th>Decision</th>" +
+            "</tr>" +
+            "</thead>" +
+            "<tbody>" +
+            tableRows +
+            "</tbody>" +
+            "</table>" +
+            "</div>";
+        } else if (stage === 3) {
+          detailContainer.innerHTML =
+            "<h6>Selecting Conditioning Set Q<sub>d</sub> and Assigning q<sub>d</sub> = {X4 = 1, X7 = 0}</h6>" +
+            "<p style='font-size: 0.84rem; color: var(--global-text-color-light, #6b7280); margin-bottom: 0.6rem;'>" +
+            "Conditioning fixes X4 and X7 to selected values. Factors involving these variables are restricted to those values, removing X4 and X7 from their residual scopes. " +
+            "In this toy pairwise graph, this removes 9 incident edges from the residual primal graph while retaining their numerical influence as restricted evidence terms." +
+            "</p>" +
+            "<div class='l2c-struct-grid'>" +
+            "<div class='l2c-struct-chip'>" +
+            "<div class='l2c-struct-label'>Conditioning Set Q<sub>d</sub></div>" +
+            "<div class='l2c-struct-val' style='color: #b45309;'>{X4, X7}</div>" +
+            "</div>" +
+            "<div class='l2c-struct-chip'>" +
+            "<div class='l2c-struct-label'>Assigned Values q<sub>d</sub></div>" +
+            "<div class='l2c-struct-val' style='color: #b45309;'>{X4=1, X7=0}</div>" +
+            "</div>" +
+            "<div class='l2c-struct-chip'>" +
+            "<div class='l2c-struct-label'>Residual Query Set Q₀</div>" +
+            "<div class='l2c-struct-val' style='color: #059669;'>Q \\ Q<sub>d</sub> (7 vars)</div>" +
+            "</div>" +
+            "<div class='l2c-struct-chip'>" +
+            "<div class='l2c-struct-label'>Augmented Evidence</div>" +
+            "<div class='l2c-struct-val'>e &cup; q<sub>d</sub></div>" +
+            "</div>" +
+            "</div>";
+        } else if (stage === 4) {
+          detailContainer.innerHTML =
+            "<h6>Structural Simplification (Original vs. Residual MPE)</h6>" +
+            "<p style='font-size: 0.84rem; color: var(--global-text-color-light, #6b7280); margin-bottom: 0.6rem;'>" +
+            "Conditioning fixes X4 and X7, reducing the residual query from 9 to 7 binary variables. In this toy example, the selected variables remove several dependencies and break the original tightly coupled structure into smaller, simpler components. " +
+            "The residual MPE objective is still defined over all variables in Q₀, but the downstream solver now operates on a structurally simpler problem that structure-aware exact solvers such as AND/OR Branch-and-Bound can exploit." +
+            "</p>" +
+            "<div class='l2c-struct-grid'>" +
+            "<div class='l2c-struct-chip'>" +
+            "<div class='l2c-struct-label'>Residual Query Variables</div>" +
+            "<div class='l2c-struct-val'>9 &rarr; 7</div>" +
+            "<div class='l2c-struct-delta'>22% fewer variables to assign</div>" +
+            "</div>" +
+            "<div class='l2c-struct-chip'>" +
+            "<div class='l2c-struct-label'>Active Primal Edges</div>" +
+            "<div class='l2c-struct-val'>16 &rarr; 7</div>" +
+            "<div class='l2c-struct-delta'>56% fewer active dependencies</div>" +
+            "</div>" +
+            "<div class='l2c-struct-chip'>" +
+            "<div class='l2c-struct-label'>Structural Complexity</div>" +
+            "<div class='l2c-struct-val'>Higher &rarr; Lower</div>" +
+            "<div class='l2c-struct-delta'>Less tightly coupled residual structure</div>" +
+            "</div>" +
+            "<div class='l2c-struct-chip'>" +
+            "<div class='l2c-struct-label'>Raw Assignment Space</div>" +
+            "<div class='l2c-struct-val'>2<sup>9</sup> &rarr; 2<sup>7</sup> (512 &rarr; 128)</div>" +
+            "<div class='l2c-struct-delta'>75% reduction</div>" +
+            "</div>" +
+            "</div>";
+        } else if (stage === 5) {
+          detailContainer.innerHTML =
+            "<h6>Downstream Solver Performance Comparison <span class='badge badge-secondary' style='font-size: 0.72rem; font-weight: normal; margin-left: 0.4rem;'>Representative Illustrative Example</span></h6>" +
+            "<p style='font-size: 0.84rem; color: var(--global-text-color-light, #6b7280); margin-bottom: 0.6rem;'>" +
+            "Comparing an exact solver on the original unconditioned problem versus the simplified residual problem on <em>Q</em><sub>0</sub> given evidence <em>e</em> &cup; <em>q<sub>d</sub></em>:" +
+            "</p>" +
+            "<div class='l2c-solver-grid'>" +
+            "<div class='l2c-solver-card highlight-baseline'>" +
+            "<div class='l2c-solver-title'>" +
+            "<span>Without Conditioning</span>" +
+            "<span class='badge badge-secondary' style='font-size: 0.72rem;'>Baseline</span>" +
+            "</div>" +
+            "<div style='font-size: 0.8rem; color: var(--global-text-color-light, #6b7280); margin-bottom: 0.35rem;'>Original, more complex MPE problem</div>" +
+            "<div class='demo-progress-track' style='margin: 0.5rem 0; height: 8px;'>" +
+            "<div class='demo-progress-fill fill-gray' id='prog-baseline' style='width: 0%;'></div>" +
+            "</div>" +
+            "<div class='l2c-solver-stat-row'><span>AOBB Processed Nodes:</span><strong>284 nodes</strong></div>" +
+            "<div class='l2c-solver-stat-row'><span>Representative Runtime:</span><strong>142 ms</strong></div>" +
+            "<div class='l2c-solver-stat-row'><span>Structural Complexity:</span><strong>Higher structural complexity</strong></div>" +
+            "</div>" +
+            "<div class='l2c-solver-card highlight-l2c'>" +
+            "<div class='l2c-solver-title'>" +
+            "<span>With L2C Conditioning</span>" +
+            "<span class='badge badge-success' style='font-size: 0.72rem;'>Illustrative Example</span>" +
+            "</div>" +
+            "<div style='font-size: 0.8rem; color: var(--global-text-color-light, #6b7280); margin-bottom: 0.35rem;'>Simplified residual MPE problem</div>" +
+            "<div class='demo-progress-track' style='margin: 0.5rem 0; height: 8px;'>" +
+            "<div class='demo-progress-fill fill-green' id='prog-l2c' style='width: 0%;'></div>" +
+            "</div>" +
+            "<div class='l2c-solver-stat-row'><span>AOBB Processed Nodes:</span><strong>28 nodes</strong></div>" +
+            "<div class='l2c-solver-stat-row'><span>Representative Runtime:</span><strong>14 ms</strong></div>" +
+            "<div class='l2c-solver-stat-row'><span>Structural Complexity:</span><strong>Lower structural complexity</strong></div>" +
+            "</div>" +
+            "</div>" +
+            "<div class='l2c-takeaway-box' style='margin-top: 0.85rem;'>" +
+            "<strong>Key Takeaway:</strong> L2C selects variable-value assignments intended to balance solution preservation with inference simplification. " +
+            "In this toy example, conditioning two important variables removes dependencies and produces a smaller, less coupled residual problem, allowing the downstream exact solver to search more efficiently.<br />" +
+            "<span style='font-size: 0.82rem; color: var(--global-text-color-light, #4b5563); display: block; margin-top: 0.35rem;'>" +
+            "This walkthrough illustrates L2C as a preprocessing strategy. The learned scores can also guide branching and node selection within branch-and-bound solvers (e.g. SCIP, AOBB). Representative node and runtime values are illustrative examples for this toy problem." +
+            "</span>" +
+            "</div>";
+
+          // Animate solver progress bars in Stage 5
+          setTimeout(function () {
+            var progBase = document.getElementById("prog-baseline");
+            var progL2C = document.getElementById("prog-l2c");
+            if (progBase) {
+              progBase.style.transition = "width 2.2s cubic-bezier(0.4, 0, 0.2, 1)";
+              progBase.style.width = "100%";
+            }
+            if (progL2C) {
+              progL2C.style.transition = "width 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
+              progL2C.style.width = "100%";
+            }
+          }, 80);
+        }
+      }
+
+      /* Controls Event Handlers */
+      function playWalkthrough() {
+        if (isPlaying) {
+          pauseWalkthrough();
+          return;
+        }
+
+        isPlaying = true;
+        playText.textContent = "Pause Walkthrough";
+        playIcon.innerHTML = "&#10074;&#10074;";
+        btnPlay.classList.remove("primary");
+
+        if (currentStage >= 5) {
+          setStage(1);
+        }
+
+        function scheduleNext() {
+          playTimer = setTimeout(function () {
+            if (!isPlaying) return;
+            if (currentStage < 5) {
+              setStage(currentStage + 1);
+              scheduleNext();
+            } else {
+              pauseWalkthrough();
+            }
+          }, 2600);
+        }
+
+        scheduleNext();
+      }
+
+      function pauseWalkthrough() {
+        isPlaying = false;
+        if (playTimer) {
+          clearTimeout(playTimer);
+          playTimer = null;
+        }
+        playText.textContent = "Run L2C Conditioning";
+        playIcon.innerHTML = "&#9658;";
+        btnPlay.classList.add("primary");
+      }
+
+      function resetWalkthrough() {
+        pauseWalkthrough();
+        setStage(1);
+      }
+
+      btnPlay.addEventListener("click", playWalkthrough);
+
+      btnPrev.addEventListener("click", function () {
+        pauseWalkthrough();
+        if (currentStage > 1) setStage(currentStage - 1);
+      });
+
+      btnNext.addEventListener("click", function () {
+        pauseWalkthrough();
+        if (currentStage < 5) setStage(currentStage + 1);
+      });
+
+      btnReset.addEventListener("click", resetWalkthrough);
+
+      stepPills.forEach(function (pill) {
+        pill.addEventListener("click", function () {
+          pauseWalkthrough();
+          var st = parseInt(pill.getAttribute("data-stage"), 10);
+          setStage(st);
+        });
+      });
+
+      // Initialize Stage 1
+      setStage(1);
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initL2CDemo);
+    } else {
+      initL2CDemo();
+    }
+  })();
+</script>

@@ -55,16 +55,16 @@ Our work currently spans three complementary directions:
 
 Neural approximation treats probabilistic inference itself as a learnable mapping. Given a probabilistic model and evidence, a neural network predicts high-quality solutions to inference queries in one or a few forward passes. These predictions can also be refined through inference-time or test-time self-supervised optimization when additional accuracy is required.
 
-{% include research-interactive-demos/ssmp_benchmark.html %}
-
 - **SINE: Scalable MPE Inference for Probabilistic Graphical Models using Advanced Neural Embeddings** ([AISTATS 2025](https://proceedings.mlr.press/v258/arya25a.html))
   - Learns structural and parameter-aware embeddings of probabilistic graphical models together with advanced discretization schemes to predict near-optimal Most Probable Explanation (MPE) assignments in real time.
 
 - **A Neural Network Approach for Efficiently Answering Most Probable Explanation Queries in Probabilistic Models** ([NeurIPS 2024 Spotlight](https://proceedings.neurips.cc/paper_files/paper/2024/hash/3ae2d3297891cad0c56dd12d60ff7dde-Abstract-Conference.html); [UAI TPM 2024 Best Paper](https://shivvrat.github.io/certificates/tpm_certificate.jpg))
-  - Introduces the **ITSELF** engine: distills MPE queries for a probabilistic model into a neural network approximator and refines predicted configurations through inference-time self-supervised optimization for fast, high-accuracy query answering _(demonstrated in the interactive benchmark above: 3.4&times; speedup with iterative test-time refinement)_.
+  - Introduces the **ITSELF** engine: distills MPE queries for a probabilistic model into a neural network approximator and refines predicted configurations through inference-time self-supervised optimization for fast, high-accuracy query answering _(demonstrated in the interactive benchmark below: 3.4&times; speedup with iterative test-time refinement)_.
 
 - **Neural Network Approximators for Marginal MAP in Probabilistic Circuits** ([AAAI 2024 Oral](https://ojs.aaai.org/index.php/AAAI/article/view/28966/29836))
-  - Introduces **SSMP**: solves challenging marginal MAP queries in probabilistic circuits by training neural network approximators over a continuous multilinear relaxation, enabling fast linear-time inference during evaluation _(demonstrated in the interactive benchmark above: sub-10 &micro;s inference, &gt;273,000&times; speedup)_.
+  - Introduces **SSMP**: solves challenging marginal MAP queries in probabilistic circuits by training neural network approximators over a continuous multilinear relaxation, enabling fast linear-time inference during evaluation _(demonstrated in the interactive benchmark below: sub-10 &micro;s inference, &gt;273,000&times; speedup)_.
+
+{% include research-interactive-demos/ssmp_benchmark.html %}
 
 - **Learning to Solve the Constrained Most Probable Explanation Task in Probabilistic Graphical Models** ([AISTATS 2024](https://proceedings.mlr.press/v238/arya24b.html))
   - Develops a self-supervised neural framework for probabilistic inference under explicit constraints, jointly optimizing solution quality and constraint satisfaction through specialized loss formulations.
@@ -79,13 +79,15 @@ Neural approximation treats probabilistic inference itself as a learnable mappin
 
 Neural augmentation preserves the structure of classical inference algorithms while introducing learned components that improve their computational behavior. Neural models can provide warm starts, conditioning decisions, branching and node-selection heuristics, or guidance for local search. This approach uses learning to reduce search and accelerate convergence while retaining the structure, guarantees, or certificates provided by the underlying solver when applicable.
 
-{% include research-interactive-demos/dual_bounds_simulation.html %}
-
 - **Neural Dual Bounds: Valid-by-Construction JGLP Warm-Starts for MAP and Constrained MAP** ([NeurIPS 2026 Spotlight](https://openreview.net/forum?id=fdwZvjybdN))
   - Predicts valid-by-construction dual bounds to warm-start Join Graph Linear Programming (JGLP) for MAP and constrained MAP inference in graphical models, guaranteeing bound validity architecturally while accelerating solver convergence and providing rigorous bounding certificates.
 
+{% include research-interactive-demos/dual_bounds_simulation.html %}
+
 - **Learning to Condition: A Neural Heuristic for Scalable MPE Inference** ([NeurIPS 2025](https://openreview.net/forum?id=otIdC4tsYf); [Code](https://github.com/brijml/L2C))
   - Learns a neural conditioning policy from solver search traces that serves both as a variable-conditioning strategy before exact inference and as a branching and node-selection heuristic within branch-and-bound, substantially reducing search spaces while maintaining solution quality.
+
+{% include research-interactive-demos/l2c_conditioning_walkthrough.html %}
 
 - **BEACON: Learning to Guide Local Search for MPE Inference in Probabilistic Graphical Models** ([ArXiv](https://arxiv.org/abs/2602.01475))
   - Amortizes repeated MPE inference in fixed-structure graphical models using an attention-based architecture that scores local-search moves according to estimated Hamming-distance reduction, guiding neighbor selection to improve convergence and solution quality in high-treewidth models.
@@ -126,14 +128,14 @@ We develop learning-based methods for solving large-scale combinatorial optimiza
   <img src="/assets/img/publication_preview/RELINK.png" class="figure-img img-fluid" alt="RELINK deep reinforcement learning framework for edge activation">
 </figure>
 
-{% include research-interactive-demos/relink_budget_explorer.html %}
-
 Our current work investigates neural combinatorial optimization for decision-making over complex networks, including problems in which solutions require sequentially selecting or modifying nodes, edges, or other discrete structures. These methods aim to amortize expensive optimization across problem instances by learning policies that capture reusable structural patterns while accommodating operational, privacy, and other application-specific constraints.
 
 - **RELINK: Edge Activation for Closed Network Influence Maximization via Deep Reinforcement Learning** ([CIKM 2025 Oral](https://dl.acm.org/doi/10.1145/3746252.3761006))
   - Formulates edge-level influence maximization in privacy-constrained closed networks (IM-CSN) as a Markov Decision Process, introducing an edge-centric Double DQN framework with SVD node embeddings and edge-aware aggregation trained on true marginal influence gain rewards.
   - Evaluated across 20 real-world social networks (including _FilmTrust_, _Email-Eu-core_, _Wiki-Vote_, _MUSAE Facebook_, _Math Overflow_, _Deezer_, and _Epinions_) using 100,000 Monte Carlo simulations under the Independent Cascade model.
   - Consistently outperforms existing methods in over 90% of experimental settings, achieving up to 15% higher influence spread, a 95.0% win rate (456/480) against the specialized IM-CSN baseline PSNA, and superior scalability via GPU-accelerated sequential inference on large-scale graphs.
+
+{% include research-interactive-demos/relink_budget_explorer.html %}
 
 ---
 
@@ -143,18 +145,26 @@ We develop learning methods for reasoning over complex perceptual and multimodal
 
 ### Structured Video Understanding and Activity Reasoning
 
-<figure class="figure">
-
-  <img src="/assets/img/publication_preview/CaptainCook4D.gif" class="figure-img img-fluid" alt="CaptainCook4D egocentric 4D cooking dataset">
-
+<figure class="figure" style="position: relative; display: block; width: 100%;">
+  <img src="/assets/img/publication_preview/CaptainCook4D.gif"
+       class="figure-img img-fluid gif-replayable"
+       alt="CaptainCook4D egocentric 4D cooking dataset"
+       style="cursor: pointer; width: 100%; border-radius: 6px;"
+       title="Click to replay animation">
+  <button type="button"
+          class="gif-replay-badge"
+          title="Replay animation"
+          style="position: absolute; bottom: 12px; right: 12px; z-index: 2; margin: 0;">
+    &#8635; Replay
+  </button>
 </figure>
-
-{% include research-interactive-demos/captaincook4d_taxonomy_explorer.html %}
 
 Our work in video understanding focuses on modeling the temporal and procedural structure of complex activities. Rather than treating videos as collections of isolated frames or short clips, we study representations that capture multi-step workflows, dependencies among actions, deviations from expected procedures, and the context needed for explanation and prediction. These structured models support tasks such as activity recognition, procedural error detection, temporal localization, explanation, and predictive task guidance.
 
 - **CaptainCook4D: a dataset for understanding errors in procedural activities** ([NeurIPS D&B Track 2024](https://neurips.cc/virtual/2024/poster/97640); DMLR 2023)
   - Introduces a 94.5-hour egocentric 4D dataset of recipe execution containing both normal and errorful trials, with fine-grained annotations supporting error recognition, multi-step temporal localization, and procedure learning.
+
+{% include research-interactive-demos/captaincook4d_taxonomy_explorer.html %}
 
 - **Explainable Activity Recognition in Videos Using Deep Learning and Tractable Probabilistic Models** ([ACM TiiS 2023](https://dl.acm.org/doi/full/10.1145/3626961))
   - Integrates deep video representations with dynamic cutset networks to construct tractable temporal models that support probabilistic explanation queries while maintaining competitive activity-recognition performance.
