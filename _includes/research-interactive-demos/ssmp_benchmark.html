@@ -19,24 +19,11 @@
     </div>
   </div>
 
-  <div class="demo-video-wrapper" id="benchmark-video-wrapper">
-    <video id="benchmark-video"
-           controls
-           playsinline
-           autoplay
-           muted
-           loop
-           preload="auto"
-           poster="{{ '/assets/img/benchmark_poster.png' | relative_url }}">
-      <source src="{{ '/assets/video/itself_comparison.mp4' | relative_url }}" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="demo-video-overlay hidden" id="benchmark-video-overlay">
-      <button type="button" class="demo-video-play-btn" id="benchmark-video-play-btn" aria-label="Play benchmark animation">
-        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        <span>Play Benchmark Animation</span>
-      </button>
-    </div>
+  <div class="demo-video-wrapper" id="benchmark-video-wrapper" style="text-align: center;">
+    <img src="{{ '/assets/img/publication_preview/itself_comparison.gif' | relative_url }}"
+         class="figure-img img-fluid"
+         style="width: 100%; border-radius: 6px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);"
+         alt="Neural inference latency and speedup benchmark comparison: SSMP vs ITSELF vs Baseline">
   </div>
   <p class="demo-video-caption" id="benchmark-caption">
     <strong>Benchmark Visualization:</strong> One Left&rarr;Right traverse represents 1 inference query. In the time the classical baseline takes to complete 1 inference query (2.703 s/inf), <strong>ITSELF</strong> completes an iterative test-time optimization pass (784 ms/inf, 3.4&times; faster, 3 traverses), while <strong>SSMP</strong> processes over 273,000 queries via amortized continuous relaxation (9.87 &micro;s/inf, &gt;273,000&times; faster, 273,860 traverses).
@@ -209,98 +196,10 @@
     });
   }
 
-  function setupVideoLifecycle() {
-    var details = document.getElementById("neural-inference-details");
-    var video = document.getElementById("benchmark-video");
-    var overlay = document.getElementById("benchmark-video-overlay");
-    var playBtn = document.getElementById("benchmark-video-play-btn");
-
-    if (!video) return;
-
-    function hideOverlay() {
-      if (overlay) overlay.classList.add("hidden");
-    }
-
-    function showOverlay() {
-      if (overlay) overlay.classList.remove("hidden");
-    }
-
-    function safePlay() {
-      if (video.readyState === 0) {
-        video.load();
-      }
-      var playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.then(function() {
-          hideOverlay();
-        }).catch(function(err) {
-          console.warn("Autoplay was deferred or blocked by browser:", err);
-          showOverlay();
-        });
-      }
-    }
-
-    function safePauseAndReset() {
-      video.pause();
-      video.currentTime = 0;
-      hideOverlay();
-    }
-
-    if (playBtn) {
-      playBtn.addEventListener("click", function(e) {
-        e.stopPropagation();
-        safePlay();
-      });
-    }
-
-    if (overlay) {
-      overlay.addEventListener("click", function() {
-        safePlay();
-      });
-    }
-
-    video.addEventListener("play", hideOverlay);
-    video.addEventListener("playing", hideOverlay);
-    video.addEventListener("pause", function() {
-      if (details && details.open && !video.ended) {
-        showOverlay();
-      }
-    });
-    video.addEventListener("ended", function() {
-      showOverlay();
-    });
-    video.addEventListener("error", function() {
-      console.error("Benchmark video load error:", video.error);
-      if (overlay) {
-        overlay.innerHTML = '<div style="color: #fca5a5; font-size: 0.9rem; text-align: center; padding: 1rem;">Video preview currently unavailable. Please reload or check network.</div>';
-        overlay.classList.remove("hidden");
-      }
-    });
-
-    if (details) {
-      details.addEventListener("toggle", function() {
-        if (details.open) {
-          safePlay();
-        } else {
-          safePauseAndReset();
-        }
-      });
-
-      if (details.open) {
-        safePlay();
-      }
-    }
-  }
-
-  function init() {
-    initBenchmarkCalculator();
-    setupVideoLifecycle();
-  }
-
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", initBenchmarkCalculator);
   } else {
-    init();
+    initBenchmarkCalculator();
   }
 })();
 </script>
