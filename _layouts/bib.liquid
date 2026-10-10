@@ -116,29 +116,29 @@
       {% endif %}
 
       {%- for author in entry.author_array limit: rendered_author_count -%}
-        {% assign author_is_self = false %}
+        {%- assign author_is_self = false -%}
         {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
         {%- assign author_last_html = author.last | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
-        {% if site.scholar.last_name contains author_last_name %}
-          {% if site.scholar.first_name contains author.first %}
-            {% assign author_is_self = true %}
-          {% endif %}
+        {%- if site.scholar.last_name contains author_last_name -%}
+          {%- if site.scholar.first_name contains author.first -%}
+            {%- assign author_is_self = true -%}
+          {%- endif -%}
         {%- endif -%}
-        {% assign coauthor_url = null %}
+        {%- assign coauthor_url = null -%}
         {%- assign clean_last_name = author_last_name | downcase | remove_accents -%}
-        {% if site.data.coauthors[clean_last_name] %}
+        {%- if site.data.coauthors[clean_last_name] -%}
           {%- for coauthor in site.data.coauthors[clean_last_name] -%}
-            {% if coauthor.firstname contains author.first %}
+            {%- if coauthor.firstname contains author.first -%}
               {%- assign coauthor_url = coauthor.url -%}
-              {% break %}
+              {%- break -%}
             {%- endif -%}
-          {% endfor %}
+          {%- endfor -%}
         {%- endif -%}
 
-        {% assign visible_authors_before_self = 2 %}
-        {% if self_author_index and self_author_index < visible_authors_before_self %}
-          {% assign visible_authors_before_self = self_author_index %}
-        {% endif %}
+        {%- assign visible_authors_before_self = 2 -%}
+        {%- if self_author_index and self_author_index < visible_authors_before_self -%}
+          {%- assign visible_authors_before_self = self_author_index -%}
+        {%- endif -%}
 
         {% if self_author_index
           and self_author_index >= author_array_limit
@@ -153,11 +153,15 @@
             {%- endif -%}
             {% assign more_authors_before_show = '' %}
             {%- for hidden_author in entry.author_array offset: visible_authors_before_self limit: more_authors_before -%}
-              {% assign more_authors_before_show = more_authors_before_show
-                | append: hidden_author.first
-                | append: ' '
-                | append: hidden_author.last
-              %}
+              {%- capture hidden_author_name -%}
+                {%- if hidden_author.first and hidden_author.first != "" -%}
+                  {{- hidden_author.first }} {% if hidden_author.prefix and hidden_author.prefix != "" %}{{ hidden_author.prefix }} {% endif %}{{- hidden_author.last -}}{% if hidden_author.suffix and hidden_author.suffix != "" %}, {{ hidden_author.suffix }}{% endif %}
+                {%- else -%}
+                  {%- if hidden_author.prefix and hidden_author.prefix != "" %}{{ hidden_author.prefix }} {% endif %}{{- hidden_author.last -}}{% if hidden_author.suffix and hidden_author.suffix != "" %}, {{ hidden_author.suffix }}{% endif -%}
+                {%- endif -%}
+              {%- endcapture -%}
+              {%- assign hidden_author_name = hidden_author_name | strip -%}
+              {%- assign more_authors_before_show = more_authors_before_show | append: hidden_author_name -%}
               {% unless forloop.last %}
                 {% assign more_authors_before_show = more_authors_before_show | append: ', ' %}
               {% endunless %}
@@ -187,36 +191,44 @@
           {% continue %}
         {% endif %}
 
-        {% assign self_author_follows_hidden_prefix = false %}
-        {% if self_author_index and self_author_index >= author_array_limit and forloop.index0 == self_author_index %}
-          {% assign self_author_follows_hidden_prefix = true %}
-        {% endif %}
+        {%- assign self_author_follows_hidden_prefix = false -%}
+        {%- if self_author_index and self_author_index >= author_array_limit and forloop.index0 == self_author_index -%}
+          {%- assign self_author_follows_hidden_prefix = true -%}
+        {%- endif -%}
         {%- if forloop.length > 1 and self_author_follows_hidden_prefix == false -%}
-          {% if forloop.first == false -%}
-            {%- if forloop.length > 2 %}, {% elsif forloop.length == 2 %}  {% endif %}
-          {%- endif %}
-          {%- if forloop.last and rendered_author_count == author_array_size %}and {% endif -%}
-        {% endif %}
+          {%- if forloop.first == false -%}
+            {%- if forloop.last and rendered_author_count == author_array_size -%}
+              {{- ' and ' -}}
+            {%- else -%}
+              {{- ', ' -}}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endif -%}
+        {%- capture author_display_name -%}
+          {%- if author.first and author.first != "" -%}
+            {{- author.first }} {% if author.prefix and author.prefix != "" %}{{ author.prefix }} {% endif %}{{- author_last_html -}}{% if author.suffix and author.suffix != "" %}, {{ author.suffix }}{% endif %}
+          {%- else -%}
+            {%- if author.prefix and author.prefix != "" %}{{ author.prefix }} {% endif %}{{- author_last_html -}}{% if author.suffix and author.suffix != "" %}, {{ author.suffix }}{% endif -%}
+          {%- endif -%}
+        {%- endcapture -%}
+        {%- assign author_display_name = author_display_name | strip -%}
         {%- if author_is_self -%}
           <span
             class="author-self"
             style="border-bottom: 1px solid currentColor; color: var(--global-text-color); font-style: normal; font-weight: 700;"
           >
-            {{- author.first }}
-            {{ author_last_html -}}
+            {{- author_display_name -}}
           </span>
         {%- else -%}
           {%- if coauthor_url -%}
             <a href="{{ coauthor_url }}">
-              {{- author.first }}
-              {{ author_last_html -}}
+              {{- author_display_name -}}
             </a>
           {%- else -%}
-            {{- author.first }}
-            {{ author_last_html -}}
-          {% endif %}
+            {{- author_display_name -}}
+          {%- endif -%}
         {%- endif -%}
-      {% endfor %}
+      {%- endfor -%}
       {%- assign more_authors = author_array_size | minus: rendered_author_count -%}
 
       {%- assign more_authors_hide = more_authors | append: ' more author' -%}
@@ -226,13 +238,21 @@
         {%- endif -%}
         {% assign more_authors_show = '' %}
         {%- for author in entry.author_array offset: rendered_author_count -%}
-          {% assign more_authors_show = more_authors_show | append: author.first | append: ' ' | append: author.last %}
+          {%- capture popup_author_name -%}
+            {%- if author.first and author.first != "" -%}
+              {{- author.first }} {% if author.prefix and author.prefix != "" %}{{ author.prefix }} {% endif %}{{- author.last -}}{% if author.suffix and author.suffix != "" %}, {{ author.suffix }}{% endif %}
+            {%- else -%}
+              {%- if author.prefix and author.prefix != "" %}{{ author.prefix }} {% endif %}{{- author.last -}}{% if author.suffix and author.suffix != "" %}, {{ author.suffix }}{% endif -%}
+            {%- endif -%}
+          {%- endcapture -%}
+          {%- assign popup_author_name = popup_author_name | strip -%}
+          {% assign more_authors_show = more_authors_show | append: popup_author_name %}
           {% unless forloop.last %}
             {% assign more_authors_show = more_authors_show | append: ', ' %}
           {% endunless %}
         {%- endfor -%}
         {%- assign more_authors_show = more_authors_show | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
-        , and
+        {{- ' and ' -}}
         <span
           class="more-authors"
           title="click to view {{ more_authors_hide }}"
