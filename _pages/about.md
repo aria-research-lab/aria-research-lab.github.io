@@ -72,10 +72,10 @@ If you are interested in joining the ARIA Research Lab, please review the <a hre
 - **[NeuPI](https://neupi.readthedocs.io/en/latest/) – Neural Probabilistic Inference**  
   A neural engine for probabilistic graphical models and circuits that distills complex queries into neural network approximators, accelerating query answering from minutes to microseconds for real-time decision-making.
 
-- **[Neural Dual Bounds](https://openreview.net/forum?id=fdwZvjybdN) & [Learning to Condition](https://github.com/brijml/L2C) – Neural-Augmented Classical Solvers**  
+- **[Neural Dual Bounds](https://openreview.net/forum?id=fdwZvjybdN)** <span class="award-badge"><i class="fa-solid fa-star award-icon"></i> Spotlight</span> & **[Learning to Condition](https://github.com/brijml/L2C) – Neural-Augmented Classical Solvers**  
   Learned heuristics and valid-by-construction dual bounds integrated directly into classical inference algorithms, accelerating solver convergence and shrinking search spaces while preserving theoretical guarantees.
 
-- **[RELINK](https://dl.acm.org/doi/10.1145/3746252.3761006) – Neural Combinatorial Optimization**  
+- **[RELINK](https://dl.acm.org/doi/10.1145/3746252.3761006)** <span class="award-badge"><i class="fa-solid fa-bullhorn award-icon"></i> Oral</span> – **Neural Combinatorial Optimization**  
   Deep reinforcement learning policies for sequential discrete decisions over complex networks, tackling large-scale network optimization and influence maximization under privacy constraints.
 
 - **[CaptainCook4D](https://captaincook4d.github.io/captain-cook/) – Procedural Activity Understanding**  

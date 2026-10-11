@@ -58,10 +58,10 @@ Neural approximation treats probabilistic inference itself as a learnable mappin
 - **SINE: Scalable MPE Inference for Probabilistic Graphical Models using Advanced Neural Embeddings** ([AISTATS 2025](https://proceedings.mlr.press/v258/arya25a.html))
   - Learns structural and parameter-aware embeddings of probabilistic graphical models together with advanced discretization schemes to predict near-optimal Most Probable Explanation (MPE) assignments in real time.
 
-- **A Neural Network Approach for Efficiently Answering Most Probable Explanation Queries in Probabilistic Models** ([NeurIPS 2024 Spotlight](https://proceedings.neurips.cc/paper_files/paper/2024/hash/3ae2d3297891cad0c56dd12d60ff7dde-Abstract-Conference.html); [UAI TPM 2024 Best Paper](https://shivvrat.github.io/certificates/tpm_certificate.jpg))
+- **A Neural Network Approach for Efficiently Answering Most Probable Explanation Queries in Probabilistic Models** ([NeurIPS 2024 Spotlight](https://proceedings.neurips.cc/paper_files/paper/2024/hash/3ae2d3297891cad0c56dd12d60ff7dde-Abstract-Conference.html); [UAI TPM 2024 Best Paper](https://shivvrat.github.io/certificates/tpm_certificate.jpg)) <span class="award-badge"><i class="fa-solid fa-trophy award-icon" aria-hidden="true"></i> Best Paper Award</span> <span class="award-badge"><i class="fa-solid fa-star award-icon" aria-hidden="true"></i> Spotlight (Top 2%)</span>
   - Introduces the **ITSELF** engine: distills MPE queries for a probabilistic model into a neural network approximator and refines predicted configurations through inference-time self-supervised optimization for fast, high-accuracy query answering _(demonstrated in the interactive benchmark below: 3.4&times; speedup with iterative test-time refinement)_.
 
-- **Neural Network Approximators for Marginal MAP in Probabilistic Circuits** ([AAAI 2024 Oral](https://ojs.aaai.org/index.php/AAAI/article/view/28966/29836))
+- **Neural Network Approximators for Marginal MAP in Probabilistic Circuits** ([AAAI 2024 Oral](https://ojs.aaai.org/index.php/AAAI/article/view/28966/29836)) <span class="award-badge"><i class="fa-solid fa-bullhorn award-icon" aria-hidden="true"></i> Oral Presentation (Top 3%)</span>
   - Introduces **SSMP**: solves challenging marginal MAP queries in probabilistic circuits by training neural network approximators over a continuous multilinear relaxation, enabling fast linear-time inference during evaluation _(demonstrated in the interactive benchmark below: sub-10 &micro;s inference, &gt;273,000&times; speedup)_.
 
 {% include research-interactive-demos/ssmp_benchmark.html %}
@@ -79,7 +79,7 @@ Neural approximation treats probabilistic inference itself as a learnable mappin
 
 Neural augmentation preserves the structure of classical inference algorithms while introducing learned components that improve their computational behavior. Neural models can provide warm starts, conditioning decisions, branching and node-selection heuristics, or guidance for local search. This approach uses learning to reduce search and accelerate convergence while retaining the structure, guarantees, or certificates provided by the underlying solver when applicable.
 
-- **Neural Dual Bounds: Valid-by-Construction JGLP Warm-Starts for MAP and Constrained MAP** ([NeurIPS 2026 Spotlight](https://openreview.net/forum?id=fdwZvjybdN))
+- **Neural Dual Bounds: Valid-by-Construction JGLP Warm-Starts for MAP and Constrained MAP** ([NeurIPS 2026 Spotlight](https://openreview.net/forum?id=fdwZvjybdN)) <span class="award-badge"><i class="fa-solid fa-star award-icon" aria-hidden="true"></i> Spotlight (Top 1%)</span>
   - Predicts valid-by-construction dual bounds to warm-start Join Graph Linear Programming (JGLP) for MAP and constrained MAP inference in graphical models, guaranteeing bound validity architecturally while accelerating solver convergence and providing rigorous bounding certificates.
 
 {% include research-interactive-demos/dual_bounds_simulation.html %}
@@ -130,7 +130,7 @@ We develop learning-based methods for solving large-scale combinatorial optimiza
 
 Our current work investigates neural combinatorial optimization for decision-making over complex networks, including problems in which solutions require sequentially selecting or modifying nodes, edges, or other discrete structures. These methods aim to amortize expensive optimization across problem instances by learning policies that capture reusable structural patterns while accommodating operational, privacy, and other application-specific constraints.
 
-- **RELINK: Edge Activation for Closed Network Influence Maximization via Deep Reinforcement Learning** ([CIKM 2025 Oral](https://dl.acm.org/doi/10.1145/3746252.3761006))
+- **RELINK: Edge Activation for Closed Network Influence Maximization via Deep Reinforcement Learning** ([CIKM 2025 Oral](https://dl.acm.org/doi/10.1145/3746252.3761006)) <span class="award-badge"><i class="fa-solid fa-bullhorn award-icon" aria-hidden="true"></i> Oral Presentation</span>
   - Formulates edge-level influence maximization in privacy-constrained closed networks (IM-CSN) as a Markov Decision Process, introducing an edge-centric Double DQN framework with SVD node embeddings and edge-aware aggregation trained on true marginal influence gain rewards.
   - Evaluated across 20 real-world social networks (including _FilmTrust_, _Email-Eu-core_, _Wiki-Vote_, _MUSAE Facebook_, _Math Overflow_, _Deezer_, and _Epinions_) using 100,000 Monte Carlo simulations under the Independent Cascade model.
   - Consistently outperforms existing methods in over 90% of experimental settings, achieving up to 15% higher influence spread, a 95.0% win rate (456/480) against the specialized IM-CSN baseline PSNA, and superior scalability via GPU-accelerated sequential inference on large-scale graphs.
