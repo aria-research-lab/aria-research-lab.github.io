@@ -65,29 +65,45 @@
   <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
     <!-- Title -->
     <div class="title">{{ entry.title }}</div>
-    {% if entry.annotation %}
+    {% if entry.annotation or entry.award %}
       <div class="award-announcement">
-        <span class="award-badge">
-          {% if entry.annotation contains 'Best' or entry.annotation contains 'Award' or entry.annotation contains 'award' %}
+        {% if entry.annotation %}
+          {% assign ann_list = entry.annotation | split: ';' %}
+          {% for ann_item in ann_list %}
+            {% assign ann_clean = ann_item | strip %}
+            {% if ann_clean != "" %}
+              <span class="award-badge">
+                {% if ann_clean contains 'Best' or ann_clean contains 'Award' or ann_clean contains 'award' %}
+                  <i class="fa-solid fa-trophy award-icon" aria-hidden="true"></i>
+                {% elsif ann_clean contains 'Spotlight' or ann_clean contains 'spotlight' %}
+                  <i class="fa-solid fa-star award-icon" aria-hidden="true"></i>
+                {% elsif ann_clean contains 'Oral' or ann_clean contains 'oral' %}
+                  <i class="fa-solid fa-bullhorn award-icon" aria-hidden="true"></i>
+                {% else %}
+                  <i class="fa-solid fa-award award-icon" aria-hidden="true"></i>
+                {% endif %}
+                <span class="award-text">{{ ann_clean }}</span>
+              </span>
+            {% endif %}
+          {% endfor %}
+        {% elsif entry.award %}
+          <span class="award-badge">
             <i class="fa-solid fa-trophy award-icon" aria-hidden="true"></i>
-          {% elsif entry.annotation contains 'Spotlight' or entry.annotation contains 'spotlight' %}
-            <i class="fa-solid fa-star award-icon" aria-hidden="true"></i>
-          {% elsif entry.annotation contains 'Oral' or entry.annotation contains 'oral' %}
-            <i class="fa-solid fa-bullhorn award-icon" aria-hidden="true"></i>
-          {% else %}
-            <i class="fa-solid fa-award award-icon" aria-hidden="true"></i>
-          {% endif %}
-          <span class="award-text">{{ entry.annotation }}</span>
-        </span>
-      </div>
-    {% elsif entry.award %}
-      <div class="award-announcement">
-        <span class="award-badge">
-          <i class="fa-solid fa-trophy award-icon" aria-hidden="true"></i>
-          <span class="award-text">
-            {%- if entry.award_name %}{{ entry.award_name }}{% else %}{{ entry.award }}{% endif -%}
+            <span class="award-text">
+              {%- if entry.award_name %}{{ entry.award_name }}{% else %}{{ entry.award }}{% endif -%}
+            </span>
           </span>
-        </span>
+        {% endif %}
+        {% if entry.certificate %}
+          {% assign cert_href = entry.certificate %}
+          {% unless cert_href contains '://' %}
+            {% assign cert_href = cert_href | relative_url %}
+          {% endunless %}
+          <a href="{{ cert_href }}" class="award-badge award-badge-certificate" role="button" target="_blank" rel="noopener noreferrer">
+            <i class="fa-solid fa-certificate award-icon" aria-hidden="true"></i>
+            <span class="award-text">Certificate</span>
+          </a>
+        {% endif %}
       </div>
     {% endif %}
     <!-- Author -->
