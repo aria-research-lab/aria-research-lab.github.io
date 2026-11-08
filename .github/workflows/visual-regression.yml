@@ -50,7 +50,7 @@ jobs:
       - name: Setup Ruby 💎
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3.5"
+          ruby-version: ruby # latest stable; avoids exact-patch pins that new runner images drop
           bundler-cache: true
 
       - name: Setup Node 🧰
