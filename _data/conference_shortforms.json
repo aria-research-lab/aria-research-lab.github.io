@@ -118,11 +118,7 @@
   {
     "name": "European Conference on Computer Vision",
     "shortform": "ECCV",
-    "aliases": [
-      "European Conference on Computer Vision",
-      "Proceedings of the European Conference on Computer Vision",
-      "Computer Vision - ECCV"
-    ]
+    "aliases": ["European Conference on Computer Vision", "Proceedings of the European Conference on Computer Vision", "Computer Vision - ECCV"]
   },
   {
     "name": "IEEE/CVF Winter Conference on Applications of Computer Vision",
@@ -137,11 +133,7 @@
   {
     "name": "Conference on Learning Theory",
     "shortform": "COLT",
-    "aliases": [
-      "Conference on Learning Theory",
-      "Proceedings of the Conference on Learning Theory",
-      "Annual Conference on Learning Theory"
-    ]
+    "aliases": ["Conference on Learning Theory", "Proceedings of the Conference on Learning Theory", "Annual Conference on Learning Theory"]
   },
   {
     "name": "International Conference on Algorithmic Learning Theory",
@@ -155,10 +147,7 @@
   {
     "name": "Asian Conference on Machine Learning",
     "shortform": "ACML",
-    "aliases": [
-      "Asian Conference on Machine Learning",
-      "Proceedings of the Asian Conference on Machine Learning"
-    ]
+    "aliases": ["Asian Conference on Machine Learning", "Proceedings of the Asian Conference on Machine Learning"]
   },
   {
     "name": "Conference on Machine Learning and Systems",
@@ -172,10 +161,7 @@
   {
     "name": "Conference on Robot Learning",
     "shortform": "CoRL",
-    "aliases": [
-      "Conference on Robot Learning",
-      "Proceedings of the Conference on Robot Learning"
-    ]
+    "aliases": ["Conference on Robot Learning", "Proceedings of the Conference on Robot Learning"]
   },
   {
     "name": "International Conference on Autonomous Agents and Multiagent Systems",
@@ -190,10 +176,7 @@
   {
     "name": "European Conference on Artificial Intelligence",
     "shortform": "ECAI",
-    "aliases": [
-      "European Conference on Artificial Intelligence",
-      "Proceedings of the European Conference on Artificial Intelligence"
-    ]
+    "aliases": ["European Conference on Artificial Intelligence", "Proceedings of the European Conference on Artificial Intelligence"]
   },
   {
     "name": "Pacific-Asia Conference on Knowledge Discovery and Data Mining",
@@ -215,152 +198,86 @@
   {
     "name": "IEEE International Conference on Big Data",
     "shortform": "BigData",
-    "aliases": [
-      "IEEE International Conference on Big Data",
-      "IEEE Big Data",
-      "Proceedings of the IEEE International Conference on Big Data"
-    ]
-  }, 
+    "aliases": ["IEEE International Conference on Big Data", "IEEE Big Data", "Proceedings of the IEEE International Conference on Big Data"]
+  },
   {
     "name": "Journal of Machine Learning Research",
     "shortform": "JMLR",
-    "aliases": [
-      "Journal of Machine Learning Research",
-      "JMLR"
-    ]
+    "aliases": ["Journal of Machine Learning Research", "JMLR"]
   },
   {
     "name": "Transactions on Machine Learning Research",
     "shortform": "TMLR",
-    "aliases": [
-      "Transactions on Machine Learning Research",
-      "TMLR"
-    ]
+    "aliases": ["Transactions on Machine Learning Research", "TMLR"]
   },
   {
     "name": "Artificial Intelligence",
     "shortform": "AIJ",
-    "aliases": [
-      "Artificial Intelligence",
-      "Artificial Intelligence Journal",
-      "AIJ"
-    ]
+    "aliases": ["Artificial Intelligence", "Artificial Intelligence Journal", "AIJ"]
   },
   {
     "name": "Journal of Artificial Intelligence Research",
     "shortform": "JAIR",
-    "aliases": [
-      "Journal of Artificial Intelligence Research",
-      "JAIR"
-    ]
+    "aliases": ["Journal of Artificial Intelligence Research", "JAIR"]
   },
   {
     "name": "Machine Learning",
     "shortform": "MLJ",
-    "aliases": [
-      "Machine Learning",
-      "Machine Learning Journal",
-      "MLJ"
-    ]
+    "aliases": ["Machine Learning", "Machine Learning Journal", "MLJ"]
   },
   {
     "name": "ACM Transactions on Probabilistic Machine Learning",
     "shortform": "TOPML",
-    "aliases": [
-      "ACM Transactions on Probabilistic Machine Learning",
-      "ACM TOPML",
-      "TOPML"
-    ]
+    "aliases": ["ACM Transactions on Probabilistic Machine Learning", "ACM TOPML", "TOPML"]
   },
   {
     "name": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
     "shortform": "TPAMI",
-    "aliases": [
-      "IEEE Transactions on Pattern Analysis and Machine Intelligence",
-      "IEEE TPAMI",
-      "TPAMI",
-      "IEEE Trans. Pattern Anal. Mach. Intell."
-    ]
+    "aliases": ["IEEE Transactions on Pattern Analysis and Machine Intelligence", "IEEE TPAMI", "TPAMI", "IEEE Trans. Pattern Anal. Mach. Intell."]
   },
   {
     "name": "International Journal of Computer Vision",
     "shortform": "IJCV",
-    "aliases": [
-      "International Journal of Computer Vision",
-      "IJCV"
-    ]
+    "aliases": ["International Journal of Computer Vision", "IJCV"]
   },
   {
     "name": "IEEE Transactions on Neural Networks and Learning Systems",
     "shortform": "TNNLS",
-    "aliases": [
-      "IEEE Transactions on Neural Networks and Learning Systems",
-      "IEEE TNNLS",
-      "TNNLS",
-      "IEEE Trans. Neural Netw. Learn. Syst."
-    ]
+    "aliases": ["IEEE Transactions on Neural Networks and Learning Systems", "IEEE TNNLS", "TNNLS", "IEEE Trans. Neural Netw. Learn. Syst."]
   },
   {
     "name": "IEEE Transactions on Knowledge and Data Engineering",
     "shortform": "TKDE",
-    "aliases": [
-      "IEEE Transactions on Knowledge and Data Engineering",
-      "IEEE TKDE",
-      "TKDE",
-      "IEEE Trans. Knowl. Data Eng."
-    ]
+    "aliases": ["IEEE Transactions on Knowledge and Data Engineering", "IEEE TKDE", "TKDE", "IEEE Trans. Knowl. Data Eng."]
   },
   {
     "name": "ACM Transactions on Knowledge Discovery from Data",
     "shortform": "TKDD",
-    "aliases": [
-      "ACM Transactions on Knowledge Discovery from Data",
-      "ACM TKDD",
-      "TKDD"
-    ]
+    "aliases": ["ACM Transactions on Knowledge Discovery from Data", "ACM TKDD", "TKDD"]
   },
   {
     "name": "Data Mining and Knowledge Discovery",
     "shortform": "DMKD",
-    "aliases": [
-      "Data Mining and Knowledge Discovery",
-      "DMKD"
-    ]
+    "aliases": ["Data Mining and Knowledge Discovery", "DMKD"]
   },
   {
     "name": "IEEE Transactions on Network Science and Engineering",
     "shortform": "TNSE",
-    "aliases": [
-      "IEEE Transactions on Network Science and Engineering",
-      "IEEE TNSE",
-      "TNSE"
-    ]
+    "aliases": ["IEEE Transactions on Network Science and Engineering", "IEEE TNSE", "TNSE"]
   },
   {
     "name": "IEEE Transactions on Computational Social Systems",
     "shortform": "TCSS",
-    "aliases": [
-      "IEEE Transactions on Computational Social Systems",
-      "IEEE TCSS",
-      "TCSS"
-    ]
+    "aliases": ["IEEE Transactions on Computational Social Systems", "IEEE TCSS", "TCSS"]
   },
   {
     "name": "ACM Computing Surveys",
     "shortform": "CSUR",
-    "aliases": [
-      "ACM Computing Surveys",
-      "ACM CSUR",
-      "CSUR"
-    ]
+    "aliases": ["ACM Computing Surveys", "ACM CSUR", "CSUR"]
   },
   {
     "name": "ACM Transactions on Interactive Intelligent Systems",
     "shortform": "TiiS",
-    "aliases": [
-      "ACM Transactions on Interactive Intelligent Systems",
-      "ACM TiiS",
-      "TiiS"
-    ]
+    "aliases": ["ACM Transactions on Interactive Intelligent Systems", "ACM TiiS", "TiiS"]
   }
 ]

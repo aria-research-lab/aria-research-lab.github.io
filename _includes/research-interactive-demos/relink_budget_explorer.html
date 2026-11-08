@@ -13,7 +13,8 @@
       <div class="demo-title-group">
         <h4>RELINK: Edge Activation for Closed-Network Influence Maximization</h4>
         <p>
-          Conceptual walk-through of the edge-activation problem formulation under budget <em>k</em>, followed by empirical benchmark results from CIKM 2025.
+          Conceptual walk-through of the edge-activation problem formulation under budget <em>k</em>, followed by empirical benchmark results from
+          CIKM 2025.
         </p>
       </div>
       <div class="demo-badges">
@@ -23,30 +24,55 @@
     </div>
 
     <!-- 1. Conceptual Problem Formulation: Edge Activation Under Budget k -->
-    <div class="demo-workload-box" style="margin-top: 0.5rem; margin-bottom: 1.25rem;">
-      <div class="workload-header" style="flex-wrap: wrap; gap: 0.6rem; align-items: center;">
+    <div class="demo-workload-box" style="margin-top: 0.5rem; margin-bottom: 1.25rem">
+      <div class="workload-header" style="flex-wrap: wrap; gap: 0.6rem; align-items: center">
         <div>
-          <h5 style="margin-bottom: 0.2rem;">
-            1. What is the Problem? Influence Maximization in Closed Social Networks (IM-CSN)
-          </h5>
-          <span class="badge badge-info" style="font-size: 0.72rem; font-weight: normal;">
+          <h5 style="margin-bottom: 0.2rem">1. What is the Problem? Influence Maximization in Closed Social Networks (IM-CSN)</h5>
+          <span class="badge badge-info" style="font-size: 0.72rem; font-weight: normal">
             Conceptual Problem Formulation &bull; Paper Figure 1 (k = 2)
           </span>
         </div>
       </div>
 
       <!-- Problem Context Note & Clarification -->
-      <p style="font-size: 0.83rem; color: var(--global-text-color-light, #6b7280); margin: 0 0 0.5rem; line-height: 1.5;">
-        <strong>Problem Formulation:</strong> In closed social networks, content propagation is restricted across privacy boundaries.
-        Starting from a seed node, the goal is to choose closed candidate edges to activate subject to an edge activation budget
-        <strong><em>k</em></strong> (where <em>k</em> is the maximum number of candidate edges that may be activated) to maximize total influence spread under the Independent Cascade (IC) diffusion model.
+      <p style="font-size: 0.83rem; color: var(--global-text-color-light, #6b7280); margin: 0 0 0.5rem; line-height: 1.5">
+        <strong>Problem Formulation:</strong> In closed social networks, content propagation is restricted across privacy boundaries. Starting from a
+        seed node, the goal is to choose closed candidate edges to activate subject to an edge activation budget <strong><em>k</em></strong> (where
+        <em>k</em> is the maximum number of candidate edges that may be activated) to maximize total influence spread under the Independent Cascade
+        (IC) diffusion model.
       </p>
-      <div style="font-size: 0.78rem; color: #64748b; font-style: italic; margin-bottom: 0.75rem; padding: 0.45rem 0.65rem; background: rgba(0,0,0,0.02); border-radius: 4px; border-left: 2px solid #94a3b8; line-height: 1.45;">
-        <strong>Clarification:</strong> This example illustrates the sequential optimization problem (Example 1, Figure 1 from the CIKM 2025 paper). It does not represent RELINK’s learned edge-selection policy.
+      <div
+        style="
+          font-size: 0.78rem;
+          color: #64748b;
+          font-style: italic;
+          margin-bottom: 0.75rem;
+          padding: 0.45rem 0.65rem;
+          background: rgba(0, 0, 0, 0.02);
+          border-radius: 4px;
+          border-left: 2px solid #94a3b8;
+          line-height: 1.45;
+        "
+      >
+        <strong>Clarification:</strong> This example illustrates the sequential optimization problem (Example 1, Figure 1 from the CIKM 2025 paper).
+        It does not represent RELINK’s learned edge-selection policy.
       </div>
 
       <!-- Controls Row: Step Pills & Next / Reset Action Buttons -->
-      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center; margin: 0.5rem 0 0.85rem; padding: 0.6rem 0.75rem; background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px;">
+      <div
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.75rem;
+          justify-content: space-between;
+          align-items: center;
+          margin: 0.5rem 0 0.85rem;
+          padding: 0.6rem 0.75rem;
+          background: var(--global-card-bg-color, #ffffff);
+          border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
+          border-radius: 8px;
+        "
+      >
         <!-- Step Indicator Pill Buttons -->
         <div class="workload-controls" role="group" aria-label="Step selector">
           <button type="button" class="workload-btn relink-step-btn active" data-step="0">Step 0: Initial State</button>
@@ -56,19 +82,43 @@
         </div>
 
         <!-- Action Controls: Prev, Next, Reset, & Budget Pill -->
-        <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-          <span style="font-size: 0.8rem; font-weight: 700; color: var(--global-text-color, #111827); background: rgba(0,0,0,0.04); padding: 0.25rem 0.55rem; border-radius: 4px; border: 1px solid var(--global-divider-color, rgba(0,0,0,0.08));">
-            Budget Used (Node a): <strong id="relink-budget-val" style="color: #ef4444;">0 / 2</strong>
+        <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap">
+          <span
+            style="
+              font-size: 0.8rem;
+              font-weight: 700;
+              color: var(--global-text-color, #111827);
+              background: rgba(0, 0, 0, 0.04);
+              padding: 0.25rem 0.55rem;
+              border-radius: 4px;
+              border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.08));
+            "
+          >
+            Budget Used (Node a): <strong id="relink-budget-val" style="color: #ef4444">0 / 2</strong>
           </span>
-          <button type="button" class="workload-btn" id="relink-btn-prev" disabled style="padding: 0.25rem 0.65rem;">&larr; Prev</button>
-          <button type="button" class="workload-btn" id="relink-btn-next" style="padding: 0.25rem 0.65rem; font-weight: 700;">Next Step &rarr;</button>
-          <button type="button" class="workload-btn" id="relink-btn-reset" style="padding: 0.25rem 0.65rem;">&#8634; Reset</button>
+          <button type="button" class="workload-btn" id="relink-btn-prev" disabled style="padding: 0.25rem 0.65rem">&larr; Prev</button>
+          <button type="button" class="workload-btn" id="relink-btn-next" style="padding: 0.25rem 0.65rem; font-weight: 700">Next Step &rarr;</button>
+          <button type="button" class="workload-btn" id="relink-btn-reset" style="padding: 0.25rem 0.65rem">&#8634; Reset</button>
         </div>
       </div>
 
       <!-- SVG Graph Display Box (Directly Based on Paper Figure 1) -->
-      <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.85rem 0.5rem; margin-bottom: 0.75rem;">
-        <svg viewBox="0 0 450 270" id="relink-mech-svg" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: auto; max-height: 270px; display: block;" aria-label="Conceptual closed network edge activation step-through inspired by Paper Figure 1">
+      <div
+        style="
+          background: var(--global-card-bg-color, #ffffff);
+          border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
+          border-radius: 8px;
+          padding: 0.85rem 0.5rem;
+          margin-bottom: 0.75rem;
+        "
+      >
+        <svg
+          viewBox="0 0 450 270"
+          id="relink-mech-svg"
+          preserveAspectRatio="xMidYMid meet"
+          style="width: 100%; height: auto; max-height: 270px; display: block"
+          aria-label="Conceptual closed network edge activation step-through inspired by Paper Figure 1"
+        >
           <defs>
             <!-- Red arrow: Candidate edges -->
             <marker id="relink-arrow-red" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
@@ -97,13 +147,58 @@
             <line id="edge-a-c" x1="85.0" y1="126.0" x2="85.0" y2="185.0" stroke="#ef4444" stroke-width="2.2" marker-end="url(#relink-arrow-red)" />
 
             <!-- Outgoing from node h -->
-            <line id="edge-h-i" x1="224.3" y1="97.8" x2="332.1" y2="43.9" stroke="#475569" stroke-width="1.8" marker-end="url(#relink-arrow-dormant)" />
-            <line id="edge-h-j" x1="226.0" y1="105.0" x2="345.0" y2="105.0" stroke="#475569" stroke-width="1.8" marker-end="url(#relink-arrow-dormant)" />
+            <line
+              id="edge-h-i"
+              x1="224.3"
+              y1="97.8"
+              x2="332.1"
+              y2="43.9"
+              stroke="#475569"
+              stroke-width="1.8"
+              marker-end="url(#relink-arrow-dormant)"
+            />
+            <line
+              id="edge-h-j"
+              x1="226.0"
+              y1="105.0"
+              x2="345.0"
+              y2="105.0"
+              stroke="#475569"
+              stroke-width="1.8"
+              marker-end="url(#relink-arrow-dormant)"
+            />
 
             <!-- Outgoing from node d -->
-            <line id="edge-d-g" x1="201.0" y1="174.0" x2="330.0" y2="166.2" stroke="#475569" stroke-width="1.8" marker-end="url(#relink-arrow-dormant)" />
-            <line id="edge-d-e" x1="175.9" y1="188.2" x2="151.4" y2="223.6" stroke="#475569" stroke-width="1.8" marker-end="url(#relink-arrow-dormant)" />
-            <line id="edge-d-f" x1="196.7" y1="185.9" x2="240.3" y2="226.4" stroke="#475569" stroke-width="1.8" marker-end="url(#relink-arrow-dormant)" />
+            <line
+              id="edge-d-g"
+              x1="201.0"
+              y1="174.0"
+              x2="330.0"
+              y2="166.2"
+              stroke="#475569"
+              stroke-width="1.8"
+              marker-end="url(#relink-arrow-dormant)"
+            />
+            <line
+              id="edge-d-e"
+              x1="175.9"
+              y1="188.2"
+              x2="151.4"
+              y2="223.6"
+              stroke="#475569"
+              stroke-width="1.8"
+              marker-end="url(#relink-arrow-dormant)"
+            />
+            <line
+              id="edge-d-f"
+              x1="196.7"
+              y1="185.9"
+              x2="240.3"
+              y2="226.4"
+              stroke="#475569"
+              stroke-width="1.8"
+              marker-end="url(#relink-arrow-dormant)"
+            />
           </g>
 
           <!-- Nodes Container -->
@@ -173,79 +268,140 @@
         </svg>
 
         <!-- Compact Legend (Matching Paper Figure 1 Semantics) -->
-        <div style="display: flex; flex-wrap: wrap; gap: 0.85rem; justify-content: center; align-items: center; margin-top: 0.6rem; font-size: 0.76rem; color: var(--global-text-color-light, #6b7280);">
-          <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
-            <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #fee2e2; border: 2px solid #ef4444;"></span>
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0.6rem;
+            font-size: 0.76rem;
+            color: var(--global-text-color-light, #6b7280);
+          "
+        >
+          <span style="display: inline-flex; align-items: center; gap: 0.35rem">
+            <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #fee2e2; border: 2px solid #ef4444"></span>
             <span>Seed Node (a)</span>
           </span>
-          <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
-            <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #ecfdf5; border: 2px solid #10b981;"></span>
+          <span style="display: inline-flex; align-items: center; gap: 0.35rem">
+            <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #ecfdf5; border: 2px solid #10b981"></span>
             <span>Influenced Node</span>
           </span>
-          <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
-            <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #ffffff; border: 2px solid #475569;"></span>
+          <span style="display: inline-flex; align-items: center; gap: 0.35rem">
+            <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #ffffff; border: 2px solid #475569"></span>
             <span>Inactive Node</span>
           </span>
-          <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
-            <span style="display: inline-block; width: 18px; height: 2px; background: #ef4444;"></span>
+          <span style="display: inline-flex; align-items: center; gap: 0.35rem">
+            <span style="display: inline-block; width: 18px; height: 2px; background: #ef4444"></span>
             <span>Candidate Edge</span>
           </span>
-          <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
-            <span style="display: inline-block; width: 18px; height: 2.5px; background: #10b981;"></span>
+          <span style="display: inline-flex; align-items: center; gap: 0.35rem">
+            <span style="display: inline-block; width: 18px; height: 2.5px; background: #10b981"></span>
             <span>Activated Edge</span>
           </span>
-          <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
-            <span style="display: inline-block; width: 18px; height: 2px; border-top: 2px dashed #94a3b8;"></span>
+          <span style="display: inline-flex; align-items: center; gap: 0.35rem">
+            <span style="display: inline-block; width: 18px; height: 2px; border-top: 2px dashed #94a3b8"></span>
             <span>Pruned Edge (Budget Exhausted)</span>
           </span>
-          <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
-            <span style="display: inline-block; width: 18px; height: 1.8px; background: #475569;"></span>
+          <span style="display: inline-flex; align-items: center; gap: 0.35rem">
+            <span style="display: inline-block; width: 18px; height: 1.8px; background: #475569"></span>
             <span>Network Link</span>
           </span>
         </div>
       </div>
 
       <!-- Problem Metrics Summary Chips -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.65rem; margin-bottom: 0.75rem;">
-        <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.55rem 0.7rem; text-align: center;">
-          <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280);">Current Step</div>
-          <div id="mech-step-label" style="font-size: 1.05rem; font-weight: 700; color: var(--global-text-color, #111827);">Step 0 of 3</div>
-          <div style="font-size: 0.7rem; color: #64748b;">Walkthrough progress</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.65rem; margin-bottom: 0.75rem">
+        <div
+          style="
+            background: var(--global-card-bg-color, #ffffff);
+            border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
+            border-radius: 8px;
+            padding: 0.55rem 0.7rem;
+            text-align: center;
+          "
+        >
+          <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280)">Current Step</div>
+          <div id="mech-step-label" style="font-size: 1.05rem; font-weight: 700; color: var(--global-text-color, #111827)">Step 0 of 3</div>
+          <div style="font-size: 0.7rem; color: #64748b">Walkthrough progress</div>
         </div>
 
-        <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.55rem 0.7rem; text-align: center;">
-          <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280);">Activation Budget</div>
-          <div style="font-size: 1.05rem; font-weight: 700; color: var(--global-text-color, #111827);">k = 2 edges</div>
-          <div style="font-size: 0.7rem; color: #64748b;">Max out-degree limit</div>
+        <div
+          style="
+            background: var(--global-card-bg-color, #ffffff);
+            border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
+            border-radius: 8px;
+            padding: 0.55rem 0.7rem;
+            text-align: center;
+          "
+        >
+          <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280)">Activation Budget</div>
+          <div style="font-size: 1.05rem; font-weight: 700; color: var(--global-text-color, #111827)">k = 2 edges</div>
+          <div style="font-size: 0.7rem; color: #64748b">Max out-degree limit</div>
         </div>
 
-        <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.55rem 0.7rem; text-align: center;">
-          <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280);">Influenced Spread</div>
-          <div id="mech-spread-val" style="font-size: 1.05rem; font-weight: 700; color: #ef4444;">1 / 10 nodes</div>
-          <div id="mech-spread-sub" style="font-size: 0.7rem; color: #ef4444; font-weight: 600;">Seed active</div>
+        <div
+          style="
+            background: var(--global-card-bg-color, #ffffff);
+            border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
+            border-radius: 8px;
+            padding: 0.55rem 0.7rem;
+            text-align: center;
+          "
+        >
+          <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280)">Influenced Spread</div>
+          <div id="mech-spread-val" style="font-size: 1.05rem; font-weight: 700; color: #ef4444">1 / 10 nodes</div>
+          <div id="mech-spread-sub" style="font-size: 0.7rem; color: #ef4444; font-weight: 600">Seed active</div>
         </div>
 
-        <div style="background: var(--global-card-bg-color, #ffffff); border: 1px solid var(--global-divider-color, rgba(0,0,0,0.1)); border-radius: 8px; padding: 0.55rem 0.7rem; text-align: center;">
-          <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280);">Budget Status</div>
-          <div id="mech-budget-status" style="font-size: 0.88rem; font-weight: 700; color: var(--global-text-color, #111827); padding-top: 0.15rem;">0 / 2 used</div>
-          <div style="font-size: 0.7rem; color: #64748b;">Remaining budget: 2</div>
+        <div
+          style="
+            background: var(--global-card-bg-color, #ffffff);
+            border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
+            border-radius: 8px;
+            padding: 0.55rem 0.7rem;
+            text-align: center;
+          "
+        >
+          <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280)">Budget Status</div>
+          <div id="mech-budget-status" style="font-size: 0.88rem; font-weight: 700; color: var(--global-text-color, #111827); padding-top: 0.15rem">
+            0 / 2 used
+          </div>
+          <div style="font-size: 0.7rem; color: #64748b">Remaining budget: 2</div>
         </div>
       </div>
 
       <!-- Dynamic Step Explanation Banner -->
-      <div id="relink-mech-explanation" class="demo-video-caption" style="margin: 0; padding: 0.75rem 0.9rem; border-radius: 6px; background: rgba(0,0,0,0.03); border-left: 3px solid #ef4444; font-size: 0.84rem; line-height: 1.5;">
-        <strong>Step 0: Initial Closed Network &amp; Seed Node</strong><br>
-        In a closed social network, content propagation is constrained. The process begins with seed node <strong>a</strong> (red). Its outgoing links <code>(a&rarr;b, a&rarr;h, a&rarr;d, a&rarr;c)</code> form the initial set of <strong>candidate edges</strong> (red arrows). Dormant links deeper in the network remain inactive (dark arrows). The edge activation budget <strong><em>k</em> = 2</strong> allows at most 2 candidate edges to be activated from node <em>a</em>.
+      <div
+        id="relink-mech-explanation"
+        class="demo-video-caption"
+        style="
+          margin: 0;
+          padding: 0.75rem 0.9rem;
+          border-radius: 6px;
+          background: rgba(0, 0, 0, 0.03);
+          border-left: 3px solid #ef4444;
+          font-size: 0.84rem;
+          line-height: 1.5;
+        "
+      >
+        <strong>Step 0: Initial Closed Network &amp; Seed Node</strong><br />
+        In a closed social network, content propagation is constrained. The process begins with seed node <strong>a</strong> (red). Its outgoing links
+        <code>(a&rarr;b, a&rarr;h, a&rarr;d, a&rarr;c)</code> form the initial set of <strong>candidate edges</strong> (red arrows). Dormant links
+        deeper in the network remain inactive (dark arrows). The edge activation budget <strong><em>k</em> = 2</strong> allows at most 2 candidate
+        edges to be activated from node <em>a</em>.
       </div>
     </div>
 
     <!-- 2. Empirical Benchmark Explorer (CIKM 2025 Paper Results) -->
-    <div style="margin-top: 1.25rem;">
-      <h5 style="margin-bottom: 0.35rem; font-size: 1.05rem; font-weight: 700;">
+    <div style="margin-top: 1.25rem">
+      <h5 style="margin-bottom: 0.35rem; font-size: 1.05rem; font-weight: 700">
         2. How Well Does RELINK Solve It? Empirical Benchmark Results from CIKM 2025
       </h5>
-      <p style="font-size: 0.83rem; color: var(--global-text-color-light, #6b7280); margin-bottom: 0.75rem;">
-        Empirical evaluation of RELINK (edge-centric <em>n</em>-step Double DQN) across 20 real-world social networks under the Independent Cascade (IC) model (100,000 Monte Carlo simulations per instance).
+      <p style="font-size: 0.83rem; color: var(--global-text-color-light, #6b7280); margin-bottom: 0.75rem">
+        Empirical evaluation of RELINK (edge-centric <em>n</em>-step Double DQN) across 20 real-world social networks under the Independent Cascade
+        (IC) model (100,000 Monte Carlo simulations per instance).
       </p>
     </div>
 
@@ -254,12 +410,12 @@
       <div class="demo-metric-card highlight-green">
         <div class="metric-name">
           <span>RELINK (DRL Policy)</span>
-          <span class="badge badge-success" style="font-size: 0.72rem;">Our Work</span>
+          <span class="badge badge-success" style="font-size: 0.72rem">Our Work</span>
         </div>
         <div class="metric-speedup speedup-ssmp" id="metric-relink-gain">Up to +15% Spread</div>
         <div class="metric-stats">
-          <strong>Formulation:</strong> Edge-centric <em>n</em>-step Double DQN with SVD embeddings<br>
-          <strong>Training:</strong> True marginal influence gain rewards (IC model)<br>
+          <strong>Formulation:</strong> Edge-centric <em>n</em>-step Double DQN with SVD embeddings<br />
+          <strong>Training:</strong> True marginal influence gain rewards (IC model)<br />
           <strong>Win Rate:</strong> 456 / 480 wins (95.0%) across 20 real networks
         </div>
       </div>
@@ -267,12 +423,14 @@
       <div class="demo-metric-card highlight-blue">
         <div class="metric-name">
           <span>PSNA (Huang et al.)</span>
-          <span class="badge badge-info" style="font-size: 0.72rem;">IM-CSN Baseline</span>
+          <span class="badge badge-info" style="font-size: 0.72rem">IM-CSN Baseline</span>
         </div>
         <div class="metric-speedup speedup-itself">95.0% RELINK Win</div>
         <div class="metric-stats">
-          <strong>Formulation:</strong> Practical Subnetwork Augmentation heuristic<br>
-          <strong>Complexity:</strong> &Omicron;(<em>I</em>(|<em>V</em>| + |<em>E</em>|) log |<em>V</em>| + |<em>V</em>|<em>d</em><sub><em>m</em></sub> log <em>d</em><sub><em>m</em></sub>)<br>
+          <strong>Formulation:</strong> Practical Subnetwork Augmentation heuristic<br />
+          <strong>Complexity:</strong> &Omicron;(<em>I</em>(|<em>V</em>| + |<em>E</em>|) log |<em>V</em>| + |<em>V</em>|<em>d</em
+          ><sub><em>m</em></sub> log <em>d</em><sub><em>m</em></sub
+          >)<br />
           <strong>Runtime:</strong> Deteriorates on large graphs; caught by budget saturation
         </div>
       </div>
@@ -280,12 +438,12 @@
       <div class="demo-metric-card highlight-gray">
         <div class="metric-name">
           <span>Traditional Baselines</span>
-          <span class="badge badge-secondary" style="font-size: 0.72rem;">Degree &amp; Random</span>
+          <span class="badge badge-secondary" style="font-size: 0.72rem">Degree &amp; Random</span>
         </div>
         <div class="metric-speedup speedup-baseline">&gt;96% RELINK Win</div>
         <div class="metric-stats">
-          <strong>Formulation:</strong> Static degree centrality &amp; uniform random selection<br>
-          <strong>Win Rate:</strong> 464 / 480 vs. Degree, 462 / 480 vs. Random &amp; FoF<br>
+          <strong>Formulation:</strong> Static degree centrality &amp; uniform random selection<br />
+          <strong>Win Rate:</strong> 464 / 480 vs. Degree, 462 / 480 vs. Random &amp; FoF<br />
           <strong>Limitation:</strong> Static local connectivity metrics overlook downstream influence dynamics
         </div>
       </div>
@@ -294,9 +452,7 @@
     <!-- Empirical Results Contingency Explorer -->
     <div class="demo-workload-box">
       <div class="workload-header">
-        <h5>
-          Empirical Results from CIKM 2025: Baseline Comparisons (Figure 3, 480 Experiments)
-        </h5>
+        <h5>Empirical Results from CIKM 2025: Baseline Comparisons (Figure 3, 480 Experiments)</h5>
         <div class="workload-controls">
           <button type="button" class="workload-btn relink-btn active" data-view="all">All Baselines Overview</button>
           <button type="button" class="workload-btn relink-btn" data-view="psna">vs. PSNA (IM-CSN)</button>
@@ -312,7 +468,7 @@
             <span class="demo-progress-val speedup-ssmp" id="relink-row1-val">96.7% (464 / 480 wins)</span>
           </div>
           <div class="demo-progress-track">
-            <div class="demo-progress-fill fill-green" id="relink-row1-bar" style="width: 96.7%;"></div>
+            <div class="demo-progress-fill fill-green" id="relink-row1-bar" style="width: 96.7%"></div>
           </div>
         </div>
 
@@ -322,7 +478,7 @@
             <span class="demo-progress-val speedup-itself" id="relink-row2-val">96.2% (462 / 480 wins)</span>
           </div>
           <div class="demo-progress-track">
-            <div class="demo-progress-fill fill-blue" id="relink-row2-bar" style="width: 96.2%;"></div>
+            <div class="demo-progress-fill fill-blue" id="relink-row2-bar" style="width: 96.2%"></div>
           </div>
         </div>
 
@@ -332,408 +488,455 @@
             <span class="demo-progress-val speedup-baseline" id="relink-row3-val">96.2% (462 / 480 wins)</span>
           </div>
           <div class="demo-progress-track">
-            <div class="demo-progress-fill fill-gray" id="relink-row3-bar" style="width: 96.2%;"></div>
+            <div class="demo-progress-fill fill-gray" id="relink-row3-bar" style="width: 96.2%"></div>
           </div>
         </div>
 
         <div class="demo-progress-row" id="relink-row-4">
           <div class="demo-progress-meta">
             <span class="demo-progress-name" id="relink-row4-label">RELINK vs. PSNA (Huang et al., IM-CSN Baseline)</span>
-            <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280);" id="relink-row4-val">95.0% (456 / 480 wins)</span>
+            <span class="demo-progress-val" style="color: var(--global-text-color-light, #6b7280)" id="relink-row4-val">95.0% (456 / 480 wins)</span>
           </div>
           <div class="demo-progress-track">
-            <div class="demo-progress-fill" id="relink-row4-bar" style="background: #10b981; width: 95.0%;"></div>
+            <div class="demo-progress-fill" id="relink-row4-bar" style="background: #10b981; width: 95%"></div>
           </div>
         </div>
       </div>
 
-      <p class="demo-video-caption" id="relink-takeaway" style="margin-top: 0.85rem; margin-bottom: 0;">
-        <strong>Paper Finding (Figure 3 Contingency Matrix &amp; Section 6.2):</strong> Across 480 total experimental configurations spanning 20 real-world social networks (evaluated with 100,000 Monte Carlo runs under the IC model), RELINK outperforms all competing methods in at least 95% of experiments. In low edge budget regimes (<em>k</em> &le; 10), Section 6.3 reports that RELINK frequently achieves influence spread improvements exceeding 15% over PSNA.
+      <p class="demo-video-caption" id="relink-takeaway" style="margin-top: 0.85rem; margin-bottom: 0">
+        <strong>Paper Finding (Figure 3 Contingency Matrix &amp; Section 6.2):</strong> Across 480 total experimental configurations spanning 20
+        real-world social networks (evaluated with 100,000 Monte Carlo runs under the IC model), RELINK outperforms all competing methods in at least
+        95% of experiments. In low edge budget regimes (<em>k</em> &le; 10), Section 6.3 reports that RELINK frequently achieves influence spread
+        improvements exceeding 15% over PSNA.
       </p>
     </div>
-
   </div>
 </details>
 
 <script>
-(function() {
-  function initRelinkDemo() {
-    /* ==========================================================================
+  (function () {
+    function initRelinkDemo() {
+      /* ==========================================================================
        1. Conceptual Problem Walkthrough (Paper Figure 1, k = 2)
        ========================================================================== */
-    var currentStep = 0;
+      var currentStep = 0;
 
-    var stepButtons = document.querySelectorAll(".relink-step-btn");
-    var btnPrev = document.getElementById("relink-btn-prev");
-    var btnNext = document.getElementById("relink-btn-next");
-    var btnReset = document.getElementById("relink-btn-reset");
-    var detailsWrapper = document.getElementById("relink-details-wrapper");
+      var stepButtons = document.querySelectorAll(".relink-step-btn");
+      var btnPrev = document.getElementById("relink-btn-prev");
+      var btnNext = document.getElementById("relink-btn-next");
+      var btnReset = document.getElementById("relink-btn-reset");
+      var detailsWrapper = document.getElementById("relink-details-wrapper");
 
-    var budgetPillVal = document.getElementById("relink-budget-val");
-    var stepLabelEl = document.getElementById("mech-step-label");
-    var spreadValEl = document.getElementById("mech-spread-val");
-    var spreadSubEl = document.getElementById("mech-spread-sub");
-    var budgetStatusEl = document.getElementById("mech-budget-status");
-    var explanationEl = document.getElementById("relink-mech-explanation");
+      var budgetPillVal = document.getElementById("relink-budget-val");
+      var stepLabelEl = document.getElementById("mech-step-label");
+      var spreadValEl = document.getElementById("mech-spread-val");
+      var spreadSubEl = document.getElementById("mech-spread-sub");
+      var budgetStatusEl = document.getElementById("mech-budget-status");
+      var explanationEl = document.getElementById("relink-mech-explanation");
 
-    var ALL_EDGES = ["a-b", "a-h", "a-d", "a-c", "h-i", "h-j", "d-g", "d-e", "d-f"];
-    var ALL_TARGET_NODES = ["b", "h", "d", "c", "i", "j", "g", "e", "f"];
+      var ALL_EDGES = ["a-b", "a-h", "a-d", "a-c", "h-i", "h-j", "d-g", "d-e", "d-f"];
+      var ALL_TARGET_NODES = ["b", "h", "d", "c", "i", "j", "g", "e", "f"];
 
-    var STEP_CONFIGS = [
-      {
-        step: 0,
-        budgetPill: "0 / 2",
-        pillColor: "#ef4444",
-        stepLabel: "Step 0 of 3",
-        spreadVal: "1 / 10 nodes",
-        spreadSub: "Seed node a active",
-        spreadColor: "#ef4444",
-        budgetStatus: "0 / 2 used",
-        budgetSub: "Remaining budget: 2",
-        borderColor: "#ef4444",
-        edges: {
-          "a-b": "candidate",
-          "a-h": "candidate",
-          "a-d": "candidate",
-          "a-c": "candidate",
-          "h-i": "dormant",
-          "h-j": "dormant",
-          "d-g": "dormant",
-          "d-e": "dormant",
-          "d-f": "dormant"
+      var STEP_CONFIGS = [
+        {
+          step: 0,
+          budgetPill: "0 / 2",
+          pillColor: "#ef4444",
+          stepLabel: "Step 0 of 3",
+          spreadVal: "1 / 10 nodes",
+          spreadSub: "Seed node a active",
+          spreadColor: "#ef4444",
+          budgetStatus: "0 / 2 used",
+          budgetSub: "Remaining budget: 2",
+          borderColor: "#ef4444",
+          edges: {
+            "a-b": "candidate",
+            "a-h": "candidate",
+            "a-d": "candidate",
+            "a-c": "candidate",
+            "h-i": "dormant",
+            "h-j": "dormant",
+            "d-g": "dormant",
+            "d-e": "dormant",
+            "d-f": "dormant",
+          },
+          influenced: [],
+          explanation:
+            "<strong>Step 0: Initial Network &amp; Seed Node</strong><br>In a closed social network, content propagation is restricted. The process begins with seed node <strong>a</strong> (red). Its outgoing links <code>(a&rarr;b, a&rarr;h, a&rarr;d, a&rarr;c)</code> form the initial set of <strong>candidate edges</strong> (red arrows). Dormant links deeper in the network remain inactive (dark arrows). The edge activation budget <strong><em>k</em> = 2</strong> allows at most 2 candidate edges to be activated from node <em>a</em>.",
         },
-        influenced: [],
-        explanation: "<strong>Step 0: Initial Network &amp; Seed Node</strong><br>In a closed social network, content propagation is restricted. The process begins with seed node <strong>a</strong> (red). Its outgoing links <code>(a&rarr;b, a&rarr;h, a&rarr;d, a&rarr;c)</code> form the initial set of <strong>candidate edges</strong> (red arrows). Dormant links deeper in the network remain inactive (dark arrows). The edge activation budget <strong><em>k</em> = 2</strong> allows at most 2 candidate edges to be activated from node <em>a</em>."
-      },
-      {
-        step: 1,
-        budgetPill: "1 / 2",
-        pillColor: "#d97706",
-        stepLabel: "Step 1 of 3",
-        spreadVal: "2 / 10 nodes",
-        spreadSub: "Propagated to node h",
-        spreadColor: "#d97706",
-        budgetStatus: "1 / 2 used",
-        budgetSub: "Remaining budget: 1",
-        borderColor: "#10b981",
-        edges: {
-          "a-b": "candidate",
-          "a-h": "activated",
-          "a-d": "candidate",
-          "a-c": "candidate",
-          "h-i": "candidate",
-          "h-j": "candidate",
-          "d-g": "dormant",
-          "d-e": "dormant",
-          "d-f": "dormant"
+        {
+          step: 1,
+          budgetPill: "1 / 2",
+          pillColor: "#d97706",
+          stepLabel: "Step 1 of 3",
+          spreadVal: "2 / 10 nodes",
+          spreadSub: "Propagated to node h",
+          spreadColor: "#d97706",
+          budgetStatus: "1 / 2 used",
+          budgetSub: "Remaining budget: 1",
+          borderColor: "#10b981",
+          edges: {
+            "a-b": "candidate",
+            "a-h": "activated",
+            "a-d": "candidate",
+            "a-c": "candidate",
+            "h-i": "candidate",
+            "h-j": "candidate",
+            "d-g": "dormant",
+            "d-e": "dormant",
+            "d-f": "dormant",
+          },
+          influenced: ["h"],
+          explanation:
+            "<strong>Step 1: First Edge Activation (a &rarr; h)</strong><br>An illustrative candidate edge <strong>(a &rarr; h)</strong> is selected and activated (green arrow). Influence propagates to node <strong>h</strong> (green circle). Because node <em>h</em> is now activated, its outgoing connections <code>(h&rarr;i, h&rarr;j)</code> become newly reachable candidate edges (red arrows). Seed node <em>a</em> has used <strong>1 of its 2</strong> permitted activations.",
         },
-        influenced: ["h"],
-        explanation: "<strong>Step 1: First Edge Activation (a &rarr; h)</strong><br>An illustrative candidate edge <strong>(a &rarr; h)</strong> is selected and activated (green arrow). Influence propagates to node <strong>h</strong> (green circle). Because node <em>h</em> is now activated, its outgoing connections <code>(h&rarr;i, h&rarr;j)</code> become newly reachable candidate edges (red arrows). Seed node <em>a</em> has used <strong>1 of its 2</strong> permitted activations."
-      },
-      {
-        step: 2,
-        budgetPill: "2 / 2 (Exhausted)",
-        pillColor: "#059669",
-        stepLabel: "Step 2 of 3",
-        spreadVal: "3 / 10 nodes",
-        spreadSub: "Propagated to node d",
-        spreadColor: "#059669",
-        budgetStatus: "2 / 2 used",
-        budgetSub: "Budget limit reached",
-        borderColor: "#10b981",
-        edges: {
-          "a-b": "pruned",
-          "a-h": "activated",
-          "a-d": "activated",
-          "a-c": "pruned",
-          "h-i": "candidate",
-          "h-j": "candidate",
-          "d-g": "candidate",
-          "d-e": "candidate",
-          "d-f": "candidate"
+        {
+          step: 2,
+          budgetPill: "2 / 2 (Exhausted)",
+          pillColor: "#059669",
+          stepLabel: "Step 2 of 3",
+          spreadVal: "3 / 10 nodes",
+          spreadSub: "Propagated to node d",
+          spreadColor: "#059669",
+          budgetStatus: "2 / 2 used",
+          budgetSub: "Budget limit reached",
+          borderColor: "#10b981",
+          edges: {
+            "a-b": "pruned",
+            "a-h": "activated",
+            "a-d": "activated",
+            "a-c": "pruned",
+            "h-i": "candidate",
+            "h-j": "candidate",
+            "d-g": "candidate",
+            "d-e": "candidate",
+            "d-f": "candidate",
+          },
+          influenced: ["h", "d"],
+          explanation:
+            "<strong>Step 2: Second Activation (a &rarr; d) &amp; Budget Limit Reached</strong><br>Next, candidate edge <strong>(a &rarr; d)</strong> is activated (green), propagating influence to node <strong>d</strong> (green). Because seed <em>a</em> has now reached its out-degree budget limit of <strong><em>k</em> = 2</strong>, its remaining unselected candidate links <code>(a&rarr;b, a&rarr;c)</code> are <strong>pruned</strong> (dashed gray arrows) and can no longer be activated. Node <em>d</em>'s outgoing links <code>(d&rarr;g, d&rarr;e, d&rarr;f)</code> become candidate edges.",
         },
-        influenced: ["h", "d"],
-        explanation: "<strong>Step 2: Second Activation (a &rarr; d) &amp; Budget Limit Reached</strong><br>Next, candidate edge <strong>(a &rarr; d)</strong> is activated (green), propagating influence to node <strong>d</strong> (green). Because seed <em>a</em> has now reached its out-degree budget limit of <strong><em>k</em> = 2</strong>, its remaining unselected candidate links <code>(a&rarr;b, a&rarr;c)</code> are <strong>pruned</strong> (dashed gray arrows) and can no longer be activated. Node <em>d</em>'s outgoing links <code>(d&rarr;g, d&rarr;e, d&rarr;f)</code> become candidate edges."
-      },
-      {
-        step: 3,
-        budgetPill: "k = 2 Enforced",
-        pillColor: "#059669",
-        stepLabel: "Step 3 of 3",
-        spreadVal: "7 / 10 nodes",
-        spreadSub: "Full cascade reach",
-        spreadColor: "#059669",
-        budgetStatus: "Enforced",
-        budgetSub: "k = 2 per node limit",
-        borderColor: "#10b981",
-        edges: {
-          "a-b": "pruned",
-          "a-h": "activated",
-          "a-d": "activated",
-          "a-c": "pruned",
-          "h-i": "activated",
-          "h-j": "activated",
-          "d-g": "activated",
-          "d-e": "activated",
-          "d-f": "pruned"
+        {
+          step: 3,
+          budgetPill: "k = 2 Enforced",
+          pillColor: "#059669",
+          stepLabel: "Step 3 of 3",
+          spreadVal: "7 / 10 nodes",
+          spreadSub: "Full cascade reach",
+          spreadColor: "#059669",
+          budgetStatus: "Enforced",
+          budgetSub: "k = 2 per node limit",
+          borderColor: "#10b981",
+          edges: {
+            "a-b": "pruned",
+            "a-h": "activated",
+            "a-d": "activated",
+            "a-c": "pruned",
+            "h-i": "activated",
+            "h-j": "activated",
+            "d-g": "activated",
+            "d-e": "activated",
+            "d-f": "pruned",
+          },
+          influenced: ["h", "d", "i", "j", "g", "e"],
+          explanation:
+            "<strong>Step 3: Downstream Cascade &amp; Final Influence Spread</strong><br>Downstream active nodes continue propagating influence subject to their own out-degree budget limit <em>k</em> = 2. From node <em>h</em>, candidate edges <code>(h&rarr;i, h&rarr;j)</code> are activated. From node <em>d</em>, edges <code>(d&rarr;g, d&rarr;e)</code> are activated, while link <code>(d&rarr;f)</code> is pruned (dashed) as node <em>d</em> reaches its budget limit. Influence successfully spreads to 7 total nodes <code>{a, h, d, i, j, g, e}</code>.",
         },
-        influenced: ["h", "d", "i", "j", "g", "e"],
-        explanation: "<strong>Step 3: Downstream Cascade &amp; Final Influence Spread</strong><br>Downstream active nodes continue propagating influence subject to their own out-degree budget limit <em>k</em> = 2. From node <em>h</em>, candidate edges <code>(h&rarr;i, h&rarr;j)</code> are activated. From node <em>d</em>, edges <code>(d&rarr;g, d&rarr;e)</code> are activated, while link <code>(d&rarr;f)</code> is pruned (dashed) as node <em>d</em> reaches its budget limit. Influence successfully spreads to 7 total nodes <code>{a, h, d, i, j, g, e}</code>."
-      }
-    ];
+      ];
 
-    function applyEdgeStyle(edgeEl, state) {
-      if (!edgeEl) return;
-      if (state === "candidate") {
-        edgeEl.setAttribute("stroke", "#ef4444");
-        edgeEl.setAttribute("stroke-width", "2.2");
-        edgeEl.setAttribute("marker-end", "url(#relink-arrow-red)");
-        edgeEl.removeAttribute("stroke-dasharray");
-      } else if (state === "activated") {
-        edgeEl.setAttribute("stroke", "#10b981");
-        edgeEl.setAttribute("stroke-width", "2.8");
-        edgeEl.setAttribute("marker-end", "url(#relink-arrow-green)");
-        edgeEl.removeAttribute("stroke-dasharray");
-      } else if (state === "pruned") {
-        edgeEl.setAttribute("stroke", "#94a3b8");
-        edgeEl.setAttribute("stroke-width", "1.8");
-        edgeEl.setAttribute("stroke-dasharray", "4 3");
-        edgeEl.setAttribute("marker-end", "url(#relink-arrow-pruned)");
-      } else {
-        // dormant network link
-        edgeEl.setAttribute("stroke", "#475569");
-        edgeEl.setAttribute("stroke-width", "1.8");
-        edgeEl.setAttribute("marker-end", "url(#relink-arrow-dormant)");
-        edgeEl.removeAttribute("stroke-dasharray");
-      }
-    }
-
-    function updateStepVisualization() {
-      var cfg = STEP_CONFIGS[currentStep];
-      if (!cfg) return;
-
-      // 1. Update edge appearances
-      ALL_EDGES.forEach(function(edgeId) {
-        var el = document.getElementById("edge-" + edgeId);
-        var st = cfg.edges[edgeId] || "dormant";
-        applyEdgeStyle(el, st);
-      });
-
-      // 2. Update target node appearances
-      ALL_TARGET_NODES.forEach(function(nodeId) {
-        var g = document.getElementById("node-" + nodeId);
-        if (!g) return;
-        var circle = g.querySelector(".relink-node-circle");
-        var text = g.querySelector(".relink-node-text");
-        if (!circle || !text) return;
-
-        var isInf = cfg.influenced.indexOf(nodeId) !== -1;
-        if (isInf) {
-          circle.setAttribute("fill", "#ecfdf5");
-          circle.setAttribute("stroke", "#10b981");
-          circle.setAttribute("stroke-width", "2.2");
-          text.setAttribute("fill", "#065f46");
+      function applyEdgeStyle(edgeEl, state) {
+        if (!edgeEl) return;
+        if (state === "candidate") {
+          edgeEl.setAttribute("stroke", "#ef4444");
+          edgeEl.setAttribute("stroke-width", "2.2");
+          edgeEl.setAttribute("marker-end", "url(#relink-arrow-red)");
+          edgeEl.removeAttribute("stroke-dasharray");
+        } else if (state === "activated") {
+          edgeEl.setAttribute("stroke", "#10b981");
+          edgeEl.setAttribute("stroke-width", "2.8");
+          edgeEl.setAttribute("marker-end", "url(#relink-arrow-green)");
+          edgeEl.removeAttribute("stroke-dasharray");
+        } else if (state === "pruned") {
+          edgeEl.setAttribute("stroke", "#94a3b8");
+          edgeEl.setAttribute("stroke-width", "1.8");
+          edgeEl.setAttribute("stroke-dasharray", "4 3");
+          edgeEl.setAttribute("marker-end", "url(#relink-arrow-pruned)");
         } else {
-          circle.setAttribute("fill", "#ffffff");
-          circle.setAttribute("stroke", "#475569");
-          circle.setAttribute("stroke-width", "1.8");
-          text.setAttribute("fill", "#1e293b");
+          // dormant network link
+          edgeEl.setAttribute("stroke", "#475569");
+          edgeEl.setAttribute("stroke-width", "1.8");
+          edgeEl.setAttribute("marker-end", "url(#relink-arrow-dormant)");
+          edgeEl.removeAttribute("stroke-dasharray");
         }
-      });
-
-      // 3. Update step buttons active class
-      stepButtons.forEach(function(btn) {
-        var s = parseInt(btn.getAttribute("data-step"), 10);
-        btn.classList.toggle("active", s === currentStep);
-      });
-
-      // 4. Update Prev / Next button states
-      if (btnPrev) btnPrev.disabled = currentStep === 0;
-      if (btnNext) btnNext.textContent = currentStep === 3 ? "Reset to Step 0" : "Next Step →";
-
-      // 5. Update summary chips
-      if (budgetPillVal) {
-        budgetPillVal.textContent = cfg.budgetPill;
-        budgetPillVal.style.color = cfg.pillColor;
       }
-      if (stepLabelEl) stepLabelEl.textContent = cfg.stepLabel;
-      if (spreadValEl) {
-        spreadValEl.textContent = cfg.spreadVal;
-        spreadValEl.style.color = cfg.spreadColor;
-      }
-      if (spreadSubEl) {
-        spreadSubEl.textContent = cfg.spreadSub;
-        spreadSubEl.style.color = cfg.spreadColor;
-      }
-      if (budgetStatusEl) budgetStatusEl.textContent = cfg.budgetStatus;
 
-      // 6. Update explanation text & border
-      if (explanationEl) {
-        explanationEl.style.borderLeftColor = cfg.borderColor;
-        explanationEl.innerHTML = cfg.explanation;
-      }
-    }
+      function updateStepVisualization() {
+        var cfg = STEP_CONFIGS[currentStep];
+        if (!cfg) return;
 
-    // Step pill listeners
-    stepButtons.forEach(function(btn) {
-      btn.addEventListener("click", function() {
-        currentStep = parseInt(btn.getAttribute("data-step"), 10);
-        updateStepVisualization();
-      });
-    });
+        // 1. Update edge appearances
+        ALL_EDGES.forEach(function (edgeId) {
+          var el = document.getElementById("edge-" + edgeId);
+          var st = cfg.edges[edgeId] || "dormant";
+          applyEdgeStyle(el, st);
+        });
 
-    // Prev / Next / Reset listeners
-    if (btnPrev) {
-      btnPrev.addEventListener("click", function() {
-        if (currentStep > 0) {
-          currentStep--;
-          updateStepVisualization();
-        }
-      });
-    }
+        // 2. Update target node appearances
+        ALL_TARGET_NODES.forEach(function (nodeId) {
+          var g = document.getElementById("node-" + nodeId);
+          if (!g) return;
+          var circle = g.querySelector(".relink-node-circle");
+          var text = g.querySelector(".relink-node-text");
+          if (!circle || !text) return;
 
-    if (btnNext) {
-      btnNext.addEventListener("click", function() {
-        if (currentStep < 3) {
-          currentStep++;
-        } else {
-          currentStep = 0;
-        }
-        updateStepVisualization();
-      });
-    }
-
-    if (btnReset) {
-      btnReset.addEventListener("click", function() {
-        currentStep = 0;
-        updateStepVisualization();
-      });
-    }
-
-    // Reset walkthrough on details toggle close
-    if (detailsWrapper) {
-      detailsWrapper.addEventListener("toggle", function() {
-        if (!detailsWrapper.open) {
-          currentStep = 0;
-          updateStepVisualization();
-        }
-      });
-    }
-
-    // Initialize walkthrough
-    updateStepVisualization();
-
-    /* ==========================================================================
-       2. Empirical Benchmark Explorer (CIKM 2025 Contingency Matrix)
-       ========================================================================== */
-    var buttons = document.querySelectorAll(".relink-btn");
-    var row1 = document.getElementById("relink-row-1");
-    var row2 = document.getElementById("relink-row-2");
-    var row3 = document.getElementById("relink-row-3");
-    var row4 = document.getElementById("relink-row-4");
-    var row1Label = document.getElementById("relink-row1-label");
-    var row1Val = document.getElementById("relink-row1-val");
-    var row1Bar = document.getElementById("relink-row1-bar");
-    var row2Label = document.getElementById("relink-row2-label");
-    var row2Val = document.getElementById("relink-row2-val");
-    var row2Bar = document.getElementById("relink-row2-bar");
-    var row3Label = document.getElementById("relink-row3-label");
-    var row3Val = document.getElementById("relink-row3-val");
-    var row3Bar = document.getElementById("relink-row3-bar");
-    var row4Label = document.getElementById("relink-row4-label");
-    var row4Val = document.getElementById("relink-row4-val");
-    var row4Bar = document.getElementById("relink-row4-bar");
-    var metricGain = document.getElementById("metric-relink-gain");
-    var takeaway = document.getElementById("relink-takeaway");
-
-    if (!buttons.length || !row1 || !row2 || !row3 || !row4) return;
-
-    var viewData = {
-      "all": {
-        gain: "95.0% – 96.7% Win Rate",
-        takeaway: "<strong>Paper Finding (Figure 3 Contingency Matrix &amp; Section 6.2):</strong> Across 480 total experimental configurations spanning 20 real-world social networks (evaluated with 100,000 Monte Carlo runs under the IC model), RELINK outperforms all competing methods in at least 95% of experiments. In low edge budget regimes (<em>k</em> &le; 10), Section 6.3 reports that RELINK frequently achieves influence spread improvements exceeding 15% over PSNA.",
-        rows: [
-          { show: true, label: "RELINK vs. Degree Centrality", val: "96.7% (464 / 480 wins)", pct: 96.7, cls: "fill-green", style: "" },
-          { show: true, label: "RELINK vs. Random Selection", val: "96.2% (462 / 480 wins)", pct: 96.2, cls: "fill-blue", style: "" },
-          { show: true, label: "RELINK vs. Friend-of-Friend (FoF)", val: "96.2% (462 / 480 wins)", pct: 96.2, cls: "fill-gray", style: "" },
-          { show: true, label: "RELINK vs. PSNA (Huang et al., IM-CSN Baseline)", val: "95.0% (456 / 480 wins)", pct: 95.0, cls: "", style: "background: #10b981;" }
-        ]
-      },
-      "psna": {
-        gain: "456 / 480 Wins (95.0%)",
-        takeaway: "<strong>Paper Finding (Section 6.3 &amp; Figure 6):</strong> RELINK outperforms PSNA in <strong>456 out of 480</strong> configurations (95.0% win rate). The advantage is especially pronounced in low-budget regimes (<em>k</em> &le; 10), where RELINK consistently achieves higher influence spread by identifying high-leverage boundary bridges early.",
-        rows: [
-          { show: true, label: "RELINK (Deep Reinforcement Learning Policy)", val: "95.0% Win Rate (456 / 480 wins)", pct: 95.0, cls: "fill-green", style: "" },
-          { show: true, label: "PSNA (Huang et al., IM-CSN Baseline)", val: "5.0% Win Rate (24 / 480 wins)", pct: 5.0, cls: "fill-blue", style: "" },
-          { show: false },
-          { show: false }
-        ]
-      },
-      "degree": {
-        gain: "464 / 480 Wins (96.7%)",
-        takeaway: "<strong>Paper Finding (Section 6.2 Q1):</strong> RELINK outperforms Degree Centrality in <strong>464 out of 480</strong> experiments (96.7%). As reported in Section 6.2, traditional heuristics like Degree perform worst on IM-CSN, consistent with prior findings from Huang et al. [46], because degree-based selection prioritizes locally prominent structure rather than optimizing activation decisions with learned influence-aware policies.",
-        rows: [
-          { show: true, label: "RELINK (Deep Reinforcement Learning Policy)", val: "96.7% Win Rate (464 / 480 wins)", pct: 96.7, cls: "fill-green", style: "" },
-          { show: true, label: "Degree Centrality Heuristic", val: "3.3% Win Rate (16 / 480 wins)", pct: 3.3, cls: "fill-gray", style: "" },
-          { show: false },
-          { show: false }
-        ]
-      },
-      "random_fof": {
-        gain: "462 / 480 Wins (96.2%)",
-        takeaway: "<strong>Paper Finding (Section 6.2 Q1):</strong> RELINK outperforms both Random and Friend-of-Friend (FoF) in <strong>462 out of 480</strong> experiments each (96.2%). Notably, Random outperforms FoF and Degree on IM-CSN because uniform random selection occasionally discovers exploratory bridge links across disconnected components that local heuristics miss.",
-        rows: [
-          { show: true, label: "RELINK (Deep Reinforcement Learning Policy)", val: "96.2% Win Rate (462 / 480 wins)", pct: 96.2, cls: "fill-green", style: "" },
-          { show: true, label: "Random Edge Selection", val: "3.8% Win Rate (18 / 480 wins)", pct: 3.8, cls: "fill-gray", style: "" },
-          { show: true, label: "Friend-of-Friend (FoF)", val: "3.8% Win Rate (18 / 480 wins)", pct: 3.8, cls: "fill-gray", style: "" },
-          { show: false }
-        ]
-      }
-    };
-
-    var rowElements = [
-      { row: row1, label: row1Label, val: row1Val, bar: row1Bar },
-      { row: row2, label: row2Label, val: row2Val, bar: row2Bar },
-      { row: row3, label: row3Label, val: row3Val, bar: row3Bar },
-      { row: row4, label: row4Label, val: row4Val, bar: row4Bar }
-    ];
-
-    buttons.forEach(function(btn) {
-      btn.addEventListener("click", function() {
-        buttons.forEach(function(b) { b.classList.remove("active"); });
-        btn.classList.add("active");
-        var view = btn.getAttribute("data-view");
-        var d = viewData[view];
-        if (!d) return;
-
-        if (metricGain) metricGain.innerHTML = d.gain;
-        takeaway.innerHTML = d.takeaway;
-
-        d.rows.forEach(function(rData, idx) {
-          var el = rowElements[idx];
-          if (!rData.show) {
-            el.row.style.display = "none";
+          var isInf = cfg.influenced.indexOf(nodeId) !== -1;
+          if (isInf) {
+            circle.setAttribute("fill", "#ecfdf5");
+            circle.setAttribute("stroke", "#10b981");
+            circle.setAttribute("stroke-width", "2.2");
+            text.setAttribute("fill", "#065f46");
           } else {
-            el.row.style.display = "";
-            el.label.innerHTML = rData.label;
-            el.val.innerHTML = rData.val;
-            el.bar.style.width = rData.pct + "%";
-            el.bar.className = "demo-progress-fill" + (rData.cls ? " " + rData.cls : "");
-            if (rData.style) {
-              el.bar.setAttribute("style", "width: " + rData.pct + "%; " + rData.style);
-            } else {
-              el.bar.setAttribute("style", "width: " + rData.pct + "%;");
-            }
+            circle.setAttribute("fill", "#ffffff");
+            circle.setAttribute("stroke", "#475569");
+            circle.setAttribute("stroke-width", "1.8");
+            text.setAttribute("fill", "#1e293b");
           }
         });
-      });
-    });
-  }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initRelinkDemo);
-  } else {
-    initRelinkDemo();
-  }
-})();
+        // 3. Update step buttons active class
+        stepButtons.forEach(function (btn) {
+          var s = parseInt(btn.getAttribute("data-step"), 10);
+          btn.classList.toggle("active", s === currentStep);
+        });
+
+        // 4. Update Prev / Next button states
+        if (btnPrev) btnPrev.disabled = currentStep === 0;
+        if (btnNext) btnNext.textContent = currentStep === 3 ? "Reset to Step 0" : "Next Step →";
+
+        // 5. Update summary chips
+        if (budgetPillVal) {
+          budgetPillVal.textContent = cfg.budgetPill;
+          budgetPillVal.style.color = cfg.pillColor;
+        }
+        if (stepLabelEl) stepLabelEl.textContent = cfg.stepLabel;
+        if (spreadValEl) {
+          spreadValEl.textContent = cfg.spreadVal;
+          spreadValEl.style.color = cfg.spreadColor;
+        }
+        if (spreadSubEl) {
+          spreadSubEl.textContent = cfg.spreadSub;
+          spreadSubEl.style.color = cfg.spreadColor;
+        }
+        if (budgetStatusEl) budgetStatusEl.textContent = cfg.budgetStatus;
+
+        // 6. Update explanation text & border
+        if (explanationEl) {
+          explanationEl.style.borderLeftColor = cfg.borderColor;
+          explanationEl.innerHTML = cfg.explanation;
+        }
+      }
+
+      // Step pill listeners
+      stepButtons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          currentStep = parseInt(btn.getAttribute("data-step"), 10);
+          updateStepVisualization();
+        });
+      });
+
+      // Prev / Next / Reset listeners
+      if (btnPrev) {
+        btnPrev.addEventListener("click", function () {
+          if (currentStep > 0) {
+            currentStep--;
+            updateStepVisualization();
+          }
+        });
+      }
+
+      if (btnNext) {
+        btnNext.addEventListener("click", function () {
+          if (currentStep < 3) {
+            currentStep++;
+          } else {
+            currentStep = 0;
+          }
+          updateStepVisualization();
+        });
+      }
+
+      if (btnReset) {
+        btnReset.addEventListener("click", function () {
+          currentStep = 0;
+          updateStepVisualization();
+        });
+      }
+
+      // Reset walkthrough on details toggle close
+      if (detailsWrapper) {
+        detailsWrapper.addEventListener("toggle", function () {
+          if (!detailsWrapper.open) {
+            currentStep = 0;
+            updateStepVisualization();
+          }
+        });
+      }
+
+      // Initialize walkthrough
+      updateStepVisualization();
+
+      /* ==========================================================================
+       2. Empirical Benchmark Explorer (CIKM 2025 Contingency Matrix)
+       ========================================================================== */
+      var buttons = document.querySelectorAll(".relink-btn");
+      var row1 = document.getElementById("relink-row-1");
+      var row2 = document.getElementById("relink-row-2");
+      var row3 = document.getElementById("relink-row-3");
+      var row4 = document.getElementById("relink-row-4");
+      var row1Label = document.getElementById("relink-row1-label");
+      var row1Val = document.getElementById("relink-row1-val");
+      var row1Bar = document.getElementById("relink-row1-bar");
+      var row2Label = document.getElementById("relink-row2-label");
+      var row2Val = document.getElementById("relink-row2-val");
+      var row2Bar = document.getElementById("relink-row2-bar");
+      var row3Label = document.getElementById("relink-row3-label");
+      var row3Val = document.getElementById("relink-row3-val");
+      var row3Bar = document.getElementById("relink-row3-bar");
+      var row4Label = document.getElementById("relink-row4-label");
+      var row4Val = document.getElementById("relink-row4-val");
+      var row4Bar = document.getElementById("relink-row4-bar");
+      var metricGain = document.getElementById("metric-relink-gain");
+      var takeaway = document.getElementById("relink-takeaway");
+
+      if (!buttons.length || !row1 || !row2 || !row3 || !row4) return;
+
+      var viewData = {
+        all: {
+          gain: "95.0% – 96.7% Win Rate",
+          takeaway:
+            "<strong>Paper Finding (Figure 3 Contingency Matrix &amp; Section 6.2):</strong> Across 480 total experimental configurations spanning 20 real-world social networks (evaluated with 100,000 Monte Carlo runs under the IC model), RELINK outperforms all competing methods in at least 95% of experiments. In low edge budget regimes (<em>k</em> &le; 10), Section 6.3 reports that RELINK frequently achieves influence spread improvements exceeding 15% over PSNA.",
+          rows: [
+            { show: true, label: "RELINK vs. Degree Centrality", val: "96.7% (464 / 480 wins)", pct: 96.7, cls: "fill-green", style: "" },
+            { show: true, label: "RELINK vs. Random Selection", val: "96.2% (462 / 480 wins)", pct: 96.2, cls: "fill-blue", style: "" },
+            { show: true, label: "RELINK vs. Friend-of-Friend (FoF)", val: "96.2% (462 / 480 wins)", pct: 96.2, cls: "fill-gray", style: "" },
+            {
+              show: true,
+              label: "RELINK vs. PSNA (Huang et al., IM-CSN Baseline)",
+              val: "95.0% (456 / 480 wins)",
+              pct: 95.0,
+              cls: "",
+              style: "background: #10b981;",
+            },
+          ],
+        },
+        psna: {
+          gain: "456 / 480 Wins (95.0%)",
+          takeaway:
+            "<strong>Paper Finding (Section 6.3 &amp; Figure 6):</strong> RELINK outperforms PSNA in <strong>456 out of 480</strong> configurations (95.0% win rate). The advantage is especially pronounced in low-budget regimes (<em>k</em> &le; 10), where RELINK consistently achieves higher influence spread by identifying high-leverage boundary bridges early.",
+          rows: [
+            {
+              show: true,
+              label: "RELINK (Deep Reinforcement Learning Policy)",
+              val: "95.0% Win Rate (456 / 480 wins)",
+              pct: 95.0,
+              cls: "fill-green",
+              style: "",
+            },
+            {
+              show: true,
+              label: "PSNA (Huang et al., IM-CSN Baseline)",
+              val: "5.0% Win Rate (24 / 480 wins)",
+              pct: 5.0,
+              cls: "fill-blue",
+              style: "",
+            },
+            { show: false },
+            { show: false },
+          ],
+        },
+        degree: {
+          gain: "464 / 480 Wins (96.7%)",
+          takeaway:
+            "<strong>Paper Finding (Section 6.2 Q1):</strong> RELINK outperforms Degree Centrality in <strong>464 out of 480</strong> experiments (96.7%). As reported in Section 6.2, traditional heuristics like Degree perform worst on IM-CSN, consistent with prior findings from Huang et al. [46], because degree-based selection prioritizes locally prominent structure rather than optimizing activation decisions with learned influence-aware policies.",
+          rows: [
+            {
+              show: true,
+              label: "RELINK (Deep Reinforcement Learning Policy)",
+              val: "96.7% Win Rate (464 / 480 wins)",
+              pct: 96.7,
+              cls: "fill-green",
+              style: "",
+            },
+            { show: true, label: "Degree Centrality Heuristic", val: "3.3% Win Rate (16 / 480 wins)", pct: 3.3, cls: "fill-gray", style: "" },
+            { show: false },
+            { show: false },
+          ],
+        },
+        random_fof: {
+          gain: "462 / 480 Wins (96.2%)",
+          takeaway:
+            "<strong>Paper Finding (Section 6.2 Q1):</strong> RELINK outperforms both Random and Friend-of-Friend (FoF) in <strong>462 out of 480</strong> experiments each (96.2%). Notably, Random outperforms FoF and Degree on IM-CSN because uniform random selection occasionally discovers exploratory bridge links across disconnected components that local heuristics miss.",
+          rows: [
+            {
+              show: true,
+              label: "RELINK (Deep Reinforcement Learning Policy)",
+              val: "96.2% Win Rate (462 / 480 wins)",
+              pct: 96.2,
+              cls: "fill-green",
+              style: "",
+            },
+            { show: true, label: "Random Edge Selection", val: "3.8% Win Rate (18 / 480 wins)", pct: 3.8, cls: "fill-gray", style: "" },
+            { show: true, label: "Friend-of-Friend (FoF)", val: "3.8% Win Rate (18 / 480 wins)", pct: 3.8, cls: "fill-gray", style: "" },
+            { show: false },
+          ],
+        },
+      };
+
+      var rowElements = [
+        { row: row1, label: row1Label, val: row1Val, bar: row1Bar },
+        { row: row2, label: row2Label, val: row2Val, bar: row2Bar },
+        { row: row3, label: row3Label, val: row3Val, bar: row3Bar },
+        { row: row4, label: row4Label, val: row4Val, bar: row4Bar },
+      ];
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          buttons.forEach(function (b) {
+            b.classList.remove("active");
+          });
+          btn.classList.add("active");
+          var view = btn.getAttribute("data-view");
+          var d = viewData[view];
+          if (!d) return;
+
+          if (metricGain) metricGain.innerHTML = d.gain;
+          takeaway.innerHTML = d.takeaway;
+
+          d.rows.forEach(function (rData, idx) {
+            var el = rowElements[idx];
+            if (!rData.show) {
+              el.row.style.display = "none";
+            } else {
+              el.row.style.display = "";
+              el.label.innerHTML = rData.label;
+              el.val.innerHTML = rData.val;
+              el.bar.style.width = rData.pct + "%";
+              el.bar.className = "demo-progress-fill" + (rData.cls ? " " + rData.cls : "");
+              if (rData.style) {
+                el.bar.setAttribute("style", "width: " + rData.pct + "%; " + rData.style);
+              } else {
+                el.bar.setAttribute("style", "width: " + rData.pct + "%;");
+              }
+            }
+          });
+        });
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initRelinkDemo);
+    } else {
+      initRelinkDemo();
+    }
+  })();
 </script>

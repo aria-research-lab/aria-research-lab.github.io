@@ -11,7 +11,8 @@
       <div class="demo-title-group">
         <h4>Learning to Condition (L2C): Neural Conditioning Mechanism</h4>
         <p>
-          Interactive walkthrough demonstrating how L2C learns to select variable-value assignments based on optimality confidence and inference simplification to accelerate downstream MPE solvers.
+          Interactive walkthrough demonstrating how L2C learns to select variable-value assignments based on optimality confidence and inference
+          simplification to accelerate downstream MPE solvers.
         </p>
       </div>
       <div class="demo-badges">
@@ -25,7 +26,9 @@
       <div class="l2c-stage-header">
         <div class="l2c-stage-title-wrap">
           <h5 id="l2c-stage-title">Stage 1 of 5: Original MPE Problem</h5>
-          <p id="l2c-stage-desc">Solving MPE requires finding the joint assignment maximizing P(Q=q, E=e) over all query variables Q in the graphical model.</p>
+          <p id="l2c-stage-desc">
+            Solving MPE requires finding the joint assignment maximizing P(Q=q, E=e) over all query variables Q in the graphical model.
+          </p>
           <div class="l2c-step-pills" role="navigation" aria-label="Walkthrough stages">
             <button type="button" class="l2c-step-pill active" data-stage="1">1. Original Problem</button>
             <button type="button" class="l2c-step-pill" data-stage="2">2. L2C Scoring</button>
@@ -78,12 +81,8 @@
                 Residual MPE Problem: Q₀ = Q \ Q_d (7 query variables)
               </text>
               <rect x="306" y="146" width="108" height="28" rx="6" fill="#fffbeb" stroke="#fde68a" stroke-width="1" class="l2c-cutset-label-bg" />
-              <text x="360" y="158" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">
-                Conditioning Set Q_d = q_d
-              </text>
-              <text x="360" y="169" text-anchor="middle" font-size="8.5" fill="#92400e">
-                Fixed: {X4=1, X7=0} (9 dependencies restricted)
-              </text>
+              <text x="360" y="158" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">Conditioning Set Q_d = q_d</text>
+              <text x="360" y="169" text-anchor="middle" font-size="8.5" fill="#92400e">Fixed: {X4=1, X7=0} (9 dependencies restricted)</text>
             </g>
 
             <!-- Graph Edges Container -->
@@ -414,8 +413,7 @@
             "Conditioning fixes {X4, X7}, removing 9 active dependencies and breaking tightly coupled structure into simpler components.";
         } else if (currentStage === 5) {
           stageTitle.innerHTML = "Stage 5 of 5: Downstream Solver Search Comparison";
-          stageDesc.textContent =
-            "Solving MPE on Q₀ given evidence e ∪ q_d operates on a structurally simpler problem, reducing search effort.";
+          stageDesc.textContent = "Solving MPE on Q₀ given evidence e ∪ q_d operates on a structurally simpler problem, reducing search effort.";
         }
 
         // Update Visual Graph State

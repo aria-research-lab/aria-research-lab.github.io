@@ -56,7 +56,6 @@
   url: https://www.auai.org/uai/
   color: "#6a4c93"
 
-
 # Computer Vision
 
 "IEEE/CVF Conference on Computer Vision and Pattern Recognition":
@@ -90,7 +89,6 @@
 "WACV":
   url: https://wacv.thecvf.com/
   color: "#48cae4"
-
 
 # IEEE / ACM Journals
 
@@ -146,7 +144,6 @@
   url: https://dl.acm.org/journal/tkdd
   color: "#f77f00"
 
-
 # Interdisciplinary / Applied AI
 
 "Scientific Reports":
@@ -164,7 +161,6 @@
 "JMIR Mental Health":
   url: https://mental.jmir.org/
   color: "#00a6a6"
-
 
 # Workshops / Symposia
 

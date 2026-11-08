@@ -20,7 +20,7 @@ Find your change on the left; edit only what is on the right.
 | Feature behavior (search, math, charts, comments, cookies, icons, CV, distill, analytics, images, newsletter, citations) | that feature's gem — see [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md)                                           |
 | Component/unit test for gem-owned behavior                                                                               | the owning gem, not here                                                                                      |
 | A feature with no existing owner                                                                                         | open a plugin proposal issue first, then a standalone plugin repo                                             |
-| Open-source repository, software library, dataset card                                                                   | this repo: `_projects/<name>.md` and `_data/repositories.yml`                                                |
+| Open-source repository, software library, dataset card                                                                   | this repo: `_projects/<name>.md` and `_data/repositories.yml`                                                 |
 | Additional workspace-specific guidelines                                                                                 | See `../docs/submodules/lab-site.md` if available                                                             |
 
 [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md) is the authoritative area-to-gem table. [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) explains how the pieces connect.
@@ -85,6 +85,7 @@ All seven `test/integration_*.sh` scripts are gated by `unit-tests.yml`; run the
 ## Workspace Guidelines
 
 If parent workspace documentation is available, refer to:
+
 - `../docs/submodules/lab-site.md`
 
 ## Further reading

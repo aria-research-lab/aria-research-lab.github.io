@@ -71,7 +71,7 @@
           {% assign ann_list = entry.annotation | split: ';' %}
           {% for ann_item in ann_list %}
             {% assign ann_clean = ann_item | strip %}
-            {% if ann_clean != "" %}
+            {% if ann_clean != '' %}
               <span class="award-badge">
                 {% if ann_clean contains 'Best' or ann_clean contains 'Award' or ann_clean contains 'award' %}
                   <i class="fa-solid fa-trophy award-icon" aria-hidden="true"></i>

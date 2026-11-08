@@ -7,4 +7,3 @@ related_posts: false
 ---
 
 Our paper, “<a href="https://doi.org/10.1145/3799682.3840796" target="_blank" rel="noopener">LEAP: Learning Evolutionary Advantage Policies for Fixation Maximization via Deep Reinforcement Learning <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></a>,” has been published in the Proceedings of the 35th ACM International Conference on Information and Knowledge Management (CIKM 2026).
-
