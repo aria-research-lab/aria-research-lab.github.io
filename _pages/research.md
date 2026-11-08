@@ -130,6 +130,11 @@ We develop learning-based methods for solving large-scale combinatorial optimiza
 
 Our current work investigates neural combinatorial optimization for decision-making over complex networks, including problems in which solutions require sequentially selecting or modifying nodes, edges, or other discrete structures. These methods aim to amortize expensive optimization across problem instances by learning policies that capture reusable structural patterns while accommodating operational, privacy, and other application-specific constraints.
 
+- **LEAP: Learning Evolutionary Advantage Policies for Fixation Maximization via Deep Reinforcement Learning** ([CIKM 2026](https://doi.org/10.1145/3799682.3840796))
+  - Formulates amortized active node selection for fixation maximization under the competitive, reversible positional Moran process as a Markov Decision Process, learning transferable evolutionary advantage policies.
+  - Introduces evolutionary and centrality embeddings (ECE) coupled with fixation-modulated message passing and fixation-weighted pooling to capture selection pressure and mutant invasion dynamics, stabilized via a progressive topological curriculum.
+  - Evaluated on 20 real-world networks across biological, ecological, organizational, and communication domains, matching simulation-intensive greedy methods with approximately five orders of magnitude faster inference (~$10^5\times$) and outperforming all baselines in at least two-thirds of experimental settings.
+
 - **RELINK: Edge Activation for Closed Network Influence Maximization via Deep Reinforcement Learning** ([CIKM 2025 Oral](https://dl.acm.org/doi/10.1145/3746252.3761006)) <span class="award-badge"><i class="fa-solid fa-bullhorn award-icon" aria-hidden="true"></i> Oral Presentation</span>
   - Formulates edge-level influence maximization in privacy-constrained closed networks (IM-CSN) as a Markov Decision Process, introducing an edge-centric Double DQN framework with SVD node embeddings and edge-aware aggregation trained on true marginal influence gain rewards.
   - Evaluated across 20 real-world social networks (including _FilmTrust_, _Email-Eu-core_, _Wiki-Vote_, _MUSAE Facebook_, _Math Overflow_, _Deezer_, and _Epinions_) using 100,000 Monte Carlo simulations under the Independent Cascade model.
