@@ -40,8 +40,17 @@ jobs:
           npm install -g purgecss
           purgecss -c purgecss.config.js
       - name: Link Checker 🔗
-        uses: lycheeverse/lychee-action@v2.0.2
+        uses: lycheeverse/lychee-action@v2
         with:
           fail: true
-          # only check local links
-          args: --offline --remap '_site(/?.*)/assets/(.*) _site/assets/$2' --verbose --no-progress '_site/**/*.html'
+          # Only check local links. --root-dir resolves root-relative links ("/news/") against _site;
+          # --fallback-extensions mirrors GitHub Pages serving /hiring/foo from hiring/foo.html.
+          # The excluded CaptainCook4D webp srcset is emitted by al_folio_core for the animated GIF
+          # project card (ImageMagick does not convert GIFs); the card's onerror falls back to the GIF.
+          args: >-
+            --offline
+            --root-dir ${{ github.workspace }}/_site
+            --fallback-extensions html
+            --exclude 'publication_preview/CaptainCook4D-[0-9]+\.webp$'
+            --no-progress
+            '_site/**/*.html'
