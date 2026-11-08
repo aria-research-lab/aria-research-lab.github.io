@@ -89,6 +89,11 @@ Neural augmentation preserves the structure of classical inference algorithms wh
 
 {% include research-interactive-demos/l2c_conditioning_walkthrough.html %}
 
+- **Learning to Bound: Monotonic, Calibrated Neural Upper Bounds for MPE Inference** ([ArXiv](https://arxiv.org/abs/2610.39305))
+  - Introduces **L2B**, a data-driven framework that amortizes the computation of admissible upper bounds for branch-and-bound MPE search by training a neural predictor.
+  - Guarantees progressive tightening as evidence accumulates via architectural monotonicity constraints, and enforces statistical admissibility through conformal calibration techniques.
+  - Delivers bounds 5–10&times; tighter than Mini-Bucket Elimination (MBE) computed in milliseconds, yielding measurable improvements when integrated into branch-and-bound on high-treewidth graphical models.
+
 - **BEACON: Learning to Guide Local Search for MPE Inference in Probabilistic Graphical Models** ([ArXiv](https://arxiv.org/abs/2602.01475))
   - Amortizes repeated MPE inference in fixed-structure graphical models using an attention-based architecture that scores local-search moves according to estimated Hamming-distance reduction, guiding neighbor selection to improve convergence and solution quality in high-treewidth models.
 
