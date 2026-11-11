@@ -239,6 +239,12 @@ exclude:
   - purgecss.config.js
   - README.md
   - readme_preview/
+  - requirements.txt
+  - bugs-and-improvements/
+  - test/
+  # Unused profile bio source (profiles.md has `content:` commented out); it
+  # has no front matter, so Jekyll would otherwise publish it as a raw file.
+  - _pages/about_people/
   - gems/
   - migrations/
   - vendor
