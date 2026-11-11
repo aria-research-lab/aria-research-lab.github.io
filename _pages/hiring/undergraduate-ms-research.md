@@ -12,13 +12,15 @@ seo:
 
 Undergraduate and M.S. students can join projects mentored by Dr. Arya and aligned with the lab's research directions. Students learn how to formulate research questions, develop and evaluate methods, conduct experiments, and communicate technically strong results. Projects may grow into conference submissions when the results warrant it, but research participation or course enrollment does not guarantee authorship or publication.
 
-> 📝 **Interested in joining?** Review the lab's [open research projects]({{ '/hiring/#open-research-projects' | relative_url }}), then submit your details using the [Google Form](https://forms.gle/SYb5HQeXQB3ogedo9).
+> **Research credit expectation:** We primarily seek students who enroll in research credits under Dr. Arya's supervision ({{ site.data.recruiting.research_credit_undergrad_courses | join: "/" }} for undergraduates; {{ site.data.recruiting.research_credit_ms_courses | join: "/" }} for M.S. students). We will also consider a limited number of exceptional applicants who are not enrolling in research credits.
+
+> 📝 **Interested in joining?** Review the lab's [open research projects]({{ '/hiring/#open-research-projects' | relative_url }}), then submit your details using the [Google Form]({{ site.data.recruiting.application_form_url }}).
 
 ---
 
 ## Undergraduate research opportunities
 
-Undergraduate students are encouraged to become involved early enough to make a sustained contribution to an active lab project. Students learn to read research literature, define a focused problem, implement and evaluate methods, and communicate results. A strong project may grow into a conference submission or preparation for graduate research, depending on the novelty, quality, and maturity of the work.
+Undergraduate students are encouraged to become involved early enough to make a sustained contribution to an active lab project. Students learn to read research literature, define a focused problem, implement and evaluate methods, and communicate results. A strong project may grow into a conference submission or preparation for graduate research, depending on the novelty, quality, and maturity of the work. Undergraduate positions are primarily filled by students who enroll in {{ site.data.recruiting.research_credit_undergrad_courses | join: " or " }} under Dr. Arya's supervision.
 
 ### CS 488: Independent Study in Computer Science
 
@@ -42,7 +44,7 @@ Data Science students may take corresponding DS independent-study or research-pr
 
 ## M.S. research opportunities
 
-M.S. students seeking deeper research involvement are encouraged to discuss **CS 700B: Master's Project** and **CS 701B: Master's Thesis** with Dr. Arya. These options provide close mentorship, support increasing research independence, and enable technically substantial work that may contribute to a conference submission when the results warrant it. They can also provide valuable preparation for Ph.D. study.
+M.S. students seeking deeper research involvement are encouraged to discuss **CS 700B: Master's Project** and **CS 701B: Master's Thesis** with Dr. Arya. These options provide close mentorship, support increasing research independence, and enable technically substantial work that may contribute to a conference submission when the results warrant it. They can also provide valuable preparation for Ph.D. study. M.S. positions are primarily filled by students who enroll in {{ site.data.recruiting.research_credit_ms_courses | join: " or " }} under Dr. Arya's supervision.
 
 ### CS 700B: Master's Project
 
@@ -64,7 +66,7 @@ For all course-based research options, students should confirm current registrat
 
 ## How to get involved
 
-Review the lab's [open research projects]({{ '/hiring/#open-research-projects' | relative_url }}) and identify the directions most closely aligned with your background and interests. Submit your details through the [Google Form](https://forms.gle/SYb5HQeXQB3ogedo9), including relevant coursework, technical experience, and the research topics you would like to explore. Selected students may be invited to discuss project fit, preparation, and supervision availability.
+Review the lab's [open research projects]({{ '/hiring/#open-research-projects' | relative_url }}) and identify the directions most closely aligned with your background and interests. Submit your details through the [Google Form]({{ site.data.recruiting.application_form_url }}), including relevant coursework, technical experience, the research topics you would like to explore, and whether you plan to enroll in research credits. Selected students may be invited to discuss project fit, preparation, and supervision availability.
 
 <div class="text-center">
 <a href="{{ '/hiring/' | relative_url }}" class="btn btn-primary">← Back to Research Opportunities</a>

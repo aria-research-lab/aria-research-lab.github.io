@@ -90,7 +90,7 @@ This position focuses on bridging the gap between neural learning and symbolic r
 
 ## How To Apply
 
-Please submit your details using the <a href="https://forms.gle/SYb5HQeXQB3ogedo9" target="_blank">Google Form</a>.
+Please submit your details using the <a href="{{ site.data.recruiting.application_form_url }}" target="_blank">Google Form</a>.
 
 > **Note**: Choose "Neurosymbolic AI" for the question "Which of the following match your research interests?" in the Google Form.
 

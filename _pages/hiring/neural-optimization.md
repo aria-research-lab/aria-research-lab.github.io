@@ -79,7 +79,7 @@ The project aims to build neural solvers that learn search strategies, constrain
 
 ## How To Apply
 
-Please submit your details using the <a href="https://forms.gle/SYb5HQeXQB3ogedo9" target="_blank">Google Form</a>.
+Please submit your details using the <a href="{{ site.data.recruiting.application_form_url }}" target="_blank">Google Form</a>.
 
 > **Note**: Choose "Neural Combinatorial and Constrained Optimization" for the question "Which of the following match your research interests?" in the Google Form.
 

@@ -26,7 +26,7 @@ seo:
   description: "Undergraduate, master's, and Ph.D. research opportunities in neurosymbolic AI, neural combinatorial optimization, probabilistic inference, and computer vision at NJIT."
 ---
 
-> 📝 **Ready to apply?** Submit your details using the [Google Form](https://forms.gle/SYb5HQeXQB3ogedo9). Email may be missed—form submissions are reviewed regularly.
+> 📝 **Ready to apply?** Submit your details using the [Google Form]({{ site.data.recruiting.application_form_url }}). Email may be missed—form submissions are reviewed regularly.
 
 ---
 
@@ -46,18 +46,20 @@ We are recruiting motivated Ph.D. students to work on the lab's core research di
 
 Undergraduate and M.S. students are encouraged to participate in sustained research projects mentored by Dr. Arya and aligned with the lab's research directions. Students can gain experience formulating research questions, developing and evaluating methods, conducting experiments, and contributing to active research projects.
 
-Research credit may be available when an appropriate project and supervision are available. Our goal is to help committed students progress toward increasingly independent and technically rigorous research. When project results are sufficiently strong, students may have the opportunity to contribute to submissions to leading research conferences or journals.
+> **Research credit expectation:** We primarily seek undergraduate and M.S. students who enroll in research credits under Dr. Arya's supervision ({{ site.data.recruiting.research_credit_undergrad_courses | join: "/" }} for undergraduates; {{ site.data.recruiting.research_credit_ms_courses | join: "/" }} for M.S. students). We will also consider a limited number of exceptional applicants who are not enrolling in research credits.
+
+Our goal is to help committed students progress toward increasingly independent and technically rigorous research. When project results are sufficiently strong, students may have the opportunity to contribute to submissions to leading research conferences or journals.
 
 <!-- Research participation or course enrollment, however, does not guarantee authorship or publication. -->
 
 See [undergraduate and M.S. research opportunities]({{ '/hiring/undergraduate-ms-research' | relative_url }}) for detailed course pathways and guidance on getting involved.
 
-|                                 |                                                |
-| ------------------------------- | ---------------------------------------------- |
-| **University**                  | NJIT (R1), Newark, NJ                          |
-| **Start date**                  | {{ site.data.recruiting.start_terms_slash }}   |
-| **Ph.D. funding**               | {{ site.data.recruiting.phd_funding_summary }} |
-| **MS / Undergraduate students** | Research credit available                      |
+|                                 |                                                  |
+| ------------------------------- | ------------------------------------------------ |
+| **University**                  | NJIT (R1), Newark, NJ                            |
+| **Start date**                  | {{ site.data.recruiting.start_terms_slash }}     |
+| **Ph.D. funding**               | {{ site.data.recruiting.phd_funding_summary }}   |
+| **MS / Undergraduate students** | Primarily through enrollment in research credits |
 
 ---
 
@@ -133,5 +135,5 @@ See [undergraduate and M.S. research opportunities]({{ '/hiring/undergraduate-ms
 
 ## Ready to apply?
 
-Submit your details via the [Google Form](https://forms.gle/SYb5HQeXQB3ogedo9).  
+Submit your details via the [Google Form]({{ site.data.recruiting.application_form_url }}).  
 For Ph.D. applications, also apply through NJIT admissions and mention my name in your Statement of Purpose.
