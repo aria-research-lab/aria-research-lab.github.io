@@ -117,7 +117,15 @@
       {% endif %}
 
       {%- for author in entry.author_array -%}
-        {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
+        {%- assign author_clean_prefix = author.prefix -%}
+        {%- assign author_clean_last = author.last -%}
+        {%- capture author_clean_family -%}{% if author.prefix and author.prefix != "" %}{{ author.prefix }} {% endif %}{{ author.last }}{%- endcapture -%}
+        {%- assign author_clean_family_lower = author_clean_family | downcase -%}
+        {%- if author_clean_family_lower contains 'equal contribution' -%}
+          {%- assign author_clean_last = author_clean_family | regex_replace: '\s*\(\s*[*∗]?\s*[Ee]qual\s+[Cc]ontribution\s*\)', '' | strip -%}
+          {%- assign author_clean_prefix = '' -%}
+        {%- endif -%}
+        {%- assign author_last_name = author_clean_last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
         {% if site.scholar.last_name contains author_last_name %}
           {% if site.scholar.first_name contains author.first %}
             {% assign self_author_index = forloop.index0 %}
@@ -126,6 +134,21 @@
         {%- endif -%}
       {% endfor %}
 
+      {%- comment -%}
+        Equal contribution is marked with "*" on author names (e.g. "Roy*, Chiradeep"), optionally
+        with a "(*equal contribution)" note inside an author name. The note is stripped from the name
+        and always rendered after the author list, so it stays visible when authors are collapsed.
+      {%- endcomment -%}
+      {%- assign has_equal_contribution = false -%}
+      {%- for author in entry.author_array -%}
+        {%- capture author_raw_name -%}{{ author.first }} {{ author.prefix }} {{ author.last }}{%- endcapture -%}
+        {%- assign author_raw_name_lower = author_raw_name | downcase -%}
+        {%- if author_raw_name contains '*' or author_raw_name contains '∗' or author_raw_name_lower contains 'equal contribution' -%}
+          {%- assign has_equal_contribution = true -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+
       {% assign rendered_author_count = author_array_limit %}
       {% if self_author_index and self_author_index >= author_array_limit %}
         {% assign rendered_author_count = author_array_size %}
@@ -133,8 +156,16 @@
 
       {%- for author in entry.author_array limit: rendered_author_count -%}
         {%- assign author_is_self = false -%}
-        {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
-        {%- assign author_last_html = author.last | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
+        {%- assign author_clean_prefix = author.prefix -%}
+        {%- assign author_clean_last = author.last -%}
+        {%- capture author_clean_family -%}{% if author.prefix and author.prefix != "" %}{{ author.prefix }} {% endif %}{{ author.last }}{%- endcapture -%}
+        {%- assign author_clean_family_lower = author_clean_family | downcase -%}
+        {%- if author_clean_family_lower contains 'equal contribution' -%}
+          {%- assign author_clean_last = author_clean_family | regex_replace: '\s*\(\s*[*∗]?\s*[Ee]qual\s+[Cc]ontribution\s*\)', '' | strip -%}
+          {%- assign author_clean_prefix = '' -%}
+        {%- endif -%}
+        {%- assign author_last_name = author_clean_last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
+        {%- assign author_last_html = author_clean_last | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
         {%- if site.scholar.last_name contains author_last_name -%}
           {%- if site.scholar.first_name contains author.first -%}
             {%- assign author_is_self = true -%}
@@ -169,11 +200,22 @@
             {%- endif -%}
             {% assign more_authors_before_show = '' %}
             {%- for hidden_author in entry.author_array offset: visible_authors_before_self limit: more_authors_before -%}
+              {%- assign hidden_author_clean_prefix = hidden_author.prefix -%}
+              {%- assign hidden_author_clean_last = hidden_author.last -%}
+              {%- capture hidden_author_clean_family -%}{% if hidden_author.prefix and hidden_author.prefix != "" %}{{ hidden_author.prefix }} {% endif %}{{ hidden_author.last }}{%- endcapture -%}
+              {%- assign hidden_author_clean_family_lower = hidden_author_clean_family | downcase -%}
+              {%- if hidden_author_clean_family_lower contains 'equal contribution' -%}
+                {%- assign hidden_author_clean_last = hidden_author_clean_family
+                  | regex_replace: '\s*\(\s*[*∗]?\s*[Ee]qual\s+[Cc]ontribution\s*\)', ''
+                  | strip
+                -%}
+                {%- assign hidden_author_clean_prefix = '' -%}
+              {%- endif -%}
               {%- capture hidden_author_name -%}
                 {%- if hidden_author.first and hidden_author.first != "" -%}
-                  {{- hidden_author.first }} {% if hidden_author.prefix and hidden_author.prefix != "" %}{{ hidden_author.prefix }} {% endif %}{{- hidden_author.last -}}{% if hidden_author.suffix and hidden_author.suffix != "" %}, {{ hidden_author.suffix }}{% endif %}
+                  {{- hidden_author.first }} {% if hidden_author_clean_prefix and hidden_author_clean_prefix != "" %}{{ hidden_author_clean_prefix }} {% endif %}{{- hidden_author_clean_last -}}{% if hidden_author.suffix and hidden_author.suffix != "" %}, {{ hidden_author.suffix }}{% endif %}
                 {%- else -%}
-                  {%- if hidden_author.prefix and hidden_author.prefix != "" %}{{ hidden_author.prefix }} {% endif %}{{- hidden_author.last -}}{% if hidden_author.suffix and hidden_author.suffix != "" %}, {{ hidden_author.suffix }}{% endif -%}
+                  {%- if hidden_author_clean_prefix and hidden_author_clean_prefix != "" %}{{ hidden_author_clean_prefix }} {% endif %}{{- hidden_author_clean_last -}}{% if hidden_author.suffix and hidden_author.suffix != "" %}, {{ hidden_author.suffix }}{% endif -%}
                 {%- endif -%}
               {%- endcapture -%}
               {%- assign hidden_author_name = hidden_author_name | strip -%}
@@ -222,9 +264,9 @@
         {%- endif -%}
         {%- capture author_display_name -%}
           {%- if author.first and author.first != "" -%}
-            {{- author.first }} {% if author.prefix and author.prefix != "" %}{{ author.prefix }} {% endif %}{{- author_last_html -}}{% if author.suffix and author.suffix != "" %}, {{ author.suffix }}{% endif %}
+            {{- author.first }} {% if author_clean_prefix and author_clean_prefix != "" %}{{ author_clean_prefix }} {% endif %}{{- author_last_html -}}{% if author.suffix and author.suffix != "" %}, {{ author.suffix }}{% endif %}
           {%- else -%}
-            {%- if author.prefix and author.prefix != "" %}{{ author.prefix }} {% endif %}{{- author_last_html -}}{% if author.suffix and author.suffix != "" %}, {{ author.suffix }}{% endif -%}
+            {%- if author_clean_prefix and author_clean_prefix != "" %}{{ author_clean_prefix }} {% endif %}{{- author_last_html -}}{% if author.suffix and author.suffix != "" %}, {{ author.suffix }}{% endif -%}
           {%- endif -%}
         {%- endcapture -%}
         {%- assign author_display_name = author_display_name | strip -%}
@@ -254,11 +296,19 @@
         {%- endif -%}
         {% assign more_authors_show = '' %}
         {%- for author in entry.author_array offset: rendered_author_count -%}
+          {%- assign author_clean_prefix = author.prefix -%}
+          {%- assign author_clean_last = author.last -%}
+          {%- capture author_clean_family -%}{% if author.prefix and author.prefix != "" %}{{ author.prefix }} {% endif %}{{ author.last }}{%- endcapture -%}
+          {%- assign author_clean_family_lower = author_clean_family | downcase -%}
+          {%- if author_clean_family_lower contains 'equal contribution' -%}
+            {%- assign author_clean_last = author_clean_family | regex_replace: '\s*\(\s*[*∗]?\s*[Ee]qual\s+[Cc]ontribution\s*\)', '' | strip -%}
+            {%- assign author_clean_prefix = '' -%}
+          {%- endif -%}
           {%- capture popup_author_name -%}
             {%- if author.first and author.first != "" -%}
-              {{- author.first }} {% if author.prefix and author.prefix != "" %}{{ author.prefix }} {% endif %}{{- author.last -}}{% if author.suffix and author.suffix != "" %}, {{ author.suffix }}{% endif %}
+              {{- author.first }} {% if author_clean_prefix and author_clean_prefix != "" %}{{ author_clean_prefix }} {% endif %}{{- author_clean_last -}}{% if author.suffix and author.suffix != "" %}, {{ author.suffix }}{% endif %}
             {%- else -%}
-              {%- if author.prefix and author.prefix != "" %}{{ author.prefix }} {% endif %}{{- author.last -}}{% if author.suffix and author.suffix != "" %}, {{ author.suffix }}{% endif -%}
+              {%- if author_clean_prefix and author_clean_prefix != "" %}{{ author_clean_prefix }} {% endif %}{{- author_clean_last -}}{% if author.suffix and author.suffix != "" %}, {{ author.suffix }}{% endif -%}
             {%- endif -%}
           {%- endcapture -%}
           {%- assign popup_author_name = popup_author_name | strip -%}
@@ -288,6 +338,10 @@
           {{- more_authors_hide -}}
         </span>
       {% endif %}
+      {%- if has_equal_contribution -%}
+        {{- ' ' -}}
+        <span class="equal-contribution-note">(<sup>*</sup>equal contribution)</span>
+      {%- endif -%}
     </div>
 
     <!-- Publication venue and metadata -->
