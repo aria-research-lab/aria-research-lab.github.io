@@ -12,9 +12,17 @@ seo:
 
 Undergraduate and M.S. students can join projects mentored by Dr. Arya and aligned with the lab's research directions. Students learn how to formulate research questions, develop and evaluate methods, conduct experiments, and communicate technically strong results. Projects may grow into conference submissions when the results warrant it, but research participation or course enrollment does not guarantee authorship or publication.
 
-> **Research credit expectation:** We primarily seek students who enroll in research credits under Dr. Arya's supervision ({{ site.data.recruiting.research_credit_undergrad_courses | join: "/" }} for undergraduates; {{ site.data.recruiting.research_credit_ms_courses | join: "/" }} for M.S. students). We will also consider a limited number of exceptional applicants who are not enrolling in research credits.
+<blockquote class="block-tip" markdown="1">
 
-> 📝 **Interested in joining?** Review the lab's [open research projects]({{ '/hiring/#open-research-projects' | relative_url }}), then submit your details using the [Google Form]({{ site.data.recruiting.application_form_url }}).
+**Research credit expectation:** We primarily seek students who enroll in research credits under Dr. Arya's supervision ({{ site.data.recruiting.research_credit_undergrad_courses | join: "/" }} for undergraduates; {{ site.data.recruiting.research_credit_ms_courses | join: "/" }} for M.S. students). We will also consider a limited number of exceptional applicants who are not enrolling in research credits.
+
+</blockquote>
+
+<blockquote class="block-tip" markdown="1">
+
+📝 **Interested in joining?** Review the lab's [open research projects]({{ '/hiring/#open-research-projects' | relative_url }}), then submit your details using the [Google Form]({{ site.data.recruiting.application_form_url }}).
+
+</blockquote>
 
 ---
 
@@ -58,7 +66,13 @@ A possible M.S. thesis progression is:
 
 > **Initial research involvement → CS 700B Master's Project → CS 701B Master's Thesis → potential publication and/or Ph.D. preparation**
 
-CS 700B may support a master's project without committing every student to the thesis pathway; students who proceed to CS 701B must follow the required sequence above. Dr. Arya's capacity for M.S. project and thesis supervision is limited, so students should contact him early—especially when planning the two-semester thesis pathway. Course registration does not by itself guarantee a place in the lab or Dr. Arya's availability.
+CS 700B may support a master's project without committing every student to the thesis pathway; students who proceed to CS 701B must follow the required sequence above.
+
+<blockquote class="block-tip" markdown="1">
+
+**Limited supervision capacity:** Dr. Arya's capacity for M.S. project and thesis supervision is limited, so students should contact him early—especially when planning the two-semester thesis pathway. Course registration does not by itself guarantee a place in the lab or Dr. Arya's availability.
+
+</blockquote>
 
 For all course-based research options, students should confirm current registration procedures and university policies with the department; this page focuses on research involvement rather than serving as the official course catalog.
 

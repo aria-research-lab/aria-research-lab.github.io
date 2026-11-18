@@ -10,9 +10,11 @@ seo:
   description: "Undergraduate and MS research position in deep reinforcement learning for combinatorial optimization, focusing on influence maximization and graph problems."
 ---
 
-<div class="alert alert-info">
+<blockquote class="block-tip" markdown="1">
+
 This position is open to <strong>undergraduate and MS students</strong>. Choose "Deep Reinforcement Learning for Influence Maximization" for the question "Which of the following match your research interests?" in the Google Form.
-</div>
+
+</blockquote>
 
 ## Project Overview
 
@@ -123,7 +125,11 @@ You will have access to GPU resources, existing codebases for graph processing, 
 
 Please submit your details using the <a href="{{ site.data.recruiting.application_form_url }}" target="_blank">Google Form</a>.
 
-> **Note**: Choose "Deep Reinforcement Learning for Influence Maximization" for the question "Which of the following match your research interests?" in the Google Form.
+<blockquote class="block-tip" markdown="1">
+
+**Note**: Choose "Deep Reinforcement Learning for Influence Maximization" for the question "Which of the following match your research interests?" in the Google Form.
+
+</blockquote>
 
 Selected students may be invited for a brief meeting to discuss fit and potential directions.
 

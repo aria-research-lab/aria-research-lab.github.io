@@ -10,15 +10,21 @@ seo:
   description: "Application domains for neurosymbolic methods, probabilistic inference, and neural optimization research at NJIT."
 ---
 
-<div class="alert alert-info">
+<blockquote class="block-tip" markdown="1">
+
 This position is open to <strong>undergraduate, MS, and Ph.D. students</strong>. Choose your corresponding research interest for the question "Which of the following match your research interests?" in the Google Form. Each team will be led by a Ph.D. student.
-</div>
+
+</blockquote>
 
 ## Project Overview
 
 In our lab, we explore how neurosymbolic methods, probabilistic inference, and learning-based optimization can be applied to real-world domains. You will work on combining neural perception with symbolic structure, uncertainty modeling, and interpretable reasoning to address applied problems in vision, human-AI interaction, healthcare, energy systems, and multimodal understanding.
 
-Projects in this track build on the methods developed in our core research projects—[Neurosymbolic AI](/hiring/neurosymbolic-ai), [Neural Combinatorial Optimization](/hiring/neural-optimization), and [DRL for Graph Optimization](/hiring/drl-graph-optimization)—and use applied domains to test, adapt, and extend them. Students typically begin in one of these core projects and then carry its ideas into an application area, so this track complements a core research direction rather than standing on its own.
+<blockquote class="block-tip" markdown="1">
+
+**Note:** Projects in this track build on the methods developed in our core research projects—[Neurosymbolic AI](/hiring/neurosymbolic-ai), [Neural Combinatorial Optimization](/hiring/neural-optimization), and [DRL for Graph Optimization](/hiring/drl-graph-optimization)—and use applied domains to test, adapt, and extend them. Students typically begin in one of these core projects and then carry its ideas into an application area, so this track complements a core research direction rather than standing on its own.
+
+</blockquote>
 
 ---
 
@@ -153,7 +159,11 @@ Projects in this track build on the methods developed in our core research proje
 
 Please submit your details using the <a href="{{ site.data.recruiting.application_form_url }}" target="_blank">Google Form</a>.
 
-> **Note**: Select “Applications in Multimodal Reasoning” or “Applications in Computer Vision and Video Understanding” or choose “Other” and specify your interests.
+<blockquote class="block-tip" markdown="1">
+
+**Note**: Select “Applications in Multimodal Reasoning” or “Applications in Computer Vision and Video Understanding” or choose “Other” and specify your interests.
+
+</blockquote>
 
 Selected students may be invited for a brief meeting to discuss fit and potential directions.
 

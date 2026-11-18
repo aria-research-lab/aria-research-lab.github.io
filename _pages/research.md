@@ -12,11 +12,11 @@ The **Algorithms and Architectures for Reasoning and Intelligent Automation (ARI
 
 Our core research agenda focuses on **neuro-symbolic reasoning and probabilistic inference**, including both direct neural approximation of inference problems and neural methods that augment classical solvers, as well as **neural combinatorial optimization** for structured decision-making. Building on these foundations, we study **structured and multimodal intelligence**, including procedural video understanding and human-guided vision-language systems, and develop methods for **AI for scientific discovery**, particularly in computational biology.
 
-<div class="alert alert-info">
+<blockquote class="block-tip" markdown="1">
 
 🤝 We welcome collaborations with academic and industry researchers working in these or closely related areas. If you are interested in exploring a potential collaboration, please contact Dr. Arya.
 
-</div>
+</blockquote>
 
 ## Research directions
 

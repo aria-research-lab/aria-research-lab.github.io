@@ -10,9 +10,11 @@ seo:
   description: "Fully funded Ph.D. position in neural combinatorial optimization, developing learning-based solvers for NP-hard problems."
 ---
 
-<div class="alert alert-info">
+<blockquote class="block-tip" markdown="1">
+
 This position is open to <strong>undergraduate, MS, and Ph.D. students</strong>. Select “Neural Combinatorial and Constrained Optimization” for the question “Which of the following match your research interests?” in the Google Form. Each team will be led by a Ph.D. student.
-</div>
+
+</blockquote>
 
 ---
 
@@ -81,7 +83,11 @@ The project aims to build neural solvers that learn search strategies, constrain
 
 Please submit your details using the <a href="{{ site.data.recruiting.application_form_url }}" target="_blank">Google Form</a>.
 
-> **Note**: Choose "Neural Combinatorial and Constrained Optimization" for the question "Which of the following match your research interests?" in the Google Form.
+<blockquote class="block-tip" markdown="1">
+
+**Note**: Choose "Neural Combinatorial and Constrained Optimization" for the question "Which of the following match your research interests?" in the Google Form.
+
+</blockquote>
 
 Selected students may be invited for a brief meeting to discuss fit and potential directions.
 

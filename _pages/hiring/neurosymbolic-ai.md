@@ -10,9 +10,11 @@ seo:
   description: "Fully funded Ph.D. position in neurosymbolic AI, integrating symbolic structure with deep learning for transparent and interpretable AI systems."
 ---
 
-<div class="alert alert-info">
+<blockquote class="block-tip" markdown="1">
+
 This position is open to <strong>Ph.D., MS, and undergraduate students</strong>. Choose "Neurosymbolic AI" for the question "Which of the following match your research interests?" in the Google Form. Each team will be led by a Ph.D. student.
-</div>
+
+</blockquote>
 
 ---
 
@@ -92,7 +94,11 @@ This position focuses on bridging the gap between neural learning and symbolic r
 
 Please submit your details using the <a href="{{ site.data.recruiting.application_form_url }}" target="_blank">Google Form</a>.
 
-> **Note**: Choose "Neurosymbolic AI" for the question "Which of the following match your research interests?" in the Google Form.
+<blockquote class="block-tip" markdown="1">
+
+**Note**: Choose "Neurosymbolic AI" for the question "Which of the following match your research interests?" in the Google Form.
+
+</blockquote>
 
 Selected students may be invited for a brief meeting to discuss fit and potential directions.
 

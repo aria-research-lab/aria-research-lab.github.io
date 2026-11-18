@@ -26,7 +26,11 @@ seo:
   description: "Undergraduate, master's, and Ph.D. research opportunities in neurosymbolic AI, neural combinatorial optimization, probabilistic inference, and computer vision at NJIT."
 ---
 
-> 📝 **Ready to apply?** Submit your details using the [Google Form]({{ site.data.recruiting.application_form_url }}). Email may be missed—form submissions are reviewed regularly.
+<blockquote class="block-tip" markdown="1">
+
+📝 **Ready to apply?** Submit your details using the [Google Form]({{ site.data.recruiting.application_form_url }}). Email may be missed—form submissions are reviewed regularly.
+
+</blockquote>
 
 ---
 
@@ -39,14 +43,23 @@ We are the ARIA Research Lab in the Department of Computer Science at NJIT. Stud
 We are recruiting motivated Ph.D. students to work on the lab's core research directions in AI and machine learning. We are currently seeking up to **{{ site.data.recruiting.phd_max_funded_words }} funded Ph.D. students** for {{ site.data.recruiting.start_terms_slash }}, with support through research or teaching assistantships.
 
 - Applicants should have a strong background in AI, machine learning, or related areas and a clear interest in research.
-- Prospective students must apply through the [NJIT Graduate Admissions portal]({{ site.data.recruiting.admissions_url }}) and are encouraged to mention the lab and relevant research interests in their Statement of Purpose.
 - Visiting scholars interested in collaborating with the lab are also welcome to reach out.
+
+<blockquote class="block-tip" markdown="1">
+
+**Ph.D. applicants:** Apply through the [NJIT Graduate Admissions portal]({{ site.data.recruiting.admissions_url }}) and mention **Dr. Arya** and the **ARIA Lab**, along with your research interests, in your Statement of Purpose.
+
+</blockquote>
 
 ### Undergraduate and M.S. Students
 
 Undergraduate and M.S. students are encouraged to participate in sustained research projects mentored by Dr. Arya and aligned with the lab's research directions. Students can gain experience formulating research questions, developing and evaluating methods, conducting experiments, and contributing to active research projects.
 
-> **Research credit expectation:** We primarily seek undergraduate and M.S. students who enroll in research credits under Dr. Arya's supervision ({{ site.data.recruiting.research_credit_undergrad_courses | join: "/" }} for undergraduates; {{ site.data.recruiting.research_credit_ms_courses | join: "/" }} for M.S. students). We will also consider a limited number of exceptional applicants who are not enrolling in research credits.
+<blockquote class="block-tip" markdown="1">
+
+**Research credit expectation:** We primarily seek undergraduate and M.S. students who enroll in research credits under Dr. Arya's supervision ({{ site.data.recruiting.research_credit_undergrad_courses | join: "/" }} for undergraduates; {{ site.data.recruiting.research_credit_ms_courses | join: "/" }} for M.S. students). We will also consider a limited number of exceptional applicants who are not enrolling in research credits.
+
+</blockquote>
 
 Our goal is to help committed students progress toward increasingly independent and technically rigorous research. When project results are sufficiently strong, students may have the opportunity to contribute to submissions to leading research conferences or journals.
 
