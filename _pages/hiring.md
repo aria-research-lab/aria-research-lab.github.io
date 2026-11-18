@@ -65,12 +65,12 @@ See [undergraduate and M.S. research opportunities]({{ '/hiring/undergraduate-ms
 
 ## Open research projects
 
-| Project                                                              | Levels                                 | Summary                                                                                    |
-| -------------------------------------------------------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------ |
-| [**Neurosymbolic AI**](/hiring/neurosymbolic-ai)                     | Ph.D. lead, MS, undergraduate students | Integrate symbolic reasoning with deep learning for transparent, interpretable AI systems. |
-| [**Neural combinatorial optimization**](/hiring/neural-optimization) | Ph.D. lead, MS, undergraduate students | Build neural solvers for discrete and graph-structured optimization problems.              |
-| [**DRL for graph optimization**](/hiring/drl-graph-optimization)     | MS, undergraduate students             | Apply deep reinforcement learning to graph-based combinatorial optimization problems.      |
-| [**Applications of neurosymbolic methods**](/hiring/applications)    | All levels                             | Apply neurosymbolic methods to vision, video understanding, and multimodal reasoning.      |
+| Project                                                              | Levels                                 | Summary                                                                                        |
+| -------------------------------------------------------------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| [**Neurosymbolic AI**](/hiring/neurosymbolic-ai)                     | Ph.D. lead, MS, undergraduate students | Integrate symbolic reasoning with deep learning for transparent, interpretable AI systems.     |
+| [**Neural combinatorial optimization**](/hiring/neural-optimization) | Ph.D. lead, MS, undergraduate students | Build neural solvers for discrete and graph-structured optimization problems.                  |
+| [**DRL for graph optimization**](/hiring/drl-graph-optimization)     | MS, undergraduate students             | Apply deep reinforcement learning to graph-based combinatorial optimization problems.          |
+| [**Applications of neurosymbolic methods**](/hiring/applications)    | All levels                             | Apply methods from our core projects to vision, video understanding, and multimodal reasoning. |
 
 ## What you'll do
 

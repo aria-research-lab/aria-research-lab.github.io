@@ -18,6 +18,8 @@ This position is open to <strong>undergraduate, MS, and Ph.D. students</strong>.
 
 In our lab, we explore how neurosymbolic methods, probabilistic inference, and learning-based optimization can be applied to real-world domains. You will work on combining neural perception with symbolic structure, uncertainty modeling, and interpretable reasoning to address applied problems in vision, human-AI interaction, healthcare, energy systems, and multimodal understanding.
 
+Projects in this track build on the methods developed in our core research projects—[Neurosymbolic AI](/hiring/neurosymbolic-ai), [Neural Combinatorial Optimization](/hiring/neural-optimization), and [DRL for Graph Optimization](/hiring/drl-graph-optimization)—and use applied domains to test, adapt, and extend them. Students typically begin in one of these core projects and then carry its ideas into an application area, so this track complements a core research direction rather than standing on its own.
+
 ---
 
 ## Research Focus Areas
