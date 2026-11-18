@@ -1462,3 +1462,31 @@ body.dark .gif-replay-badge {
   background: rgba(0, 0, 0, 0.75);
   border-color: rgba(255, 255, 255, 0.2);
 }
+
+/*
+  Note callouts (<blockquote class="block-tip" markdown="1">) on hand-written
+  pages. al_folio_core styles .block-tip with a fixed green palette that does
+  not match this site's accent color, so tie the callout to the theme variables
+  instead: it then follows --global-theme-color in both light and dark mode.
+  main.css loads after this file, so the selectors are prefixed with `html` to
+  out-rank its blockquote.block-tip rules rather than using !important.
+*/
+html blockquote.block-tip {
+  border-left-color: var(--global-theme-color);
+  background-color: color-mix(in srgb, var(--global-theme-color) 8%, var(--global-bg-color));
+}
+
+html blockquote.block-tip p,
+html blockquote.block-tip li,
+html blockquote.block-tip em,
+html blockquote.block-tip strong {
+  color: var(--global-text-color);
+}
+
+html blockquote.block-tip a {
+  color: var(--global-theme-color);
+}
+
+html blockquote.block-tip a:hover {
+  color: var(--global-hover-color);
+}
