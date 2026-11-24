@@ -19,7 +19,7 @@
         </p>
       </div>
       <div class="demo-badges">
-        <span class="demo-badge demo-badge-oral">ACM TiiS 2026</span>
+        <span class="demo-badge demo-badge-venue">ACM TiiS 2026</span>
         <span class="demo-badge demo-badge-sim">Multimodal Benchmark</span>
       </div>
     </div>
@@ -146,11 +146,11 @@
           <div
             style="
               padding: 0.45rem 0.75rem;
-              background: rgba(37, 99, 235, 0.06);
-              border-bottom: 1px solid rgba(37, 99, 235, 0.15);
+              background: var(--aria-accent-bg);
+              border-bottom: 1px solid var(--aria-accent-border);
               font-size: 0.8rem;
               font-weight: 700;
-              color: #1d4ed8;
+              color: var(--aria-btn-text);
               display: flex;
               justify-content: space-between;
               align-items: center;
@@ -215,7 +215,7 @@
               style="
                 padding: 0.5rem 0.65rem;
                 background: rgba(0, 0, 0, 0.02);
-                border-left: 3px solid #2563eb;
+                border-left: 3px solid var(--global-theme-color);
                 border-radius: 0 4px 4px 0;
                 font-size: 0.8rem;
                 line-height: 1.45;
@@ -246,7 +246,9 @@
             "
           >
             <span>Semantic Granularity:</span>
-            <span id="tiis-spectrum-indicator" style="font-weight: 700; color: #2563eb">1/4: Binary Judgment (Low Effort, Sparse)</span>
+            <span id="tiis-spectrum-indicator" style="font-weight: 700; color: var(--global-theme-color)"
+              >1/4: Binary Judgment (Low Effort, Sparse)</span
+            >
           </div>
         </div>
       </div>
@@ -283,50 +285,50 @@
           <div
             style="
               padding: 0.4rem 0.5rem;
-              background: rgba(37, 99, 235, 0.05);
-              border: 1px solid rgba(37, 99, 235, 0.15);
+              background: var(--aria-accent-bg);
+              border: 1px solid var(--aria-accent-border);
               border-radius: 6px;
               text-align: center;
             "
           >
-            <div style="font-size: 0.7rem; color: #2563eb; font-weight: 700">1. Human Feedback</div>
-            <div style="font-size: 0.68rem; color: var(--global-text-color-light, #6b7280); margin-top: 2px">Study interface input</div>
+            <div style="font-size: 0.7rem; color: var(--aria-btn-text); font-weight: 700">1. Human Feedback</div>
+            <div style="font-size: 0.68rem; color: var(--global-text-color-light); margin-top: 2px">Study interface input</div>
           </div>
           <div
             style="
               padding: 0.4rem 0.5rem;
-              background: rgba(16, 185, 129, 0.05);
-              border: 1px solid rgba(16, 185, 129, 0.15);
+              background: var(--aria-status-success-bg);
+              border: 1px solid var(--aria-status-success-border);
               border-radius: 6px;
               text-align: center;
             "
           >
-            <div style="font-size: 0.7rem; color: #059669; font-weight: 700">2. Prompt Formatting</div>
-            <div style="font-size: 0.68rem; color: var(--global-text-color-light, #6b7280); margin-top: 2px">Training template (Fig. 5)</div>
+            <div style="font-size: 0.7rem; color: var(--aria-status-success); font-weight: 700">2. Prompt Formatting</div>
+            <div style="font-size: 0.68rem; color: var(--global-text-color-light); margin-top: 2px">Training template (Fig. 5)</div>
           </div>
           <div
             style="
               padding: 0.4rem 0.5rem;
-              background: rgba(245, 158, 11, 0.05);
-              border: 1px solid rgba(245, 158, 11, 0.15);
+              background: var(--aria-award-bg);
+              border: 1px solid var(--aria-award-border);
               border-radius: 6px;
               text-align: center;
             "
           >
-            <div style="font-size: 0.7rem; color: #d97706; font-weight: 700">3. QLoRA Fine-Tuning</div>
-            <div style="font-size: 0.68rem; color: var(--global-text-color-light, #6b7280); margin-top: 2px">VLM parameter updates</div>
+            <div style="font-size: 0.7rem; color: var(--aria-award-text); font-weight: 700">3. QLoRA Fine-Tuning</div>
+            <div style="font-size: 0.68rem; color: var(--global-text-color-light); margin-top: 2px">VLM parameter updates</div>
           </div>
           <div
             style="
               padding: 0.4rem 0.5rem;
-              background: rgba(139, 92, 246, 0.05);
-              border: 1px solid rgba(139, 92, 246, 0.15);
+              background: var(--aria-accent-bg);
+              border: 1px solid var(--aria-accent-border);
               border-radius: 6px;
               text-align: center;
             "
           >
-            <div style="font-size: 0.7rem; color: #7c3aed; font-weight: 700">4. Verification Acc.</div>
-            <div style="font-size: 0.68rem; color: var(--global-text-color-light, #6b7280); margin-top: 2px">Yes/No accuracy test</div>
+            <div style="font-size: 0.7rem; color: var(--global-theme-color); font-weight: 700">4. Verification Acc.</div>
+            <div style="font-size: 0.68rem; color: var(--global-text-color-light); margin-top: 2px">Yes/No accuracy test</div>
           </div>
         </div>
 
@@ -340,7 +342,7 @@
             padding: 0.45rem 0.65rem;
           "
         >
-          <summary style="cursor: pointer; font-size: 0.78rem; font-weight: 600; color: var(--global-theme-color, #2563eb); user-select: none">
+          <summary style="cursor: pointer; font-size: 0.78rem; font-weight: 600; color: var(--global-theme-color); user-select: none">
             <span>&#9662; How the feedback is formatted for VLM training (Paper Figure 5)</span>
           </summary>
           <div
@@ -349,16 +351,17 @@
               font-family: monospace;
               font-size: 0.78rem;
               line-height: 1.5;
-              background: var(--global-card-bg-color, #ffffff);
-              border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
+              background: var(--global-card-bg-color);
+              border: 1px solid var(--global-divider-color);
               border-radius: 4px;
               padding: 0.6rem 0.75rem;
             "
           >
-            <div><span style="color: #6b7280">Video Description:</span> "The person is cleaning his shoes."</div>
-            <div style="font-weight: 700; color: #2563eb" id="tiis-prompt-feedback">User Feedback: No</div>
+            <div><span style="color: var(--aria-text-muted)">Video Description:</span> "The person is cleaning his shoes."</div>
+            <div style="font-weight: 700; color: var(--global-theme-color)" id="tiis-prompt-feedback">User Feedback: No</div>
             <div style="margin-top: 0.25rem">
-              <span style="color: #6b7280">System Question:</span> "Does the above information accurately describe the video? Answer Yes or No."
+              <span style="color: var(--aria-text-muted)">System Question:</span> "Does the above information accurately describe the video? Answer
+              Yes or No."
             </div>
           </div>
           <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280); margin-top: 0.4rem; line-height: 1.4" id="tiis-prompt-note">
@@ -501,7 +504,7 @@
             "Tells the system only that something is wrong. Provides only a correctness judgment without localizing the error or supplying a fix.",
           renderedSentence: "The person is cleaning his shoes.",
           uiHtml:
-            '<div style="display: flex; gap: 0.5rem; margin-top: 0.35rem; align-items: center;"><span style="padding: 0.3rem 0.85rem; background: #2563eb; color: #fff; border-radius: 4px; font-size: 0.82rem; font-weight: 600; opacity: 0.6; cursor: default;">YES</span><span style="padding: 0.3rem 0.85rem; background: #dc2626; color: #fff; border-radius: 4px; font-size: 0.82rem; font-weight: 700; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #dc2626; cursor: default;">NO [Selected]</span></div>',
+            '<div style="display: flex; gap: 0.5rem; margin-top: 0.35rem; align-items: center;"><span style="padding: 0.3rem 0.85rem; background: var(--global-theme-color); color: var(--global-hover-text-color); border-radius: 4px; font-size: 0.82rem; font-weight: 600; opacity: 0.65; cursor: default;">YES</span><span style="padding: 0.3rem 0.85rem; background: #b91c1c; color: #fff; border-radius: 4px; font-size: 0.82rem; font-weight: 700; box-shadow: 0 0 0 2px var(--global-card-bg-color), 0 0 0 4px #b91c1c; cursor: default;">NO [Selected]</span></div>',
           vlmFeedback: "User Feedback: No",
           vlmNote:
             "<em>Protocol note:</em> Binary verification indicates whether the statement is adherent or non-adherent. The model receives a concise binary indicator.",
@@ -515,9 +518,9 @@
           semantic:
             "Identifies the incorrect span but does not provide the correction. Points to where the error is located without specifying the true action.",
           renderedSentence:
-            'The person <span style="color: #dc2626; text-decoration: underline wavy #dc2626; background: rgba(220,38,38,0.12); padding: 1px 4px; border-radius: 3px; font-weight: 700;">is cleaning</span> his shoes. <span class="badge badge-danger" style="font-size: 0.68rem; vertical-align: middle; margin-left: 4px;">Error Span Selected</span>',
+            'The person <span style="color: var(--aria-status-error); text-decoration: underline wavy var(--aria-status-error); background: var(--aria-status-error-bg); padding: 1px 4px; border-radius: 3px; font-weight: 700;">is cleaning</span> his shoes. <span class="badge badge-danger" style="font-size: 0.68rem; vertical-align: middle; margin-left: 4px;">Error Span Selected</span>',
           uiHtml:
-            '<div style="font-size: 0.78rem; color: #dc2626; margin-top: 0.35rem; display: flex; align-items: center; gap: 0.35rem; font-weight: 500;"><span>&#9888; Participant selected erroneous token span:</span> <strong>"is cleaning"</strong></div>',
+            '<div style="font-size: 0.78rem; color: var(--aria-status-error); margin-top: 0.35rem; display: flex; align-items: center; gap: 0.35rem; font-weight: 500;"><span>&#9888; Participant selected erroneous token span:</span> <strong>"is cleaning"</strong></div>',
           vlmFeedback: "User Feedback: Error words: is cleaning",
           vlmNote:
             "<em>Protocol note:</em> The identified error span is formatted directly into the fine-tuning prompt to direct the model attention to the flawed tokens.",
@@ -530,9 +533,9 @@
           desc: "Correct any words that are wrong in the statement.",
           semantic: "Provides targeted word-level corrective supervision. Identifies what is wrong and provides the specific replacement word.",
           renderedSentence:
-            'The person is <span style="display: inline-block; border: 2px solid #2563eb; background: rgba(37,99,235,0.08); color: #1d4ed8; font-weight: 700; padding: 1px 6px; border-radius: 4px;">wearing</span> his shoes. <span class="badge badge-primary" style="font-size: 0.68rem; vertical-align: middle; margin-left: 4px;">Replacement: "cleaning" &rarr; "wearing"</span>',
+            'The person is <span style="display: inline-block; border: 2px solid var(--global-theme-color); background: var(--aria-accent-bg); color: var(--aria-btn-text); font-weight: 700; padding: 1px 6px; border-radius: 4px;">wearing</span> his shoes. <span class="badge badge-primary" style="font-size: 0.68rem; vertical-align: middle; margin-left: 4px;">Replacement: "cleaning" &rarr; "wearing"</span>',
           uiHtml:
-            '<div style="font-size: 0.78rem; color: #1d4ed8; margin-top: 0.35rem; display: flex; align-items: center; gap: 0.35rem; font-weight: 500;"><span>&#10003; Target replacement entered:</span> <strong>"cleaning" &rarr; "wearing"</strong></div>',
+            '<div style="font-size: 0.78rem; color: var(--aria-btn-text); margin-top: 0.35rem; display: flex; align-items: center; gap: 0.35rem; font-weight: 500;"><span>&#10003; Target replacement entered:</span> <strong>"cleaning" &rarr; "wearing"</strong></div>',
           vlmFeedback: "User Feedback: cleaning -> wearing",
           vlmNote:
             '<em>Important distinction:</em> Participants in the study interface entered the correction into an inline input box (replacing "cleaning" with "wearing"). They did <strong>NOT</strong> submit corrections using arrow notation; that syntax (<code>cleaning -&gt; wearing</code>) was constructed during prompt formatting for VLM training.',

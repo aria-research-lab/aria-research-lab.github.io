@@ -15,7 +15,7 @@
         <p>Compare genuine normal executions against recorded procedural errors, and inspect egocentric 4D sensory capture and task graphs.</p>
       </div>
       <div class="demo-badges">
-        <span class="demo-badge demo-badge-oral">NeurIPS 2024 D&amp;B</span>
+        <span class="demo-badge demo-badge-venue">NeurIPS 2024 D&amp;B</span>
         <span class="demo-badge demo-badge-sim">Egocentric 4D Benchmark</span>
       </div>
     </div>
@@ -163,14 +163,14 @@
           <div
             style="
               padding: 0.45rem 0.75rem;
-              background: rgba(16, 185, 129, 0.08);
-              border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+              background: var(--aria-status-success-bg);
+              border-bottom: 1px solid var(--aria-status-success-border);
               display: flex;
               justify-content: space-between;
               align-items: center;
             "
           >
-            <span style="font-weight: 700; font-size: 0.82rem; color: #047857; display: flex; align-items: center; gap: 0.35rem">
+            <span style="font-weight: 700; font-size: 0.82rem; color: var(--aria-status-success); display: flex; align-items: center; gap: 0.35rem">
               <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981"></span>
               Normal Execution (Adherent Step)
             </span>
@@ -270,7 +270,7 @@
               flex-grow: 1;
             "
           >
-            <strong style="color: #047857">Expected Execution:</strong>
+            <strong style="color: var(--aria-status-success)">Expected Execution:</strong>
             <span id="cc-card-normal-text">Contents of the bowl are mixed thoroughly without spillage.</span>
           </div>
         </div>
@@ -291,14 +291,14 @@
           <div
             style="
               padding: 0.45rem 0.75rem;
-              background: rgba(239, 68, 68, 0.08);
-              border-bottom: 1px solid rgba(239, 68, 68, 0.2);
+              background: var(--aria-status-error-bg);
+              border-bottom: 1px solid var(--aria-status-error-border);
               display: flex;
               justify-content: space-between;
               align-items: center;
             "
           >
-            <span style="font-weight: 700; font-size: 0.82rem; color: #b91c1c; display: flex; align-items: center; gap: 0.35rem">
+            <span style="font-weight: 700; font-size: 0.82rem; color: var(--aria-status-error); display: flex; align-items: center; gap: 0.35rem">
               <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ef4444"></span>
               Error Execution (Procedural Deviation)
             </span>
@@ -398,7 +398,7 @@
               flex-grow: 1;
             "
           >
-            <strong style="color: #b91c1c">Recorded Deviation:</strong>
+            <strong style="color: var(--aria-status-error)">Recorded Deviation:</strong>
             <span id="cc-card-error-text">Participant mixes too aggressively, spilling corn kernels out of the bowl while mixing.</span>
           </div>
         </div>
@@ -419,7 +419,7 @@
             <span style="font-weight: 700; color: var(--global-text-color, #111827)"
               >Full 5-Session Benchmark Recording Strip (3200 &times; 360 px)</span
             >
-            <span style="color: #64748b; font-size: 0.72rem">Snippets 1-2: Normal | Snippets 3-5: Error Deviations</span>
+            <span style="color: var(--global-text-color-light); font-size: 0.72rem">Snippets 1-2: Normal | Snippets 3-5: Error Deviations</span>
           </div>
           <div style="position: relative; width: 100%; overflow-x: auto; background: #000; border-radius: 6px">
             <video
@@ -567,7 +567,7 @@
           />
         </div>
 
-        <div style="font-size: 0.74rem; color: #64748b; display: flex; align-items: center; gap: 0.35rem">
+        <div style="font-size: 0.74rem; color: var(--global-text-color-light); display: flex; align-items: center; gap: 0.35rem">
           <span id="cc-sync-dot" style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #10b981"></span>
           <span id="cc-sync-label">Linked Normal/Error Playback</span>
         </div>
@@ -585,27 +585,6 @@
 
       <!-- 5. Procedural Details & Multimodal Stream Card -->
       <div class="demo-inspector-card" id="cc-inspector-display" style="margin-top: 0.65rem">
-        <div class="demo-inspector-status">
-          <div>
-            <div class="demo-inspector-step-title" id="cc-card-recipe-title">Recipe: Butter Corn Cup</div>
-            <span style="font-size: 0.85rem; color: var(--global-text-color-light, #6b7280)" id="cc-card-step-title"
-              >Instruction: "Mix the contents of the bowl well"</span
-            >
-          </div>
-          <span class="badge badge-danger" id="cc-card-status-badge" style="font-size: 0.78rem">Technique Error</span>
-        </div>
-
-        <div style="font-size: 0.88rem; line-height: 1.5; margin: 0.5rem 0">
-          <p style="margin: 0.3rem 0">
-            <strong style="color: #047857">Normal Execution:</strong>
-            <span id="cc-card-normal-desc">Contents of the bowl are mixed thoroughly without spillage.</span>
-          </p>
-          <p style="margin: 0.3rem 0">
-            <strong style="color: #b91c1c">Recorded Deviation:</strong>
-            <span id="cc-card-error-desc">Participant mixes too aggressively, spilling corn kernels out of the bowl while mixing.</span>
-          </p>
-        </div>
-
         <div class="demo-inspector-streams">
           <div class="demo-stream-pill">
             <strong>Sensory Capture:</strong>
@@ -708,11 +687,6 @@
       var videoCaption = document.getElementById("cc-video-caption");
 
       // Bottom Inspector Display
-      var cardRecipeTitle = document.getElementById("cc-card-recipe-title");
-      var cardStepTitle = document.getElementById("cc-card-step-title");
-      var cardStatusBadge = document.getElementById("cc-card-status-badge");
-      var cardNormalDesc = document.getElementById("cc-card-normal-desc");
-      var cardErrorDesc = document.getElementById("cc-card-error-desc");
       var streamsEl = document.getElementById("cc-tax-streams");
       var taskEl = document.getElementById("cc-tax-task");
 
@@ -1043,14 +1017,6 @@
         }
         if (videoCaption) videoCaption.textContent = d.caption;
 
-        if (cardRecipeTitle) cardRecipeTitle.textContent = d.recipe;
-        if (cardStepTitle) cardStepTitle.textContent = d.step;
-        if (cardStatusBadge) {
-          cardStatusBadge.textContent = d.badge;
-          cardStatusBadge.className = "badge " + d.badgeClass;
-        }
-        if (cardNormalDesc) cardNormalDesc.textContent = d.normal;
-        if (cardErrorDesc) cardErrorDesc.textContent = d.error;
         if (streamsEl) streamsEl.textContent = d.streams;
         if (taskEl) taskEl.textContent = d.task;
 

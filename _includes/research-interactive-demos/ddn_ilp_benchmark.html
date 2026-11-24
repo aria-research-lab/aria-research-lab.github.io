@@ -19,7 +19,7 @@
         </p>
       </div>
       <div class="demo-badges">
-        <span class="demo-badge demo-badge-oral">AISTATS 2024</span>
+        <span class="demo-badge demo-badge-venue">AISTATS 2024</span>
         <span class="demo-badge demo-badge-sim">Structured Inference</span>
       </div>
     </div>
@@ -213,7 +213,7 @@
           <div style="font-size: 0.74rem; color: var(--global-text-color-light, #6b7280)">Label 1</div>
           <div style="font-size: 0.95rem; font-weight: 700; color: var(--global-text-color, #111827)">person</div>
           <div style="font-size: 0.8rem; margin: 0.2rem 0">Neural score: <strong>0.99</strong> (&ge; 0.50)</div>
-          <div id="card-status-person" style="font-size: 0.78rem; font-weight: 600; color: #059669">
+          <div id="card-status-person" style="font-size: 0.78rem; font-weight: 600; color: var(--aria-status-success)">
             <i class="fa-solid fa-check"></i> Predicted (Active)
           </div>
         </div>
@@ -229,7 +229,7 @@
           <div style="font-size: 0.74rem; color: var(--global-text-color-light, #6b7280)">Label 2</div>
           <div style="font-size: 0.95rem; font-weight: 700; color: var(--global-text-color, #111827)">baseball glove</div>
           <div style="font-size: 0.8rem; margin: 0.2rem 0">Neural score: <strong>0.99</strong> (&ge; 0.50)</div>
-          <div id="card-status-glove" style="font-size: 0.78rem; font-weight: 600; color: #059669">
+          <div id="card-status-glove" style="font-size: 0.78rem; font-weight: 600; color: var(--aria-status-success)">
             <i class="fa-solid fa-check"></i> Predicted (Active)
           </div>
         </div>
@@ -249,7 +249,7 @@
           <div style="font-size: 0.74rem; color: var(--global-text-color-light, #6b7280)">Label 3 (Concealed/Small)</div>
           <div style="font-size: 0.95rem; font-weight: 700; color: var(--global-text-color, #111827)">sports ball</div>
           <div style="font-size: 0.8rem; margin: 0.2rem 0">Neural score: <strong>0.24</strong> (&lt; 0.50)</div>
-          <div id="card-status-ball" style="font-size: 0.78rem; font-weight: 600; color: #dc2626">
+          <div id="card-status-ball" style="font-size: 0.78rem; font-weight: 600; color: var(--aria-status-error)">
             <i class="fa-solid fa-xmark"></i> Missed by baseline
           </div>
         </div>
@@ -475,7 +475,7 @@
           }
           if (cardStatusBall) {
             cardStatusBall.innerHTML = '<i class="fa-solid fa-check"></i> <strong>Recovered by DDN-ILP</strong>';
-            cardStatusBall.style.color = "#059669";
+            cardStatusBall.style.color = "var(--aria-status-success)";
           }
 
           if (explanationEl) {
@@ -544,7 +544,7 @@
           }
           if (cardStatusBall) {
             cardStatusBall.innerHTML = '<i class="fa-solid fa-xmark"></i> Missed by baseline (&lt; 0.50)';
-            cardStatusBall.style.color = "#dc2626";
+            cardStatusBall.style.color = "var(--aria-status-error)";
           }
 
           if (explanationEl) {

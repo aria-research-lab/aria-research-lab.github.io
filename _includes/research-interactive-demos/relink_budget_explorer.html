@@ -18,7 +18,6 @@
         </p>
       </div>
       <div class="demo-badges">
-        <span class="demo-badge demo-badge-oral">CIKM 2025 Oral</span>
         <span class="demo-badge demo-badge-sim">Combinatorial Optimization over Graphs</span>
       </div>
     </div>
@@ -44,13 +43,13 @@
       <div
         style="
           font-size: 0.78rem;
-          color: #64748b;
+          color: var(--global-text-color-light);
           font-style: italic;
           margin-bottom: 0.75rem;
           padding: 0.45rem 0.65rem;
           background: rgba(0, 0, 0, 0.02);
           border-radius: 4px;
-          border-left: 2px solid #94a3b8;
+          border-left: 2px solid var(--aria-text-muted);
           line-height: 1.45;
         "
       >
@@ -81,21 +80,8 @@
           <button type="button" class="workload-btn relink-step-btn" data-step="3">Step 3: Cascade Result</button>
         </div>
 
-        <!-- Action Controls: Prev, Next, Reset, & Budget Pill -->
+        <!-- Action Controls: Prev, Next, Reset -->
         <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap">
-          <span
-            style="
-              font-size: 0.8rem;
-              font-weight: 700;
-              color: var(--global-text-color, #111827);
-              background: rgba(0, 0, 0, 0.04);
-              padding: 0.25rem 0.55rem;
-              border-radius: 4px;
-              border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.08));
-            "
-          >
-            Budget Used (Node a): <strong id="relink-budget-val" style="color: #ef4444">0 / 2</strong>
-          </span>
           <button type="button" class="workload-btn" id="relink-btn-prev" disabled style="padding: 0.25rem 0.65rem">&larr; Prev</button>
           <button type="button" class="workload-btn" id="relink-btn-next" style="padding: 0.25rem 0.65rem; font-weight: 700">Next Step &rarr;</button>
           <button type="button" class="workload-btn" id="relink-btn-reset" style="padding: 0.25rem 0.65rem">&#8634; Reset</button>
@@ -324,7 +310,7 @@
         >
           <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280)">Current Step</div>
           <div id="mech-step-label" style="font-size: 1.05rem; font-weight: 700; color: var(--global-text-color, #111827)">Step 0 of 3</div>
-          <div style="font-size: 0.7rem; color: #64748b">Walkthrough progress</div>
+          <div style="font-size: 0.7rem; color: var(--global-text-color-light)">Walkthrough progress</div>
         </div>
 
         <div
@@ -338,7 +324,7 @@
         >
           <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280)">Activation Budget</div>
           <div style="font-size: 1.05rem; font-weight: 700; color: var(--global-text-color, #111827)">k = 2 edges</div>
-          <div style="font-size: 0.7rem; color: #64748b">Max out-degree limit</div>
+          <div style="font-size: 0.7rem; color: var(--global-text-color-light)">Max out-degree limit</div>
         </div>
 
         <div
@@ -351,8 +337,8 @@
           "
         >
           <div style="font-size: 0.72rem; color: var(--global-text-color-light, #6b7280)">Influenced Spread</div>
-          <div id="mech-spread-val" style="font-size: 1.05rem; font-weight: 700; color: #ef4444">1 / 10 nodes</div>
-          <div id="mech-spread-sub" style="font-size: 0.7rem; color: #ef4444; font-weight: 600">Seed active</div>
+          <div id="mech-spread-val" style="font-size: 1.05rem; font-weight: 700; color: var(--aria-status-error)">1 / 10 nodes</div>
+          <div id="mech-spread-sub" style="font-size: 0.7rem; color: var(--aria-status-error); font-weight: 600">Seed active</div>
         </div>
 
         <div
@@ -368,7 +354,7 @@
           <div id="mech-budget-status" style="font-size: 0.88rem; font-weight: 700; color: var(--global-text-color, #111827); padding-top: 0.15rem">
             0 / 2 used
           </div>
-          <div style="font-size: 0.7rem; color: #64748b">Remaining budget: 2</div>
+          <div style="font-size: 0.7rem; color: var(--global-text-color-light)">Remaining budget: 2</div>
         </div>
       </div>
 
@@ -416,7 +402,7 @@
         <div class="metric-stats">
           <strong>Formulation:</strong> Edge-centric <em>n</em>-step Double DQN with SVD embeddings<br />
           <strong>Training:</strong> True marginal influence gain rewards (IC model)<br />
-          <strong>Win Rate:</strong> 456 / 480 wins (95.0%) across 20 real networks
+          <strong>Scalability:</strong> GPU-accelerated sequential inference across 20 real networks
         </div>
       </div>
 
@@ -425,7 +411,7 @@
           <span>PSNA (Huang et al.)</span>
           <span class="badge badge-info" style="font-size: 0.72rem">IM-CSN Baseline</span>
         </div>
-        <div class="metric-speedup speedup-itself">95.0% RELINK Win</div>
+        <div class="metric-speedup speedup-itself">IM-CSN Heuristic</div>
         <div class="metric-stats">
           <strong>Formulation:</strong> Practical Subnetwork Augmentation heuristic<br />
           <strong>Complexity:</strong> &Omicron;(<em>I</em>(|<em>V</em>| + |<em>E</em>|) log |<em>V</em>| + |<em>V</em>|<em>d</em
@@ -440,10 +426,10 @@
           <span>Traditional Baselines</span>
           <span class="badge badge-secondary" style="font-size: 0.72rem">Degree &amp; Random</span>
         </div>
-        <div class="metric-speedup speedup-baseline">&gt;96% RELINK Win</div>
+        <div class="metric-speedup speedup-baseline">Static Heuristics</div>
         <div class="metric-stats">
           <strong>Formulation:</strong> Static degree centrality &amp; uniform random selection<br />
-          <strong>Win Rate:</strong> 464 / 480 vs. Degree, 462 / 480 vs. Random &amp; FoF<br />
+          <strong>Methods:</strong> Degree centrality, Random selection, and Friend-of-Friend (FoF)<br />
           <strong>Limitation:</strong> Static local connectivity metrics overlook downstream influence dynamics
         </div>
       </div>
@@ -504,10 +490,9 @@
       </div>
 
       <p class="demo-video-caption" id="relink-takeaway" style="margin-top: 0.85rem; margin-bottom: 0">
-        <strong>Paper Finding (Figure 3 Contingency Matrix &amp; Section 6.2):</strong> Across 480 total experimental configurations spanning 20
-        real-world social networks (evaluated with 100,000 Monte Carlo runs under the IC model), RELINK outperforms all competing methods in at least
-        95% of experiments. In low edge budget regimes (<em>k</em> &le; 10), Section 6.3 reports that RELINK frequently achieves influence spread
-        improvements exceeding 15% over PSNA.
+        <strong>Paper Finding (Figure 3 Contingency Matrix &amp; Section 6.2):</strong> Across 480 total experimental configurations, RELINK
+        outperforms all competing methods in at least 95% of experiments. In low edge budget regimes (<em>k</em> &le; 10), Section 6.3 reports that
+        RELINK frequently achieves influence spread improvements exceeding 15% over PSNA.
       </p>
     </div>
   </div>
@@ -527,7 +512,6 @@
       var btnReset = document.getElementById("relink-btn-reset");
       var detailsWrapper = document.getElementById("relink-details-wrapper");
 
-      var budgetPillVal = document.getElementById("relink-budget-val");
       var stepLabelEl = document.getElementById("mech-step-label");
       var spreadValEl = document.getElementById("mech-spread-val");
       var spreadSubEl = document.getElementById("mech-spread-sub");
@@ -541,14 +525,14 @@
         {
           step: 0,
           budgetPill: "0 / 2",
-          pillColor: "#ef4444",
+          pillColor: "var(--aria-status-error)",
           stepLabel: "Step 0 of 3",
           spreadVal: "1 / 10 nodes",
           spreadSub: "Seed node a active",
-          spreadColor: "#ef4444",
+          spreadColor: "var(--aria-status-error)",
           budgetStatus: "0 / 2 used",
           budgetSub: "Remaining budget: 2",
-          borderColor: "#ef4444",
+          borderColor: "var(--aria-status-error)",
           edges: {
             "a-b": "candidate",
             "a-h": "candidate",
@@ -567,14 +551,14 @@
         {
           step: 1,
           budgetPill: "1 / 2",
-          pillColor: "#d97706",
+          pillColor: "var(--aria-status-warning)",
           stepLabel: "Step 1 of 3",
           spreadVal: "2 / 10 nodes",
           spreadSub: "Propagated to node h",
-          spreadColor: "#d97706",
+          spreadColor: "var(--aria-status-warning)",
           budgetStatus: "1 / 2 used",
           budgetSub: "Remaining budget: 1",
-          borderColor: "#10b981",
+          borderColor: "var(--aria-status-success)",
           edges: {
             "a-b": "candidate",
             "a-h": "activated",
@@ -593,14 +577,14 @@
         {
           step: 2,
           budgetPill: "2 / 2 (Exhausted)",
-          pillColor: "#059669",
+          pillColor: "var(--aria-status-success)",
           stepLabel: "Step 2 of 3",
           spreadVal: "3 / 10 nodes",
           spreadSub: "Propagated to node d",
-          spreadColor: "#059669",
+          spreadColor: "var(--aria-status-success)",
           budgetStatus: "2 / 2 used",
           budgetSub: "Budget limit reached",
-          borderColor: "#10b981",
+          borderColor: "var(--aria-status-success)",
           edges: {
             "a-b": "pruned",
             "a-h": "activated",
@@ -619,11 +603,11 @@
         {
           step: 3,
           budgetPill: "k = 2 Enforced",
-          pillColor: "#059669",
+          pillColor: "var(--aria-status-success)",
           stepLabel: "Step 3 of 3",
           spreadVal: "7 / 10 nodes",
           spreadSub: "Full cascade reach",
-          spreadColor: "#059669",
+          spreadColor: "var(--aria-status-success)",
           budgetStatus: "Enforced",
           budgetSub: "k = 2 per node limit",
           borderColor: "#10b981",
@@ -714,10 +698,6 @@
         if (btnNext) btnNext.textContent = currentStep === 3 ? "Reset to Step 0" : "Next Step →";
 
         // 5. Update summary chips
-        if (budgetPillVal) {
-          budgetPillVal.textContent = cfg.budgetPill;
-          budgetPillVal.style.color = cfg.pillColor;
-        }
         if (stepLabelEl) stepLabelEl.textContent = cfg.stepLabel;
         if (spreadValEl) {
           spreadValEl.textContent = cfg.spreadVal;
