@@ -2,7 +2,15 @@
   Local, theme-independent overrides for this site. Kept separate from any
   al_folio_core/al_folio_bootstrap_compat file so gem upgrades never touch or
   conflict with it. Add new fixes below with a comment explaining why.
+
+  Cascade note: this stylesheet loads before main.css. Token blocks use
+  `html:root` (0,1,1) and `html:root[data-theme="dark"]` (0,2,1), and component
+  rules are prefixed with `html` so they out-rank main.css cleanly.
 */
+
+/* ==========================================================================
+   Runtime & Gem Compatibility Fixes
+   ========================================================================== */
 
 /*
   al_folio_bootstrap_compat's bootstrap-compat.css loads after tailwind.css and
@@ -32,16 +40,585 @@
   position: fixed !important;
 }
 
+/* ==========================================================================
+   Academic Blue Design System — Centralized Theme Tokens
+   Light mode defaults + Dark mode tokens (WCAG 2.2 AA verified).
+   ========================================================================== */
+
+html:root {
+  color-scheme: light;
+
+  /* Core al_folio_core tokens */
+  --global-theme-color: #2457a7;
+  --global-hover-color: #163b78;
+  /* Light text on solid #2457A7 / #163B78 primary surfaces (7.01:1 / 10.88:1) */
+  --global-hover-text-color: #ffffff;
+  --global-bg-color: #ffffff;
+  --global-card-bg-color: #f7f9fc;
+  --global-code-bg-color: #f1f4f8;
+  --global-divider-color: #dce2ea;
+  --global-text-color: #202124;
+  --global-text-color-light: #526170;
+  --global-footer-bg-color: #f4f6f9;
+  --global-footer-text-color: #526170;
+  --global-footer-link-color: #2457a7;
+  --global-distill-app-color: #526170;
+  --global-highlight-color: #b45309;
+  --global-back-to-top-bg-color: #edf3fc;
+  --global-back-to-top-text-color: #2457a7;
+  --global-newsletter-bg-color: #ffffff;
+  --global-newsletter-text-color: #202124;
+
+  /* Callout blocks */
+  --global-tip-block: #2457a7;
+  --global-tip-block-bg: #edf3fc;
+  --global-tip-block-text: #202124;
+  --global-tip-block-title: #172b45;
+  --global-warning-block: #b45309;
+  --global-warning-block-bg: #fff3e0;
+  --global-warning-block-text: #92400e;
+  --global-warning-block-title: #92400e;
+  --global-danger-block: #b91c1c;
+  --global-danger-block-bg: #fef2f2;
+  --global-danger-block-text: #991b1b;
+  --global-danger-block-title: #b91c1c;
+
+  /* Semantic ARIA Lab tokens */
+  --aria-accent-bg: #edf3fc;
+  --aria-accent-border: #c5d6ee;
+  --aria-nav-bg: #ffffff;
+  --aria-heading-color: #172b45;
+  --aria-text-muted: #64748b;
+
+  /* Amber reserved for academic distinctions */
+  --aria-award-text: #92400e;
+  --aria-award-icon: #b45309;
+  --aria-award-bg: #fff3e0;
+  --aria-award-border: #f5c579;
+
+  /* Buttons & selection */
+  --aria-btn-bg: #edf3fc;
+  --aria-btn-text: #2457a7;
+  --aria-btn-border: #c5d6ee;
+  --aria-btn-hover-bg: #dce8f9;
+  --aria-selection-bg: #dce8f9;
+  --aria-selection-text: #163b78;
+
+  /* Status tokens */
+  --aria-status-success: #15803d;
+  --aria-status-success-bg: #f0fdf4;
+  --aria-status-success-border: #bbf7d0;
+  --aria-status-info: #2457a7;
+  --aria-status-warning: #b45309;
+  --aria-status-error: #b91c1c;
+  --aria-status-error-bg: #fef2f2;
+  --aria-status-error-border: #fecaca;
+
+  /* Focus ring */
+  --aria-focus-ring: #2457a7;
+}
+
+html:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Core al_folio_core tokens */
+  --global-theme-color: #56b4e9;
+  --global-hover-color: #90d5ff;
+  /* Dark text on solid #56B4E9 / #90D5FF surfaces (7.63:1 / 11.01:1 vs 2.31:1 with #FFFFFF) */
+  --global-hover-text-color: #17191c;
+  --global-bg-color: #1c1c1c;
+  --global-card-bg-color: #24272b;
+  --global-code-bg-color: #252930;
+  --global-divider-color: #383f49;
+  --global-text-color: #e5e7eb;
+  --global-text-color-light: #a3adb9;
+  --global-footer-bg-color: #17191c;
+  --global-footer-text-color: #a3adb9;
+  --global-footer-link-color: #56b4e9;
+  --global-distill-app-color: #a3adb9;
+  --global-highlight-color: #fbbf24;
+  --global-back-to-top-bg-color: #1d3042;
+  --global-back-to-top-text-color: #90d5ff;
+  --global-newsletter-bg-color: #24272b;
+  --global-newsletter-text-color: #e5e7eb;
+
+  /* Callout blocks */
+  --global-tip-block: #56b4e9;
+  --global-tip-block-bg: #1d3042;
+  --global-tip-block-text: #e5e7eb;
+  --global-tip-block-title: #f1f5f9;
+  --global-warning-block: #fcd34d;
+  --global-warning-block-bg: #3d301b;
+  --global-warning-block-text: #fde68a;
+  --global-warning-block-title: #fcd34d;
+  --global-danger-block: #fca5a5;
+  --global-danger-block-bg: #3b1818;
+  --global-danger-block-text: #fecaca;
+  --global-danger-block-title: #fca5a5;
+
+  /* Semantic ARIA Lab tokens */
+  --aria-accent-bg: #1d3042;
+  --aria-accent-border: #35566e;
+  --aria-nav-bg: #1c1c1c;
+  --aria-heading-color: #f1f5f9;
+  --aria-text-muted: #94a3b8;
+
+  /* Amber reserved for academic distinctions */
+  --aria-award-text: #fde68a;
+  --aria-award-icon: #fbbf24;
+  --aria-award-bg: #3d301b;
+  --aria-award-border: #856021;
+
+  /* Buttons & selection */
+  --aria-btn-bg: #1d3042;
+  --aria-btn-text: #90d5ff;
+  --aria-btn-border: #35566e;
+  --aria-btn-hover-bg: #29455e;
+  --aria-selection-bg: #29455e;
+  --aria-selection-text: #e5f4ff;
+
+  /* Status tokens */
+  --aria-status-success: #86efac;
+  --aria-status-success-bg: #142e20;
+  --aria-status-success-border: #1e5638;
+  --aria-status-info: #56b4e9;
+  --aria-status-warning: #fcd34d;
+  --aria-status-error: #fca5a5;
+  --aria-status-error-bg: #3b1818;
+  --aria-status-error-border: #7f1d1d;
+
+  /* Focus ring */
+  --aria-focus-ring: #90d5ff;
+}
+
+/* ==========================================================================
+   Core Typography, Links, Selection & Focus Accessibility (WCAG 2.2 AA)
+   ========================================================================== */
+
+::selection {
+  background-color: var(--aria-selection-bg);
+  color: var(--aria-selection-text);
+}
+
+html a:focus-visible,
+html button:focus-visible,
+html summary:focus-visible,
+html input:focus-visible,
+html select:focus-visible,
+html textarea:focus-visible,
+html [tabindex]:not([tabindex="-1"]):focus-visible,
+html .more-authors:focus-visible {
+  outline: 2px solid var(--aria-focus-ring) !important;
+  outline-offset: 2px;
+}
+
+html .bibsearch-form-input:focus-visible {
+  border-color: var(--global-theme-color);
+  outline: 2px solid var(--aria-focus-ring) !important;
+  outline-offset: 2px;
+}
+
+html h1,
+html h2,
+html h3,
+html h4,
+html h5,
+html h6 {
+  color: var(--aria-heading-color);
+}
+
+/* Avoid coloring entire page headings blue; preserve neutral heading hierarchy */
+html .header-bar h1,
+html .publications h1 {
+  color: var(--aria-heading-color);
+}
+
+/* Year & category section headers must remain legible against page background */
+html .publications h2.bibliography,
+html .projects h2.category {
+  color: var(--aria-text-muted);
+  border-color: var(--global-divider-color);
+}
+
+html .post h2 > a {
+  color: var(--aria-heading-color);
+}
+
+html .post h2 > a:hover {
+  color: var(--global-theme-color);
+}
+
+html .post-header .desc,
+html .post-description,
+html .publications ol.bibliography li .periodical,
+html .profile .more-info,
+html .card .card-text {
+  color: var(--global-text-color-light);
+}
+
+html a,
+html table.table a {
+  color: var(--global-theme-color);
+}
+
+html a:hover,
+html table.table a:hover {
+  color: var(--global-hover-color);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Navigation, Dropdowns & Footer
+   ========================================================================== */
+
+html .navbar {
+  background-color: var(--aria-nav-bg);
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+html .navbar.navbar-light .navbar-brand {
+  color: var(--aria-heading-color);
+}
+
+html .navbar.navbar-light .navbar-nav .nav-item .nav-link {
+  color: var(--global-text-color);
+}
+
+html .navbar.navbar-light .navbar-nav .nav-item .nav-link:hover {
+  color: var(--global-hover-color);
+}
+
+html .navbar.navbar-light .navbar-nav .nav-item.active > .nav-link {
+  color: var(--global-theme-color);
+  font-weight: 600;
+}
+
+html .navbar.navbar-light .navbar-nav .nav-item.active > .nav-link:hover {
+  color: var(--global-hover-color);
+}
+
+/* Non-color active indicator on desktop navbar without altering layout height */
+@media (min-width: 576px) {
+  html .navbar.navbar-light .navbar-nav .nav-item.active > .nav-link {
+    box-shadow: inset 0 -2px 0 var(--global-theme-color);
+  }
+}
+
+html .navbar .dropdown-menu,
+html .btn-group.dropdown .dropdown-menu {
+  background-color: var(--aria-nav-bg);
+  border: 1px solid var(--global-divider-color);
+}
+
+html .navbar .dropdown-menu a:not(.active),
+html .btn-group.dropdown .dropdown-menu a:not(.active),
+html .dropdown-item {
+  color: var(--global-text-color);
+}
+
+html .navbar .dropdown-menu a:hover,
+html .btn-group.dropdown .dropdown-menu a:hover,
+html .dropdown-item:hover {
+  background-color: var(--aria-accent-bg);
+  color: var(--global-hover-color);
+}
+
+html .dropdown-item.active,
+html .dropdown-item:active {
+  background-color: var(--aria-btn-bg);
+  color: var(--aria-btn-text) !important;
+  font-weight: 600;
+}
+
+html .dropdown-item.active:hover,
+html .dropdown-item:active:hover {
+  background-color: var(--aria-btn-hover-bg);
+  color: var(--global-hover-color) !important;
+}
+
+html #light-toggle:hover,
+html #search-toggle:hover {
+  color: var(--global-hover-color);
+}
+
+html footer.fixed-bottom {
+  background-color: var(--global-footer-bg-color);
+  border-top: 1px solid var(--global-divider-color);
+}
+
+html footer.fixed-bottom .container {
+  color: var(--global-footer-text-color);
+}
+
+html footer.fixed-bottom a {
+  color: var(--global-footer-link-color);
+}
+
+html footer.fixed-bottom a:hover {
+  color: var(--global-hover-color);
+  text-decoration: underline;
+}
+
+html footer.sticky-bottom {
+  background-color: var(--global-footer-bg-color);
+  border-top: 1px solid var(--global-divider-color);
+  color: var(--global-footer-text-color);
+}
+
+/* ==========================================================================
+   Buttons, Cards, Tables, Code, Search & Badges
+   ========================================================================== */
+
+/* Publication action buttons (PDF, BibTeX, Abs, Code, etc.) */
+html .publications ol.bibliography li .links a.btn {
+  background-color: var(--aria-btn-bg);
+  color: var(--aria-btn-text);
+  border: 1px solid var(--aria-btn-border);
+  border-radius: 6px;
+  font-weight: 500;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+html .publications ol.bibliography li .links a.btn:hover {
+  background-color: var(--aria-btn-hover-bg);
+  color: var(--global-hover-color);
+  border-color: var(--global-theme-color);
+  text-decoration: none;
+}
+
+/* Primary CTA buttons (used on /hiring/* subpages) */
+html a.btn.btn-primary,
+html button.btn.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  background-color: var(--global-theme-color);
+  color: var(--global-hover-text-color);
+  border: 1px solid var(--global-theme-color);
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+html a.btn.btn-primary:hover,
+html button.btn.btn-primary:hover {
+  background-color: var(--global-hover-color);
+  border-color: var(--global-hover-color);
+  color: var(--global-hover-text-color);
+  text-decoration: none;
+}
+
+html a.btn.btn-primary *,
+html button.btn.btn-primary *,
+html .l2c-ctrl-btn.primary *,
+html .workload-btn.active *,
+html .l2c-step-pill.active *,
+html .demo-video-play-btn *,
+html .gif-replay-badge:hover *,
+html .af-page-item.active .af-page-link *,
+html .pagination .page-item.active .page-link * {
+  color: var(--global-hover-text-color);
+}
+
+html .l2c-ctrl-btn *,
+html .workload-btn *,
+html .l2c-step-pill *,
+html .award-badge *,
+html .badge * {
+  color: inherit;
+}
+
+/* Back to top button */
+html #back-to-top {
+  background: var(--aria-btn-bg);
+  color: var(--aria-btn-text);
+  border: 1px solid var(--aria-btn-border);
+}
+
+html #back-to-top:hover {
+  background: var(--aria-btn-hover-bg);
+  color: var(--global-hover-color);
+  border-color: var(--global-theme-color);
+}
+
+/* Pagination active state & email-copied toast (ensures dark ink on #56B4E9 in dark mode) */
+html .af-page-item.active .af-page-link,
+html .pagination .page-item.active .page-link {
+  color: var(--global-hover-text-color);
+  background-color: var(--global-theme-color);
+  border-color: var(--global-theme-color);
+}
+
+html .af-page-link:hover,
+html .pagination .page-link:hover {
+  color: var(--global-hover-color);
+  background-color: var(--aria-accent-bg);
+}
+
+html #al-email-copied-toast {
+  background: var(--global-theme-color);
+  color: var(--global-hover-text-color);
+}
+
+/* Venue <abbr> fallback badge when no venue-specific inline color is set */
+html .publications ol.bibliography li .abbr abbr {
+  background-color: var(--global-theme-color);
+  color: var(--global-hover-text-color) !important;
+}
+
+html .publications ol.bibliography li .abbr abbr a {
+  color: inherit;
+}
+
+/* Cards */
+html .card {
+  background-color: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+}
+
+html .card .card-title {
+  color: var(--aria-heading-color);
+}
+
+html .projects a:hover .card {
+  border-color: var(--aria-accent-border);
+}
+
+html .projects a:hover .card-title {
+  color: var(--global-theme-color);
+}
+
+/* General & markdown tables (news feed table retains its borderless layout below) */
+html table.table,
+html table.table-dark {
+  color: var(--global-text-color);
+  border-color: var(--global-divider-color);
+}
+
+html .post table:not(.table) th,
+html .post table.table th {
+  color: var(--aria-heading-color);
+  border-color: var(--global-divider-color);
+}
+
+html .post table:not(.table):not(.table-borderless) th {
+  background-color: var(--global-card-bg-color);
+}
+
+html .post table:not(.table) td,
+html .post table.table td {
+  border-color: var(--global-divider-color);
+}
+
 /*
-  Award & Spotlight Publications Highlighting
-  Highlights papers that received awards or honors (Spotlight, Oral, Best Paper)
-  with a distinguished gold/amber accent border, subtle warm background tint,
-  and elevated card styling to clearly differentiate against other publications.
+  Note callouts (<blockquote class="block-tip" markdown="1">) on hand-written
+  pages. al_folio_core styles .block-tip with a fixed green palette; tie it to
+  the Academic Blue accent tokens in both light and dark mode.
 */
+html blockquote {
+  background: var(--global-bg-color);
+  border-left: 4px solid var(--global-theme-color);
+}
+
+html blockquote.block-tip {
+  background-color: var(--aria-accent-bg);
+  border: 1px solid var(--aria-accent-border);
+  border-left: 4px solid var(--global-theme-color);
+  border-radius: 6px;
+}
+
+html blockquote.block-tip p,
+html blockquote.block-tip li,
+html blockquote.block-tip em,
+html blockquote.block-tip strong {
+  color: var(--global-text-color);
+}
+
+html blockquote.block-tip a {
+  color: var(--global-theme-color);
+}
+
+html blockquote.block-tip a:hover {
+  color: var(--global-hover-color);
+}
+
+/* Code blocks & inline code (preserves Pygments token colors inside <pre>) */
+html pre,
+html code {
+  background-color: var(--global-code-bg-color);
+}
+
+html :not(pre) > code {
+  color: var(--global-text-color);
+  border: 1px solid var(--global-divider-color);
+}
+
+html pre:not(.highlight) {
+  color: var(--global-text-color);
+  border: 1px solid var(--global-divider-color);
+}
+
+/* Bibsearch input & ninja-keys command palette */
+html .bibsearch-form-input {
+  background: var(--global-card-bg-color);
+  color: var(--global-text-color);
+  border: 1px solid var(--global-divider-color);
+}
+
+html .bibsearch-form-input::placeholder {
+  color: var(--aria-text-muted);
+}
+
+html ninja-keys {
+  --ninja-accent-color: var(--global-theme-color);
+  --ninja-modal-background: var(--global-card-bg-color);
+  --ninja-text-color: var(--global-text-color);
+  --ninja-selected-background: var(--aria-accent-bg);
+  --ninja-selected-text-color: var(--aria-heading-color);
+}
+
+/* Semantic Bootstrap-compat badges (out-rank main.css `.badge { ... !important }`) */
+html .badge.badge-primary,
+html .badge.badge-info {
+  background-color: var(--aria-accent-bg) !important;
+  color: var(--aria-btn-text) !important;
+  border: 1px solid var(--aria-accent-border);
+}
+
+html .badge.badge-secondary {
+  background-color: var(--global-code-bg-color) !important;
+  color: var(--global-text-color-light) !important;
+  border: 1px solid var(--global-divider-color);
+}
+
+html .badge.badge-success {
+  background-color: var(--aria-status-success-bg) !important;
+  color: var(--aria-status-success) !important;
+  border: 1px solid var(--aria-status-success-border);
+}
+
+html .badge.badge-danger {
+  background-color: var(--aria-status-error-bg) !important;
+  color: var(--aria-status-error) !important;
+  border: 1px solid var(--aria-status-error-border);
+}
+
+/* ==========================================================================
+   Award & Distinction Highlighting (Amber Reserved for Academic Distinctions)
+   ========================================================================== */
+
 .award-paper-highlight {
   position: relative;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(245, 158, 11, 0.02) 100%);
-  border-left: 4px solid #f59e0b;
+  background: color-mix(in srgb, var(--aria-award-bg) 55%, var(--global-bg-color));
+  border-left: 4px solid var(--aria-award-icon);
   border-radius: 8px;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -51,28 +628,29 @@
   margin-right: -5px;
   margin-top: 0.75rem;
   margin-bottom: 1.5rem !important;
-  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.08);
-  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--aria-award-icon) 10%, transparent);
+  transition:
+    background-color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
 }
 
 .award-paper-highlight:hover {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(245, 158, 11, 0.04) 100%);
-  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.14);
+  background: color-mix(in srgb, var(--aria-award-bg) 75%, var(--global-bg-color));
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--aria-award-icon) 16%, transparent);
 }
 
-/* Dark mode adjustment for award paper highlight */
 html[data-theme="dark"] .award-paper-highlight,
 html[data-theme-setting="dark"] .award-paper-highlight,
 body.dark .award-paper-highlight {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.14) 0%, rgba(245, 158, 11, 0.03) 100%);
-  border-left-color: #fbbf24;
+  background: color-mix(in srgb, var(--aria-award-bg) 55%, var(--global-bg-color));
+  border-left-color: var(--aria-award-icon);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
 html[data-theme="dark"] .award-paper-highlight:hover,
 html[data-theme-setting="dark"] .award-paper-highlight:hover,
 body.dark .award-paper-highlight:hover {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, rgba(245, 158, 11, 0.05) 100%);
+  background: color-mix(in srgb, var(--aria-award-bg) 75%, var(--global-bg-color));
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
 }
 
@@ -96,116 +674,128 @@ body.dark .award-paper-highlight:hover {
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: 0.015em;
-  color: #92400e;
-  background: rgba(245, 158, 11, 0.15);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  box-shadow: 0 1px 3px rgba(245, 158, 11, 0.1);
-  transition: all 0.2s ease;
+  color: var(--aria-award-text);
+  background: var(--aria-award-bg);
+  border: 1px solid var(--aria-award-border);
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--aria-award-icon) 10%, transparent);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
   vertical-align: middle;
 }
 
 .award-badge:hover {
-  background: rgba(245, 158, 11, 0.22);
-  border-color: rgba(245, 158, 11, 0.5);
+  background: color-mix(in srgb, var(--aria-award-bg) 82%, var(--aria-award-border));
+  border-color: var(--aria-award-icon);
   transform: translateY(-1px);
 }
 
 .award-badge .award-icon {
-  color: #d97706;
+  color: var(--aria-award-icon);
   font-size: 0.9rem;
   flex-shrink: 0;
 }
 
-/* Certificate badge styling */
-.award-badge.award-badge-certificate {
-  color: #065f46;
-  background: rgba(16, 185, 129, 0.12);
-  border-color: rgba(16, 185, 129, 0.3);
+.award-badge .award-text {
+  color: inherit;
+}
+
+/* Clickable award badges in Selected Projects */
+html a.award-badge {
+  color: var(--aria-award-text);
   text-decoration: none;
 }
 
-.award-badge.award-badge-certificate:hover {
-  background: rgba(16, 185, 129, 0.2);
-  border-color: rgba(16, 185, 129, 0.5);
-  color: #047857;
+html a.award-badge:hover {
+  color: var(--aria-award-text);
+  text-decoration: none;
+}
+
+/* Certificate badge styling */
+html .award-badge.award-badge-certificate {
+  color: var(--aria-status-success);
+  background: var(--aria-status-success-bg);
+  border-color: var(--aria-status-success-border);
+  text-decoration: none;
+}
+
+html .award-badge.award-badge-certificate:hover {
+  background: color-mix(in srgb, var(--aria-status-success-bg) 80%, var(--aria-status-success-border));
+  border-color: var(--aria-status-success);
+  color: var(--aria-status-success);
   text-decoration: none;
   transform: translateY(-1px);
 }
 
-.award-badge.award-badge-certificate .award-icon {
-  color: #059669;
-}
-
-/* Dark mode adjustment for badge */
-html[data-theme="dark"] .award-badge,
-html[data-theme-setting="dark"] .award-badge,
-body.dark .award-badge {
-  color: #fef3c7;
-  background: rgba(245, 158, 11, 0.22);
-  border-color: rgba(245, 158, 11, 0.45);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-}
-
-html[data-theme="dark"] .award-badge:hover,
-html[data-theme-setting="dark"] .award-badge:hover,
-body.dark .award-badge:hover {
-  background: rgba(245, 158, 11, 0.3);
-  border-color: rgba(245, 158, 11, 0.6);
-}
-
-html[data-theme="dark"] .award-badge .award-icon,
-html[data-theme-setting="dark"] .award-badge .award-icon,
-body.dark .award-badge .award-icon {
-  color: #fbbf24;
-}
-
-html[data-theme="dark"] .award-badge.award-badge-certificate,
-html[data-theme-setting="dark"] .award-badge.award-badge-certificate,
-body.dark .award-badge.award-badge-certificate {
-  color: #a7f3d0;
-  background: rgba(16, 185, 129, 0.2);
-  border-color: rgba(16, 185, 129, 0.4);
-}
-
-html[data-theme="dark"] .award-badge.award-badge-certificate:hover,
-html[data-theme-setting="dark"] .award-badge.award-badge-certificate:hover,
-body.dark .award-badge.award-badge-certificate:hover {
-  background: rgba(16, 185, 129, 0.28);
-  border-color: rgba(16, 185, 129, 0.6);
-  color: #6ee7b7;
-}
-
-html[data-theme="dark"] .award-badge.award-badge-certificate .award-icon,
-html[data-theme-setting="dark"] .award-badge.award-badge-certificate .award-icon,
-body.dark .award-badge.award-badge-certificate .award-icon {
-  color: #34d399;
+html .award-badge.award-badge-certificate .award-icon {
+  color: var(--aria-status-success);
 }
 
 /* Certificate button highlight */
-.links a.btn[href*="certificate"] {
-  border-color: rgba(245, 158, 11, 0.4);
+html .publications ol.bibliography li .links a.btn[href*="certificate"] {
+  border-color: var(--aria-award-border);
+  background-color: var(--aria-award-bg);
+  color: var(--aria-award-text);
 }
 
-.links a.btn[href*="certificate"]:hover {
-  color: #d97706 !important;
-  border-color: #d97706 !important;
+html .publications ol.bibliography li .links a.btn[href*="certificate"]:hover {
+  color: var(--aria-award-text);
+  border-color: var(--aria-award-icon);
+  background-color: color-mix(in srgb, var(--aria-award-bg) 82%, var(--aria-award-border));
 }
 
-html[data-theme="dark"] .links a.btn[href*="certificate"]:hover,
-html[data-theme-setting="dark"] .links a.btn[href*="certificate"]:hover,
-body.dark .links a.btn[href*="certificate"]:hover {
-  color: #fbbf24 !important;
-  border-color: #fbbf24 !important;
+/* Compact resource action buttons in Selected Projects */
+.project-resource-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.45rem;
+  margin-bottom: 0.15rem;
+}
+
+html a.project-resource-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.18rem 0.62rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-decoration: none;
+  color: var(--aria-btn-text);
+  background: var(--aria-btn-bg);
+  border: 1px solid var(--aria-btn-border);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+html a.project-resource-btn:hover {
+  color: var(--global-hover-color);
+  border-color: var(--global-theme-color);
+  background: var(--aria-btn-hover-bg);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+html a.project-resource-btn i,
+html a.project-resource-btn em {
+  font-size: 0.82rem;
+  font-style: normal;
+  opacity: 0.9;
 }
 
 /* ==========================================================================
    News Feed Dividers & Distinction Highlighting
-   Provides clean separators between announcements and highlights papers with
-   honors (Spotlight, Oral, Best Paper) matching the lab design language.
    ========================================================================== */
 
 .news table tr {
-  border-bottom: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.08));
+  border-bottom: 1px solid var(--global-divider-color);
   transition: background-color 0.15s ease-in-out;
 }
 
@@ -220,10 +810,14 @@ body.dark .links a.btn[href*="certificate"]:hover {
   vertical-align: top;
 }
 
+.news table th {
+  color: var(--global-text-color-light);
+}
+
 .news table tr:has(.award-badge),
 .news table tr:has(.award-announcement) {
-  background: linear-gradient(90deg, rgba(245, 158, 11, 0.08) 0%, rgba(245, 158, 11, 0.01) 100%);
-  border-left: 3px solid #f59e0b;
+  background: color-mix(in srgb, var(--aria-award-bg) 55%, var(--global-bg-color));
+  border-left: 3px solid var(--aria-award-icon);
 }
 
 .news table tr:has(.award-badge) th,
@@ -231,30 +825,15 @@ body.dark .links a.btn[href*="certificate"]:hover {
   padding-left: 0.5rem !important;
 }
 
-html[data-theme="dark"] .news table tr,
-html[data-theme-setting="dark"] .news table tr,
-body.dark .news table tr {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-html[data-theme="dark"] .news table tr:has(.award-badge),
-html[data-theme-setting="dark"] .news table tr:has(.award-badge),
-body.dark .news table tr:has(.award-badge) {
-  background: linear-gradient(90deg, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.02) 100%);
-  border-left-color: #fbbf24;
-}
-
 /* ==========================================================================
    Interactive Research Demos & Benchmarks
-   Used on Research pages for interactive simulation cards, benchmark videos,
-   metric comparison bars, and workload calculators.
    ========================================================================== */
 
 .interactive-demo-wrapper {
   margin: 1.5rem 0;
-  border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.14));
+  border: 1px solid var(--global-divider-color);
   border-radius: 14px;
-  background: var(--global-card-bg-color, #ffffff);
+  background: var(--global-card-bg-color);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
   overflow: hidden;
   transition:
@@ -262,13 +841,13 @@ body.dark .news table tr:has(.award-badge) {
     box-shadow 0.2s ease;
 }
 
-.interactive-demo-wrapper:hover {
-  border-color: var(--global-theme-color, #2563eb);
+.interactive-demo-wrapper:hover,
+.interactive-demo-wrapper[open] {
+  border-color: var(--global-theme-color);
 }
 
 .interactive-demo-wrapper[open] {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border-color: var(--global-theme-color, #2563eb);
 }
 
 .interactive-demo-summary {
@@ -276,8 +855,8 @@ body.dark .news table tr:has(.award-badge) {
   padding: 0.85rem 1.25rem;
   font-weight: 600;
   font-size: 0.96rem;
-  color: var(--global-text-color, #111827);
-  background: rgba(37, 99, 235, 0.03);
+  color: var(--aria-heading-color);
+  background: var(--global-card-bg-color);
   user-select: none;
   display: flex;
   align-items: center;
@@ -293,19 +872,20 @@ body.dark .news table tr:has(.award-badge) {
 }
 
 .interactive-demo-summary:hover {
-  background: rgba(37, 99, 235, 0.07);
-  color: var(--global-theme-color, #2563eb);
+  background: var(--aria-accent-bg);
+  color: var(--global-hover-color);
 }
 
 .interactive-demo-wrapper[open] .interactive-demo-summary {
-  border-bottom: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
-  background: rgba(37, 99, 235, 0.05);
+  border-bottom: 1px solid var(--global-divider-color);
+  background: var(--aria-accent-bg);
 }
 
 .interactive-demo-summary-title {
   display: flex;
   align-items: center;
   gap: 0.65rem;
+  color: inherit;
 }
 
 .interactive-demo-summary-badge {
@@ -313,14 +893,15 @@ body.dark .news table tr:has(.award-badge) {
   font-weight: 600;
   padding: 0.2rem 0.6rem;
   border-radius: 9999px;
-  background: rgba(37, 99, 235, 0.12);
-  color: #2563eb;
+  background: var(--aria-btn-bg);
+  color: var(--aria-btn-text);
+  border: 1px solid var(--aria-btn-border);
   letter-spacing: 0.02em;
 }
 
 .interactive-demo-summary-chevron {
   font-size: 0.85rem;
-  color: var(--global-text-color-light, #6b7280);
+  color: var(--global-text-color-light);
   transition: transform 0.2s ease;
 }
 
@@ -337,8 +918,8 @@ body.dark .news table tr:has(.award-badge) {
 
 .interactive-demo-card {
   position: relative;
-  background: var(--global-card-bg-color, #ffffff);
-  border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.12));
+  background: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
   border-radius: 16px;
   padding: 1.5rem;
   margin: 1.75rem 0 2.25rem 0;
@@ -350,7 +931,7 @@ body.dark .news table tr:has(.award-badge) {
 
 .interactive-demo-card:hover {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  border-color: var(--global-theme-color, #2563eb);
+  border-color: var(--global-theme-color);
 }
 
 .demo-card-header {
@@ -366,7 +947,7 @@ body.dark .news table tr:has(.award-badge) {
   font-size: 1.28rem;
   font-weight: 700;
   margin: 0 0 0.35rem 0;
-  color: var(--global-text-color, #111827);
+  color: var(--aria-heading-color);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -375,7 +956,7 @@ body.dark .news table tr:has(.award-badge) {
 .demo-title-group p {
   font-size: 0.92rem;
   margin: 0;
-  color: var(--global-text-color-light, #6b7280);
+  color: var(--global-text-color-light);
 }
 
 .demo-badges {
@@ -392,22 +973,26 @@ body.dark .news table tr:has(.award-badge) {
   letter-spacing: 0.02em;
 }
 
-.demo-badge-oral {
-  background: rgba(245, 158, 11, 0.15);
-  color: #b45309;
-  border: 1px solid rgba(245, 158, 11, 0.35);
-}
-
+/* Amber strictly reserved for academic distinctions (Oral, Spotlight, Award) */
+.demo-badge-oral,
 .demo-badge-spotlight {
-  background: rgba(14, 165, 233, 0.15);
-  color: #0284c7;
-  border: 1px solid rgba(14, 165, 233, 0.35);
+  background: var(--aria-award-bg);
+  color: var(--aria-award-text);
+  border: 1px solid var(--aria-award-border);
 }
 
+/* Academic Blue for non-distinction venue badges */
+.demo-badge-venue {
+  background: var(--aria-accent-bg);
+  color: var(--aria-btn-text);
+  border: 1px solid var(--aria-accent-border);
+}
+
+/* Slate Gray for simulation / benchmark descriptor badges */
 .demo-badge-sim {
-  background: rgba(16, 185, 129, 0.15);
-  color: #059669;
-  border: 1px solid rgba(16, 185, 129, 0.35);
+  background: var(--global-code-bg-color);
+  color: var(--global-text-color-light);
+  border: 1px solid var(--global-divider-color);
 }
 
 /* Video Showcase */
@@ -416,7 +1001,7 @@ body.dark .news table tr:has(.award-badge) {
   border-radius: 12px;
   overflow: hidden;
   background: #000;
-  border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.15));
+  border: 1px solid var(--global-divider-color);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   aspect-ratio: 16 / 9;
   min-height: 220px;
@@ -465,19 +1050,20 @@ body.dark .news table tr:has(.award-badge) {
   padding: 0.75rem 1.4rem;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #ffffff;
-  background: #2563eb;
-  border: none;
+  color: var(--global-hover-text-color);
+  background: var(--global-theme-color);
+  border: 1px solid var(--global-theme-color);
   border-radius: 9999px;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   transition:
-    background 0.2s ease,
+    background-color 0.2s ease,
     transform 0.15s ease;
 }
 
 .demo-video-play-btn:hover {
-  background: #1d4ed8;
+  background: var(--global-hover-color);
+  border-color: var(--global-hover-color);
   transform: scale(1.04);
 }
 
@@ -489,7 +1075,7 @@ body.dark .news table tr:has(.award-badge) {
 
 .demo-video-caption {
   font-size: 0.86rem;
-  color: var(--global-text-color-light, #6b7280);
+  color: var(--global-text-color-light);
   margin-top: 0.65rem;
   line-height: 1.5;
 }
@@ -503,8 +1089,8 @@ body.dark .news table tr:has(.award-badge) {
 }
 
 .demo-metric-card {
-  background: rgba(0, 0, 0, 0.02);
-  border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.08));
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-divider-color);
   border-radius: 10px;
   padding: 1rem;
   position: relative;
@@ -518,15 +1104,15 @@ body.dark .news table tr:has(.award-badge) {
 }
 
 .demo-metric-card.highlight-green {
-  border-left: 4px solid #10b981;
+  border-left: 4px solid var(--aria-status-success);
 }
 
 .demo-metric-card.highlight-blue {
-  border-left: 4px solid #0284c7;
+  border-left: 4px solid var(--global-theme-color);
 }
 
 .demo-metric-card.highlight-gray {
-  border-left: 4px solid #9ca3af;
+  border-left: 4px solid var(--aria-text-muted);
 }
 
 .metric-name {
@@ -536,6 +1122,7 @@ body.dark .news table tr:has(.award-badge) {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  color: var(--aria-heading-color);
 }
 
 .metric-speedup {
@@ -546,29 +1133,36 @@ body.dark .news table tr:has(.award-badge) {
 }
 
 .speedup-ssmp {
-  color: #059669;
+  color: var(--aria-status-success);
 }
+
+/* Ensure >= 4.5:1 AA contrast when success text sits on --aria-accent-bg (#EDF3FC) */
+html:not([data-theme="dark"]) .demo-workload-box .speedup-ssmp {
+  color: #146c35;
+}
+
 .speedup-itself {
-  color: #0284c7;
+  color: var(--global-theme-color);
 }
+
 .speedup-baseline {
-  color: #6b7280;
+  color: var(--global-text-color-light);
 }
 
 .metric-stats {
   font-size: 0.82rem;
-  color: var(--global-text-color-light, #6b7280);
+  color: var(--global-text-color-light);
   line-height: 1.45;
 }
 
 .metric-stats strong {
-  color: var(--global-text-color, #111827);
+  color: var(--global-text-color);
 }
 
 /* Interactive Workload Simulator */
 .demo-workload-box {
-  background: rgba(37, 99, 235, 0.04);
-  border: 1px solid rgba(37, 99, 235, 0.18);
+  background: var(--aria-accent-bg);
+  border: 1px solid var(--aria-accent-border);
   border-radius: 12px;
   padding: 1.15rem;
   margin: 1.25rem 0;
@@ -587,6 +1181,7 @@ body.dark .news table tr:has(.award-badge) {
   font-size: 0.98rem;
   font-weight: 600;
   margin: 0;
+  color: var(--aria-heading-color);
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -603,18 +1198,26 @@ body.dark .news table tr:has(.award-badge) {
   font-weight: 600;
   padding: 0.3rem 0.75rem;
   border-radius: 6px;
-  border: 1px solid rgba(37, 99, 235, 0.25);
-  background: var(--global-card-bg-color, #ffffff);
-  color: var(--global-text-color, #1f2937);
+  border: 1px solid var(--aria-btn-border);
+  background: var(--global-bg-color);
+  color: var(--aria-btn-text);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 
-.workload-btn:hover,
+.workload-btn:hover {
+  background: var(--aria-btn-hover-bg);
+  color: var(--global-hover-color);
+  border-color: var(--global-theme-color);
+}
+
 .workload-btn.active {
-  background: #2563eb;
-  color: #ffffff;
-  border-color: #2563eb;
+  background: var(--global-theme-color);
+  color: var(--global-hover-text-color);
+  border-color: var(--global-theme-color);
 }
 
 .workload-results-grid {
@@ -625,27 +1228,28 @@ body.dark .news table tr:has(.award-badge) {
 }
 
 .workload-result-item {
-  background: var(--global-card-bg-color, #ffffff);
-  border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.08));
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-divider-color);
   border-radius: 8px;
   padding: 0.65rem 0.85rem;
 }
 
 .workload-result-item .item-label {
   font-size: 0.78rem;
-  color: var(--global-text-color-light, #6b7280);
+  color: var(--global-text-color-light);
 }
 
 .workload-result-item .item-val {
   font-size: 1.1rem;
   font-weight: 700;
   margin-top: 0.15rem;
+  color: var(--global-text-color);
 }
 
 /* Detailed table toggle */
 .demo-table-details {
   margin-top: 1.25rem;
-  border-top: 1px dashed var(--global-divider-color, rgba(0, 0, 0, 0.15));
+  border-top: 1px dashed var(--global-divider-color);
   padding-top: 0.85rem;
 }
 
@@ -653,7 +1257,7 @@ body.dark .news table tr:has(.award-badge) {
   cursor: pointer;
   font-weight: 600;
   font-size: 0.88rem;
-  color: #2563eb;
+  color: var(--global-theme-color);
   user-select: none;
 }
 
@@ -671,127 +1275,26 @@ body.dark .news table tr:has(.award-badge) {
 .demo-table-wrap th,
 .demo-table-wrap td {
   padding: 0.65rem 0.85rem;
-  border-bottom: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
+  border-bottom: 1px solid var(--global-divider-color);
   text-align: left;
 }
 
 .demo-table-wrap th {
   font-weight: 600;
-  background: rgba(0, 0, 0, 0.02);
+  color: var(--aria-heading-color);
+  background: var(--global-bg-color);
 }
 
-/* Dark mode adjustments */
 html[data-theme="dark"] .interactive-demo-card,
 html[data-theme-setting="dark"] .interactive-demo-card,
 body.dark .interactive-demo-card {
-  background: #111827;
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
 html[data-theme="dark"] .interactive-demo-card:hover,
 html[data-theme-setting="dark"] .interactive-demo-card:hover,
 body.dark .interactive-demo-card:hover {
-  border-color: #3b82f6;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-}
-
-html[data-theme="dark"] .demo-metric-card,
-html[data-theme-setting="dark"] .demo-metric-card,
-body.dark .demo-metric-card {
-  background: #1f2937;
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-html[data-theme="dark"] .speedup-ssmp,
-html[data-theme-setting="dark"] .speedup-ssmp,
-body.dark .speedup-ssmp {
-  color: #34d399;
-}
-
-html[data-theme="dark"] .speedup-itself,
-html[data-theme-setting="dark"] .speedup-itself,
-body.dark .speedup-itself {
-  color: #38bdf8;
-}
-
-html[data-theme="dark"] .speedup-baseline,
-html[data-theme-setting="dark"] .speedup-baseline,
-body.dark .speedup-baseline {
-  color: #9ca3af;
-}
-
-html[data-theme="dark"] .demo-workload-box,
-html[data-theme-setting="dark"] .demo-workload-box,
-body.dark .demo-workload-box {
-  background: rgba(30, 58, 138, 0.2);
-  border-color: rgba(59, 130, 246, 0.3);
-}
-
-html[data-theme="dark"] .workload-btn,
-html[data-theme-setting="dark"] .workload-btn,
-body.dark .workload-btn {
-  background: #1f2937;
-  color: #e5e7eb;
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
-html[data-theme="dark"] .workload-btn:hover,
-html[data-theme-setting="dark"] .workload-btn:hover,
-html[data-theme="dark"] .workload-btn.active,
-html[data-theme-setting="dark"] .workload-btn.active,
-body.dark .workload-btn.active {
-  background: #3b82f6;
-  color: #ffffff;
-  border-color: #3b82f6;
-}
-
-html[data-theme="dark"] .workload-result-item,
-html[data-theme-setting="dark"] .workload-result-item,
-body.dark .workload-result-item {
-  background: #1f2937;
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-html[data-theme="dark"] .demo-table-wrap th,
-html[data-theme-setting="dark"] .demo-table-wrap th,
-body.dark .demo-table-wrap th {
-  background: rgba(255, 255, 255, 0.03);
-}
-
-html[data-theme="dark"] .interactive-demo-wrapper,
-html[data-theme-setting="dark"] .interactive-demo-wrapper,
-body.dark .interactive-demo-wrapper {
-  background: #111827;
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-html[data-theme="dark"] .interactive-demo-summary,
-html[data-theme-setting="dark"] .interactive-demo-summary,
-body.dark .interactive-demo-summary {
-  background: rgba(255, 255, 255, 0.03);
-  color: #f3f4f6;
-}
-
-html[data-theme="dark"] .interactive-demo-summary:hover,
-html[data-theme-setting="dark"] .interactive-demo-summary:hover,
-body.dark .interactive-demo-summary:hover {
-  background: rgba(59, 130, 246, 0.15);
-  color: #60a5fa;
-}
-
-html[data-theme="dark"] .interactive-demo-wrapper[open] .interactive-demo-summary,
-html[data-theme-setting="dark"] .interactive-demo-wrapper[open] .interactive-demo-summary,
-body.dark .interactive-demo-wrapper[open] .interactive-demo-summary {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-  background: rgba(59, 130, 246, 0.1);
-}
-
-html[data-theme="dark"] .interactive-demo-summary-badge,
-html[data-theme-setting="dark"] .interactive-demo-summary-badge,
-body.dark .interactive-demo-summary-badge {
-  background: rgba(59, 130, 246, 0.2);
-  color: #93c5fd;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
 
 /* ==========================================================================
@@ -818,24 +1321,24 @@ body.dark .interactive-demo-summary-badge {
 
 .sim-strip-name {
   font-weight: 600;
-  color: var(--global-text-color, #111827);
+  color: var(--global-text-color);
 }
 
 .sim-strip-count {
   font-size: 0.82rem;
-  color: var(--global-text-color-light, #6b7280);
+  color: var(--global-text-color-light);
 }
 
 .sim-strip-count strong {
-  color: var(--global-text-color, #111827);
+  color: var(--global-text-color);
 }
 
 .sim-track {
   position: relative;
   height: 48px;
   border-radius: 8px;
-  background: linear-gradient(to right, rgba(239, 68, 68, 0.08) 0 40%, rgba(16, 185, 129, 0.04) 40%);
-  border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.12));
+  background: linear-gradient(to right, rgba(185, 28, 28, 0.08) 0 40%, rgba(21, 128, 61, 0.05) 40%);
+  border: 1px solid var(--global-divider-color);
   overflow: hidden;
 }
 
@@ -846,7 +1349,7 @@ body.dark .interactive-demo-summary-badge {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: var(--global-text-color, #111827);
+  background: var(--global-text-color);
   z-index: 2;
 }
 
@@ -856,15 +1359,15 @@ body.dark .interactive-demo-summary-badge {
   height: 9px;
   margin: -4.5px 0 0 -4.5px;
   border-radius: 50%;
-  background: #2563eb;
-  box-shadow: 0 0 0 2px var(--global-card-bg-color, #ffffff);
+  background: var(--global-theme-color);
+  box-shadow: 0 0 0 2px var(--global-card-bg-color);
   z-index: 3;
   animation: simPop 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 .sim-dot.bad {
-  background: #ffffff;
-  border: 2px solid #ef4444;
+  background: var(--global-bg-color);
+  border: 2px solid var(--aria-status-error);
 }
 
 @keyframes simPop {
@@ -883,7 +1386,7 @@ body.dark .interactive-demo-summary-badge {
   flex-wrap: wrap;
   gap: 1.25rem;
   font-size: 0.8rem;
-  color: var(--global-text-color-light, #6b7280);
+  color: var(--global-text-color-light);
   margin-top: 0.75rem;
 }
 
@@ -897,7 +1400,7 @@ body.dark .interactive-demo-summary-badge {
   display: inline-block;
   width: 12px;
   height: 2px;
-  background: var(--global-text-color, #111827);
+  background: var(--global-text-color);
 }
 
 .sim-legend-dot {
@@ -905,7 +1408,7 @@ body.dark .interactive-demo-summary-badge {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #2563eb;
+  background: var(--global-theme-color);
 }
 
 .sim-legend-bad {
@@ -913,49 +1416,14 @@ body.dark .interactive-demo-summary-badge {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #ffffff;
-  border: 2px solid #ef4444;
+  background: var(--global-bg-color);
+  border: 2px solid var(--aria-status-error);
 }
 
-/* Dark mode for simulation */
 html[data-theme="dark"] .sim-track,
 html[data-theme-setting="dark"] .sim-track,
 body.dark .sim-track {
-  background: linear-gradient(to right, rgba(239, 68, 68, 0.15) 0 40%, rgba(16, 185, 129, 0.08) 40%);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-html[data-theme="dark"] .sim-track::before,
-html[data-theme-setting="dark"] .sim-track::before,
-body.dark .sim-track::before {
-  background: #f3f4f6;
-}
-
-html[data-theme="dark"] .sim-dot,
-html[data-theme-setting="dark"] .sim-dot,
-body.dark .sim-dot {
-  background: #60a5fa;
-  box-shadow: 0 0 0 2px #111827;
-}
-
-html[data-theme="dark"] .sim-dot.bad,
-html[data-theme-setting="dark"] .sim-dot.bad,
-body.dark .sim-dot.bad {
-  background: #111827;
-  border-color: #f87171;
-}
-
-html[data-theme="dark"] .sim-legend-line,
-html[data-theme-setting="dark"] .sim-legend-line,
-body.dark .sim-legend-line {
-  background: #f3f4f6;
-}
-
-html[data-theme="dark"] .sim-legend-bad,
-html[data-theme-setting="dark"] .sim-legend-bad,
-body.dark .sim-legend-bad {
-  background: #111827;
-  border-color: #f87171;
+  background: linear-gradient(to right, rgba(252, 165, 165, 0.14) 0 40%, rgba(134, 239, 172, 0.08) 40%);
 }
 
 /* ==========================================================================
@@ -984,7 +1452,7 @@ body.dark .sim-legend-bad {
 
 .demo-progress-name {
   font-weight: 600;
-  color: var(--global-text-color, #111827);
+  color: var(--global-text-color);
 }
 
 .demo-progress-val {
@@ -994,7 +1462,7 @@ body.dark .sim-legend-bad {
 
 .demo-progress-track {
   height: 12px;
-  background: rgba(0, 0, 0, 0.06);
+  background: var(--global-divider-color);
   border-radius: 9999px;
   overflow: hidden;
   position: relative;
@@ -1007,20 +1475,20 @@ body.dark .sim-legend-bad {
 }
 
 .demo-progress-fill.fill-green {
-  background: linear-gradient(90deg, #10b981, #059669);
+  background: var(--aria-status-success);
 }
 
 .demo-progress-fill.fill-blue {
-  background: linear-gradient(90deg, #38bdf8, #0284c7);
+  background: var(--global-theme-color);
 }
 
 .demo-progress-fill.fill-gray {
-  background: linear-gradient(90deg, #9ca3af, #6b7280);
+  background: var(--aria-text-muted);
 }
 
 .demo-inspector-card {
-  background: var(--global-card-bg-color, #ffffff);
-  border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-divider-color);
   border-radius: 10px;
   padding: 1rem;
   margin-top: 1rem;
@@ -1033,14 +1501,14 @@ body.dark .sim-legend-bad {
   flex-wrap: wrap;
   gap: 0.5rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.08));
+  border-bottom: 1px solid var(--global-divider-color);
   margin-bottom: 0.75rem;
 }
 
 .demo-inspector-step-title {
   font-weight: 700;
   font-size: 0.95rem;
-  color: var(--global-text-color, #111827);
+  color: var(--aria-heading-color);
 }
 
 .demo-inspector-streams {
@@ -1054,32 +1522,12 @@ body.dark .sim-legend-bad {
   font-size: 0.8rem;
   padding: 0.45rem 0.7rem;
   border-radius: 6px;
-  background: rgba(0, 0, 0, 0.03);
-  border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.08));
+  background: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
 }
 
 .demo-stream-pill strong {
-  color: var(--global-text-color, #111827);
-}
-
-html[data-theme="dark"] .demo-progress-track,
-html[data-theme-setting="dark"] .demo-progress-track,
-body.dark .demo-progress-track {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-html[data-theme="dark"] .demo-inspector-card,
-html[data-theme-setting="dark"] .demo-inspector-card,
-body.dark .demo-inspector-card {
-  background: #1f2937;
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-html[data-theme="dark"] .demo-stream-pill,
-html[data-theme-setting="dark"] .demo-stream-pill,
-body.dark .demo-stream-pill {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--global-text-color);
 }
 
 /* ==========================================================================
@@ -1091,10 +1539,10 @@ body.dark .demo-stream-pill {
   flex-wrap: wrap;
   gap: 0.5rem;
   padding: 0.35rem;
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--global-code-bg-color);
   border-radius: 10px;
   margin: 0.5rem 0 1.25rem 0;
-  border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.08));
+  border: 1px solid var(--global-divider-color);
 }
 
 .demo-sub-tab {
@@ -1105,9 +1553,11 @@ body.dark .demo-stream-pill {
   border: none;
   border-radius: 7px;
   background: transparent;
-  color: var(--global-text-color-light, #6b7280);
+  color: var(--global-text-color-light);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1115,13 +1565,14 @@ body.dark .demo-stream-pill {
 }
 
 .demo-sub-tab:hover {
-  color: var(--global-text-color, #111827);
-  background: rgba(0, 0, 0, 0.03);
+  color: var(--global-hover-color);
+  background: var(--aria-accent-bg);
 }
 
 .demo-sub-tab.active {
-  background: var(--global-card-bg-color, #ffffff);
-  color: var(--global-theme-color, #2563eb);
+  background: var(--global-bg-color);
+  color: var(--global-theme-color);
+  border: 1px solid var(--aria-accent-border);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
@@ -1139,14 +1590,14 @@ body.dark .demo-stream-pill {
   align-items: center;
   gap: 0.75rem;
   padding-bottom: 0.85rem;
-  border-bottom: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.08));
+  border-bottom: 1px solid var(--global-divider-color);
 }
 
 .l2c-stage-title-wrap h5 {
   font-size: 1.05rem;
   font-weight: 700;
   margin: 0 0 0.2rem 0;
-  color: var(--global-text-color, #111827);
+  color: var(--aria-heading-color);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -1154,7 +1605,7 @@ body.dark .demo-stream-pill {
 
 .l2c-stage-title-wrap p {
   font-size: 0.86rem;
-  color: var(--global-text-color-light, #6b7280);
+  color: var(--global-text-color-light);
   margin: 0;
 }
 
@@ -1169,32 +1620,36 @@ body.dark .demo-stream-pill {
   font-weight: 600;
   padding: 0.4rem 0.85rem;
   border-radius: 7px;
-  border: 1px solid rgba(37, 99, 235, 0.25);
-  background: var(--global-card-bg-color, #ffffff);
-  color: var(--global-text-color, #1f2937);
+  border: 1px solid var(--aria-btn-border);
+  background: var(--aria-btn-bg);
+  color: var(--aria-btn-text);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
 }
 
 .l2c-ctrl-btn:hover {
-  background: rgba(37, 99, 235, 0.08);
-  border-color: #2563eb;
-  color: #2563eb;
+  background: var(--aria-btn-hover-bg);
+  border-color: var(--global-theme-color);
+  color: var(--global-hover-color);
 }
 
 .l2c-ctrl-btn.primary {
-  background: #2563eb;
-  color: #ffffff;
-  border-color: #2563eb;
-  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+  background: var(--global-theme-color);
+  color: var(--global-hover-text-color);
+  border-color: var(--global-theme-color);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
 .l2c-ctrl-btn.primary:hover {
-  background: #1d4ed8;
-  border-color: #1d4ed8;
+  background: var(--global-hover-color);
+  border-color: var(--global-hover-color);
+  color: var(--global-hover-text-color);
 }
 
 .l2c-ctrl-btn:disabled {
@@ -1215,28 +1670,31 @@ body.dark .demo-stream-pill {
   font-weight: 600;
   padding: 0.25rem 0.6rem;
   border-radius: 6px;
-  border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.12));
-  background: var(--global-card-bg-color, #ffffff);
-  color: var(--global-text-color-light, #6b7280);
+  border: 1px solid var(--global-divider-color);
+  background: var(--global-bg-color);
+  color: var(--global-text-color-light);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
 }
 
 .l2c-step-pill:hover {
-  border-color: #2563eb;
-  color: #2563eb;
+  border-color: var(--global-theme-color);
+  color: var(--global-hover-color);
 }
 
 .l2c-step-pill.active {
-  background: #2563eb;
-  color: #ffffff;
-  border-color: #2563eb;
+  background: var(--global-theme-color);
+  color: var(--global-hover-text-color);
+  border-color: var(--global-theme-color);
 }
 
 /* SVG Graph Display */
 .l2c-graph-stage-box {
-  background: var(--global-card-bg-color, #ffffff);
-  border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.12));
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-divider-color);
   border-radius: 12px;
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
@@ -1247,7 +1705,7 @@ body.dark .demo-stream-pill {
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  background: rgba(0, 0, 0, 0.015);
+  background: var(--global-card-bg-color);
 }
 
 .l2c-svg-graph {
@@ -1288,9 +1746,9 @@ body.dark .demo-stream-pill {
   gap: 0.65rem 1.15rem;
   padding-top: 0.75rem;
   margin-top: 0.65rem;
-  border-top: 1px dashed var(--global-divider-color, rgba(0, 0, 0, 0.1));
+  border-top: 1px dashed var(--global-divider-color);
   font-size: 0.78rem;
-  color: var(--global-text-color-light, #6b7280);
+  color: var(--global-text-color-light);
 }
 
 .l2c-legend-item {
@@ -1315,8 +1773,8 @@ body.dark .demo-stream-pill {
 
 /* Stage Details Box */
 .l2c-detail-card {
-  background: rgba(37, 99, 235, 0.03);
-  border: 1px solid rgba(37, 99, 235, 0.15);
+  background: var(--aria-accent-bg);
+  border: 1px solid var(--aria-accent-border);
   border-radius: 10px;
   padding: 1rem;
 }
@@ -1325,7 +1783,7 @@ body.dark .demo-stream-pill {
   font-size: 0.92rem;
   font-weight: 700;
   margin: 0 0 0.5rem 0;
-  color: var(--global-text-color, #111827);
+  color: var(--aria-heading-color);
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -1346,25 +1804,25 @@ body.dark .demo-stream-pill {
 .l2c-candidate-table th,
 .l2c-candidate-table td {
   padding: 0.55rem 0.7rem;
-  border-bottom: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.08));
+  border-bottom: 1px solid var(--global-divider-color);
   text-align: left;
 }
 
 .l2c-candidate-table th {
   font-weight: 600;
-  background: rgba(0, 0, 0, 0.02);
-  color: var(--global-text-color, #111827);
+  background: var(--global-card-bg-color);
+  color: var(--aria-heading-color);
 }
 
 .l2c-candidate-table tr.highlight-selected {
-  background: rgba(245, 158, 11, 0.09);
+  background: color-mix(in srgb, var(--aria-award-bg) 60%, var(--global-bg-color));
   font-weight: 600;
 }
 
 .l2c-score-bar-bg {
   width: 70px;
   height: 7px;
-  background: rgba(0, 0, 0, 0.08);
+  background: var(--global-divider-color);
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
@@ -1375,7 +1833,7 @@ body.dark .demo-stream-pill {
 .l2c-score-bar-fill {
   height: 100%;
   border-radius: 4px;
-  background: #f59e0b;
+  background: var(--aria-award-icon);
 }
 
 /* Structural Metric Chips */
@@ -1387,8 +1845,8 @@ body.dark .demo-stream-pill {
 }
 
 .l2c-struct-chip {
-  background: var(--global-card-bg-color, #ffffff);
-  border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-divider-color);
   border-radius: 8px;
   padding: 0.65rem 0.75rem;
   text-align: center;
@@ -1396,20 +1854,20 @@ body.dark .demo-stream-pill {
 
 .l2c-struct-label {
   font-size: 0.74rem;
-  color: var(--global-text-color-light, #6b7280);
+  color: var(--global-text-color-light);
   margin-bottom: 0.2rem;
 }
 
 .l2c-struct-val {
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--global-text-color, #111827);
+  color: var(--aria-heading-color);
 }
 
 .l2c-struct-delta {
   font-size: 0.72rem;
   font-weight: 600;
-  color: #059669;
+  color: var(--aria-status-success);
 }
 
 /* Solver Comparison Cards */
@@ -1421,19 +1879,19 @@ body.dark .demo-stream-pill {
 }
 
 .l2c-solver-card {
-  background: var(--global-card-bg-color, #ffffff);
-  border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-divider-color);
   border-radius: 10px;
   padding: 1rem;
   position: relative;
 }
 
 .l2c-solver-card.highlight-baseline {
-  border-left: 4px solid #9ca3af;
+  border-left: 4px solid var(--aria-text-muted);
 }
 
 .l2c-solver-card.highlight-l2c {
-  border-left: 4px solid #10b981;
+  border-left: 4px solid var(--aria-status-success);
 }
 
 .l2c-solver-title {
@@ -1443,6 +1901,7 @@ body.dark .demo-stream-pill {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: var(--aria-heading-color);
 }
 
 .l2c-solver-stat-row {
@@ -1450,7 +1909,7 @@ body.dark .demo-stream-pill {
   justify-content: space-between;
   font-size: 0.82rem;
   padding: 0.25rem 0;
-  border-bottom: 1px dashed var(--global-divider-color, rgba(0, 0, 0, 0.06));
+  border-bottom: 1px dashed var(--global-divider-color);
 }
 
 .l2c-solver-stat-row:last-child {
@@ -1458,127 +1917,20 @@ body.dark .demo-stream-pill {
 }
 
 .l2c-takeaway-box {
-  background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  background: var(--aria-status-success-bg);
+  border: 1px solid var(--aria-status-success-border);
   border-radius: 10px;
   padding: 0.85rem 1.1rem;
   font-size: 0.86rem;
   line-height: 1.5;
-  color: var(--global-text-color, #111827);
-}
-
-/* Dark mode adjustments */
-html[data-theme="dark"] .demo-sub-tabs,
-html[data-theme-setting="dark"] .demo-sub-tabs,
-body.dark .demo-sub-tabs {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-html[data-theme="dark"] .demo-sub-tab.active,
-html[data-theme-setting="dark"] .demo-sub-tab.active,
-body.dark .demo-sub-tab.active {
-  background: #1f2937;
-  color: #60a5fa;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-}
-
-html[data-theme="dark"] .l2c-ctrl-btn,
-html[data-theme-setting="dark"] .l2c-ctrl-btn,
-body.dark .l2c-ctrl-btn {
-  background: #1f2937;
-  color: #e5e7eb;
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
-html[data-theme="dark"] .l2c-ctrl-btn:hover,
-html[data-theme-setting="dark"] .l2c-ctrl-btn:hover,
-body.dark .l2c-ctrl-btn:hover {
-  background: #374151;
-  color: #93c5fd;
-}
-
-html[data-theme="dark"] .l2c-ctrl-btn.primary,
-html[data-theme-setting="dark"] .l2c-ctrl-btn.primary,
-body.dark .l2c-ctrl-btn.primary {
-  background: #2563eb;
-  color: #ffffff;
-}
-
-html[data-theme="dark"] .l2c-step-pill,
-html[data-theme-setting="dark"] .l2c-step-pill,
-body.dark .l2c-step-pill {
-  background: #1f2937;
-  color: #9ca3af;
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-html[data-theme="dark"] .l2c-step-pill.active,
-html[data-theme-setting="dark"] .l2c-step-pill.active,
-body.dark .l2c-step-pill.active {
-  background: #3b82f6;
-  color: #ffffff;
-  border-color: #3b82f6;
-}
-
-html[data-theme="dark"] .l2c-graph-stage-box,
-html[data-theme-setting="dark"] .l2c-graph-stage-box,
-body.dark .l2c-graph-stage-box {
-  background: #111827;
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-html[data-theme="dark"] .l2c-graph-svg-wrapper,
-html[data-theme-setting="dark"] .l2c-graph-svg-wrapper,
-body.dark .l2c-graph-svg-wrapper {
-  background: rgba(0, 0, 0, 0.25);
-}
-
-html[data-theme="dark"] .l2c-detail-card,
-html[data-theme-setting="dark"] .l2c-detail-card,
-body.dark .l2c-detail-card {
-  background: rgba(30, 58, 138, 0.15);
-  border-color: rgba(59, 130, 246, 0.25);
-}
-
-html[data-theme="dark"] .l2c-candidate-table th,
-html[data-theme-setting="dark"] .l2c-candidate-table th,
-body.dark .l2c-candidate-table th {
-  background: rgba(255, 255, 255, 0.04);
-}
-
-html[data-theme="dark"] .l2c-candidate-table tr.highlight-selected,
-html[data-theme-setting="dark"] .l2c-candidate-table tr.highlight-selected,
-body.dark .l2c-candidate-table tr.highlight-selected {
-  background: rgba(245, 158, 11, 0.18);
-}
-
-html[data-theme="dark"] .l2c-struct-chip,
-html[data-theme-setting="dark"] .l2c-struct-chip,
-body.dark .l2c-struct-chip {
-  background: #1f2937;
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-html[data-theme="dark"] .l2c-solver-card,
-html[data-theme-setting="dark"] .l2c-solver-card,
-body.dark .l2c-solver-card {
-  background: #1f2937;
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-html[data-theme="dark"] .l2c-takeaway-box,
-html[data-theme-setting="dark"] .l2c-takeaway-box,
-body.dark .l2c-takeaway-box {
-  background: rgba(16, 185, 129, 0.12);
-  border-color: rgba(16, 185, 129, 0.3);
+  color: var(--global-text-color);
 }
 
 html[data-theme="dark"] .l2c-cutset-label-bg,
 html[data-theme-setting="dark"] .l2c-cutset-label-bg,
 body.dark .l2c-cutset-label-bg {
-  fill: #2d2618;
-  stroke: #78350f;
+  fill: var(--aria-award-bg);
+  stroke: var(--aria-award-border);
 }
 
 /* ==========================================================================
@@ -1604,54 +1956,23 @@ body.dark .l2c-cutset-label-bg {
   font-weight: 600;
   padding: 0.3rem 0.7rem;
   border-radius: 6px;
-  background: rgba(17, 24, 39, 0.75);
+  background: rgba(23, 25, 28, 0.82);
   color: #ffffff !important;
   border: 1px solid rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(6px);
   cursor: pointer;
   user-select: none;
-  transition: all 0.18s ease;
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
   line-height: 1;
 }
 
 .gif-replay-badge:hover {
-  background: #2563eb;
-  border-color: #2563eb;
-  color: #ffffff !important;
+  background: var(--global-theme-color);
+  border-color: var(--global-theme-color);
+  color: var(--global-hover-text-color) !important;
   transform: scale(1.04);
-}
-
-html[data-theme="dark"] .gif-replay-badge,
-html[data-theme-setting="dark"] .gif-replay-badge,
-body.dark .gif-replay-badge {
-  background: rgba(0, 0, 0, 0.75);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-/*
-  Note callouts (<blockquote class="block-tip" markdown="1">) on hand-written
-  pages. al_folio_core styles .block-tip with a fixed green palette that does
-  not match this site's accent color, so tie the callout to the theme variables
-  instead: it then follows --global-theme-color in both light and dark mode.
-  main.css loads after this file, so the selectors are prefixed with `html` to
-  out-rank its blockquote.block-tip rules rather than using !important.
-*/
-html blockquote.block-tip {
-  border-left-color: var(--global-theme-color);
-  background-color: color-mix(in srgb, var(--global-theme-color) 8%, var(--global-bg-color));
-}
-
-html blockquote.block-tip p,
-html blockquote.block-tip li,
-html blockquote.block-tip em,
-html blockquote.block-tip strong {
-  color: var(--global-text-color);
-}
-
-html blockquote.block-tip a {
-  color: var(--global-theme-color);
-}
-
-html blockquote.block-tip a:hover {
-  color: var(--global-hover-color);
 }
