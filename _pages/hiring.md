@@ -28,7 +28,7 @@ seo:
 
 <blockquote class="block-tip" markdown="1">
 
-📝 **Ready to apply?** Submit your details using the [Google Form]({{ site.data.recruiting.application_form_url }}). Email may be missed—form submissions are reviewed regularly.
+📝 **Ready to apply?** Submit your details using the [Google Form]({{ site.data.recruiting.application_form_url }}). Please use the form rather than emailing directly—emails may be missed, while form submissions are reviewed regularly.
 
 </blockquote>
 
@@ -132,9 +132,6 @@ See [undergraduate and M.S. research opportunities]({{ '/hiring/undergraduate-ms
 
 ## FAQ
 
-**Q:** Should I email you directly?  
-**A:** No—please use the Google Form. Emails are often missed, but form submissions are reviewed regularly.
-
 **Q:** Do I need publications to apply?  
 **A:** Not required, but helpful. We value demonstrated research potential and strong fundamentals.
 
@@ -143,10 +140,3 @@ See [undergraduate and M.S. research opportunities]({{ '/hiring/undergraduate-ms
 
 **Q:** What's the application timeline?  
 **A:** We review applications on a rolling basis. Apply early for best consideration.
-
----
-
-## Ready to apply?
-
-Submit your details via the [Google Form]({{ site.data.recruiting.application_form_url }}).  
-For Ph.D. applications, also apply through NJIT admissions and mention my name in your Statement of Purpose.

@@ -28,9 +28,8 @@ category: datasets
 ### Updates
 
 - **Dec 22nd 2024**: Released all the checkpoints for error recognition models.
-- **Oct 31st 2024**: Released final code for baselines and features used for training the models.
+- **Oct 31st 2024**: Released final code for baselines—(a) **Error Recognition** (Supervised, Zero-Shot) and (b) **Multi-Step Localization**—along with extracted features.
 - **Sep 26th 2024**: Paper accepted to NeurIPS 2024 with scores: 8, 8, 7.
-- **Oct 30th 2024**: Released updated final code for baselines on (a) **Error Recognition** – (Supervised, Zero-Shot), (b) **Multi-Step Localization**.
 - **Aug 2024**: Released extracted features for the dataset using video recognition models.
 - **July 2024**: Released baseline code for (a) **Error Recognition**, (b) **Multi-Step Localization**.
 - **Dec 2023**: Released dataset v1.0.
@@ -232,7 +231,7 @@ You can find the task graphs for the following tasks in the dataset here:
 ---
 
 <div align="center">
-  <h3>Baselines</h3>
+  <h3>Baseline Results</h3>
 </div>
 
 <div align="center">
@@ -293,8 +292,7 @@ You can find the task graphs for the following tasks in the dataset here:
   <h3>Annotations</h3>
 </div>
 
-- [Data Statistics](https://github.com/Error-Dataset/annotations)
-- [Train/Test Splits](https://github.com/Error-Dataset/annotations)
+- [Data Statistics &amp; Train/Test Splits](https://github.com/Error-Dataset/annotations)
 
 ---
 
@@ -307,7 +305,7 @@ You can find the task graphs for the following tasks in the dataset here:
 ---
 
 <div>
-  <h3>Baselines</h3>
+  <h3>Baseline Code</h3>
 </div>
 
 - [Supervised Error Recognition](https://github.com/CaptainCook4D/error_recognition)

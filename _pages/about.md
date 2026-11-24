@@ -71,17 +71,31 @@ If you are interested in joining the ARIA Research Lab, please review the <a hre
 
 ## Selected projects & highlights
 
-- **[NeuPI](https://neupi.readthedocs.io/en/latest/) – Neural Probabilistic Inference**  
-  A neural engine for probabilistic graphical models and circuits that distills complex queries into neural network approximators, accelerating query answering from minutes to microseconds for real-time decision-making.
+- **Real-Time Neural Inference Engine**  
+  **NeuPI** <a href="https://shivvrat.github.io/certificates/tpm_certificate.jpg" target="_blank" rel="noopener noreferrer" class="award-badge"><i class="fa-solid fa-trophy award-icon" aria-hidden="true"></i> Best Paper Award (UAI TPM '24)</a> <span class="award-badge"><i class="fa-solid fa-star award-icon" aria-hidden="true"></i> NeurIPS '24 Spotlight (Top 2%)</span> <span class="award-badge"><i class="fa-solid fa-bullhorn award-icon" aria-hidden="true"></i> AAAI '24 Oral (Top 3%)</span>  
+  An open-source PyTorch library for self-supervised neural probabilistic inference, combining single-pass neural approximators and test-time optimization to accelerate inference from minutes to microseconds.  
+  **Publications:** [ITSELF (NeurIPS 2024)](https://openreview.net/forum?id=ufPPf9ghzP), [SSMP (AAAI 2024)](https://ojs.aaai.org/index.php/AAAI/article/view/28966), [SS-CMPE (AISTATS 2024)](https://proceedings.mlr.press/v238/arya24b.html), [SINE (AISTATS 2025)](https://proceedings.mlr.press/v258/arya25a.html)
+  <span class="project-resource-links"><a href="https://github.com/Shivvrat/NeuPI" target="_blank" rel="noopener noreferrer" class="project-resource-btn"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a><a href="https://neupi.readthedocs.io/en/latest/" target="_blank" rel="noopener noreferrer" class="project-resource-btn"><i class="fa-solid fa-book" aria-hidden="true"></i> Documentation</a></span>
 
-- **[Neural Dual Bounds](https://openreview.net/forum?id=fdwZvjybdN)** <span class="award-badge"><i class="fa-solid fa-star award-icon"></i> Spotlight</span> & **[Learning to Condition](https://github.com/brijml/L2C) – Neural-Augmented Classical Solvers**  
-  Learned heuristics and valid-by-construction dual bounds integrated directly into classical inference algorithms, accelerating solver convergence and shrinking search spaces while preserving theoretical guarantees.
+- **Neural-Augmented Classical Solvers**  
+  **Neural Dual Bounds** <span class="award-badge"><i class="fa-solid fa-star award-icon" aria-hidden="true"></i> NeurIPS '26 Spotlight (Top 1%)</span> & **Learning to Condition (L2C)**  
+  Integrating learned heuristics, valid-by-construction dual bounds, and search policies into classical probabilistic inference algorithms to accelerate convergence and reduce search complexity while preserving theoretical guarantees.  
+  **Publications:** [Neural Dual Bounds (NeurIPS 2026)](https://openreview.net/forum?id=fdwZvjybdN), [Learning to Condition (NeurIPS 2025)](https://proceedings.neurips.cc/paper_files/paper/2025/file/af80ce1011eb35fe1023c320158c2ad9-Paper-Conference.pdf)  
+  **Ongoing work:** [Learning to Bound](https://arxiv.org/abs/2610.39305), [BEACON](https://arxiv.org/abs/2602.01475)
+  <span class="project-resource-links"><a href="https://github.com/brijml/L2C" target="_blank" rel="noopener noreferrer" class="project-resource-btn"><i class="fa-brands fa-github" aria-hidden="true"></i> Code (L2C)</a></span>
 
-- **[RELINK](https://dl.acm.org/doi/10.1145/3746252.3761006)** <span class="award-badge"><i class="fa-solid fa-bullhorn award-icon"></i> Oral</span> – **Neural Combinatorial Optimization**  
-  Deep reinforcement learning policies for sequential discrete decisions over complex networks, tackling large-scale network optimization and influence maximization under privacy constraints.
+- **Deep RL for Network Diffusion & Optimization**  
+  **[RELINK](https://dl.acm.org/doi/10.1145/3746252.3761006)** <span class="award-badge"><i class="fa-solid fa-bullhorn award-icon" aria-hidden="true"></i> CIKM '25 Oral</span> & **[LEAP](https://doi.org/10.1145/3799682.3840796)** (CIKM '26)  
+  Reinforcement learning policies that amortize combinatorial search over complex networks for influence and fixation maximization—achieving up to five orders of magnitude faster inference than simulation-based methods.
 
-- **[CaptainCook4D](https://captaincook4d.github.io/captain-cook/) – Procedural Activity Understanding**  
-  A large-scale egocentric 4D dataset and benchmark for procedural task understanding, studying how AI systems recognize multi-step workflows, detect procedural errors, and assist users in complex environments.
+- **Procedural Activity Understanding & Task Guidance**  
+  **CaptainCook4D**  
+  A 94.5-hour egocentric 4D dataset and benchmark for procedural activity understanding, error recognition, and procedure learning, complementing our work on explainable activity recognition, AR task guidance, and vision-language models.  
+  **Publications:** [NeurIPS 2024 Datasets & Benchmarks](https://doi.org/10.52202/079017-4307), [IEEE VR 2024](https://doi.org/10.1109/VRW62533.2024.00283), [ACM TiiS 2023](https://doi.org/10.1145/3626961), [ACM TiiS 2026](https://doi.org/10.1145/3816700)
+  <span class="project-resource-links"><a href="https://captaincook4d.github.io/captain-cook/" target="_blank" rel="noopener noreferrer" class="project-resource-btn"><i class="fa-solid fa-globe" aria-hidden="true"></i> Project</a><a href="https://github.com/CaptainCook4D/" target="_blank" rel="noopener noreferrer" class="project-resource-btn"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a></span>
 
-- **[CoLa-VAE](https://github.com/Yeqing95/CoLa-VAE) – AI for Scientific Discovery**  
-  A cell-cell communication-aware variational autoencoder incorporating dynamic graph Laplacian constraints, advancing structured representation learning in single-cell genomics and computational biology.
+- **Communication-Aware Single-Cell Genomics**  
+  **CoLa-VAE**  
+  A knowledge-guided variational autoencoder incorporating cell-cell communication networks to improve single-cell gene expression denoising, communication analysis, and spatial transcriptomic deconvolution.  
+  **Preprint:** [bioRxiv 2026](https://doi.org/10.64898/2026.03.28.715052)
+  <span class="project-resource-links"><a href="https://github.com/Yeqing95/CoLa-VAE" target="_blank" rel="noopener noreferrer" class="project-resource-btn"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a></span>

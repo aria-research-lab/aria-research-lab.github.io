@@ -16,9 +16,7 @@
         </p>
       </div>
       <div class="demo-badges">
-        <span class="demo-badge demo-badge-oral">AAAI Oral</span>
-        <span class="demo-badge demo-badge-spotlight">NeurIPS Spotlight</span>
-        <span class="demo-badge demo-badge-sim">Interactive Demo</span>
+        <span class="demo-badge demo-badge-sim">Empirical Benchmark</span>
       </div>
     </div>
 
@@ -42,10 +40,8 @@
       </button>
     </div>
     <p class="demo-video-caption" id="benchmark-caption">
-      <strong>Benchmark Visualization:</strong> One Left&rarr;Right traverse represents 1 inference query. In the time the classical baseline takes to
-      complete 1 inference query (2.703 s/inf), <strong>ITSELF</strong> completes an iterative test-time optimization pass (784 ms/inf, 3.4&times;
-      faster, 3 traverses), while <strong>SSMP</strong> processes over 273,000 queries via amortized continuous relaxation (9.87 &micro;s/inf,
-      &gt;273,000&times; faster, 273,860 traverses).
+      <strong>Benchmark Visualization:</strong> One Left&rarr;Right traverse represents 1 inference query during a single baseline query window (2.703
+      s); see the cards below for exact latencies and speedups.
     </p>
 
     <div class="demo-metrics-grid">
@@ -114,8 +110,8 @@
         </div>
       </div>
       <p class="demo-video-caption" id="calc-speedup-highlight" style="margin-top: 0.65rem; margin-bottom: 0">
-        <strong>Key Takeaway:</strong> For 10,000 queries, SSMP finishes in <strong>98.7 ms</strong>, whereas the traditional baseline stalls for
-        <strong>7.51 hours</strong> (over 273,000&times; speedup), unlocking real-time probabilistic reasoning.
+        <strong>Key Takeaway:</strong> At 10,000 queries, amortized single-pass inference keeps <strong>SSMP</strong> interactive (&gt;273,000&times;
+        faster), whereas traditional exact search stalls for hours.
       </p>
     </div>
   </div>
@@ -195,23 +191,15 @@
 
         if (resSpeedup) {
           var speedupRatio = tBase / tSSMP;
-          if (count >= 10000) {
-            resSpeedup.innerHTML =
-              "<strong>Key Takeaway:</strong> For " +
-              count.toLocaleString("en-US") +
-              " queries, SSMP finishes in <strong>" +
-              formatTime(tSSMP) +
-              "</strong>, whereas the traditional baseline stalls for <strong>" +
-              formatTime(tBase) +
-              "</strong> (over " +
-              Math.floor(speedupRatio / 1000).toLocaleString("en-US") +
-              ",000&times; speedup), unlocking real-time probabilistic reasoning.";
-          } else {
-            resSpeedup.innerHTML =
-              "<strong>Key Takeaway:</strong> SSMP processes queries in real time (&lt;10 &micro;s per query), delivering over " +
-              Math.floor(BENCHMARK_CONFIG.ssmpSpeedup / 1000).toLocaleString("en-US") +
-              ",000&times; speedup over the combinatorial baseline.";
-          }
+          var regime = count >= 10000 ? "batch" : "interactive";
+          resSpeedup.innerHTML =
+            "<strong>Key Takeaway:</strong> At " +
+            count.toLocaleString("en-US") +
+            " queries (" +
+            regime +
+            " regime), amortized inference delivers over " +
+            Math.floor(speedupRatio / 1000).toLocaleString("en-US") +
+            ",000&times; speedup over the combinatorial baseline.";
         }
       }
 

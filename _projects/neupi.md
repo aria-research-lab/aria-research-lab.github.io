@@ -55,6 +55,13 @@ NeuPI trains neural solvers to answer queries such as Most Probable Explanation 
 - **Example 3**: Run inference using a trained neural solver on Markov Networks and Sum-Product Networks.
 - **Example 4**: Discretize probabilities into binary assignments using `ThresholdDiscretizer`, `KNearestDiscretizer`, and `OAUAI`.
 
+### Associated Papers & Recognition
+
+- **A Neural Network Approach for Efficiently Answering Most Probable Explanation Queries in Probabilistic Models (ITSELF)** — [NeurIPS 2024](https://openreview.net/forum?id=ufPPf9ghzP); [UAI TPM 2024](https://openreview.net/forum?id=Gn7mpdBqqf) <span class="award-badge"><i class="fa-solid fa-trophy award-icon" aria-hidden="true"></i> Best Paper Award</span> <span class="award-badge"><i class="fa-solid fa-star award-icon" aria-hidden="true"></i> Spotlight (Top 2%)</span> <a href="https://shivvrat.github.io/certificates/tpm_certificate.jpg" target="_blank" rel="noopener noreferrer" class="award-badge award-badge-certificate"><i class="fa-solid fa-certificate award-icon" aria-hidden="true"></i> Certificate</a>
+- **Neural Network Approximators for Marginal MAP in Probabilistic Circuits (SSMP)** — [AAAI 2024](https://ojs.aaai.org/index.php/AAAI/article/view/28966) <span class="award-badge"><i class="fa-solid fa-bullhorn award-icon" aria-hidden="true"></i> Oral Presentation (Top 3%)</span>
+- **SINE: Scalable MPE Inference for Probabilistic Graphical Models using Advanced Neural Embeddings** — [AISTATS 2025](https://proceedings.mlr.press/v258/arya25a.html)
+- **Learning to Solve the Constrained Most Probable Explanation Task in Probabilistic Graphical Models (SS-CMPE)** — [AISTATS 2024](https://proceedings.mlr.press/v238/arya24b.html)
+
 ### Implemented Methods and References
 
 | Type        | Component                            | Primary reference(s)                                                                | Description                                                                                                                  |
