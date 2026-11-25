@@ -41,5 +41,15 @@ module.exports = {
     "venue-cat-workshop",
     "venue-cat-preprint",
     "venue-cat-thesis",
+    // Research pillar topic/resource bar and homepage collapsible news classes
+    "research-pillar-bar",
+    "pillar-bar-group",
+    "pillar-bar-label",
+    "pillar-tag-pill",
+    "home-news-collapsible",
+    "home-news-actions",
+    "home-news-toggle",
+    "home-news-all-link",
+    "news-row-hidden",
   ],
 };

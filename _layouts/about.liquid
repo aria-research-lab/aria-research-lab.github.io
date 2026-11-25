@@ -50,7 +50,16 @@ layout: default
       <h2>
         <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
       </h2>
-      {% include news.liquid limit=true %}
+      <div class="home-news-collapsible" data-news-initial="3">
+        {% include news.liquid %}
+        <div class="home-news-actions">
+          <button type="button" class="home-news-toggle" aria-expanded="false" hidden>
+            Show More News <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <a href="{{ '/news/' | relative_url }}" class="home-news-all-link"> All News <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> </a>
+        </div>
+      </div>
+      <script src="{{ '/assets/js/home-news.js' | relative_url }}" defer></script>
     {% endif %}
 
     <!-- Latest posts -->

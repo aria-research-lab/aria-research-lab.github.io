@@ -35,6 +35,8 @@ Our core research agenda focuses on **neuro-symbolic reasoning and probabilistic
 
 ## Neuro-Symbolic Reasoning and Probabilistic Inference
 
+{% include research_pillar_bar.liquid pillar="Neuro-Symbolic Reasoning and Probabilistic Inference" resources="NeuPI|https://github.com/Shivvrat/NeuPI|fa-brands fa-github;NeuPI Docs|https://neupi.readthedocs.io/en/latest/|fa-solid fa-book;L2C|https://github.com/brijml/L2C|fa-brands fa-github" %}
+
 We develop learning-based and optimization-based methods for reasoning under uncertainty in structured probabilistic models. Our research combines neural networks with probabilistic inference, symbolic structure, classical algorithms, and mathematical optimization to improve the efficiency and scalability of challenging inference tasks. Rather than committing to a single computational paradigm, we study how learned and algorithmic components can be combined at different levels of the inference pipeline.
 
 Our work currently spans three complementary directions:
@@ -127,6 +129,8 @@ We develop optimization-based structured inference methods that explicitly reaso
 
 ## Neural Combinatorial Optimization
 
+{% include research_pillar_bar.liquid pillar="Neural Combinatorial Optimization" %}
+
 We develop learning-based methods for solving large-scale combinatorial optimization problems over structured domains. Our research combines deep reinforcement learning, representation learning, and classical optimization to learn effective decision policies for problems with large discrete action spaces, complex dependencies, and domain-specific constraints. A particular focus is graph-structured optimization, where learned representations can exploit topology and problem structure to make efficient sequential decisions.
 
 <figure class="figure">
@@ -150,6 +154,8 @@ Our current work investigates neural combinatorial optimization for decision-mak
 ---
 
 ## Structured and Multimodal Intelligence
+
+{% include research_pillar_bar.liquid pillar="Structured and Multimodal Intelligence" resources="CaptainCook4D|https://captaincook4d.github.io/captain-cook/|fa-solid fa-globe;CaptainCook4D Code|https://github.com/CaptainCook4D/|fa-brands fa-github" %}
 
 We develop learning methods for reasoning over complex perceptual and multimodal data by combining high-dimensional representations with explicit structure. Our research studies how temporal dependencies, task structure, relational representations, and human feedback can improve the reliability, interpretability, and adaptability of models operating across visual, linguistic, and multimodal domains. More broadly, we investigate how structured reasoning can bridge low-level perception and higher-level understanding, prediction, and decision-making.
 
@@ -200,6 +206,8 @@ We study multimodal systems that integrate visual and linguistic representations
 ---
 
 ## AI for Scientific Discovery
+
+{% include research_pillar_bar.liquid pillar="AI for Scientific Discovery" resources="CoLa-VAE|https://github.com/Yeqing95/CoLa-VAE|fa-brands fa-github" %}
 
 We develop machine learning methods that incorporate scientific structure, prior knowledge, and domain constraints into data-driven models for scientific discovery. Our research focuses on problems where observations are high-dimensional, interactions are structured, and purely black-box learning may fail to capture the mechanisms underlying the data. By combining representation learning, generative modeling, graph-based reasoning, and optimization with domain knowledge, we aim to build models that support both accurate prediction and scientifically meaningful interpretation.
 
