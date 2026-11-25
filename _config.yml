@@ -416,6 +416,7 @@ filtered_bibtex_keywords:
     status,
     slides,
     supp,
+    tags,
     type,
     video,
     website,

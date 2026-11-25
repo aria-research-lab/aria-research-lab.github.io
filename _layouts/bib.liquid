@@ -1,30 +1,12 @@
 ---
 ---
-<div class="row{% if entry.annotation or entry.award %} award-paper-highlight{% endif %}">
+<div
+  class="row{% if entry.annotation or entry.award %} award-paper-highlight{% endif %}"
+  data-venue="{{ entry.abbr | default: '' | escape }}"
+  data-tags="{{ entry.tags | default: '' | escape }}"
+>
   {% if site.enable_publication_thumbnails %}
     <div class="col col-sm-2 abbr">
-      {%- if entry.abbr -%}
-        {%- if site.data.venues[entry.abbr] -%}
-          {% assign venue_style = null %}
-          {% if site.data.venues[entry.abbr].color != blank %}
-            {% assign venue_style = site.data.venues[entry.abbr].color | prepend: 'style="background-color:' | append: '"' %}
-          {%- endif -%}
-          <abbr
-            class="badge rounded w-100"
-            {% if venue_style %}
-              {{ venue_style }}
-            {% endif -%}
-          >
-            {% if site.data.venues[entry.abbr].url %}
-              <a href="{{ site.data.venues[entry.abbr].url }}">{{ entry.abbr }}</a>
-            {% else %}
-              <div>{{- entry.abbr -}}</div>
-            {% endif %}
-          </abbr>
-        {% else %}
-          <abbr class="badge rounded w-100">{{ entry.abbr }}</abbr>
-        {% endif %}
-      {% endif %}
       {% if entry.preview %}
         {%- comment -%}
           A preview may be a video file rather than an image. Rendering one through the
@@ -424,6 +406,30 @@
     <div class="periodical">
       {{ periodical | strip }}
     </div>
+    {%- if entry.abbr -%}
+      <div class="pub-venue-row">
+        {%- assign venue_info = site.data.venues[entry.abbr] -%}
+        {%- assign venue_cat = venue_info.category | default: 'conference' -%}
+        {%- if venue_info.url and venue_info.url != '' -%}
+          <a
+            href="{{ venue_info.url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="pub-venue-badge venue-cat-{{ venue_cat }}"
+            title="{{ venue_info.full_name | default: entry.abbr | escape }}"
+          >
+            {{- entry.abbr -}}
+          </a>
+        {%- else -%}
+          <span
+            class="pub-venue-badge venue-cat-{{ venue_cat }}"
+            title="{{ venue_info.full_name | default: entry.abbr | escape }}"
+          >
+            {{- entry.abbr -}}
+          </span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
     <div class="periodical">
       {{ entry.note | strip }}
     </div>
@@ -546,6 +552,17 @@
         {% endif %}
       {% endif %}
     </div>
+    {% if entry.tags %}
+      {% assign tag_list = entry.tags | split: ',' %}
+      <div class="pub-tags" aria-label="Publication topics">
+        {% for raw_tag in tag_list %}
+          {% assign clean_tag = raw_tag | strip %}
+          {% if clean_tag != '' %}
+            <button type="button" class="pub-tag-pill" data-pub-tag="{{ clean_tag | escape }}">{{ clean_tag }}</button>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
     {% if site.enable_publication_badges %}
       {% assign entry_has_altmetric_badge = false %}
       {% if entry.altmetric and entry.altmetric != 'false' %}

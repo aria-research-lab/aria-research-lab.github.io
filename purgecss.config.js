@@ -23,5 +23,23 @@ module.exports = {
     // and page chrome (scroll-progress bar, ToC) bleeds through a zoomed image.
     "medium-zoom-overlay",
     "medium-zoom-image--opened",
+    // Publication topic/venue filter UI classes injected or toggled by pub-filters.js
+    "pub-filter-wrapper",
+    "pub-filter-toolbar",
+    "pub-filter-toggle",
+    "pub-filter-arrow",
+    "pub-filter-chips",
+    "pub-venue-row",
+    "pub-filter-chip",
+    "pub-filter-count",
+    "pub-filter-clear",
+    "pub-filter-hidden",
+    "pub-year-hidden",
+    "is-active",
+    "venue-cat-conference",
+    "venue-cat-journal",
+    "venue-cat-workshop",
+    "venue-cat-preprint",
+    "venue-cat-thesis",
   ],
 };

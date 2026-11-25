@@ -14,8 +14,21 @@ nav_order: 2
 
 {% include bib_search.liquid %}
 
+<div id="pub-filter-wrapper" class="pub-filter-wrapper">
+  <div class="pub-filter-toolbar">
+    <button type="button" id="pub-filter-toggle" class="pub-filter-toggle" aria-expanded="false" aria-controls="pub-filter-bar">
+      <span>Filter</span>
+      <span class="pub-filter-arrow" aria-hidden="true">&#9656;</span>
+    </button>
+    <div id="pub-filter-status" class="pub-filter-status" aria-live="polite" hidden></div>
+  </div>
+  <div id="pub-filter-bar" class="pub-filter-bar" aria-label="Filter publications by topic" hidden></div>
+</div>
+
 <div class="publications">
 
 {% bibliography %}
 
 </div>
+
+<script src="{{ '/assets/js/pub-filters.js' | relative_url }}" defer></script>
