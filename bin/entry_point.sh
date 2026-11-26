@@ -44,7 +44,8 @@ start_jekyll() {
     manage_gemfile_lock
     ensure_bundle_deps
     mkdir -p "$DOCKER_DESTINATION"
-    bundle exec jekyll serve --watch --port=8080 --host=0.0.0.0 --livereload --verbose --trace --force_polling --destination "$DOCKER_DESTINATION" --config "$CONFIG_FILE" &
+    local livereload_port="${LIVERELOAD_PORT:-35730}"
+    bundle exec jekyll serve --watch --port=8080 --host=0.0.0.0 --livereload --livereload-port="$livereload_port" --verbose --trace --force_polling --destination "$DOCKER_DESTINATION" --config "$CONFIG_FILE" &
 }
 
 start_jekyll
